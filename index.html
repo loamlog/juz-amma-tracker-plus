@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v317r</title>
+<title>Juz' Amma Tracker v317w</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -2811,117 +2811,100 @@ body:has(.flashcard-overlay) .nav{display:none!important}
         </div>
         <div style="padding:16px;max-height:60vh;overflow-y:auto;font-family:'Noto Sans Thai',sans-serif">
 
-            <!-- หน้าแรก -->
+            <!-- HOME -->
             <div id="tf-home">
-                <p style="font-size:var(--text-2xs);color:var(--txt2);text-align:center;margin-bottom:14px;line-height:1.6;font-family:'Noto Sans Thai',sans-serif">เครื่องนี้เป็น ...</p>
+                <p style="font-size:var(--text-2xs);color:var(--txt2);text-align:center;margin-bottom:14px">เครื่องนี้เป็น ...</p>
                 <div style="display:flex;gap:10px">
-                    <button onclick="_tfGo('send')" style="flex:1;padding:20px 10px 16px;border:1.5px solid var(--pri-l);border-radius:var(--r-lg);background:#fff;cursor:pointer;text-align:center;transition:all 0.15s;font-family:'Noto Sans Thai',sans-serif" onmousedown="this.style.transform='scale(0.97)'" onmouseup="this.style.transform=''">
+                    <button onclick="_tfGo('send')" style="flex:1;padding:20px 10px 16px;border:1.5px solid var(--pri-l);border-radius:var(--r-lg);background:#fff;cursor:pointer;text-align:center;font-family:'Noto Sans Thai',sans-serif">
                         <div style="width:44px;height:44px;border-radius:50%;background:var(--pri-ll);display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--pri)" stroke-width="1.5"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></div>
-                        <div style="font-size:var(--text-sm);font-weight:600;color:var(--pri);font-family:'Noto Sans Thai',sans-serif">เครื่องเก่า</div>
-                        <div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:3px;font-family:'Noto Sans Thai',sans-serif">ส่งข้อมูลออก</div>
+                        <div style="font-size:var(--text-sm);font-weight:600;color:var(--pri)">เครื่องเก่า</div>
+                        <div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:3px">ส่งข้อมูลออก</div>
                     </button>
-                    <button onclick="_tfGo('receive')" style="flex:1;padding:20px 10px 16px;border:1.5px solid var(--sec-l);border-radius:var(--r-lg);background:#fff;cursor:pointer;text-align:center;transition:all 0.15s;font-family:'Noto Sans Thai',sans-serif" onmousedown="this.style.transform='scale(0.97)'" onmouseup="this.style.transform=''">
+                    <button onclick="_tfGo('receive')" style="flex:1;padding:20px 10px 16px;border:1.5px solid var(--sec-l);border-radius:var(--r-lg);background:#fff;cursor:pointer;text-align:center;font-family:'Noto Sans Thai',sans-serif">
                         <div style="width:44px;height:44px;border-radius:50%;background:var(--sec-ll);display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-                        <div style="font-size:var(--text-sm);font-weight:600;color:var(--sec);font-family:'Noto Sans Thai',sans-serif">เครื่องใหม่</div>
-                        <div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:3px;font-family:'Noto Sans Thai',sans-serif">รับข้อมูลเข้า</div>
+                        <div style="font-size:var(--text-sm);font-weight:600;color:var(--sec)">เครื่องใหม่</div>
+                        <div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:3px">รับข้อมูลเข้า</div>
                     </button>
                 </div>
             </div>
 
-            <!-- ส่งข้อมูลออก -->
+            <!-- SEND -->
             <div id="tf-send" style="display:none">
                 <div id="tf-send-pick">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:12px;font-family:'Noto Sans Thai',sans-serif">เลือกวิธีส่ง :</p>
+                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:12px">เลือกวิธีส่ง :</p>
                     <div style="display:flex;flex-direction:column;gap:8px">
-                        <button onclick="_tfShowSend('code')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
+                        <button onclick="_tfShowSend('share')" id="tf-share-pick-btn" style="display:none;align-items:center;gap:12px;padding:14px;border:1px solid var(--sec-l);border-radius:var(--r-md);background:linear-gradient(180deg,#fff,var(--sec-ll));cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
+                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:600;color:var(--sec)">แชร์ผ่าน LINE / AirDrop</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">วิธีที่ง่ายที่สุด — กดแชร์เลย</div></div>
+                        </button>
+                        <button onclick="_tfShowSend('code')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--pri-ll);border:1px solid var(--pri-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pri)" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ส่งเป็นรหัส</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">คัดลอกส่งทางแชท</div></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:500">ส่งเป็นรหัส</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">คัดลอกหรือบันทึกเป็นไฟล์</div></div>
                         </button>
-                        <button onclick="_tfShowSend('link')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ส่งเป็นลิงก์ + QR</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ต้องมีอินเทอร์เน็ต</div></div>
-                        </button>
-
-                        <button onclick="_tfShowSend('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
+                        <button onclick="_tfShowSend('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--gold-l);border:1px solid rgba(184,149,107,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ส่งเป็นไฟล์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ดาวน์โหลดแล้วส่งทางแชท</div></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:500">ส่งเป็นไฟล์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">ดาวน์โหลดแล้วส่งเอง</div></div>
                         </button>
                     </div>
                 </div>
+                <!-- แชร์ผ่านแอป -->
+                <div id="tf-send-share" style="display:none">
+                    <button class="settings-btn" onclick="_tfWebShare()" style="width:100%;padding:14px">แชร์ข้อมูลไปเครื่องใหม่</button>
+                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6">จะเปิดหน้าแชร์ของระบบ<br>เลือก LINE, AirDrop, อีเมล ฯลฯ</p>
+                </div>
+                <!-- ส่งรหัส -->
                 <div id="tf-send-code" style="display:none">
                     <button class="settings-btn" onclick="_tfGenCode()" id="tf-code-gen-btn" style="width:100%;padding:14px">สร้างรหัส</button>
                     <textarea id="tf-code-out" readonly style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:7px;font-family:monospace;padding:8px;display:none;background:var(--card2);resize:none;word-break:break-all;line-height:1.3;margin-top:10px" onclick="this.select()"></textarea>
                     <div id="tf-code-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
-                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6;font-family:'Noto Sans Thai',sans-serif">กดค้างที่กล่องรหัส → คัดลอก → ส่งทางแชท</p>
-                    <div style="border-top:1px solid var(--bdr-l);margin-top:12px;padding-top:10px">
-                        <p style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:8px;text-align:center;font-family:'Noto Sans Thai',sans-serif">ส่งทางแชทตัวอักษรอาจเพี้ยน ใช้วิธีนี้แทน :</p>
+                    <div id="tf-code-actions" style="display:none;margin-top:10px">
                         <div style="display:flex;gap:6px">
-                            <button class="settings-btn settings-btn-light" onclick="_tfSaveCodeAsFile()" style="flex:1;font-size:var(--text-3xs);padding:10px 6px;font-family:'Noto Sans Thai',sans-serif">บันทึกเป็นไฟล์</button>
-
+                            <button class="settings-btn settings-btn-light" onclick="_tfCopyCode()" style="flex:1">คัดลอก</button>
+                            <button class="settings-btn settings-btn-light" onclick="_tfSaveCodeAsFile()" style="flex:1">บันทึกเป็นไฟล์</button>
                         </div>
-
+                        <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:8px;line-height:1.5">ส่งทางแชทอาจเพี้ยน → บันทึกเป็นไฟล์ส่งแทน</p>
                     </div>
                 </div>
-
-                <div id="tf-send-link" style="display:none">
-                    <button class="settings-btn" onclick="_tfGenLink()" id="tf-link-btn" style="width:100%;padding:14px">สร้างลิงก์</button>
-                    <div id="tf-link-out" style="display:none;margin-top:10px">
-                        <input type="text" id="tf-link-url" readonly style="width:100%;padding:10px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:8px;font-family:monospace;background:var(--card2)" onclick="this.select()">
-                    </div>
-                    <div id="tf-link-qr" style="display:none;text-align:center;margin-top:10px">
-                        <img id="tf-link-qr-img" style="width:180px;height:180px;border-radius:var(--r-sm);border:1px solid var(--bdr)">
-                    </div>
-                    <div id="tf-link-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
-                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6;font-family:'Noto Sans Thai',sans-serif">คัดลอกลิงก์ หรือ บันทึกรูป QR<br>แล้วส่งให้เครื่องใหม่ทางแชท</p>
-                </div>
+                <!-- ส่งไฟล์ -->
                 <div id="tf-send-file" style="display:none">
-                    <button class="settings-btn" onclick="exportData();_tfFileStatus()" style="width:100%;padding:14px">สำรองลงไฟล์</button>
+                    <button class="settings-btn" onclick="exportData();_tfFileStatus()" style="width:100%;padding:14px">ดาวน์โหลดไฟล์สำรอง</button>
                     <div id="tf-file-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
-                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6;font-family:'Noto Sans Thai',sans-serif">จะได้ไฟล์สำรอง<br>ส่งผ่านแชทหรืออีเมลไปเครื่องใหม่</p>
+                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6">ส่งไฟล์ผ่านแชทหรืออีเมลไปเครื่องใหม่</p>
                 </div>
             </div>
 
-            <!-- รับข้อมูลเข้า -->
+            <!-- RECEIVE -->
             <div id="tf-receive" style="display:none">
                 <div id="tf-recv-pick">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:12px;font-family:'Noto Sans Thai',sans-serif">ได้รับข้อมูลจากเครื่องเก่าแบบไหน ?</p>
+                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:12px">ได้รับข้อมูลจากเครื่องเก่าแบบไหน ?</p>
                     <div style="display:flex;flex-direction:column;gap:8px">
-                        <button onclick="_tfShowRecv('code')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
+                        <button onclick="_tfRecvFromShare()" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--sec-l);border-radius:var(--r-md);background:linear-gradient(180deg,#fff,var(--sec-ll));cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
+                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:600;color:var(--sec)">จาก LINE / AirDrop</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">เลือกไฟล์ที่ได้รับ</div></div>
+                        </button>
+                        <input type="file" id="import-share-file" accept=".txt,.json" style="display:none" onchange="_tfImportShareFile(event)">
+                        <button onclick="_tfShowRecv('code')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--pri-ll);border:1px solid var(--pri-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pri)" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ได้รับรหัส</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ข้อความยาว ๆ ที่คัดลอกมา</div></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:500">ได้รับรหัส</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">ข้อความยาว ๆ ที่คัดลอกมา</div></div>
                         </button>
-                        <button onclick="_tfShowRecv('link')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ได้รับลิงก์ / สแกน QR</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ลิงก์จากเครื่องเก่า</div></div>
-                        </button>
-
-                        <button onclick="_tfShowRecv('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
+                        <button onclick="_tfShowRecv('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--gold-l);border:1px solid rgba(184,149,107,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ได้รับไฟล์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ไฟล์สำรองที่ดาวน์โหลดมา</div></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:500">ได้รับไฟล์สำรอง</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">ไฟล์ .json ที่ดาวน์โหลดมา</div></div>
                         </button>
                     </div>
                 </div>
                 <div id="tf-recv-code" style="display:none">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px;line-height:1.5;font-family:'Noto Sans Thai',sans-serif">วางรหัสที่ได้รับจากเครื่องเก่า :</p>
+                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px">วางรหัสที่ได้รับจากเครื่องเก่า :</p>
                     <textarea id="tf-code-in" placeholder="กดค้าง → วาง ที่นี่ ..." style="width:100%;height:90px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:'Noto Sans Thai',sans-serif;padding:12px;resize:none;word-break:break-all;line-height:1.5"></textarea>
                     <button class="settings-btn" onclick="_tfImportCode()" style="width:100%;margin-top:10px;padding:14px">นำเข้า</button>
-                    <div style="border-top:1px solid var(--bdr-l);margin-top:12px;padding-top:10px">
-                        <p style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:8px;text-align:center;font-family:'Noto Sans Thai',sans-serif">หรือ :</p>
-                        <div style="display:flex;gap:6px">
-                            <button class="settings-btn settings-btn-light" onclick="document.getElementById('import-code-file').click()" style="flex:1;font-size:var(--text-3xs);padding:10px 6px;font-family:'Noto Sans Thai',sans-serif">เลือกไฟล์รหัส</button>
-
-                        </div>
+                    <div style="border-top:1px solid var(--bdr-l);margin-top:12px;padding-top:10px;text-align:center">
+                        <p style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:8px">หรือ :</p>
+                        <button class="settings-btn settings-btn-light" onclick="document.getElementById('import-code-file').click()" style="width:100%">เลือกไฟล์รหัส</button>
                         <input type="file" id="import-code-file" accept=".txt" style="display:none" onchange="_tfImportCodeFile(event)">
                     </div>
                 </div>
-
-                <div id="tf-recv-link" style="display:none">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px;line-height:1.5;font-family:'Noto Sans Thai',sans-serif">วางลิงก์ที่ได้รับจากเครื่องเก่า :</p>
-                    <input type="text" id="tf-link-in" placeholder="กดค้าง → วาง ที่นี่ ..." style="width:100%;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:'Noto Sans Thai',sans-serif">
-                    <button class="settings-btn" onclick="_tfImportLink()" style="width:100%;margin-top:10px;padding:14px">นำเข้า</button>
-                </div>
                 <div id="tf-recv-file" style="display:none">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px;line-height:1.5;font-family:'Noto Sans Thai',sans-serif">เลือกไฟล์สำรองที่ได้รับจากเครื่องเก่า :</p>
+                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px">เลือกไฟล์สำรองที่ได้รับจากเครื่องเก่า :</p>
                     <button class="settings-btn" onclick="document.getElementById('import-file-tf').click()" style="width:100%;padding:14px">เลือกไฟล์</button>
                     <input type="file" id="import-file-tf" accept=".json" style="display:none" onchange="importData(event)">
                 </div>
@@ -15820,7 +15803,7 @@ async function clearData(){
 
 // ═══ TRANSFER FUNCTIONS ═══
 const _TF_PANELS=['tf-home','tf-send','tf-receive'];
-const _TF_SUBS=['tf-send-pick','tf-send-code','tf-send-link','tf-send-file','tf-recv-pick','tf-recv-code','tf-recv-link','tf-recv-file'];
+const _TF_SUBS=['tf-send-pick','tf-send-share','tf-send-code','tf-send-file','tf-recv-pick','tf-recv-code','tf-recv-file'];
 
 function _tfHideAll(){
     _TF_PANELS.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
@@ -15947,188 +15930,6 @@ function _tfSaveCodeAsFile(){
     toast('บันทึกไฟล์แล้ว ✓');
 }
 
-
-// ═══ LINK SHARING via dpaste.org ═══
-// ═══ LINK SHARING — file.io + URL hash fallback ═══
-async function _pasteUpload(content){
-    // Strategy: try multiple file hosting services
-    // 1) file.io — reliable, CORS, returns short URL
-    try{
-        console.log('[Link] trying file.io...');
-        const blob=new Blob([content],{type:'text/plain'});
-        const fd=new FormData();
-        fd.append('file',blob,'backup.txt');
-        fd.append('expires','14d');
-        fd.append('maxDownloads','5');
-        const r=await _fetchTimeout('https://file.io',{method:'POST',body:fd},15000);
-        if(r.ok){
-            const j=await r.json();
-            console.log('[Link] file.io response:',JSON.stringify(j).slice(0,200));
-            if(j.success&&j.link)return j.link;
-        }else{console.log('[Link] file.io status:',r.status);}
-    }catch(e){console.log('[Link] file.io failed:',e.message);}
-
-    // 2) transfer.sh — curl-style file hosting
-    try{
-        console.log('[Link] trying transfer.sh...');
-        const blob=new Blob([content],{type:'text/plain'});
-        const fd=new FormData();
-        fd.append('file',blob,'backup.txt');
-        const r=await _fetchTimeout('https://transfer.sh/',{method:'POST',body:fd,headers:{'Max-Days':'14'}},15000);
-        if(r.ok){
-            const url=await r.text();
-            console.log('[Link] transfer.sh response:',url.slice(0,100));
-            if(url.trim().startsWith('http'))return url.trim();
-        }else{console.log('[Link] transfer.sh status:',r.status);}
-    }catch(e){console.log('[Link] transfer.sh failed:',e.message);}
-
-    // 3) tmpfiles.org
-    try{
-        console.log('[Link] trying tmpfiles.org...');
-        const blob=new Blob([content],{type:'text/plain'});
-        const fd=new FormData();
-        fd.append('file',blob,'backup.txt');
-        const r=await _fetchTimeout('https://tmpfiles.org/api/v1/upload',{method:'POST',body:fd},15000);
-        if(r.ok){
-            const j=await r.json();
-            console.log('[Link] tmpfiles.org response:',JSON.stringify(j).slice(0,200));
-            if(j.data&&j.data.url)return j.data.url.replace('tmpfiles.org/','tmpfiles.org/dl/');
-        }else{console.log('[Link] tmpfiles.org status:',r.status);}
-    }catch(e){console.log('[Link] tmpfiles.org failed:',e.message);}
-
-    // 4) Fallback: embed data in app URL hash (works for small data only)
-    const APP_URL=location.href.split('#')[0].split('?')[0];
-    if(content.length<6000){
-        console.log('[Link] using URL hash fallback (data size:',content.length,')');
-        return APP_URL+'#import='+encodeURIComponent(content);
-    }
-
-    console.error('[Link] All upload methods failed, data too large for URL hash');
-    return null;
-}
-
-async function _pasteDownload(url){
-    // Direct fetch — works for file.io, transfer.sh, tmpfiles.org
-    console.log('[Link] downloading:',url.slice(0,80));
-    try{
-        const r=await _fetchTimeout(url,{},15000);
-        if(r.ok)return await r.text();
-        console.log('[Link] direct download failed, status:',r.status);
-    }catch(e){console.log('[Link] direct download failed:',e.message);}
-    // Try via CORS proxy as last resort
-    try{
-        const proxyUrl='https://api.allorigins.win/raw?url='+encodeURIComponent(url);
-        console.log('[Link] trying allorigins proxy...');
-        const r=await _fetchTimeout(proxyUrl,{},10000);
-        if(r.ok)return await r.text();
-    }catch(e){console.log('[Link] proxy download failed:',e.message);}
-    return null;
-}
-
-// ═══ Import from URL hash on page load ═══
-function _checkHashImport(){
-    try{
-        const hash=location.hash;
-        if(!hash||!hash.includes('#import='))return;
-        const encoded=decodeURIComponent(hash.split('#import=')[1]);
-        if(!encoded)return;
-        // Ask user before importing
-        if(!confirm('พบข้อมูลจากเครื่องอื่น\nต้องการนำเข้าหรือไม่ ?'))return;
-        // Clear hash first
-        history.replaceState(null,'',location.href.split('#')[0]);
-        // Decompress and import
-        _decompressData(encoded).then(json=>{
-            if(!json){toast('ข้อมูลไม่ถูกต้อง');return;}
-            try{
-                const data=JSON.parse(json);
-                Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
-                toast('นำเข้าแล้ว ✓');
-                setTimeout(()=>location.reload(),800);
-            }catch(e){toast('ข้อมูลไม่ถูกต้อง');}
-        });
-    }catch(e){console.error('Hash import error:',e);}
-}
-// Run on load
-setTimeout(_checkHashImport,2000);
-
-async function _tfGenLink(){
-    const btn=document.getElementById('tf-link-btn');
-    const origText=btn?btn.textContent:'';
-    if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
-    try{
-        const dump=_getAllLocalStorageDump();
-        if(Object.keys(dump).length===0){toast('ไม่มีข้อมูล');return;}
-        const encoded=await _compressData(JSON.stringify(dump));
-        if(!encoded){toast('สร้างข้อมูลไม่ได้');return;}
-        const url=await _pasteUpload(encoded);
-        if(!url)throw new Error('All services failed');
-        const outEl=document.getElementById('tf-link-out');
-        const urlEl=document.getElementById('tf-link-url');
-        if(outEl)outEl.style.display='block';
-        if(urlEl){urlEl.value=url;setTimeout(()=>{urlEl.focus();urlEl.select();},100);}
-        const qrDiv=document.getElementById('tf-link-qr');
-        const qrImg=document.getElementById('tf-link-qr-img');
-        if(qrDiv&&qrImg){
-            qrImg.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=8&data='+encodeURIComponent(url);
-            qrImg.onerror=()=>{qrDiv.style.display='none';};
-            qrDiv.style.display='block';
-        }
-        const st=document.getElementById('tf-link-status');
-        if(st){st.textContent='✓ คัดลอกลิงก์หรือบันทึกรูป QR';st.style.display='block';}
-    }catch(e){
-        toast('สร้างลิงก์ไม่ได้ ลองใช้วิธีรหัสหรือไฟล์แทน');
-    }finally{if(btn){btn.textContent=origText;btn.disabled=false;}}
-}
-
-async function _tfImportLink(){
-    const inp=document.getElementById('tf-link-in');
-    if(!inp)return;
-    const url=inp.value.trim();
-    if(!url){toast('กรุณาวางลิงก์');return;}
-    try{
-        try{if(_bk.ready)await _bk.saveSnapshot();}catch(ex){}
-        if(url.includes('#import=')){
-            const encoded=decodeURIComponent(url.split('#import=')[1]);
-            const json=await _decompressData(encoded);
-            if(!json){toast('ข้อมูลไม่ถูกต้อง');return;}
-            const data=JSON.parse(json);
-            Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
-            toast('นำเข้าแล้ว ✓');
-            setTimeout(()=>location.reload(),800);
-            return;
-        }
-        const content=await _pasteDownload(url);
-        if(!content){toast('ไม่พบข้อมูลในลิงก์');return;}
-        const json=await _decompressData(content.trim());
-        if(!json){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
-        const data=JSON.parse(json);
-        Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
-        toast('นำเข้าแล้ว ✓');
-        setTimeout(()=>location.reload(),800);
-    }catch(e){
-        toast('นำเข้าจากลิงก์ไม่ได้ ลองอีกครั้ง');
-    }
-}
-
-async function _tfCodeToQR(){
-    const ta=document.getElementById('tf-code-out');
-    if(!ta||!ta.value){toast('กรุณาสร้างรหัสก่อน');return;}
-    const btn=document.getElementById('tf-code-qr-btn');
-    if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
-    try{
-        const url=await _pasteUpload(ta.value);
-        if(!url)throw new Error('Upload failed');
-        const div=document.getElementById('tf-code-qr');
-        const img=document.getElementById('tf-code-qr-img');
-        if(div&&img){
-            img.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=8&data='+encodeURIComponent(url);
-            img.onerror=()=>{div.style.display='none';toast('สร้าง QR ไม่ได้');};
-            div.style.display='block';
-        }
-    }catch(e){toast('สร้าง QR ไม่ได้ ลองบันทึกเป็นไฟล์แทน');}
-    finally{if(btn){btn.textContent='สร้าง QR';btn.disabled=false;}}
-}
-
 // ═══ Helper: fetch with timeout ═══
 function _fetchTimeout(url,opts,ms){
     ms=ms||15000;
@@ -16155,6 +15956,8 @@ async function _tfGenCode(){
         // Select text for easy copy
         setTimeout(()=>{ta.focus();ta.select();},100);
         const st=document.getElementById('tf-code-status');
+        const acts=document.getElementById('tf-code-actions');
+        if(acts)acts.style.display='block';
         if(st){
             const sizeKB=(encoded.length/1024).toFixed(0);
             st.innerHTML='✓ เลือกรหัสทั้งหมดแล้วคัดลอกส่งไปเครื่องใหม่ <span style="color:var(--txt3)">('+sizeKB+' KB)</span>';
@@ -16194,6 +15997,109 @@ async function _tfImportCodeFile(e){
         if(ta)ta.value=text;
         _tfImportCode();
     }catch(ex){toast('อ่านไฟล์ไม่ได้');}
+    e.target.value='';
+}
+
+// ═══ Web Share API — share file directly via LINE/AirDrop/etc ═══
+async function _tfWebShare(){
+    try{
+        const dump=_getAllLocalStorageDump();
+        if(Object.keys(dump).length===0){toast('ไม่มีข้อมูล');return;}
+        const encoded=await _compressData(JSON.stringify(dump));
+        if(!encoded){toast('สร้างข้อมูลไม่ได้');return;}
+        const username=getUsername()||'user';
+        const safeUsername=username.replace(/[^a-zA-Z0-9ก-๙]/g,'_');
+        const fileName='juz-amma_'+safeUsername+'_'+getLocalDate()+'.txt';
+        const file=new File([encoded],fileName,{type:'text/plain'});
+        await navigator.share({
+            title:'Juz Amma Tracker — ข้อมูลสำรอง',
+            text:'เปิดแอป Juz Amma Tracker → เครื่องใหม่ → ได้รับรหัส → เลือกไฟล์รหัส',
+            files:[file]
+        });
+        toast('แชร์แล้ว ✓');
+    }catch(e){
+        if(e.name==='AbortError')return; // user cancelled
+        toast('แชร์ไม่ได้ ลองวิธีอื่นแทน');
+    }
+}
+
+// ═══ Clipboard copy ═══
+async function _tfCopyCode(){
+    const ta=document.getElementById('tf-code-out');
+    if(!ta||!ta.value)return;
+    try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+            await navigator.clipboard.writeText(ta.value);
+            toast('คัดลอกแล้ว ✓');
+            return;
+        }
+    }catch(e){}
+    // Fallback: select text
+    ta.select();
+    try{document.execCommand('copy');toast('คัดลอกแล้ว ✓');}
+    catch(e){toast('กดค้างที่กล่องรหัส → คัดลอก');}
+}
+
+// ═══ Show share button only if Web Share API available ═══
+function _tfCheckShareAPI(){
+    try{
+        if(navigator.share&&navigator.canShare){
+            const testFile=new File(['test'],'test.txt',{type:'text/plain'});
+            if(navigator.canShare({files:[testFile]})){
+                const btn=document.getElementById('tf-share-pick-btn');
+                if(btn)btn.style.display='flex';
+            }
+        }
+    }catch(e){}
+}
+setTimeout(_tfCheckShareAPI,500);
+
+// ═══ Receive from LINE/AirDrop — smart file handler ═══
+function _tfRecvFromShare(){
+    document.getElementById('import-share-file').click();
+}
+
+async function _tfImportShareFile(e){
+    const file=e.target.files[0];if(!file)return;
+    try{
+        try{if(_bk.ready)await _bk.saveSnapshot();}catch(ex){}
+        const text=await file.text();
+        const trimmed=text.trim();
+        // Detect file type: .json backup OR .txt code
+        if(trimmed.startsWith('{')){
+            // JSON backup file — use importData logic
+            try{
+                const data=JSON.parse(trimmed);
+                if(data._allKeys){
+                    Object.keys(data._allKeys).forEach(k=>{try{localStorage.setItem(k,data._allKeys[k]);}catch(ex){}});
+                }
+                if(data.username)set('username',data.username);
+                if(data.settings)set('settings',data.settings);
+                if(data.quotes)set('quotes',data.quotes);
+                if(data.goals)set('goals',data.goals);
+                if(data.rewards)set('rewards',data.rewards);
+                if(data.log)set('log',data.log);
+                if(data.history)set('history',data.history);
+                if(data.goalPassed)set('goalPassed',data.goalPassed);
+                if(data.reviewDone)set('reviewDone',data.reviewDone);
+                if(data.reviewArchived)set('reviewArchived',data.reviewArchived);
+                if(data.streak)set('streak',data.streak);
+                if(data.lastActive)set('lastActive',data.lastActive);
+                if(data.surahs){Object.keys(data.surahs).forEach(n=>setSurah(n,data.surahs[n]));}
+                toast('นำเข้าแล้ว ✓');
+                setTimeout(()=>location.reload(),800);
+                return;
+            }catch(ex){}
+        }
+        // Compressed code (.txt from share)
+        const code=trimmed.replace(/[\s\u200B\u200C\u200D\uFEFF\u00A0]/g,'');
+        const json=await _decompressData(code);
+        if(!json){toast('ไฟล์ไม่ถูกต้อง');return;}
+        const data=JSON.parse(json);
+        Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
+        toast('นำเข้าแล้ว ✓');
+        setTimeout(()=>location.reload(),800);
+    }catch(ex){toast('ไฟล์ไม่ถูกต้อง');}
     e.target.value='';
 }
 
