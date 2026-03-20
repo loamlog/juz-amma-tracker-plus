@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v317p</title>
+<title>Juz' Amma Tracker v317r</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -15949,55 +15949,107 @@ function _tfSaveCodeAsFile(){
 
 
 // ═══ LINK SHARING via dpaste.org ═══
-// ═══ PASTE HELPER: try direct, then via CORS proxy ═══
+// ═══ LINK SHARING — file.io + URL hash fallback ═══
 async function _pasteUpload(content){
-    const form=new URLSearchParams();
-    form.append('content',content);
-    form.append('syntax','text');
-    form.append('expiry_days','30');
-    // 1) Try dpaste.org direct
+    // Strategy: try multiple file hosting services
+    // 1) file.io — reliable, CORS, returns short URL
     try{
-        const r=await _fetchTimeout('https://dpaste.org/api/',{method:'POST',body:form},12000);
-        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
-    }catch(e){console.log('dpaste direct failed:',e.message);}
-    // 2) Try dpaste via CORS proxy
+        console.log('[Link] trying file.io...');
+        const blob=new Blob([content],{type:'text/plain'});
+        const fd=new FormData();
+        fd.append('file',blob,'backup.txt');
+        fd.append('expires','14d');
+        fd.append('maxDownloads','5');
+        const r=await _fetchTimeout('https://file.io',{method:'POST',body:fd},15000);
+        if(r.ok){
+            const j=await r.json();
+            console.log('[Link] file.io response:',JSON.stringify(j).slice(0,200));
+            if(j.success&&j.link)return j.link;
+        }else{console.log('[Link] file.io status:',r.status);}
+    }catch(e){console.log('[Link] file.io failed:',e.message);}
+
+    // 2) transfer.sh — curl-style file hosting
     try{
-        const r=await _fetchTimeout('https://corsproxy.io/?'+encodeURIComponent('https://dpaste.org/api/'),{method:'POST',body:form},12000);
-        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
-    }catch(e){console.log('dpaste proxy failed:',e.message);}
-    // 3) Try paste.rs direct
+        console.log('[Link] trying transfer.sh...');
+        const blob=new Blob([content],{type:'text/plain'});
+        const fd=new FormData();
+        fd.append('file',blob,'backup.txt');
+        const r=await _fetchTimeout('https://transfer.sh/',{method:'POST',body:fd,headers:{'Max-Days':'14'}},15000);
+        if(r.ok){
+            const url=await r.text();
+            console.log('[Link] transfer.sh response:',url.slice(0,100));
+            if(url.trim().startsWith('http'))return url.trim();
+        }else{console.log('[Link] transfer.sh status:',r.status);}
+    }catch(e){console.log('[Link] transfer.sh failed:',e.message);}
+
+    // 3) tmpfiles.org
     try{
-        const r=await _fetchTimeout('https://paste.rs/',{method:'POST',body:content,headers:{'Content-Type':'text/plain'}},12000);
-        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
-    }catch(e){console.log('paste.rs direct failed:',e.message);}
-    // 4) Try paste.rs via CORS proxy
-    try{
-        const r=await _fetchTimeout('https://corsproxy.io/?'+encodeURIComponent('https://paste.rs/'),{method:'POST',body:content,headers:{'Content-Type':'text/plain'}},12000);
-        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
-    }catch(e){console.log('paste.rs proxy failed:',e.message);}
+        console.log('[Link] trying tmpfiles.org...');
+        const blob=new Blob([content],{type:'text/plain'});
+        const fd=new FormData();
+        fd.append('file',blob,'backup.txt');
+        const r=await _fetchTimeout('https://tmpfiles.org/api/v1/upload',{method:'POST',body:fd},15000);
+        if(r.ok){
+            const j=await r.json();
+            console.log('[Link] tmpfiles.org response:',JSON.stringify(j).slice(0,200));
+            if(j.data&&j.data.url)return j.data.url.replace('tmpfiles.org/','tmpfiles.org/dl/');
+        }else{console.log('[Link] tmpfiles.org status:',r.status);}
+    }catch(e){console.log('[Link] tmpfiles.org failed:',e.message);}
+
+    // 4) Fallback: embed data in app URL hash (works for small data only)
+    const APP_URL=location.href.split('#')[0].split('?')[0];
+    if(content.length<6000){
+        console.log('[Link] using URL hash fallback (data size:',content.length,')');
+        return APP_URL+'#import='+encodeURIComponent(content);
+    }
+
+    console.error('[Link] All upload methods failed, data too large for URL hash');
     return null;
 }
 
 async function _pasteDownload(url){
-    let rawUrl=url;
-    if(url.includes('dpaste.org'))rawUrl=url.replace(/\/?$/,'/raw');
-    // 1) Try direct
+    // Direct fetch — works for file.io, transfer.sh, tmpfiles.org
+    console.log('[Link] downloading:',url.slice(0,80));
     try{
-        const r=await _fetchTimeout(rawUrl,{},10000);
+        const r=await _fetchTimeout(url,{},15000);
         if(r.ok)return await r.text();
-    }catch(e){}
-    // 2) Try via CORS proxy
+        console.log('[Link] direct download failed, status:',r.status);
+    }catch(e){console.log('[Link] direct download failed:',e.message);}
+    // Try via CORS proxy as last resort
     try{
-        const r=await _fetchTimeout('https://corsproxy.io/?'+encodeURIComponent(rawUrl),{},10000);
+        const proxyUrl='https://api.allorigins.win/raw?url='+encodeURIComponent(url);
+        console.log('[Link] trying allorigins proxy...');
+        const r=await _fetchTimeout(proxyUrl,{},10000);
         if(r.ok)return await r.text();
-    }catch(e){}
-    // 3) Try via allorigins
-    try{
-        const r=await _fetchTimeout('https://api.allorigins.win/raw?url='+encodeURIComponent(rawUrl),{},10000);
-        if(r.ok)return await r.text();
-    }catch(e){}
+    }catch(e){console.log('[Link] proxy download failed:',e.message);}
     return null;
 }
+
+// ═══ Import from URL hash on page load ═══
+function _checkHashImport(){
+    try{
+        const hash=location.hash;
+        if(!hash||!hash.includes('#import='))return;
+        const encoded=decodeURIComponent(hash.split('#import=')[1]);
+        if(!encoded)return;
+        // Ask user before importing
+        if(!confirm('พบข้อมูลจากเครื่องอื่น\nต้องการนำเข้าหรือไม่ ?'))return;
+        // Clear hash first
+        history.replaceState(null,'',location.href.split('#')[0]);
+        // Decompress and import
+        _decompressData(encoded).then(json=>{
+            if(!json){toast('ข้อมูลไม่ถูกต้อง');return;}
+            try{
+                const data=JSON.parse(json);
+                Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
+                toast('นำเข้าแล้ว ✓');
+                setTimeout(()=>location.reload(),800);
+            }catch(e){toast('ข้อมูลไม่ถูกต้อง');}
+        });
+    }catch(e){console.error('Hash import error:',e);}
+}
+// Run on load
+setTimeout(_checkHashImport,2000);
 
 async function _tfGenLink(){
     const btn=document.getElementById('tf-link-btn');
@@ -16009,7 +16061,7 @@ async function _tfGenLink(){
         const encoded=await _compressData(JSON.stringify(dump));
         if(!encoded){toast('สร้างข้อมูลไม่ได้');return;}
         const url=await _pasteUpload(encoded);
-        if(!url)throw new Error('All paste services failed');
+        if(!url)throw new Error('All services failed');
         const outEl=document.getElementById('tf-link-out');
         const urlEl=document.getElementById('tf-link-url');
         if(outEl)outEl.style.display='block';
@@ -16035,12 +16087,21 @@ async function _tfImportLink(){
     if(!url){toast('กรุณาวางลิงก์');return;}
     try{
         try{if(_bk.ready)await _bk.saveSnapshot();}catch(ex){}
+        if(url.includes('#import=')){
+            const encoded=decodeURIComponent(url.split('#import=')[1]);
+            const json=await _decompressData(encoded);
+            if(!json){toast('ข้อมูลไม่ถูกต้อง');return;}
+            const data=JSON.parse(json);
+            Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
+            toast('นำเข้าแล้ว ✓');
+            setTimeout(()=>location.reload(),800);
+            return;
+        }
         const content=await _pasteDownload(url);
         if(!content){toast('ไม่พบข้อมูลในลิงก์');return;}
         const json=await _decompressData(content.trim());
         if(!json){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
-        let data;
-        try{data=JSON.parse(json);}catch(e){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
+        const data=JSON.parse(json);
         Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
         toast('นำเข้าแล้ว ✓');
         setTimeout(()=>location.reload(),800);
@@ -16049,7 +16110,6 @@ async function _tfImportLink(){
     }
 }
 
-// ═══ QR for code ═══
 async function _tfCodeToQR(){
     const ta=document.getElementById('tf-code-out');
     if(!ta||!ta.value){toast('กรุณาสร้างรหัสก่อน');return;}
