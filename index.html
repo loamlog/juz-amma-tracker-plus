@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v317l</title>
+<title>Juz' Amma Tracker v317o</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -1644,7 +1644,6 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 .picked-color-box.has-color{border:1px solid rgba(178,132,142,0.6);box-shadow:0 1px 3px rgba(0,0,0,0.1)}
 
 
-
 /* v221: Fix toolbar popup cut off */
 
 
@@ -2840,8 +2839,9 @@ body:has(.flashcard-overlay) .nav{display:none!important}
                         </button>
                         <button onclick="_tfShowSend('link')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ส่งเป็นลิงก์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ต้องมีอินเทอร์เน็ต</div></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ส่งเป็นลิงก์ + QR</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ต้องมีอินเทอร์เน็ต</div></div>
                         </button>
+
                         <button onclick="_tfShowSend('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--gold-l);border:1px solid rgba(184,149,107,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
                             <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ส่งเป็นไฟล์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ดาวน์โหลดแล้วส่งทางแชท</div></div>
@@ -2854,28 +2854,25 @@ body:has(.flashcard-overlay) .nav{display:none!important}
                     <div id="tf-code-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
                     <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6;font-family:'Noto Sans Thai',sans-serif">กดค้างที่กล่องรหัส → คัดลอก → ส่งทางแชท</p>
                     <div style="border-top:1px solid var(--bdr-l);margin-top:12px;padding-top:10px">
-                        <p style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:8px;text-align:center;font-family:'Noto Sans Thai',sans-serif">ส่งทางแชทตัวอักษรอาจเพี้ยน ลองวิธีนี้แทน :</p>
+                        <p style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:8px;text-align:center;font-family:'Noto Sans Thai',sans-serif">ส่งทางแชทตัวอักษรอาจเพี้ยน ใช้วิธีนี้แทน :</p>
                         <div style="display:flex;gap:6px">
                             <button class="settings-btn settings-btn-light" onclick="_tfSaveCodeAsFile()" style="flex:1;font-size:var(--text-3xs);padding:10px 6px;font-family:'Noto Sans Thai',sans-serif">บันทึกเป็นไฟล์</button>
-                            <button class="settings-btn settings-btn-light" onclick="_tfCodeToQR()" id="tf-code-qr-btn" style="flex:1;font-size:var(--text-3xs);padding:10px 6px;font-family:'Noto Sans Thai',sans-serif">สร้าง QR</button>
+
                         </div>
-                        <div id="tf-code-qr" style="display:none;text-align:center;margin-top:10px">
-                            <img id="tf-code-qr-img" style="width:180px;height:180px;border-radius:var(--r-sm);border:1px solid var(--bdr)">
-                            <p style="font-size:var(--text-3xs);color:var(--txt3);margin-top:6px;font-family:'Noto Sans Thai',sans-serif">บันทึกรูป QR ส่งให้เครื่องใหม่<br>เครื่องใหม่สแกน QR → เปิดลิงก์ → คัดลอกรหัส</p>
-                        </div>
+
                     </div>
                 </div>
+
                 <div id="tf-send-link" style="display:none">
                     <button class="settings-btn" onclick="_tfGenLink()" id="tf-link-btn" style="width:100%;padding:14px">สร้างลิงก์</button>
                     <div id="tf-link-out" style="display:none;margin-top:10px">
                         <input type="text" id="tf-link-url" readonly style="width:100%;padding:10px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:8px;font-family:monospace;background:var(--card2)" onclick="this.select()">
                     </div>
-                    <div id="tf-link-qr" style="display:none;text-align:center;margin-top:12px">
+                    <div id="tf-link-qr" style="display:none;text-align:center;margin-top:10px">
                         <img id="tf-link-qr-img" style="width:180px;height:180px;border-radius:var(--r-sm);border:1px solid var(--bdr)">
-                        <p style="font-size:var(--text-3xs);color:var(--txt3);margin-top:6px;line-height:1.5;font-family:'Noto Sans Thai',sans-serif">บันทึกรูป QR แล้วส่งให้เครื่องใหม่<br>เครื่องใหม่สแกน QR เพื่อเปิดลิงก์</p>
                     </div>
                     <div id="tf-link-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
-                    <p id="tf-link-hint" style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6;font-family:'Noto Sans Thai',sans-serif">กดค้างที่ลิงก์ → คัดลอก<br>หรือบันทึกรูป QR → ส่งให้เครื่องใหม่</p>
+                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6;font-family:'Noto Sans Thai',sans-serif">คัดลอกลิงก์ หรือ บันทึกรูป QR<br>แล้วส่งให้เครื่องใหม่ทางแชท</p>
                 </div>
                 <div id="tf-send-file" style="display:none">
                     <button class="settings-btn" onclick="exportData();_tfFileStatus()" style="width:100%;padding:14px">สำรองลงไฟล์</button>
@@ -2895,8 +2892,9 @@ body:has(.flashcard-overlay) .nav{display:none!important}
                         </button>
                         <button onclick="_tfShowRecv('link')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ได้รับลิงก์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ลิงก์ที่เริ่มด้วย https://</div></div>
+                            <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ได้รับลิงก์ / สแกน QR</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ลิงก์จากเครื่องเก่า</div></div>
                         </button>
+
                         <button onclick="_tfShowRecv('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;transition:background 0.15s;font-family:'Noto Sans Thai',sans-serif" onmouseover="this.style.background='var(--card2)'" onmouseout="this.style.background='#fff'">
                             <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--gold-l);border:1px solid rgba(184,149,107,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
                             <div><div style="font-size:var(--text-2xs);font-weight:500;color:var(--txt);font-family:'Noto Sans Thai',sans-serif">ได้รับไฟล์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;font-family:'Noto Sans Thai',sans-serif">ไฟล์สำรองที่ดาวน์โหลดมา</div></div>
@@ -2911,11 +2909,12 @@ body:has(.flashcard-overlay) .nav{display:none!important}
                         <p style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:8px;text-align:center;font-family:'Noto Sans Thai',sans-serif">หรือ :</p>
                         <div style="display:flex;gap:6px">
                             <button class="settings-btn settings-btn-light" onclick="document.getElementById('import-code-file').click()" style="flex:1;font-size:var(--text-3xs);padding:10px 6px;font-family:'Noto Sans Thai',sans-serif">เลือกไฟล์รหัส</button>
-                            <button class="settings-btn settings-btn-light" onclick="_tfShowRecv('link')" style="flex:1;font-size:var(--text-3xs);padding:10px 6px;font-family:'Noto Sans Thai',sans-serif">สแกน QR แล้ว</button>
+
                         </div>
                         <input type="file" id="import-code-file" accept=".txt" style="display:none" onchange="_tfImportCodeFile(event)">
                     </div>
                 </div>
+
                 <div id="tf-recv-link" style="display:none">
                     <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px;line-height:1.5;font-family:'Noto Sans Thai',sans-serif">วางลิงก์ที่ได้รับจากเครื่องเก่า :</p>
                     <input type="text" id="tf-link-in" placeholder="กดค้าง → วาง ที่นี่ ..." style="width:100%;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:'Noto Sans Thai',sans-serif">
@@ -15932,44 +15931,7 @@ async function _decompressData(encoded){
 }
 
 // ═══ QR code display for link ═══
-function _showLinkQR(url){
-    const qrDiv=document.getElementById('tf-link-qr');
-    const qrImg=document.getElementById('tf-link-qr-img');
-    if(!qrDiv||!qrImg)return;
-    const qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=8&data='+encodeURIComponent(url);
-    qrImg.src=qrUrl;
-    qrImg.onerror=()=>{qrDiv.style.display='none';};
-    qrDiv.style.display='block';
-}
 
-// ═══ Code → QR (upload to Gist, show QR of URL) ═══
-async function _tfCodeToQR(){
-    const ta=document.getElementById('tf-code-out');
-    if(!ta||!ta.value){toast('กรุณาสร้างรหัสก่อน');return;}
-    const btn=document.getElementById('tf-code-qr-btn');
-    if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
-    try{
-        const resp=await _fetchTimeout('https://api.github.com/gists',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({description:'Juz Amma Code',public:false,files:{'code.txt':{content:ta.value}}})
-        },20000);
-        if(!resp.ok)throw new Error('API error');
-        const gist=await resp.json();
-        if(!gist||!gist.html_url)throw new Error('No URL');
-        _showCodeQR(gist.html_url);
-    }catch(e){toast('สร้าง QR ไม่ได้ ลองบันทึกเป็นไฟล์แทน');}
-    finally{if(btn){btn.textContent='สร้าง QR';btn.disabled=false;}}
-}
-
-function _showCodeQR(url){
-    const div=document.getElementById('tf-code-qr');
-    const img=document.getElementById('tf-code-qr-img');
-    if(!div||!img)return;
-    img.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=8&data='+encodeURIComponent(url);
-    img.onerror=()=>{div.style.display='none';toast('สร้าง QR ไม่ได้');};
-    div.style.display='block';
-}
 
 // ═══ Save code as .txt file ═══
 function _tfSaveCodeAsFile(){
@@ -15983,6 +15945,115 @@ function _tfSaveCodeAsFile(){
     a.click();
     URL.revokeObjectURL(url);
     toast('บันทึกไฟล์แล้ว ✓');
+}
+
+
+// ═══ LINK SHARING via dpaste.org ═══
+async function _tfGenLink(){
+    const btn=document.getElementById('tf-link-btn');
+    const origText=btn?btn.textContent:'';
+    if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
+    try{
+        const dump=_getAllLocalStorageDump();
+        if(Object.keys(dump).length===0){toast('ไม่มีข้อมูล');return;}
+        const encoded=await _compressData(JSON.stringify(dump));
+        if(!encoded){toast('สร้างข้อมูลไม่ได้');return;}
+        // Try dpaste.org
+        let url=null;
+        try{
+            const form=new URLSearchParams();
+            form.append('content',encoded);
+            form.append('syntax','text');
+            form.append('expiry_days','30');
+            const resp=await _fetchTimeout('https://dpaste.org/api/',{method:'POST',body:form},20000);
+            if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
+        }catch(e){}
+        // Fallback: try paste.rs
+        if(!url){
+            try{
+                const resp=await _fetchTimeout('https://paste.rs/',{method:'POST',body:encoded,headers:{'Content-Type':'text/plain'}},15000);
+                if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
+            }catch(e){}
+        }
+        if(!url)throw new Error('No paste service available');
+        // Show URL
+        const outEl=document.getElementById('tf-link-out');
+        const urlEl=document.getElementById('tf-link-url');
+        if(outEl)outEl.style.display='block';
+        if(urlEl){urlEl.value=url;setTimeout(()=>{urlEl.focus();urlEl.select();},100);}
+        // Show QR
+        const qrDiv=document.getElementById('tf-link-qr');
+        const qrImg=document.getElementById('tf-link-qr-img');
+        if(qrDiv&&qrImg){
+            qrImg.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=8&data='+encodeURIComponent(url);
+            qrImg.onerror=()=>{qrDiv.style.display='none';};
+            qrDiv.style.display='block';
+        }
+        const st=document.getElementById('tf-link-status');
+        if(st){st.textContent='✓ คัดลอกลิงก์หรือบันทึกรูป QR';st.style.display='block';}
+    }catch(e){
+        toast('สร้างลิงก์ไม่ได้ ลองใช้วิธีรหัสหรือไฟล์แทน');
+    }finally{if(btn){btn.textContent=origText;btn.disabled=false;}}
+}
+
+async function _tfImportLink(){
+    const inp=document.getElementById('tf-link-in');
+    if(!inp)return;
+    const url=inp.value.trim();
+    if(!url){toast('กรุณาวางลิงก์');return;}
+    try{
+        try{if(_bk.ready)await _bk.saveSnapshot();}catch(ex){}
+        // Fetch raw content from paste URL
+        let rawUrl=url;
+        if(url.includes('dpaste.org'))rawUrl=url.replace(/\/?$/,'/raw');
+        const resp=await _fetchTimeout(rawUrl,{},15000);
+        if(!resp.ok)throw new Error('fetch failed');
+        const content=await resp.text();
+        if(!content){toast('ไม่พบข้อมูลในลิงก์');return;}
+        const json=await _decompressData(content.trim());
+        if(!json){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
+        let data;
+        try{data=JSON.parse(json);}catch(e){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
+        Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
+        toast('นำเข้าแล้ว ✓');
+        setTimeout(()=>location.reload(),800);
+    }catch(e){
+        toast('นำเข้าจากลิงก์ไม่ได้ ลองอีกครั้ง');
+    }
+}
+
+// ═══ QR for code (upload to paste, show QR) ═══
+async function _tfCodeToQR(){
+    const ta=document.getElementById('tf-code-out');
+    if(!ta||!ta.value){toast('กรุณาสร้างรหัสก่อน');return;}
+    const btn=document.getElementById('tf-code-qr-btn');
+    if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
+    try{
+        let url=null;
+        try{
+            const form=new URLSearchParams();
+            form.append('content',ta.value);
+            form.append('syntax','text');
+            form.append('expiry_days','30');
+            const resp=await _fetchTimeout('https://dpaste.org/api/',{method:'POST',body:form},20000);
+            if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
+        }catch(e){}
+        if(!url){
+            try{
+                const resp=await _fetchTimeout('https://paste.rs/',{method:'POST',body:ta.value,headers:{'Content-Type':'text/plain'}},15000);
+                if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
+            }catch(e){}
+        }
+        if(!url)throw new Error('No paste service');
+        const div=document.getElementById('tf-code-qr');
+        const img=document.getElementById('tf-code-qr-img');
+        if(div&&img){
+            img.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=8&data='+encodeURIComponent(url);
+            img.onerror=()=>{div.style.display='none';toast('สร้าง QR ไม่ได้');};
+            div.style.display='block';
+        }
+    }catch(e){toast('สร้าง QR ไม่ได้ ลองบันทึกเป็นไฟล์แทน');}
+    finally{if(btn){btn.textContent='สร้าง QR';btn.disabled=false;}}
 }
 
 // ═══ Helper: fetch with timeout ═══
@@ -16041,84 +16112,6 @@ async function _tfImportCode(){
     }catch(e){toast('รหัสไม่ถูกต้อง');}
 }
 
-async function _tfGenLink(){
-    const btn=document.getElementById('tf-link-btn');
-    const origText=btn?btn.textContent:'';
-    if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
-    try{
-        const dump=_getAllLocalStorageDump();
-        const keyCount=Object.keys(dump).length;
-        if(keyCount===0){toast('ไม่มีข้อมูลให้สร้างลิงก์');return;}
-        const json=JSON.stringify(dump);
-        const encoded=await _compressData(json);
-        if(!encoded){toast('ไม่สามารถสร้างข้อมูลได้');return;}
-        const resp=await _fetchTimeout('https://api.github.com/gists',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({
-                description:'Juz Amma Tracker Backup',
-                public:false,
-                files:{'backup.txt':{content:encoded}}
-            })
-        },20000);
-        if(!resp.ok){
-            const errText=await resp.text().catch(()=>'');
-            throw new Error('API error '+resp.status+' '+errText.slice(0,100));
-        }
-        const gist=await resp.json();
-        if(!gist||!gist.html_url)throw new Error('No URL in response');
-        const url=gist.html_url;
-        const outEl=document.getElementById('tf-link-out');
-        const urlEl=document.getElementById('tf-link-url');
-        if(outEl)outEl.style.display='block';
-        if(urlEl){urlEl.value=url;setTimeout(()=>{urlEl.focus();urlEl.select();},100);}
-        const st=document.getElementById('tf-link-status');
-        if(st){st.textContent='✓ คัดลอกลิงก์หรือบันทึกรูป QR';st.style.display='block';}
-        _showLinkQR(url);
-    }catch(e){
-        if(e.name==='AbortError'){toast('หมดเวลาเชื่อมต่อ ลองอีกครั้ง');}
-        else{toast('สร้างลิงก์ไม่ได้ ลองใช้วิธีอื่นแทน');}
-    }finally{if(btn){btn.textContent=origText;btn.disabled=false;}}
-}
-
-async function _tfImportLink(){
-    const inp=document.getElementById('tf-link-in');
-    if(!inp)return;
-    const url=inp.value.trim();  // links need spaces trimmed only, not stripped internally
-    if(!url){toast('กรุณาวางลิงก์');return;}
-    try{
-        // Create snapshot before import
-        try{if(_bk.ready)await _bk.saveSnapshot();}catch(ex){}
-        // Extract gist ID from URL (support various URL formats)
-        const match=url.match(/gist\.github\.com\/(?:[^/]+\/)?([a-f0-9]+)/i)||url.match(/([a-f0-9]{20,})/);
-        if(!match){toast('ลิงก์ไม่ถูกต้อง');return;}
-        const gistId=match[1];
-        const resp=await _fetchTimeout('https://api.github.com/gists/'+gistId,{},15000);
-        if(!resp.ok)throw new Error('API error '+resp.status);
-        const gist=await resp.json();
-        if(!gist.files||Object.keys(gist.files).length===0){toast('ไม่พบข้อมูลในลิงก์');return;}
-        const file=Object.values(gist.files)[0];
-        if(!file||!file.content){toast('ไม่พบข้อมูลในลิงก์');return;}
-        // Handle truncated content — fetch raw_url
-        let fileContent=file.content;
-        if(file.truncated&&file.raw_url){
-            try{
-                const rawResp=await _fetchTimeout(file.raw_url,{},15000);
-                if(rawResp.ok)fileContent=await rawResp.text();
-            }catch(ex){}
-        }
-        const json=await _decompressData(fileContent);
-        if(!json){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
-        let data;
-        try{data=JSON.parse(json);}catch(pe){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
-        Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
-        toast('นำเข้าแล้ว ✓');
-        setTimeout(()=>location.reload(),800);
-    }catch(e){
-        if(e.name==='AbortError'){toast('หมดเวลาเชื่อมต่อ ลองอีกครั้ง');}
-        else{toast('นำเข้าจากลิงก์ไม่ได้ ลองอีกครั้ง');}
-    }
-}
 
 async function _tfImportCodeFile(e){
     const file=e.target.files[0];if(!file)return;
