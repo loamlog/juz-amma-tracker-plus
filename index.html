@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v317o</title>
+<title>Juz' Amma Tracker v317p</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -15949,6 +15949,56 @@ function _tfSaveCodeAsFile(){
 
 
 // ═══ LINK SHARING via dpaste.org ═══
+// ═══ PASTE HELPER: try direct, then via CORS proxy ═══
+async function _pasteUpload(content){
+    const form=new URLSearchParams();
+    form.append('content',content);
+    form.append('syntax','text');
+    form.append('expiry_days','30');
+    // 1) Try dpaste.org direct
+    try{
+        const r=await _fetchTimeout('https://dpaste.org/api/',{method:'POST',body:form},12000);
+        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
+    }catch(e){console.log('dpaste direct failed:',e.message);}
+    // 2) Try dpaste via CORS proxy
+    try{
+        const r=await _fetchTimeout('https://corsproxy.io/?'+encodeURIComponent('https://dpaste.org/api/'),{method:'POST',body:form},12000);
+        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
+    }catch(e){console.log('dpaste proxy failed:',e.message);}
+    // 3) Try paste.rs direct
+    try{
+        const r=await _fetchTimeout('https://paste.rs/',{method:'POST',body:content,headers:{'Content-Type':'text/plain'}},12000);
+        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
+    }catch(e){console.log('paste.rs direct failed:',e.message);}
+    // 4) Try paste.rs via CORS proxy
+    try{
+        const r=await _fetchTimeout('https://corsproxy.io/?'+encodeURIComponent('https://paste.rs/'),{method:'POST',body:content,headers:{'Content-Type':'text/plain'}},12000);
+        if(r.ok){const t=await r.text();if(t.startsWith('http'))return t.trim();}
+    }catch(e){console.log('paste.rs proxy failed:',e.message);}
+    return null;
+}
+
+async function _pasteDownload(url){
+    let rawUrl=url;
+    if(url.includes('dpaste.org'))rawUrl=url.replace(/\/?$/,'/raw');
+    // 1) Try direct
+    try{
+        const r=await _fetchTimeout(rawUrl,{},10000);
+        if(r.ok)return await r.text();
+    }catch(e){}
+    // 2) Try via CORS proxy
+    try{
+        const r=await _fetchTimeout('https://corsproxy.io/?'+encodeURIComponent(rawUrl),{},10000);
+        if(r.ok)return await r.text();
+    }catch(e){}
+    // 3) Try via allorigins
+    try{
+        const r=await _fetchTimeout('https://api.allorigins.win/raw?url='+encodeURIComponent(rawUrl),{},10000);
+        if(r.ok)return await r.text();
+    }catch(e){}
+    return null;
+}
+
 async function _tfGenLink(){
     const btn=document.getElementById('tf-link-btn');
     const origText=btn?btn.textContent:'';
@@ -15958,30 +16008,12 @@ async function _tfGenLink(){
         if(Object.keys(dump).length===0){toast('ไม่มีข้อมูล');return;}
         const encoded=await _compressData(JSON.stringify(dump));
         if(!encoded){toast('สร้างข้อมูลไม่ได้');return;}
-        // Try dpaste.org
-        let url=null;
-        try{
-            const form=new URLSearchParams();
-            form.append('content',encoded);
-            form.append('syntax','text');
-            form.append('expiry_days','30');
-            const resp=await _fetchTimeout('https://dpaste.org/api/',{method:'POST',body:form},20000);
-            if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
-        }catch(e){}
-        // Fallback: try paste.rs
-        if(!url){
-            try{
-                const resp=await _fetchTimeout('https://paste.rs/',{method:'POST',body:encoded,headers:{'Content-Type':'text/plain'}},15000);
-                if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
-            }catch(e){}
-        }
-        if(!url)throw new Error('No paste service available');
-        // Show URL
+        const url=await _pasteUpload(encoded);
+        if(!url)throw new Error('All paste services failed');
         const outEl=document.getElementById('tf-link-out');
         const urlEl=document.getElementById('tf-link-url');
         if(outEl)outEl.style.display='block';
         if(urlEl){urlEl.value=url;setTimeout(()=>{urlEl.focus();urlEl.select();},100);}
-        // Show QR
         const qrDiv=document.getElementById('tf-link-qr');
         const qrImg=document.getElementById('tf-link-qr-img');
         if(qrDiv&&qrImg){
@@ -16003,12 +16035,7 @@ async function _tfImportLink(){
     if(!url){toast('กรุณาวางลิงก์');return;}
     try{
         try{if(_bk.ready)await _bk.saveSnapshot();}catch(ex){}
-        // Fetch raw content from paste URL
-        let rawUrl=url;
-        if(url.includes('dpaste.org'))rawUrl=url.replace(/\/?$/,'/raw');
-        const resp=await _fetchTimeout(rawUrl,{},15000);
-        if(!resp.ok)throw new Error('fetch failed');
-        const content=await resp.text();
+        const content=await _pasteDownload(url);
         if(!content){toast('ไม่พบข้อมูลในลิงก์');return;}
         const json=await _decompressData(content.trim());
         if(!json){toast('ข้อมูลในลิงก์ไม่ถูกต้อง');return;}
@@ -16022,29 +16049,15 @@ async function _tfImportLink(){
     }
 }
 
-// ═══ QR for code (upload to paste, show QR) ═══
+// ═══ QR for code ═══
 async function _tfCodeToQR(){
     const ta=document.getElementById('tf-code-out');
     if(!ta||!ta.value){toast('กรุณาสร้างรหัสก่อน');return;}
     const btn=document.getElementById('tf-code-qr-btn');
     if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
     try{
-        let url=null;
-        try{
-            const form=new URLSearchParams();
-            form.append('content',ta.value);
-            form.append('syntax','text');
-            form.append('expiry_days','30');
-            const resp=await _fetchTimeout('https://dpaste.org/api/',{method:'POST',body:form},20000);
-            if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
-        }catch(e){}
-        if(!url){
-            try{
-                const resp=await _fetchTimeout('https://paste.rs/',{method:'POST',body:ta.value,headers:{'Content-Type':'text/plain'}},15000);
-                if(resp.ok){const t=await resp.text();if(t.startsWith('http'))url=t.trim();}
-            }catch(e){}
-        }
-        if(!url)throw new Error('No paste service');
+        const url=await _pasteUpload(ta.value);
+        if(!url)throw new Error('Upload failed');
         const div=document.getElementById('tf-code-qr');
         const img=document.getElementById('tf-code-qr-img');
         if(div&&img){
