@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v317w</title>
+<title>Juz' Amma Tracker v318f</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -112,6 +112,23 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{box-shadow:var(--f
 .ob-input:focus{border-color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.1);box-shadow:0 0 0 4px rgba(255,255,255,0.05)}
 /* Section title */
 .ob-section{font-size:clamp(0.6rem,1.7vw,0.68rem);color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px;font-weight:600}
+/* Setup tabs in onboarding */
+.ob-setup-tab{padding:7px 14px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.5);font-size:clamp(0.6rem,1.7vw,0.68rem);cursor:pointer;font-family:'Noto Sans Thai',sans-serif;flex:1;max-width:110px;transition:all 0.25s;font-weight:500}
+.ob-setup-tab.active{background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3);font-weight:600}
+.ob-setup-tab:hover:not(.active){background:rgba(255,255,255,0.08)}
+/* Setup surah buttons in onboarding */
+.ob-surah-btn{padding:8px 4px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);font-size:var(--text-3xs);cursor:pointer;font-family:'Noto Sans Thai',sans-serif;text-align:center;transition:all 0.2s}
+.ob-surah-btn:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.18)}
+.ob-surah-btn.selected{background:rgba(255,255,255,0.18);color:#fff;border-color:rgba(255,255,255,0.4);box-shadow:0 0 12px rgba(255,255,255,0.08)}
+.ob-surah-btn.selected-sec{background:rgba(122,158,159,0.35);color:#fff;border-color:rgba(122,158,159,0.6)}
+.ob-surah-btn.selected-gold{background:rgba(184,149,107,0.35);color:#fff;border-color:rgba(184,149,107,0.6)}
+/* Setup action buttons */
+.ob-setup-action-btn{flex:1;padding:7px;border-radius:10px;border:1.5px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);font-size:clamp(0.55rem,1.5vw,0.63rem);cursor:pointer;font-family:'Noto Sans Thai',sans-serif;transition:all 0.2s}
+.ob-setup-action-btn:hover{background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.75)}
+/* Scrollbar for dark theme */
+#ob-surah-grid::-webkit-scrollbar{width:4px}
+#ob-surah-grid::-webkit-scrollbar-track{background:transparent}
+#ob-surah-grid::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:4px}
 /* Confetti */
 @keyframes obConfetti{0%{transform:translateY(-100vh) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
 .ob-confetti{position:absolute;width:8px;height:8px;border-radius:2px;animation:obConfetti 2.5s ease-in forwards;pointer-events:none;z-index:10}
@@ -2758,16 +2775,16 @@ body:has(.flashcard-overlay) .nav{display:none!important}
     <div class="settings-card">
         <div class="settings-row">
             <div class="settings-row-left">
-                <div class="settings-icon si1"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div>
-                <div class="settings-info"><h4>สำรองข้อมูล</h4><p id="bk-last-date">ยังไม่เคยสำรอง</p></div>
+                <div class="settings-icon si4"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M2 10h2M20 10h2M2 14h2M20 14h2" stroke-linecap="round"/></svg></div>
+                <div class="settings-info"><h4>ย้ายข้ามเครื่อง</h4><p>ส่งออกหรือนำเข้าข้อมูล</p></div>
             </div>
             <div class="settings-row-right">
-                <button class="settings-btn settings-btn-light" onclick="exportData()" style="width:72px;text-align:center;padding:var(--sp-2) 0">สำรอง</button>
+                <button class="settings-btn settings-btn-light" onclick="openModal('transfer')">ส่งออก/นำเข้า</button>
             </div>
         </div>
         <div class="settings-row">
             <div class="settings-row-left">
-                <div class="settings-icon si3"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-11.36L1 10"/></svg></div>
+                <div class="settings-icon si1"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-11.36L1 10"/></svg></div>
                 <div class="settings-info"><h4>สำรองอัตโนมัติ</h4><p id="bk-auto-label"><button onclick="openSnapshotModal()" style="background:none;border:none;color:var(--pri-l);font-size:inherit;cursor:pointer;font-family:inherit;padding:0;font-weight:500"><span id="bk-snap-count">0 ชุด</span> ▸</button></p></div>
             </div>
             <div class="settings-row-right">
@@ -2779,11 +2796,11 @@ body:has(.flashcard-overlay) .nav{display:none!important}
         </div>
         <div class="settings-row">
             <div class="settings-row-left">
-                <div class="settings-icon si4"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M2 10h2M20 10h2M2 14h2M20 14h2" stroke-linecap="round"/></svg></div>
-                <div class="settings-info"><h4>ย้ายข้ามเครื่อง</h4><p>ส่งหรือรับข้อมูล</p></div>
+                <div class="settings-icon si1"><svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div>
+                <div class="settings-info"><h4>สำรองข้อมูล</h4><p id="bk-last-date">ยังไม่เคยสำรอง</p></div>
             </div>
             <div class="settings-row-right">
-                <button class="settings-btn" onclick="openModal('transfer')" style="width:72px;text-align:center;padding:var(--sp-2) 0">ย้าย</button>
+                <button class="settings-btn settings-btn-light" onclick="exportData()" style="width:72px;text-align:center;padding:var(--sp-2) 0">สำรอง</button>
             </div>
         </div>
         <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)">
@@ -2802,112 +2819,48 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 <!-- Modal: ย้ายข้ามเครื่อง -->
 <div class="modal" id="modal-transfer">
     <div class="modal-content" style="max-width:360px;padding:0;overflow:hidden">
-        <div style="padding:14px 16px 10px;border-bottom:1px solid var(--bdr-l);display:flex;align-items:center;justify-content:space-between">
-            <div style="display:flex;align-items:center;gap:8px">
-                <button id="tf-back-btn" onclick="_tfGoHome()" style="display:none;background:none;border:none;cursor:pointer;padding:2px;line-height:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--txt3)" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-                <div class="modal-title" style="margin:0;text-align:left;font-size:var(--text-sm)" id="tf-title">ย้ายข้ามเครื่อง</div>
-            </div>
+        <div style="padding:14px 16px 0;display:flex;align-items:center;justify-content:space-between">
+            <div class="modal-title" style="margin:0;text-align:left;font-size:var(--text-sm)">ย้ายข้ามเครื่อง</div>
             <button onclick="closeModal('transfer')" style="background:none;border:none;cursor:pointer;padding:4px;line-height:0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--txt3)" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
-        <div style="padding:16px;max-height:60vh;overflow-y:auto;font-family:'Noto Sans Thai',sans-serif">
+        <div style="display:flex;margin:12px 16px 0" id="tf-tabs">
+            <button onclick="_tfTab(0)" style="flex:1;padding:8px 0;border:none;background:none;font-size:var(--text-2xs);font-family:'Noto Sans Thai',sans-serif;cursor:pointer;color:var(--pri);font-weight:600;border-bottom:2px solid var(--pri)">ส่งออก</button>
+            <button onclick="_tfTab(1)" style="flex:1;padding:8px 0;border:none;background:none;font-size:var(--text-2xs);font-family:'Noto Sans Thai',sans-serif;cursor:pointer;color:var(--txt3);font-weight:400;border-bottom:2px solid transparent">นำเข้า</button>
+        </div>
+        <div style="padding:14px 16px 16px;max-height:55vh;overflow-y:auto;font-family:'Noto Sans Thai',sans-serif">
 
-            <!-- HOME -->
-            <div id="tf-home">
-                <p style="font-size:var(--text-2xs);color:var(--txt2);text-align:center;margin-bottom:14px">เครื่องนี้เป็น ...</p>
-                <div style="display:flex;gap:10px">
-                    <button onclick="_tfGo('send')" style="flex:1;padding:20px 10px 16px;border:1.5px solid var(--pri-l);border-radius:var(--r-lg);background:#fff;cursor:pointer;text-align:center;font-family:'Noto Sans Thai',sans-serif">
-                        <div style="width:44px;height:44px;border-radius:50%;background:var(--pri-ll);display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--pri)" stroke-width="1.5"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></div>
-                        <div style="font-size:var(--text-sm);font-weight:600;color:var(--pri)">เครื่องเก่า</div>
-                        <div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:3px">ส่งข้อมูลออก</div>
-                    </button>
-                    <button onclick="_tfGo('receive')" style="flex:1;padding:20px 10px 16px;border:1.5px solid var(--sec-l);border-radius:var(--r-lg);background:#fff;cursor:pointer;text-align:center;font-family:'Noto Sans Thai',sans-serif">
-                        <div style="width:44px;height:44px;border-radius:50%;background:var(--sec-ll);display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-                        <div style="font-size:var(--text-sm);font-weight:600;color:var(--sec)">เครื่องใหม่</div>
-                        <div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:3px">รับข้อมูลเข้า</div>
-                    </button>
+            <!-- ส่งออก -->
+            <div id="tf-tab-0">
+                <button class="settings-btn" onclick="_tfGenAndCopy()" id="tf-code-gen-btn" style="width:100%">สร้างรหัสแล้วคัดลอก</button>
+                <div id="tf-code-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
+                <textarea id="tf-code-out" readonly style="width:100%;height:56px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:6px;font-family:monospace;padding:6px;display:none;background:var(--card2);resize:none;word-break:break-all;line-height:1.2;color:var(--txt3);margin-top:6px" onclick="this.select()"></textarea>
+                <div id="tf-send-actions" style="display:none;margin-top:6px;display:none">
+                    <button class="settings-btn settings-btn-light" onclick="_tfCopyCode()" style="width:100%">คัดลอกอีกครั้ง</button>
+                </div>
+                <p id="tf-send-hint" style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:8px;line-height:1.5;display:none">เปิดแชท → กดค้างในช่องพิมพ์ → วาง → ส่ง</p>
+                <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr-l)">
+                    <div style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:6px">ส่งเป็นไฟล์แทน :</div>
+                    <div style="display:flex;gap:6px;margin-bottom:6px">
+                        <button class="settings-btn settings-btn-light" onclick="_tfShareCodeFile()" id="tf-share-code-btn" style="flex:1;font-size:var(--text-3xs);padding:var(--sp-2) var(--sp-1);display:none">แชร์ไฟล์รหัส</button>
+                        <button class="settings-btn settings-btn-light" onclick="_tfSaveCodeAsFile()" style="flex:1;font-size:var(--text-3xs);padding:var(--sp-2) var(--sp-1)">ดาวน์โหลดไฟล์รหัส</button>
+                    </div>
+                    <div style="display:flex;gap:6px">
+                        <button class="settings-btn settings-btn-light" onclick="_tfShareBackupFile()" id="tf-share-backup-btn" style="flex:1;font-size:var(--text-3xs);padding:var(--sp-2) var(--sp-1);display:none">แชร์ไฟล์สำรอง</button>
+                        <button class="settings-btn settings-btn-light" onclick="exportData()" style="flex:1;font-size:var(--text-3xs);padding:var(--sp-2) var(--sp-1)">ดาวน์โหลดไฟล์สำรอง</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- SEND -->
-            <div id="tf-send" style="display:none">
-                <div id="tf-send-pick">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:12px">เลือกวิธีส่ง :</p>
-                    <div style="display:flex;flex-direction:column;gap:8px">
-                        <button onclick="_tfShowSend('share')" id="tf-share-pick-btn" style="display:none;align-items:center;gap:12px;padding:14px;border:1px solid var(--sec-l);border-radius:var(--r-md);background:linear-gradient(180deg,#fff,var(--sec-ll));cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:600;color:var(--sec)">แชร์ผ่าน LINE / AirDrop</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">วิธีที่ง่ายที่สุด — กดแชร์เลย</div></div>
-                        </button>
-                        <button onclick="_tfShowSend('code')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--pri-ll);border:1px solid var(--pri-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pri)" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500">ส่งเป็นรหัส</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">คัดลอกหรือบันทึกเป็นไฟล์</div></div>
-                        </button>
-                        <button onclick="_tfShowSend('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--gold-l);border:1px solid rgba(184,149,107,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500">ส่งเป็นไฟล์</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">ดาวน์โหลดแล้วส่งเอง</div></div>
-                        </button>
-                    </div>
+            <!-- นำเข้า -->
+            <div id="tf-tab-1" style="display:none">
+                <textarea id="tf-code-in" placeholder="วางรหัสที่นี่ ..." style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:'Noto Sans Thai',sans-serif;padding:10px;resize:none;word-break:break-all;line-height:1.5"></textarea>
+                <button class="settings-btn" onclick="_tfImportCode()" style="width:100%;margin-top:8px">นำเข้ารหัส</button>
+                <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bdr-l);display:flex;gap:6px">
+                    <button class="settings-btn settings-btn-light" onclick="document.getElementById('import-code-file2').click()" style="flex:1;font-size:var(--text-3xs);padding:var(--sp-2) var(--sp-1)">นำเข้าไฟล์รหัส</button>
+                    <button class="settings-btn settings-btn-light" onclick="document.getElementById('import-json-file2').click()" style="flex:1;font-size:var(--text-3xs);padding:var(--sp-2) var(--sp-1)">นำเข้าไฟล์สำรอง</button>
                 </div>
-                <!-- แชร์ผ่านแอป -->
-                <div id="tf-send-share" style="display:none">
-                    <button class="settings-btn" onclick="_tfWebShare()" style="width:100%;padding:14px">แชร์ข้อมูลไปเครื่องใหม่</button>
-                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6">จะเปิดหน้าแชร์ของระบบ<br>เลือก LINE, AirDrop, อีเมล ฯลฯ</p>
-                </div>
-                <!-- ส่งรหัส -->
-                <div id="tf-send-code" style="display:none">
-                    <button class="settings-btn" onclick="_tfGenCode()" id="tf-code-gen-btn" style="width:100%;padding:14px">สร้างรหัส</button>
-                    <textarea id="tf-code-out" readonly style="width:100%;height:80px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:7px;font-family:monospace;padding:8px;display:none;background:var(--card2);resize:none;word-break:break-all;line-height:1.3;margin-top:10px" onclick="this.select()"></textarea>
-                    <div id="tf-code-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
-                    <div id="tf-code-actions" style="display:none;margin-top:10px">
-                        <div style="display:flex;gap:6px">
-                            <button class="settings-btn settings-btn-light" onclick="_tfCopyCode()" style="flex:1">คัดลอก</button>
-                            <button class="settings-btn settings-btn-light" onclick="_tfSaveCodeAsFile()" style="flex:1">บันทึกเป็นไฟล์</button>
-                        </div>
-                        <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:8px;line-height:1.5">ส่งทางแชทอาจเพี้ยน → บันทึกเป็นไฟล์ส่งแทน</p>
-                    </div>
-                </div>
-                <!-- ส่งไฟล์ -->
-                <div id="tf-send-file" style="display:none">
-                    <button class="settings-btn" onclick="exportData();_tfFileStatus()" style="width:100%;padding:14px">ดาวน์โหลดไฟล์สำรอง</button>
-                    <div id="tf-file-status" style="font-size:var(--text-3xs);color:var(--done);text-align:center;margin:6px 0;display:none"></div>
-                    <p style="font-size:var(--text-3xs);color:var(--txt3);text-align:center;margin-top:10px;line-height:1.6">ส่งไฟล์ผ่านแชทหรืออีเมลไปเครื่องใหม่</p>
-                </div>
-            </div>
-
-            <!-- RECEIVE -->
-            <div id="tf-receive" style="display:none">
-                <div id="tf-recv-pick">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:12px">ได้รับข้อมูลจากเครื่องเก่าแบบไหน ?</p>
-                    <div style="display:flex;flex-direction:column;gap:8px">
-                        <button onclick="_tfRecvFromShare()" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--sec-l);border-radius:var(--r-md);background:linear-gradient(180deg,#fff,var(--sec-ll));cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--sec-ll);border:1px solid var(--sec-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--sec)" stroke-width="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:600;color:var(--sec)">จาก LINE / AirDrop</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">เลือกไฟล์ที่ได้รับ</div></div>
-                        </button>
-                        <input type="file" id="import-share-file" accept=".txt,.json" style="display:none" onchange="_tfImportShareFile(event)">
-                        <button onclick="_tfShowRecv('code')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--pri-ll);border:1px solid var(--pri-l);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--pri)" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500">ได้รับรหัส</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">ข้อความยาว ๆ ที่คัดลอกมา</div></div>
-                        </button>
-                        <button onclick="_tfShowRecv('file')" style="display:flex;align-items:center;gap:12px;padding:14px;border:1px solid var(--bdr);border-radius:var(--r-md);background:#fff;cursor:pointer;text-align:left;width:100%;font-family:'Noto Sans Thai',sans-serif">
-                            <div style="width:36px;height:36px;border-radius:var(--r-sm);background:var(--gold-l);border:1px solid rgba(184,149,107,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
-                            <div><div style="font-size:var(--text-2xs);font-weight:500">ได้รับไฟล์สำรอง</div><div style="font-size:var(--text-3xs);color:var(--txt3);margin-top:1px">ไฟล์ .json ที่ดาวน์โหลดมา</div></div>
-                        </button>
-                    </div>
-                </div>
-                <div id="tf-recv-code" style="display:none">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px">วางรหัสที่ได้รับจากเครื่องเก่า :</p>
-                    <textarea id="tf-code-in" placeholder="กดค้าง → วาง ที่นี่ ..." style="width:100%;height:90px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:'Noto Sans Thai',sans-serif;padding:12px;resize:none;word-break:break-all;line-height:1.5"></textarea>
-                    <button class="settings-btn" onclick="_tfImportCode()" style="width:100%;margin-top:10px;padding:14px">นำเข้า</button>
-                    <div style="border-top:1px solid var(--bdr-l);margin-top:12px;padding-top:10px;text-align:center">
-                        <p style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:8px">หรือ :</p>
-                        <button class="settings-btn settings-btn-light" onclick="document.getElementById('import-code-file').click()" style="width:100%">เลือกไฟล์รหัส</button>
-                        <input type="file" id="import-code-file" accept=".txt" style="display:none" onchange="_tfImportCodeFile(event)">
-                    </div>
-                </div>
-                <div id="tf-recv-file" style="display:none">
-                    <p style="font-size:var(--text-2xs);color:var(--txt2);margin-bottom:10px">เลือกไฟล์สำรองที่ได้รับจากเครื่องเก่า :</p>
-                    <button class="settings-btn" onclick="document.getElementById('import-file-tf').click()" style="width:100%;padding:14px">เลือกไฟล์</button>
-                    <input type="file" id="import-file-tf" accept=".json" style="display:none" onchange="importData(event)">
-                </div>
+                <input type="file" id="import-code-file2" accept=".txt" style="display:none" onchange="_tfImportCodeFile(event)">
+                <input type="file" id="import-json-file2" accept=".json,.txt" style="display:none" onchange="_tfImportAnyFile(event)">
             </div>
 
         </div>
@@ -3371,6 +3324,41 @@ body:has(.flashcard-overlay) .nav{display:none!important}
             <div id="ob-dots-7" class="ob-dots"></div>
             <button class="ob-btn ob-btn-pri" id="ob-next-7">ถัดไป — เลือกซูเราะฮ์ที่ท่องได้แล้ว</button>
             <button class="ob-btn-back" id="ob-back-7">ย้อนกลับ</button>
+            </div>
+        </div>
+
+        <!-- S8: เลือกซูเราะฮ์ที่ท่องได้แล้ว (ในระบบต้อนรับ) -->
+        <div class="ob-screen" id="ob-s8">
+            <div class="ob-body" style="justify-content:flex-start;padding-top:clamp(24px,5vh,48px)">
+            <div class="ob-icon-wrap" style="width:64px;height:64px;margin-bottom:14px">
+                <div class="ob-icon-ring"></div>
+                <div class="ob-icon-inner"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            </div>
+            <div class="ob-title-th">ซูเราะฮ์ที่ท่องได้แล้ว</div>
+            <div class="ob-sub" style="margin-bottom:16px">เลือกซูเราะฮ์ที่คุณท่องตัวบทได้แล้ว — ข้ามได้ถ้ายังไม่มี</div>
+            
+            <!-- Tabs -->
+            <div style="display:flex;gap:6px;margin-bottom:10px;width:100%;justify-content:center">
+                <button type="button" class="ob-setup-tab active" data-obtab="juz30" onclick="obSwitchTab('juz30')" id="ob-tab-juz30">ญุซอัมมา</button>
+                <button type="button" class="ob-setup-tab" data-obtab="juz129" onclick="obSwitchTab('juz129')" id="ob-tab-juz129">ญุซ 1-29</button>
+                <button type="button" class="ob-setup-tab" data-obtab="plus" onclick="obSwitchTab('plus')" id="ob-tab-plus">Plus</button>
+            </div>
+            <!-- Search -->
+            <input type="text" class="ob-input" id="ob-setup-search" placeholder="ค้นหาซูเราะฮ์ ..." oninput="obFilterSurahs()" style="padding:10px 14px;font-size:clamp(0.7rem,2vw,0.8rem);margin-bottom:8px;text-align:left">
+            <!-- Select/Clear -->
+            <div style="display:flex;gap:6px;margin-bottom:10px;width:100%">
+                <button type="button" onclick="obSelectAll()" class="ob-setup-action-btn">เลือกทั้งหมด</button>
+                <button type="button" onclick="obClearAll()" class="ob-setup-action-btn" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08)">ล้างทั้งหมด</button>
+            </div>
+            <!-- Surah Grid -->
+            <div id="ob-surah-grid" style="width:100%;max-height:clamp(200px,40vh,400px);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:2px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.15) transparent"></div>
+            <!-- Count badge -->
+            <div id="ob-selected-count" style="margin-top:10px;font-size:clamp(0.6rem,1.7vw,0.68rem);color:rgba(255,255,255,0.4);font-family:'Noto Sans Thai',sans-serif"></div>
+            </div>
+            <div class="ob-nav">
+            <div id="ob-dots-8" class="ob-dots"></div>
+            <button class="ob-btn ob-btn-pri" id="ob-next-8">เสร็จสิ้น — เริ่มใช้งาน</button>
+            <button class="ob-btn-back" id="ob-back-8">ย้อนกลับ</button>
             </div>
         </div>
 
@@ -15802,8 +15790,21 @@ async function clearData(){
 }
 
 // ═══ TRANSFER FUNCTIONS ═══
-const _TF_PANELS=['tf-home','tf-send','tf-receive'];
-const _TF_SUBS=['tf-send-pick','tf-send-share','tf-send-code','tf-send-file','tf-recv-pick','tf-recv-code','tf-recv-file'];
+const _TF_PANELS=['tf-home','tf-send','tf-receive']; // legacy
+const _TF_SUBS=['tf-send-pick','tf-recv-pick'];
+
+function _tfTab(idx){
+    const tabs=document.querySelectorAll('#tf-tabs button');
+    for(let i=0;i<2;i++){
+        const p=document.getElementById('tf-tab-'+i);
+        if(p)p.style.display=i===idx?'block':'none';
+        if(tabs[i]){
+            tabs[i].style.color=i===idx?'var(--pri)':'var(--txt3)';
+            tabs[i].style.fontWeight=i===idx?'600':'400';
+            tabs[i].style.borderBottom=i===idx?'2px solid var(--pri)':'2px solid transparent';
+        }
+    }
+}
 
 function _tfHideAll(){
     _TF_PANELS.forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
@@ -15823,11 +15824,22 @@ function _tfGo(mode){
     const t=document.getElementById('tf-title');
     if(mode==='send'){
         const el=document.getElementById('tf-send');if(el)el.style.display='block';
-        const pick=document.getElementById('tf-send-pick');if(pick)pick.style.display='block';
         if(t)t.textContent='ส่งข้อมูล';
+        // Reset steps
+        const s1=document.getElementById('tf-s-step1');if(s1)s1.style.display='block';
+        const s2=document.getElementById('tf-s-step2');if(s2)s2.style.display='none';
+        // Check share API
+        try{
+            if(navigator.share&&navigator.canShare){
+                const f=new File(['t'],'t.txt',{type:'text/plain'});
+                if(navigator.canShare({files:[f]})){
+                    const sb=document.getElementById('tf-share-btn');
+                    if(sb)sb.style.display='block';
+                }
+            }
+        }catch(e){}
     }else{
         const el=document.getElementById('tf-receive');if(el)el.style.display='block';
-        const pick=document.getElementById('tf-recv-pick');if(pick)pick.style.display='block';
         if(t)t.textContent='รับข้อมูล';
     }
 }
@@ -15936,6 +15948,47 @@ function _fetchTimeout(url,opts,ms){
     const controller=new AbortController();
     const timer=setTimeout(()=>controller.abort(),ms);
     return fetch(url,{...opts,signal:controller.signal}).finally(()=>clearTimeout(timer));
+}
+
+async function _tfGenAndCopy(){
+    const btn=document.getElementById('tf-code-gen-btn');
+    const origText=btn?btn.textContent:'';
+    if(btn){btn.textContent='กำลังสร้าง ...';btn.disabled=true;}
+    try{
+        const dump=_getAllLocalStorageDump();
+        const keyCount=Object.keys(dump).length;
+        if(keyCount===0){toast('ไม่มีข้อมูลให้สร้างรหัส');return;}
+        const json=JSON.stringify(dump);
+        const encoded=await _compressData(json);
+        if(!encoded){toast('ไม่สามารถสร้างรหัสได้');return;}
+        // Put in textarea
+        const ta=document.getElementById('tf-code-out');
+        if(ta)ta.value=encoded;
+        // Auto copy
+        let copied=false;
+        try{
+            if(navigator.clipboard&&navigator.clipboard.writeText){
+                await navigator.clipboard.writeText(encoded);
+                copied=true;
+            }
+        }catch(e){}
+        if(!copied){try{if(ta){ta.select();document.execCommand('copy');copied=true;}}catch(e){}}
+        // Show step 2
+        const s1=document.getElementById('tf-s-step1');if(s1)s1.style.display='none';
+        const s2=document.getElementById('tf-s-step2');if(s2)s2.style.display='block';
+        const st=document.getElementById('tf-code-status');
+        const ta2=document.getElementById('tf-code-out');if(ta2){ta2.style.display='block';}
+        const acts=document.getElementById('tf-send-actions');if(acts)acts.style.display='block';
+        const hint=document.getElementById('tf-send-hint');if(hint)hint.style.display='block';
+        // Check share API
+        try{if(navigator.share&&navigator.canShare){const f=new File(['t'],'t.txt',{type:'text/plain'});if(navigator.canShare({files:[f]})){const sb=document.getElementById('tf-share-btn');if(sb)sb.style.display='block';}}}catch(e){}
+        const kb=(encoded.length/1024).toFixed(0);
+        if(st){
+            st.innerHTML=copied?'✓ คัดลอกแล้ว ('+kb+' KB) — เปิดแชทแล้ววาง':'สร้างรหัสแล้ว ('+kb+' KB) — กดคัดลอกด้านบน';
+            st.style.display='block';
+        }
+    }catch(e){toast('เกิดข้อผิดพลาด');}
+    finally{if(btn){btn.textContent=origText;btn.disabled=false;}}
 }
 
 async function _tfGenCode(){
@@ -16103,6 +16156,83 @@ async function _tfImportShareFile(e){
     e.target.value='';
 }
 
+async function _tfImportAnyFile(e){
+    const file=e.target.files[0];if(!file)return;
+    try{
+        try{if(_bk.ready)await _bk.saveSnapshot();}catch(ex){}
+        const text=await file.text();
+        const trimmed=text.trim();
+        // JSON backup?
+        if(trimmed.startsWith('{')){
+            try{
+                const data=JSON.parse(trimmed);
+                if(data._allKeys){Object.keys(data._allKeys).forEach(k=>{try{localStorage.setItem(k,data._allKeys[k]);}catch(ex){}});}
+                if(data.username)set('username',data.username);
+                if(data.settings)set('settings',data.settings);
+                if(data.quotes)set('quotes',data.quotes);
+                if(data.goals)set('goals',data.goals);
+                if(data.rewards)set('rewards',data.rewards);
+                if(data.log)set('log',data.log);
+                if(data.history)set('history',data.history);
+                if(data.goalPassed)set('goalPassed',data.goalPassed);
+                if(data.reviewDone)set('reviewDone',data.reviewDone);
+                if(data.reviewArchived)set('reviewArchived',data.reviewArchived);
+                if(data.streak)set('streak',data.streak);
+                if(data.lastActive)set('lastActive',data.lastActive);
+                if(data.surahs){Object.keys(data.surahs).forEach(n=>setSurah(n,data.surahs[n]));}
+                toast('นำเข้าแล้ว ✓');setTimeout(()=>location.reload(),800);return;
+            }catch(ex){}
+        }
+        // Compressed code
+        const code=trimmed.replace(/[\s\u200B\u200C\u200D\uFEFF\u00A0]/g,'');
+        const json=await _decompressData(code);
+        if(!json){toast('ไฟล์ไม่ถูกต้อง');return;}
+        const data=JSON.parse(json);
+        Object.keys(data).forEach(k=>{try{localStorage.setItem(k,data[k]);}catch(ex){}});
+        toast('นำเข้าแล้ว ✓');setTimeout(()=>location.reload(),800);
+    }catch(ex){toast('ไฟล์ไม่ถูกต้อง');}
+    e.target.value='';
+}
+
+// ═══ Share file helpers (share-only, separate from download) ═══
+async function _tfShareCodeFile(){
+    const ta=document.getElementById('tf-code-out');
+    if(!ta||!ta.value){await _tfGenAndCopy();if(!ta||!ta.value)return;}
+    const username=getUsername()||'user';
+    const safe=username.replace(/[^a-zA-Z0-9ก-๙]/g,'_');
+    const file=new File([ta.value],'juz-amma-code_'+safe+'_'+getLocalDate()+'.txt',{type:'text/plain'});
+    try{await navigator.share({title:'Juz Amma — รหัสย้ายเครื่อง',files:[file]});toast('ส่งแล้ว ✓');}
+    catch(e){if(e.name!=='AbortError')toast('แชร์ไม่ได้ ลองดาวน์โหลดแทน');}
+}
+
+async function _tfShareBackupFile(){
+    const dump=_getAllLocalStorageDump();
+    if(Object.keys(dump).length===0){toast('ไม่มีข้อมูล');return;}
+    const data={version:1,exportDate:new Date().toISOString(),username:getUsername(),settings:getSettings(),quotes:getQuotes(),goals:getGoals(),rewards:getRewards(),log:getLog(),history:getHistory(),goalPassed:getGoalPassed(),reviewDone:get('reviewDone',{}),reviewArchived:get('reviewArchived',{}),streak:get('streak',0),lastActive:get('lastActive',''),surahs:{},_allKeys:dump};
+    SURAHS.forEach(s=>data.surahs[s.n]=getSurah(s.n));
+    if(typeof PLUS_SURAHS!=='undefined')PLUS_SURAHS.forEach(s=>{try{data.surahs[s.n]=getSurah(s.n);}catch(e){}});
+    const username=getUsername()||'user';
+    const safe=username.replace(/[^a-zA-Z0-9ก-๙]/g,'_');
+    const file=new File([JSON.stringify(data,null,2)],'juz-amma-backup_'+safe+'_'+getLocalDate()+'.txt',{type:'text/plain'});
+    try{await navigator.share({title:'Juz Amma — ไฟล์สำรอง',files:[file]});set('_lastBackup',new Date().toISOString());_updateBackupDateUI();toast('ส่งแล้ว ✓');}
+    catch(e){if(e.name!=='AbortError')toast('แชร์ไม่ได้ ลองดาวน์โหลดแทน');}
+}
+
+// ═══ Show share buttons if Web Share API available ═══
+function _tfCheckShareButtons(){
+    try{
+        if(navigator.share&&navigator.canShare){
+            const f=new File(['t'],'t.txt',{type:'text/plain'});
+            if(navigator.canShare({files:[f]})){
+                const b1=document.getElementById('tf-share-code-btn');if(b1)b1.style.display='block';
+                const b2=document.getElementById('tf-share-backup-btn');if(b2)b2.style.display='block';
+                const b3=document.getElementById('tf-share-btn');if(b3)b3.style.display='block';
+            }
+        }
+    }catch(e){}
+}
+setTimeout(_tfCheckShareButtons,500);
+
 function _tfFileStatus(){
     const st=document.getElementById('tf-file-status');
     if(st){st.textContent='✓ ดาวน์โหลดแล้ว';st.style.display='block';}
@@ -16211,7 +16341,7 @@ function toast(msg){
 }
 
 // ===== PREMIUM ONBOARDING SYSTEM =====
-const OB_TOTAL=8;
+const OB_TOTAL=9;
 let _obStep=0;
 
 function _obInitStars(){
@@ -16239,6 +16369,9 @@ function _obShow(idx){
     for(let i=0;i<OB_TOTAL;i++){_obRenderDots('ob-dots-'+i,idx);}
     if(idx===7){
         setTimeout(function(){var inp=document.getElementById('ob-name-input');if(inp)inp.focus();},400);
+    }
+    if(idx===8){
+        setTimeout(function(){var inp=document.getElementById('ob-setup-search');if(inp)inp.focus();},400);
     }
     var scroll=document.querySelector('.onboard-scroll');if(scroll)scroll.scrollTop=0;
     // Apply thaiWB to all Thai text in current screen
@@ -16308,6 +16441,7 @@ function _obFinishToSetup(){
     set('userName',nameVal);
     set('username',nameVal);
     set('tutorialSeen',true);
+    document.getElementById('hdr-user').textContent=nameVal;
     // ถ้า setup เสร็จแล้ว (ผู้ใช้เก่าดูคำแนะนำซ้ำ) ให้ปิดกลับหน้าหลัก
     if(get('hasSetup',false)){
         _obCloseOverlay(function(){
@@ -16316,26 +16450,124 @@ function _obFinishToSetup(){
         });
         return;
     }
-    // Pre-fill setup modal
+    // Pre-fill setup modal name
     var setupNameInput=document.getElementById('setup-name');
     if(setupNameInput)setupNameInput.value=nameVal;
-    document.getElementById('hdr-user').textContent=nameVal;
-    // Close overlay → open setup step2 (surah selection)
-    _obCloseOverlay(function(){
-        goToSetupStep2();
-        openModal('setup');
-    });
+    // Build surah grid and go to S8
+    _obBuildSurahGrid();
+    _obShow(8);
 }
 
 function _obSkip(){
     set('tutorialSeen',true);
+    if(!getUsername()||!get('hasSetup',false)){
+        // ยังไม่มีชื่อหรือยัง setup → ไปหน้าชื่อ (S7) ภายใน onboarding
+        var overlay=document.getElementById('onboard-overlay');
+        if(!overlay.classList.contains('show')){
+            _obInitStars();
+            overlay.classList.add('show');
+            var nav=document.querySelector('nav.nav');if(nav)nav.style.display='none';
+        }
+        var b7=document.getElementById('ob-back-7');
+        if(b7){b7.textContent='ข้ามทั้งหมด';b7.onclick=function(){_obSkipAll();};}
+        _obShow(7);
+    }else{
+        _obCloseOverlay(function(){renderHome();});
+    }
+}
+
+function _obSkipAll(){
     _obCloseOverlay(function(){
-        if(!getUsername()){
-            setTimeout(function(){openModal('setup');},300);
-        }else if(!get('hasSetup',false)){
+        if(!getUsername()||!get('hasSetup',false)){
             setTimeout(function(){openModal('setup');},300);
         }
     });
+}
+
+// S8: Build dark-themed surah grid
+function _obBuildSurahGrid(){
+    var memorizedSurahs=get('memorizedSurahs',[]);
+    setupSelectedSurahs=[...memorizedSurahs];
+    var grid=document.getElementById('ob-surah-grid');
+    if(!grid)return;
+    var html='<div id="ob-tab-content-juz30" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px">';
+    html+=SURAHS.map(function(s){
+        var sel=setupSelectedSurahs.includes(s.n);
+        return '<button type="button" class="ob-surah-btn'+(sel?' selected':'')+'" data-n="'+s.n+'" data-name="'+s.name+'" onclick="obToggleSurah('+s.n+')"><div style="font-weight:600">'+s.n+'</div><div style="font-size:7px;opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+s.name+'</div></button>';
+    }).join('');
+    html+='</div>';
+    var surahsNums=SURAHS.map(function(s){return s.n;});
+    html+='<div id="ob-tab-content-juz129" style="display:none;grid-template-columns:repeat(4,1fr);gap:6px">';
+    html+=ALL_SURAHS.filter(function(s){return !surahsNums.includes(s.n);}).map(function(s){
+        var sel=setupSelectedSurahs.includes(s.n);
+        var juzText=Array.isArray(s.juz)?'ญุซ '+s.juz[0]:'ญุซ '+s.juz;
+        return '<button type="button" class="ob-surah-btn'+(sel?' selected-sec':'')+'" data-n="'+s.n+'" data-name="'+s.name+'" data-type="juz129" onclick="obToggleSurahPlus('+s.n+',\'juz129\')"><div style="font-weight:600">'+s.n+'</div><div style="font-size:7px;opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+s.name+'</div><div style="font-size:6px;opacity:0.5">'+juzText+'</div></button>';
+    }).join('');
+    html+='</div>';
+    html+='<div id="ob-tab-content-plus" style="display:none;grid-template-columns:repeat(3,1fr);gap:6px">';
+    html+=PLUS_SURAHS.map(function(s){
+        var sel=setupSelectedSurahs.includes(s.n);
+        var catLabel=s.category==='daily'?'รายวัน':s.category==='weekly'?'รายสัปดาห์':s.category==='manhaj'?'มันฮัจญ์':'อื่น ๆ';
+        return '<button type="button" class="ob-surah-btn'+(sel?' selected-gold':'')+'" data-n="'+s.n+'" data-name="'+s.name+'" data-type="plus" onclick="obToggleSurahPlus(\''+s.n+'\',\'plus\')"><div style="font-weight:600;font-size:7px">'+(typeof thaiWB==='function'?thaiWB(s.name):s.name)+'</div><div style="font-size:6px;opacity:0.6">'+s.ayah+' อายะฮ์</div><div style="font-size:6px;opacity:0.5">'+catLabel+'</div></button>';
+    }).join('');
+    html+='</div>';
+    grid.innerHTML=html;
+    _obUpdateCount();
+}
+function obSwitchTab(tabId){
+    document.querySelectorAll('.ob-setup-tab').forEach(function(t){t.classList.toggle('active',t.dataset.obtab===tabId);});
+    ['juz30','juz129','plus'].forEach(function(id){var el=document.getElementById('ob-tab-content-'+id);if(el)el.style.display=id===tabId?'grid':'none';});
+}
+function obFilterSurahs(){
+    var q=(document.getElementById('ob-setup-search').value||'').toLowerCase().trim();
+    document.querySelectorAll('#ob-surah-grid .ob-surah-btn').forEach(function(btn){
+        var name=(btn.dataset.name||'').toLowerCase();var n=btn.dataset.n||'';
+        btn.style.display=(!q||name.includes(q)||n.includes(q))?'':'none';
+    });
+}
+function obToggleSurah(n){
+    var idx=setupSelectedSurahs.indexOf(n);
+    if(idx>=0){setupSelectedSurahs.splice(idx,1);var d=getSurah(n);d.text=0;d.memorized=false;setSurah(n,d);}
+    else{setupSelectedSurahs.push(n);var s=SURAHS.find(function(x){return x.n===n;});if(s){var d=getSurah(n);d.text=s.ayah;d.memorized=true;d.memorizedDate=new Date().toISOString();setSurah(n,d);}}
+    var btn=document.querySelector('#ob-surah-grid .ob-surah-btn[data-n="'+n+'"]');
+    if(btn){btn.className='ob-surah-btn'+(setupSelectedSurahs.includes(n)?' selected':'');}
+    _obUpdateCount();
+}
+function obToggleSurahPlus(n,type){
+    var isPlus=type==='plus';var surahsNums=SURAHS.map(function(s){return s.n;});
+    var list=isPlus?PLUS_SURAHS:ALL_SURAHS.filter(function(s){return !surahsNums.includes(s.n);});
+    var surah=list.find(function(s){return s.n===n;});if(!surah)return;
+    var idx=setupSelectedSurahs.indexOf(n);
+    if(idx>=0){setupSelectedSurahs.splice(idx,1);var d=getSurah(n);d.text=0;d.memorized=false;setSurah(n,d);}
+    else{setupSelectedSurahs.push(n);var d=getSurah(n);d.text=surah.ayah;d.memorized=true;d.memorizedDate=new Date().toISOString();setSurah(n,d);}
+    var btn=document.querySelector('#ob-surah-grid .ob-surah-btn[data-n="'+n+'"]');
+    if(btn){var sel=setupSelectedSurahs.includes(n);var cls=isPlus?'selected-gold':type==='juz129'?'selected-sec':'selected';btn.className='ob-surah-btn'+(sel?' '+cls:'');}
+    _obUpdateCount();
+}
+function obSelectAll(){
+    var activeTab=(document.querySelector('.ob-setup-tab.active')||{}).dataset;var tabId=activeTab?activeTab.obtab:'juz30';
+    document.querySelectorAll('#ob-tab-content-'+tabId+' .ob-surah-btn').forEach(function(btn){
+        var n=btn.dataset.n;var nVal=n&&n.startsWith&&n.startsWith('p')?n:parseInt(n);
+        if(!setupSelectedSurahs.includes(nVal)){if(tabId==='plus')obToggleSurahPlus(n,'plus');else if(tabId==='juz129')obToggleSurahPlus(parseInt(n),'juz129');else obToggleSurah(parseInt(n));}
+    });
+}
+function obClearAll(){
+    var activeTab=(document.querySelector('.ob-setup-tab.active')||{}).dataset;var tabId=activeTab?activeTab.obtab:'juz30';
+    document.querySelectorAll('#ob-tab-content-'+tabId+' .ob-surah-btn').forEach(function(btn){
+        var n=btn.dataset.n;var nVal=n&&n.startsWith&&n.startsWith('p')?n:parseInt(n);
+        if(setupSelectedSurahs.includes(nVal)){if(tabId==='plus')obToggleSurahPlus(n,'plus');else if(tabId==='juz129')obToggleSurahPlus(parseInt(n),'juz129');else obToggleSurah(parseInt(n));}
+    });
+}
+function _obUpdateCount(){
+    var el=document.getElementById('ob-selected-count');
+    if(el){var c=setupSelectedSurahs.length;el.textContent=c>0?'เลือกแล้ว '+c+' ซูเราะฮ์':'ยังไม่ได้เลือก — ข้ามได้';}
+}
+function _obFinishSetup(){
+    var name=getUsername()||'ผู้ใช้';
+    set('memorizedSurahs',setupSelectedSurahs);
+    var reviewSettings=get('reviewSettings',{});reviewSettings.perDay=setupReviewCount||3;set('reviewSettings',reviewSettings);
+    set('hasSetup',true);
+    _obCloseOverlay(function(){renderAll();toast('ยินดีต้อนรับ '+name+' !');});
 }
 
 // Backward compat
@@ -16354,7 +16586,8 @@ document.addEventListener('DOMContentLoaded',function(){
         ['ob-next-4',function(){_obShow(5);}],['ob-back-4',function(){_obShow(3);}],
         ['ob-next-5',function(){_obShow(6);}],['ob-back-5',function(){_obShow(4);}],
         ['ob-next-6',function(){_obShow(7);}],['ob-back-6',function(){_obShow(5);}],
-        ['ob-next-7',_obFinishToSetup],['ob-back-7',function(){_obShow(6);}]
+        ['ob-next-7',_obFinishToSetup],['ob-back-7',function(){_obShow(6);}],
+        ['ob-next-8',_obFinishSetup],['ob-back-8',function(){_obShow(7);}]
     ];
     ids.forEach(function(pair){var el=document.getElementById(pair[0]);if(el)el.addEventListener('click',pair[1]);});
     var nameInp=document.getElementById('ob-name-input');
