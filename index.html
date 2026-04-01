@@ -5573,6 +5573,8 @@ function goToPage(page,addHistory=true){
 function goBack(){['scope-tip-popup','scope-tip-bd'].forEach(id=>{const el=document.getElementById(id);if(el)el.remove();});if(pageHistory.length>1){pageHistory.pop();goToPage(pageHistory[pageHistory.length-1],false);}}
 
 function renderHome(){updateStreak();renderUsername();renderIntention();renderQuote();renderStats();renderContinueCard();renderHomeGoalsAndReview();renderSurahGrid();renderGoals();renderRewards();}
+// v320: เพิ่ม renderAll() ที่ขาดหายไป — finishSetup + _obFinishSetup เรียกฟังก์ชันนี้แต่ไม่เคยมี definition
+function renderAll(){renderHome();if(typeof renderPlus==='function')renderPlus();if(typeof renderKnowledge==='function')renderKnowledge();if(typeof renderCalendar==='function')renderCalendar();}
 
 // ===== ระบบกิจวัตรประจำวัน 6 ขั้นตอน =====
 const ROUTINE_STEPS = [
@@ -10043,6 +10045,9 @@ function saveProgress(n){
     // อัปเดต Plus page ถ้าเป็น Plus หรือ ALL_SURAHS
     if(isPlus||ALL_SURAHS.find(x=>x.n===n))renderPlus();
     // ===== REAL-TIME UPDATE =====
+    // v320: อัปเดต stats + surah grid ทันทีเมื่อบันทึก
+    if(typeof renderStats==='function')renderStats();
+    if(typeof renderSurahGrid==='function')renderSurahGrid();
     // อัปเดต Continue Card
     if(typeof renderContinueCard==='function')renderContinueCard();
     // อัปเดต Juz Progress Cards - ทุกครั้งที่บันทึก (ถ้าเปิดอยู่)
