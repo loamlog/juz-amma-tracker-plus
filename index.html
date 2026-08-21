@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v318f</title>
+<title>Juz' Amma Tracker v328</title>
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -2385,7 +2385,7 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 #nvx-fab,#nvx-panel,#nvx-scrim{font-family:var(--f-th);--nx:#6B5B7A;--nxs:rgba(107,91,122,0.10);--nxm:rgba(107,91,122,0.20)}
 
 /* ── ปุ่มลอย (วงกลมเดียว) ── */
-#nvx-fab{position:fixed;right:15px;bottom:calc(74px + env(safe-area-inset-bottom));z-index:9990;
+#nvx-fab{position:fixed;right:15px;bottom:calc(74px + env(safe-area-inset-bottom));z-index:1000010;
   width:50px;height:50px;border-radius:50%;border:none;padding:0;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   background:linear-gradient(155deg,#FFFFFF 0%,#FEFCFA 48%,#F7F3ED 100%);
@@ -2401,12 +2401,12 @@ body:has(.flashcard-overlay) .nav{display:none!important}
   box-shadow:0 2px 6px rgba(80,66,94,0.3),0 0 0 2px #FAF9F7;letter-spacing:.02em}
 
 /* ── ม่านบางใส (แตะข้างนอกเพื่อปิด) ── */
-#nvx-scrim{position:fixed;inset:0;z-index:9988;background:rgba(250,249,247,0.42);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+#nvx-scrim{position:fixed;inset:0;z-index:1000008;background:rgba(250,249,247,0.42);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
   opacity:0;pointer-events:none;transition:opacity .25s}
 #nvx-scrim.open{opacity:1;pointer-events:auto}
 
 /* ── แผงนำทาง + ค้นหา (แผ่นเดียวกัน) ── */
-#nvx-panel{position:fixed;right:14px;bottom:calc(134px + env(safe-area-inset-bottom));z-index:9992;
+#nvx-panel{position:fixed;right:14px;bottom:calc(134px + env(safe-area-inset-bottom));z-index:1000012;
   width:min(336px,calc(100vw - 28px));
   background:linear-gradient(180deg,rgba(255,255,255,0.97),rgba(253,251,248,0.97));
   -webkit-backdrop-filter:blur(20px) saturate(1.5);backdrop-filter:blur(20px) saturate(1.5);
@@ -2537,7 +2537,7 @@ body:has(.flashcard-overlay) .nav{display:none!important}
     <div id="nvx-res"></div>
 
     <div id="nvx-body">
-        <div class="nvx-lbl" id="nvx-grid-lbl"><span>แตะเพื่อไปทันที</span><b id="nvx-cur-lbl"></b></div>
+        <div class="nvx-lbl" id="nvx-grid-lbl"><span>แตะเพื่อไปทันที</span><button id="nvx-sort-btn" onclick="nvxSortToggle()" style="display:none">จัดเรียง</button><b id="nvx-cur-lbl"></b></div>
         <div id="nvx-grid"></div>
         <div id="nvx-grp-wrap" style="display:none">
             <div class="nvx-lbl"><span>กลุ่มเนื้อหา</span></div>
@@ -2569,9 +2569,42 @@ body:has(.flashcard-overlay) .nav{display:none!important}
     <div class="search-results" id="search-results"></div>
 
 
+<!-- ═══ ญุซ 1-29 ═══ -->
+<div class="qsec" data-q="juz" id="qsec-juz" style="margin-bottom:var(--sp-4)">
+    <div class="juz-chips" id="juz-chips"></div>
+    <!-- Juz 1-29 Section Header -->
+    <div style="background:linear-gradient(145deg,rgba(184,149,107,0.08),rgba(255,255,255,0.95));border-radius:20px;padding:14px;border:1px solid rgba(184,149,107,0.18);box-shadow:0 8px 32px rgba(184,149,107,0.12),0 2px 8px rgba(0,0,0,0.04),inset 0 2px 0 rgba(255,255,255,0.8)">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-2)">
+        <div style="width:28px;height:28px;background:linear-gradient(135deg,var(--gold),var(--gold-l));border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(184,149,107,0.3)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <div style="flex:1">
+            <div id="juz-section-title" style="font-size:var(--text-xs);font-weight:600;color:var(--txt)">ญุซ 1-29 (77 ซูเราะฮ์)</div>
+            <div style="font-size:var(--text-3xs);color:var(--txt3)">ติดตามความก้าวหน้าการท่องจำ</div>
+        </div>
+        <button onclick="toggleJuzStatsWithCards()" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);background:linear-gradient(135deg,var(--gold-l),#fff);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(184,149,107,0.2)" title="ดูสถิติและความคืบหน้า"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></button>
+        <button onclick="showAddJuzTextModal()" style="width:26px;height:26px;border-radius:50%;border:1.5px dashed var(--gold);background:linear-gradient(135deg,var(--gold-l),#fff);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(184,149,107,0.15)" title="เพิ่มตัวบท"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+    </div>
+    <div id="juz-progress-cards" style="margin-bottom:var(--sp-3);display:none"></div>
+    <div class="surah-grid" id="plus-grid-juz"></div>
+    </div>
+</div>
+
 <!-- ═══ ญุซอัมมา ═══ -->
-<div class="qsec" data-q="amma" id="qsec-amma">
-<div class="stats-box" style="margin-top:10px;background:linear-gradient(135deg,#6B5B7A 0%,#8A7A99 30%,#7A6A89 50%,#9D8DAC 70%,#8A7A99 100%);padding:14px 16px;border-radius:var(--r-lg);box-shadow:0 4px 20px rgba(107,91,122,0.3)">
+<div class="qsec" data-q="amma" id="qsec-amma" style="margin-bottom:var(--sp-4)">
+    <div style="background:linear-gradient(145deg,rgba(139,115,176,0.08),rgba(255,255,255,0.95));border-radius:20px;padding:14px;border:1px solid rgba(139,115,176,0.18);box-shadow:0 8px 32px rgba(139,115,176,0.12),0 2px 8px rgba(0,0,0,0.04),inset 0 2px 0 rgba(255,255,255,0.8)">
+    <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-2)">
+        <div style="width:28px;height:28px;background:linear-gradient(135deg,var(--pri),#9D8DAC);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(107,91,122,0.3)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <div style="flex:1">
+            <div style="font-size:var(--text-xs);font-weight:600;color:var(--txt)">ญุซอัมมา (38 ซูเราะฮ์)</div>
+            <div style="font-size:var(--text-3xs);color:var(--txt3)">ติดตามความก้าวหน้าการท่องจำ</div>
+        </div>
+        <button onclick="toggleAmmaStats()" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--pri);background:linear-gradient(135deg,rgba(139,115,176,0.14),#fff);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(107,91,122,0.2)" title="ดูสถิติและความคืบหน้า"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--pri)" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></button>
+    </div>
+    <div id="amma-progress-cards" style="margin-bottom:var(--sp-3);display:none">
+<div class="stats-box" style="background:linear-gradient(135deg,#6B5B7A 0%,#8A7A99 30%,#7A6A89 50%,#9D8DAC 70%,#8A7A99 100%);padding:12px 14px;border-radius:var(--r-lg);box-shadow:0 4px 20px rgba(107,91,122,0.3)">
     <div style="display:flex;align-items:center;gap:14px">
         <div style="flex:1">
             <div style="font-size:9px;opacity:0.9;color:#fff">ญุซอัมมา</div>
@@ -2618,30 +2651,8 @@ body:has(.flashcard-overlay) .nav{display:none!important}
         <div class="stat-item" onclick="showStatModal('tafsir')"><div class="stat-num" id="stat-tafsir">0</div><div class="stat-label">ตัฟซีร</div></div>
     </div>
 </div>
-<div class="section" role="region" aria-label="รายการซูเราะฮ์" style="margin-top:10px;background:linear-gradient(145deg,rgba(139,115,176,0.06),rgba(255,255,255,0.95));border-radius:20px;padding:14px;border:1px solid rgba(139,115,176,0.12);box-shadow:0 6px 24px rgba(139,115,176,0.08),inset 0 2px 0 rgba(255,255,255,0.8)">
-    <div class="section-title" style="margin-bottom:10px"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;stroke:var(--pri)"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>ซูเราะฮ์ญุซอัมมา</div>
-    <div class="surah-grid" id="surah-grid" role="list"></div>
-</div>
-</div>
-
-<!-- ═══ ญุซ 1-29 ═══ -->
-<div class="qsec" data-q="juz" id="qsec-juz" style="margin-bottom:var(--sp-4)">
-    <div class="juz-chips" id="juz-chips"></div>
-    <!-- Juz 1-29 Section Header -->
-    <div style="background:linear-gradient(145deg,rgba(184,149,107,0.08),rgba(255,255,255,0.95));border-radius:20px;padding:14px;border:1px solid rgba(184,149,107,0.18);box-shadow:0 8px 32px rgba(184,149,107,0.12),0 2px 8px rgba(0,0,0,0.04),inset 0 2px 0 rgba(255,255,255,0.8)">
-    <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-2)">
-        <div style="width:28px;height:28px;background:linear-gradient(135deg,var(--gold),var(--gold-l));border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 8px rgba(184,149,107,0.3)">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-        </div>
-        <div style="flex:1">
-            <div id="juz-section-title" style="font-size:var(--text-xs);font-weight:600;color:var(--txt)">ญุซ 1-29 (77 ซูเราะฮ์)</div>
-            <div style="font-size:var(--text-3xs);color:var(--txt3)">ติดตามความก้าวหน้าการท่องจำ</div>
-        </div>
-        <button onclick="toggleJuzStatsWithCards()" style="width:26px;height:26px;border-radius:50%;border:1px solid var(--gold);background:linear-gradient(135deg,var(--gold-l),#fff);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(184,149,107,0.2)" title="ดูสถิติและความคืบหน้า"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg></button>
-        <button onclick="showAddJuzTextModal()" style="width:26px;height:26px;border-radius:50%;border:1.5px dashed var(--gold);background:linear-gradient(135deg,var(--gold-l),#fff);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(184,149,107,0.15)" title="เพิ่มตัวบท"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--gold)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
     </div>
-    <div id="juz-progress-cards" style="margin-bottom:var(--sp-3);display:none"></div>
-    <div class="surah-grid" id="plus-grid-juz"></div>
+    <div class="surah-grid" id="surah-grid" role="list"></div>
     </div>
 </div>
 
@@ -2652,6 +2663,8 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 <div class="qmanage">
     <button class="qm-btn" onclick="showTopicModal()"><svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/><line x1="12" y1="8" x2="12" y2="14"/><line x1="9" y1="11" x2="15" y2="11"/></svg>เพิ่มหัวข้อใหญ่</button>
     <button class="qm-btn" onclick="showFilterModal()"><svg viewBox="0 0 24 24"><path d="M3 6h18M6.5 12h11M10 18h4"/><circle cx="19" cy="18" r="3.4"/><line x1="19" y1="16.4" x2="19" y2="19.6"/><line x1="17.4" y1="18" x2="20.6" y2="18"/></svg>สร้างตัวกรอง</button>
+    <button class="qm-btn" onclick="openShareHub('organize')"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8 12 14 2 8"/><polyline points="2 14 12 20 22 14"/></svg>จัดระเบียบการ์ด</button>
+    <button class="qm-btn" onclick="openShareHub('export')"><svg viewBox="0 0 24 24"><path d="M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>แชร์ / นำเข้าบันทึก</button>
 </div>
 </div>
 
@@ -2768,6 +2781,7 @@ body:has(.flashcard-overlay) .nav{display:none!important}
                     <select id="surah-know-select" onchange="renderSurahKnowledge()"></select>
                 </div>
                 <div class="filter-size-btns"><button onclick="changeSurahFontSize(-1)">A-</button><button onclick="changeSurahFontSize(1)">A+</button></div>
+                <button onclick="SH.openForSurah()" title="แชร์บันทึกซูเราะฮ์นี้" style="width:32px;height:32px;flex:0 0 32px;border-radius:10px;border:1px solid var(--bdr);background:#fff;color:var(--pri);cursor:pointer;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></button>
             </div>
             <div id="surah-know-list"></div>
         </div>
@@ -3207,8 +3221,17 @@ body:has(.flashcard-overlay) .nav{display:none!important}
     <div class="settings-card">
         <div class="settings-row">
             <div class="settings-row-left">
+                <div class="settings-icon si2"><svg viewBox="0 0 24 24"><path d="M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg></div>
+                <div class="settings-info"><h4>แชร์บันทึกให้เพื่อน</h4><p>เลือกเฉพาะการ์ด/หัวข้อที่ต้องการ</p></div>
+            </div>
+            <div class="settings-row-right">
+                <button class="settings-btn settings-btn-light" onclick="openShareHub('export')">แชร์</button>
+            </div>
+        </div>
+        <div class="settings-row">
+            <div class="settings-row-left">
                 <div class="settings-icon si4"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M2 10h2M20 10h2M2 14h2M20 14h2" stroke-linecap="round"/></svg></div>
-                <div class="settings-info"><h4>ย้ายข้ามเครื่อง</h4><p>ส่งออกหรือนำเข้าข้อมูล</p></div>
+                <div class="settings-info"><h4>ย้ายข้ามเครื่อง</h4><p>สำรอง/กู้คืนทั้งเครื่อง</p></div>
             </div>
             <div class="settings-row-right">
                 <button class="settings-btn settings-btn-light" onclick="openModal('transfer')">ส่งออก/นำเข้า</button>
@@ -4907,6 +4930,16 @@ function getJuzProgress(juzNum){
     const avgPct = Math.round((textPct + meaningPct + tafsirPct) / 3);
     
     return { totalAyahs, textDone, meaningDone, tafsirDone, textPct, meaningPct, tafsirPct, avgPct, surahCount: juzSurahs.length, completeSurahs };
+}
+
+// Toggle ซ่อน/แสดงแผงสถิติญุซอัมมา (ล้อแบบเดียวกับญุซ 1-29)
+function toggleAmmaStats(){
+    const box = document.getElementById('amma-progress-cards');
+    if(!box) return;
+    const isHidden = box.style.display === 'none';
+    box.style.display = isHidden ? 'block' : 'none';
+    set('ammaProgressVisible', isHidden);
+    if(isHidden && typeof renderStats==='function') renderStats();
 }
 
 // Toggle ซ่อน/แสดงการ์ดความคืบหน้า 29 ญุซ (รวมในปุ่มสถิติ)
@@ -6711,7 +6744,7 @@ function goToSetupStep2(){
         return `<button type="button" class="setup-surah-btn setup-plus" data-n="${s.n}" data-name="${s.name}" onclick="toggleSetupSurahPlus('${s.n}','plus')" 
             style="padding:8px 4px;border-radius:8px;border:1px solid ${isSelected?'var(--gold)':'#e0e0e0'};background:${isSelected?'var(--gold)':'#fff'};color:${isSelected?'#fff':'var(--txt)'};font-size:var(--text-3xs);cursor:pointer;font-family:var(--f-th);text-align:center;transition:all 0.2s">
             <div style="font-weight:600;font-size:7px">${thaiWB(s.name)}</div>
-            <div style="font-size:6px;opacity:0.7">${s.ayah} อายะฮ์</div>
+            <div style="font-size:6px;opacity:0.7">${s.ayah} ${unitOf(s)}</div>
             <div style="font-size:6px;opacity:0.6">${catLabel}</div>
         </button>`;
     }).join('');
@@ -9091,10 +9124,10 @@ function openDetail(n){
     pageHistory.push('detail');history.pushState({page:'detail'},'');
     
     // แสดงข้อมูล juz สำหรับ ALL_SURAHS หรือ Plus
-    const isNonQuran = s.sourceType === 'hadith' || s.sourceType === 'other';
+    const isNonQuran = !!s.sourceType && s.sourceType !== 'quran';
     let metaText = '';
     if(isNonQuran){
-        metaText = s.ayah + ' ประโยค';
+        metaText = (s.ref ? s.ref.replace(/:/g,' : ') + ' • ' : '') + s.ayah + ' ' + unitOf(s);
     } else if(isPlus){
         metaText = s.ref ? s.ref.replace(/:/g,' : ') : '';
         metaText += metaText ? ' • ' : '';
@@ -9171,7 +9204,7 @@ function needsBasmala(s,isPlus){
 
 function renderDetailBody(s,d,isPlus){
     const sn=isPlus?`'${s.n}'`:s.n;
-    const isNonQuran = s.sourceType === 'hadith' || s.sourceType === 'other';
+    const isNonQuran = !!s.sourceType && s.sourceType !== 'quran';
     const unitLabel = unitOf(s);
     const overviewLabel = isNonQuran ? 'ภาพรวม' : 'ภาพรวมซูเราะฮ์';
     const overviewPlaceholder = isNonQuran ? 'เขียนภาพรวม ...' : 'เขียนภาพรวมของซูเราะฮ์ ...';
@@ -9183,9 +9216,9 @@ function renderDetailBody(s,d,isPlus){
     const similarPlaceholder = isNonQuran ? 'บันทึกข้อความที่คล้ายคลึงกัน ...' : 'บันทึกคำหรืออายะฮ์ที่คล้ายคลึงกันในซูเราะฮ์อื่น ...';
     
     let html=`<div class="input-card"><div class="input-title"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>ความคืบหน้า</div>`;
-    html+=`<div class="input-row"><div class="input-dot c1"></div><div class="input-label">ตัวบท</div><input type="number" class="input-field" id="input-text" value="${d.text||0}" min="0" max="${s.ayah}"><div class="input-max">/${s.ayah}</div></div>`;
-    html+=`<div class="input-row"><div class="input-dot c2"></div><div class="input-label">ความหมาย</div><input type="number" class="input-field" id="input-meaning" value="${d.meaning||0}" min="0" max="${s.ayah}"><div class="input-max">/${s.ayah}</div></div>`;
-    html+=`<div class="input-row"><div class="input-dot c3"></div><div class="input-label">ตัฟซีร</div><input type="number" class="input-field" id="input-tafsir" value="${d.tafsir||0}" min="0" max="${s.ayah}"><div class="input-max">/${s.ayah}</div></div>`;
+    html+=`<div class="input-row"><div class="input-dot c1"></div><div class="input-label">${L3('text',s.n)}</div><input type="number" class="input-field" id="input-text" value="${d.text||0}" min="0" max="${s.ayah}"><div class="input-max">/${s.ayah}</div></div>`;
+    html+=`<div class="input-row"><div class="input-dot c2"></div><div class="input-label">${L3('meanings',s.n)}</div><input type="number" class="input-field" id="input-meaning" value="${d.meaning||0}" min="0" max="${s.ayah}"><div class="input-max">/${s.ayah}</div></div>`;
+    html+=`<div class="input-row"><div class="input-dot c3"></div><div class="input-label">${L3('tafsirs',s.n)}</div><input type="number" class="input-field" id="input-tafsir" value="${d.tafsir||0}" min="0" max="${s.ayah}"><div class="input-max">/${s.ayah}</div></div>`;
     html+=`<button class="add-btn" style="width:100%;margin-top:10px" onclick="saveProgress(${sn})">บันทึก</button></div>`;
     
     html+=`<div class="tabs"><button class="tab active" onclick="switchMainTab('notes',this)">บันทึก</button><button class="tab" onclick="switchMainTab('habits',this)">นิสัย</button><button class="tab" onclick="switchMainTab('names',this)">พระนาม</button><button class="tab" onclick="switchMainTab('groups',this)">จัดกลุ่มอายะฮ์</button></div>`;
@@ -9200,7 +9233,7 @@ function renderDetailBody(s,d,isPlus){
     const showBasmala=needsBasmala(s,isPlus);
     const basmalaHtml=showBasmala?`<div class="basmala-wrap"><div class="basmala-inner"><span class="basmala-line"></span><span class="basmala-dot"></span><span class="basmala-text">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span><span class="basmala-dot"></span><span class="basmala-line"></span></div></div>`:'';
     
-    html+=`<div style="padding:2px 14px 4px"><div id="nb-section-toggle"></div><div id="grp-fc"></div><div id="nb-fontsize-ctl"></div></div><div id="grp-bc" style="margin:0 14px 8px"></div><div class="notebook"><div style="padding:8px 14px 2px"><div class="note-tabs"><button class="note-tab t-notes active" onclick="switchNoteTab('notes',this,${sn})"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>ความรู้</button><button class="note-tab t-meanings" onclick="switchNoteTab('meanings',this,${sn})"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>ความหมาย</button><button class="note-tab t-tafsirs" onclick="switchNoteTab('tafsirs',this,${sn})"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>ตัฟซีร</button></div></div><div style="padding:2px 14px 10px"><div id="basmala-container">${basmalaHtml}</div><div class="ayah-list" id="ayah-list">${renderAyahList(s,d,'notes')}</div></div></div>`;
+    html+=`<div style="padding:2px 14px 4px"><div id="nb-section-toggle"></div><div id="grp-fc"></div><div id="nb-fontsize-ctl"></div></div><div id="grp-bc" style="margin:0 14px 8px"></div><div class="notebook"><div style="padding:8px 14px 2px"><div class="note-tabs"><button class="note-tab t-notes active" onclick="switchNoteTab('notes',this,${sn})"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>${L3('notes',s.n)}</button><button class="note-tab t-meanings" onclick="switchNoteTab('meanings',this,${sn})"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>${L3('meanings',s.n)}</button><button class="note-tab t-tafsirs" onclick="switchNoteTab('tafsirs',this,${sn})"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>${L3('tafsirs',s.n)}</button></div></div><div style="padding:2px 14px 10px"><div id="basmala-container">${basmalaHtml}</div><div class="ayah-list" id="ayah-list">${renderAyahList(s,d,'notes')}</div></div></div>`;
     html+=`</div>`;
     
     const customCats=get('habitCategories',['ทั่วไป','อิบาดะห์','อัคลาก','ความสัมพันธ์','การเรียนรู้']);
@@ -9224,7 +9257,7 @@ function renderAyahList(s,d,key){
     let html='';
     const isPlus=typeof s.n==='string'&&s.n.startsWith('p');
     const snArg=isPlus?`'${s.n}'`:s.n;
-    const isNonQuran = s.sourceType === 'hadith' || s.sourceType === 'other';
+    const isNonQuran = !!s.sourceType && s.sourceType !== 'quran';
     const unitLabel = unitOf(s)+'ที่';
     
     // ดึง userAyahTexts ที่ผู้ใช้บันทึกไว้
@@ -12004,6 +12037,10 @@ function renderPlus(){
     // Render Custom Categories
     renderCustomCategories();
     
+    // แผงสถิติญุซอัมมา - โหลดตามสถานะที่บันทึกไว้
+    const ammaBox = document.getElementById('amma-progress-cards');
+    if(ammaBox) ammaBox.style.display = get('ammaProgressVisible', false) ? 'block' : 'none';
+
     // Render Juz Progress Cards - โหลดตามสถานะที่บันทึกไว้
     const juzProgressVisible = get('juzProgressVisible', false);
     const progressContainer = document.getElementById('juz-progress-cards');
@@ -12045,10 +12082,9 @@ function showAddPlusModal(category){
             <div>
                 <label style="font-size:var(--text-2xs);color:var(--txt3);display:block;margin-bottom:4px">ประเภทแหล่งที่มา</label>
                 <select id="plus-add-source" onchange="toggleSourceFields()" style="width:100%;padding:10px 12px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:var(--f-th)">
-                    <option value="quran">จากอัลกุรอาน</option>
-                    <option value="hadith">จากหะดีษ/ซุนนะฮ์</option>
-                    <option value="other">อื่น ๆ</option>
+                    ${srcOptionsHTML('quran')}
                 </select>
+                <div id="src-lbl-hint" style="font-size:var(--text-3xs);color:var(--txt3);margin-top:5px;line-height:1.6">ชั้นบันทึกจะใช้คำว่า <b>ตัวบท</b> · <b>ความรู้</b> · <b>ความหมาย</b> · <b>ตัฟซีร</b></div>
             </div>
             <div>
                 <label style="font-size:var(--text-2xs);color:var(--txt3);display:block;margin-bottom:4px">ชื่อตัวบท</label>
@@ -12083,7 +12119,7 @@ function showAddPlusModal(category){
                 <label style="font-size:var(--text-2xs);color:var(--txt3);display:block;margin-bottom:4px">หะดีษ/แหล่งอ้างอิง (ไม่บังคับ)</label>
                 <textarea id="plus-add-hadith" style="width:100%;padding:10px 12px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:var(--f-th);resize:vertical;min-height:60px" placeholder="หะดีษหรือแหล่งอ้างอิง ..."></textarea>
             </div>
-            <div>
+            <div id="strength-container">
                 <label style="font-size:var(--text-2xs);color:var(--txt3);display:block;margin-bottom:4px">ความเข้มหลักฐาน (ไม่บังคับ)</label>
                 <select id="plus-add-strength" style="width:100%;padding:10px 12px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:var(--f-th)">
                     <option value="">-- ไม่ระบุ --</option>
@@ -12100,24 +12136,55 @@ function showAddPlusModal(category){
     openModal('plus');
 }
 
+function _editSrcHint(){
+    const el=document.getElementById('edit-src-hint'),sel=document.getElementById('plus-edit-source');
+    if(!el||!sel||typeof SRC_SETS==='undefined')return;
+    const L=SRC_SETS[sel.value]||SRC_SETS.other;
+    el.innerHTML='ชั้นบันทึกจะใช้คำว่า <b>'+L.ar+'</b> · <b>'+L.notes+'</b> · <b>'+L.meanings+'</b> · <b>'+L.tafsirs+'</b>';
+}
 function toggleSourceFields(){
     const source = document.getElementById('plus-add-source').value;
     const refLabel = document.getElementById('ref-label');
     const refInput = document.getElementById('plus-add-ref');
     const ayahLabel = document.getElementById('ayah-label');
     
-    if(source === 'quran'){
-        refLabel.textContent = 'อ้างอิง (ซูเราะฮ์ : อายะฮ์)';
-        refInput.placeholder = '2:255';
-        ayahLabel.textContent = 'จำนวนอายะฮ์';
-    } else if(source === 'hadith'){
-        refLabel.textContent = 'อ้างอิง (ไม่บังคับ)';
-        refInput.placeholder = 'บุคอรี :1234';
-        ayahLabel.textContent = 'จำนวนประโยค';
-    } else {
-        refLabel.textContent = 'อ้างอิง (ไม่บังคับ)';
-        refInput.placeholder = 'แหล่งที่มา';
-        ayahLabel.textContent = 'จำนวนประโยค';
+    const REF={quran:['อ้างอิง (ซูเราะฮ์ : อายะฮ์)','2:255'],
+               hadith:['อ้างอิง (ไม่บังคับ)','บุคอรี : 1234'],
+               dua:['อ้างอิง (ไม่บังคับ)','หิศนุลมุสลิม หน้า 20'],
+               book:['ชื่อหนังสือ / ผู้แต่ง','เช่น อุศูลุษษะลาษะฮ์ · หน้า 12'],
+               article:['ลิงก์ / แหล่งบทความ','https:// ...'],
+               video:['ลิงก์ / ชื่อคลิป','https://youtu.be/ ...'],
+               audio:['ลิงก์ / ชื่อไฟล์เสียง','เช่น ดัรส์ชุดอะกีดะฮ์ ตอน 3'],
+               social:['ลิงก์โพสต์ / ผู้โพสต์','@ ... หรือลิงก์'],
+               athar:['ผู้กล่าว / แหล่งอ้างอิง','เช่น อิบนุมัสอูด · มุศ็อนนัฟ อิบนุอบีชัยบะฮ์'],
+               matn:['ชื่อมัตน์ / ผู้แต่ง','เช่น ตุห์ฟะตุลอัฏฟาล · อัลญัมซูรีย์'],
+               fatwa:['ผู้ตอบ / แหล่งฟัตวา','เช่น ชัยค์อิบนุบาซ · binbaz.org.sa'],
+               lesson:['ชื่อวิชา / ผู้สอน','เช่น อะกีดะฮ์วาซิฏียะฮ์ · ครั้งที่ 3'],
+               exam:['ชื่อชุดข้อสอบ / วิชา','เช่น ฟิสิกส์สถานะของแข็ง · มิดเทอม 1'],
+               vocab:['บทเรียน / แหล่งคำศัพท์','เช่น มะดีนะฮ์ เล่ม 1 บทที่ 4'],
+               khutbah:['ผู้บรรยาย / โอกาส','เช่น คุฏบะฮ์วันศุกร์ · มัสยิด ...'],
+               translate:['ต้นฉบับ / ผู้แต่ง','เช่น الخوف من المستقبل · ชัยค์อับดุลอะซีซ อัรรออีส'],
+               idea:['ที่มาของความคิด (ไม่บังคับ)','เช่น คิดได้ระหว่างอ่าน ...'],
+               other:['อ้างอิง (ไม่บังคับ)','แหล่งที่มา']};
+    const r=REF[source]||REF.other;
+    refLabel.textContent=r[0];
+    refInput.placeholder=r[1];
+    const u=(typeof SRC_UNIT_DEFAULT!=='undefined'&&SRC_UNIT_DEFAULT[source])||'เรื่อง';
+    ayahLabel.textContent='จำนวน / หน่วยเรียก ('+u+')';
+    const us=document.getElementById('plus-add-unit');
+    if(us&&!us.dataset.touched)us.value=u;
+    /* บอกคำเรียกที่จะใช้กับแหล่งที่มานี้ */
+    const ISL=['quran','hadith','athar','dua','matn','fatwa','khutbah','translate'];
+    const stc=document.getElementById('strength-container');
+    if(stc)stc.style.display=ISL.indexOf(source)>-1?'':'none';
+    const arw=document.getElementById('plus-add-ar');
+    if(arw&&arw.parentElement)arw.parentElement.style.display=ISL.indexOf(source)>-1?'':'none';
+    const hd=document.getElementById('plus-add-hadith');
+    if(hd&&hd.previousElementSibling)hd.previousElementSibling.textContent=(source==='quran'||source==='hadith'||source==='athar')?'หะดีษ/แหล่งอ้างอิง (ไม่บังคับ)':(source==='translate'?'ข้อความต้นฉบับภาษาอาหรับ (ไม่บังคับ)':'ข้อความต้นฉบับ / บันทึกเพิ่มเติม (ไม่บังคับ)');
+    const hint=document.getElementById('src-lbl-hint');
+    if(hint&&typeof SRC_SETS!=='undefined'){
+        const L=SRC_SETS[source]||SRC_SETS.other;
+        hint.innerHTML='ชั้นบันทึกจะใช้คำว่า <b>'+L.ar+'</b> · <b>'+L.notes+'</b> · <b>'+L.meanings+'</b> · <b>'+L.tafsirs+'</b>';
     }
 }
 
@@ -12190,6 +12257,13 @@ function editPlusSurah(n){
         </div>
         <div style="display:grid;gap:8px">
             <div>
+                <label style="font-size:var(--text-2xs);color:var(--txt3);display:block;margin-bottom:4px">ประเภทแหล่งที่มา</label>
+                <select id="plus-edit-source" onchange="_editSrcHint()" style="width:100%;padding:10px 12px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:var(--f-th)">
+                    ${srcOptionsHTML(s.sourceType||'quran')}
+                </select>
+                <div id="edit-src-hint" style="font-size:var(--text-3xs);color:var(--txt3);margin-top:5px;line-height:1.6"></div>
+            </div>
+            <div>
                 <label style="font-size:var(--text-2xs);color:var(--txt3);display:block;margin-bottom:4px">ชื่อตัวบท</label>
                 <input type="text" id="plus-edit-name" value="${s.name}" style="width:100%;padding:10px 12px;border:1px solid var(--bdr);border-radius:var(--r-sm);font-size:var(--text-2xs);font-family:var(--f-th)">
             </div>
@@ -12245,6 +12319,7 @@ function editPlusSurah(n){
         </div>
     `;
     openModal('plus');
+    setTimeout(()=>{try{_editSrcHint();}catch(e){}},10);
 }
 
 function updatePlusSurah(n){
@@ -12261,6 +12336,7 @@ function updatePlusSurah(n){
     const hadith=document.getElementById('plus-edit-hadith').value.trim();
     const hadithStrength=document.getElementById('plus-edit-strength')?.value||'';
     const unit=(document.getElementById('plus-edit-unit')||{}).value||'';
+    const sourceType=(document.getElementById('plus-edit-source')||{}).value||(PLUS_SURAHS[idx]||{}).sourceType||'quran';
     
     if(!name){return toast('กรุณาใส่ชื่อตัวบท');}
     
@@ -12277,6 +12353,7 @@ function updatePlusSurah(n){
         ref: ref, // ใช้ค่าที่ผู้ใช้ใส่ ถ้าว่างก็เป็นว่าง (ลบได้)
         ayah,
         unit,
+        sourceType,
         category,
         usage: usage || '',
         desc: desc || '',
@@ -12410,7 +12487,7 @@ function renderKnowledge(){
     if(habitsSec)habitsSec.innerHTML=allHabits.length?_hbPaperHTML(allHabits,{categories:customCategories}):'';
     
     const filterRow=document.getElementById('filter-row');
-    if(filterRow)filterRow.innerHTML=['all','overview','reasons','stories','similar','notes','meanings','tafsirs'].map(f=>`<button class="filter-btn ${currentFilters.has(f)?'active':''}" onclick="toggleFilter('${f}')">${f==='all'?'ทั้งหมด':f==='overview'?'ภาพรวม':f==='reasons'?'สาเหตุ':f==='stories'?'นบี/กลุ่มชน':f==='similar'?'คล้ายคลึง':f==='notes'?'ความรู้':f==='meanings'?'ความหมาย':'ตัฟซีร'}</button>`).join('');
+    if(filterRow)filterRow.innerHTML=['all','overview','reasons','stories','similar','notes','meanings','tafsirs'].map(f=>`<button class="filter-btn ${currentFilters.has(f)?'active':''}" onclick="toggleFilter('${f}')">${f==='all'?'ทั้งหมด':f==='overview'?'ภาพรวม':f==='reasons'?'สาเหตุ':f==='stories'?'นบี/กลุ่มชน':f==='similar'?'คล้ายคลึง':f==='notes'?L3('notes',surahFilter):f==='meanings'?L3('meanings',surahFilter):L3('tafsirs',surahFilter)}</button>`).join('');
     
     let notesForRandom=allNotes.filter(n=>surahFilter==='all'||String(n.surahNum)===String(surahFilter));
     if(!currentFilters.has('all'))notesForRandom=notesForRandom.filter(n=>currentFilters.has(n.type));
@@ -12424,7 +12501,7 @@ function renderKnowledge(){
         const isOpen=randomArOpen[arKey]||false;
         return `<div class="random-card">
             <div class="random-head">
-                <span class="random-type t-${n.type}">${typeLabels[n.type]}</span>
+                <span class="random-type t-${n.type}">${L3(n.type,n.surahNum)||typeLabels[n.type]}</span>
                 <span class="random-source">${n.surah} : ${n.ayah}</span>
             </div>
             ${hasAr?`<div class="random-ar-wrap">
@@ -12854,7 +12931,7 @@ function showKnowledgePopup(type){
                     <div style="background:#fff;border-radius:6px;padding:0;overflow:hidden;border:1px solid var(--bdr-l)">
                         <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:${typeBg[n.type]||'var(--pri-ll)'};border-bottom:1px solid var(--bdr-l)">
                             <span style="font-size:0.55rem;font-weight:500;color:var(--txt2)">${thaiWB(n.surahName)} : ${n.ayah}</span>
-                            <span style="font-size:0.5rem;color:${typeColors[n.type]||'var(--pri)'};background:#fff;padding:2px 6px;border-radius:6px;font-weight:500">${typeLabel[n.type]||n.type}</span>
+                            <span style="font-size:0.5rem;color:${typeColors[n.type]||'var(--pri)'};background:#fff;padding:2px 6px;border-radius:6px;font-weight:500">${L3(n.type,n.surahNum)||typeLabel[n.type]||n.type}</span>
                         </div>
                         <div style="padding:8px 10px;font-size:0.6rem;line-height:1.5;color:var(--txt)">${thaiWB(n.text)}</div>
                     </div>
@@ -12984,9 +13061,9 @@ function renderSurahKnowledge(){
     const statusInfo={0:{label:'ยังไม่เริ่ม',color:'#9e9e9e'},1:{label:'วางแผน',color:'#ff9800'},2:{label:'ข่มใจต้าน',color:'#f44336'},3:{label:'กัดฟันอดทน',color:'#ff5722'},4:{label:'สงบเข้าที่',color:'#ffc107'},5:{label:'หยั่งรากลึก',color:'#8bc34a'},6:{label:'นี่คือตัวฉัน',color:'#4caf50'}};
     
     // Labels สำหรับ hadith/other vs quran
-    const isNonQuran = s.sourceType === 'hadith' || s.sourceType === 'other';
+    const isNonQuran = !!s.sourceType && s.sourceType !== 'quran';
     const unitLabel = unitOf(s)+(isNonQuran?'ที่':'');
-    const unitCount = isNonQuran ? 'ประโยค' : 'อายะฮ์';
+    const unitCount = unitOf(s);
     const overviewLabel = isNonQuran ? 'ภาพรวม' : 'ภาพรวมซูเราะฮ์';
     const reasonsLabel = isNonQuran ? 'ที่มาและบริบท' : 'สาเหตุการประทาน';
     const storiesLabel = isNonQuran ? 'เรื่องราวที่เกี่ยวข้อง' : 'เรื่องราวนบี/กลุ่มชน';
@@ -13118,14 +13195,14 @@ function renderSurahKnowledge(){
                     <span class="notebook-ayah-num">${unitLabel} ${ayahNum}</span>
                     ${hasAr?`<span class="notebook-ayah-ar-toggle ${isArOpen?'open':''}" onclick="toggleKnowAr('${arKey}',this)">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                        ตัวบท
+                        ${L3('text',surahKey)}
                     </span>`:''}
                 </div>
                 ${hasAr?`<div class="notebook-ayah-ar" id="${arKey}" style="display:${isArOpen?'block':'none'}">${arText}</div>`:''}
                 <div class="notebook-ayah-content">
-                    ${(notes&&_getKnowDisplayToggles().notes!==false)?`<div class="notebook-note"><span class="notebook-note-label nl-notes">ความรู้</span><span class="surah-know-text">${thaiWB(notes)}</span></div>`:''}
-                    ${(meanings&&_getKnowDisplayToggles().meanings!==false)?`<div class="notebook-note"><span class="notebook-note-label nl-meanings">ความหมาย</span><span class="surah-know-text">${thaiWB(meanings)}</span></div>`:''}
-                    ${(tafsirs&&_getKnowDisplayToggles().tafsirs!==false)?`<div class="notebook-note"><span class="notebook-note-label nl-tafsirs">ตัฟซีร</span><span class="surah-know-text">${thaiWB(tafsirs)}</span></div>`:''}
+                    ${(notes&&_getKnowDisplayToggles().notes!==false)?`<div class="notebook-note"><span class="notebook-note-label nl-notes">${L3('notes',surahKey)}</span><span class="surah-know-text">${thaiWB(notes)}</span></div>`:''}
+                    ${(meanings&&_getKnowDisplayToggles().meanings!==false)?`<div class="notebook-note"><span class="notebook-note-label nl-meanings">${L3('meanings',surahKey)}</span><span class="surah-know-text">${thaiWB(meanings)}</span></div>`:''}
+                    ${(tafsirs&&_getKnowDisplayToggles().tafsirs!==false)?`<div class="notebook-note"><span class="notebook-note-label nl-tafsirs">${L3('tafsirs',surahKey)}</span><span class="surah-know-text">${thaiWB(tafsirs)}</span></div>`:''}
                 </div>
             </div>`;
         });
@@ -15368,7 +15445,7 @@ function renderRandomFc(){
     const progressText=rfcRelearning?`ทวนซ้ำ : ${randomFcIdx+1}/${randomFcData.length}`:`${answered+1} / ${total}`;
     
     document.getElementById('rfc-progress').textContent=progressText;
-    document.getElementById('rfc-type').textContent=typeLabels[n.type]||n.type;
+    document.getElementById('rfc-type').textContent=(typeof L3==='function'&&L3(n.type,n.surahNum))||typeLabels[n.type]||n.type;
     document.getElementById('rfc-type').style.display='';
     // เปลี่ยนสีตามประเภท
     const typeColors={notes:{bg:'var(--pri-ll)',c:'var(--pri)'},meanings:{bg:'var(--sec-ll)',c:'var(--sec)'},tafsirs:{bg:'var(--tafsir-ll)',c:'var(--tafsir)'},overview:{bg:'var(--overview-ll)',c:'var(--overview)'},reasons:{bg:'var(--reasons-ll)',c:'var(--reasons)'},stories:{bg:'#EBD6D6',c:'#975153'},similar:{bg:'#E9D6E1',c:'#663953'}};
@@ -18804,7 +18881,7 @@ function _snavGetSurah(){
     const n=currentSurah;const isPlus=typeof n==='string'&&n.startsWith('p');
     let s;if(isPlus)s=PLUS_SURAHS.find(x=>x.n===n);else{s=SURAHS.find(x=>x.n===n);if(!s)s=ALL_SURAHS.find(x=>x.n===n);}
     if(!s)return null;
-    const isNonQuran=s.sourceType==='hadith'||s.sourceType==='other';
+    const isNonQuran=!!s.sourceType&&s.sourceType!=='quran';
     return {s,total:s.ayah||1,unitLabel:unitOf(s)};
 }
 function _snavEnsureNotesTab(){
@@ -18814,7 +18891,12 @@ function _snavEnsureNotesTab(){
         if(tabBtn)switchMainTab('notes',tabBtn);
     }
 }
-function _snavAcc(){return _SNAV_ACC[currentNoteTab||'notes']||_SNAV_ACC.notes;}
+function _snavAcc(){
+    const k=currentNoteTab||'notes';
+    const a=_SNAV_ACC[k]||_SNAV_ACC.notes;
+    try{if(typeof L3==='function'){const v=L3(k);if(v)return Object.assign({},a,{l:v});}}catch(e){}
+    return a;
+}
 function _snavApplyAcc(){
     const a=_snavAcc();
     ['nvx-fab','nvx-panel','nvx-scrim'].forEach(id=>{
@@ -18915,7 +18997,8 @@ function _snavBuildGrid(){
     if(_inf&&_inf.unitLabel!=='อายะฮ์'&&typeof currentSurah==='string'&&currentSurah.startsWith('p'))
         gh+=`<button class="nvx-n addu" onclick="snavAddUnit()" title="เพิ่มประโยค">+</button>`;
     g.innerHTML=gh;
-    setTimeout(()=>{const c=g.querySelector('.nvx-n.cur');if(c)g.scrollTop=Math.max(0,c.offsetTop-g.clientHeight/2+16);},20);
+    try{if(typeof _nvxAfterGrid==='function')_nvxAfterGrid();}catch(e){}
+    setTimeout(()=>{const c=g.querySelector('.nvx-n.cur');if(c&&!(window.NVXS&&NVXS.mode))g.scrollTop=Math.max(0,c.offsetTop-g.clientHeight/2+16);},20);
 }
 /* ── กลุ่มเนื้อหา ── */
 function _snavBuildGroups(){
@@ -18945,6 +19028,8 @@ function snavOpen(focus){
     _snavBadge(_snavCur);
     _snavBuildGrid();_snavBuildGroups();
     snavClearQ(true);
+    try{document.querySelectorAll('.tb-special-wrap.open,.tb-colors-wrap.open,.ayah-mini-wrap.open').forEach(x=>x.classList.remove('open'));}catch(e){}
+    try{if(window._nvxRelabel)_nvxRelabel();}catch(e){}
     const p=document.getElementById('nvx-panel'),sc=document.getElementById('nvx-scrim'),fb=document.getElementById('nvx-fab');
     if(p)p.classList.add('open');if(sc)sc.classList.add('open');if(fb)fb.classList.add('on');
     if(focus==='search')setTimeout(()=>{const q=document.getElementById('nvx-q');if(q)q.focus();},260);
@@ -19004,7 +19089,7 @@ function snavSearch(q){
         if(_snavNums.includes(n))h+=`<div class="nvx-jump" onclick="snavJumpTo(${n})"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg><span>ไปยัง${info.unitLabel} ${n}</span></div>`;
     }
     const d=getSurah(currentSurah);const ql=q.toLowerCase();
-    const TM={notes:{l:'ความรู้',c:'#6B5B7A'},meanings:{l:'ความหมาย',c:'#7A9E9F'},tafsirs:{l:'ตัฟซีร',c:'#C4867B'}};
+    const TM={notes:{l:L3('notes'),c:'#6B5B7A'},meanings:{l:L3('meanings'),c:'#7A9E9F'},tafsirs:{l:L3('tafsirs'),c:'#C4867B'}};
     const res=[];
     ['notes','meanings','tafsirs'].forEach(type=>{
         const obj=d[type];
@@ -19130,7 +19215,7 @@ function grpSearchLive(q){
             h+=`<div class="gs-dot" style="background:${r.color}"></div>`;
             h+=`<div class="gs-info">`;
             h+=`<div class="gs-title">${r.isSub?'':hl(r.title,q)}${r.isSub?hl(r.title,q):''}</div>`;
-            h+=`<div class="gs-range" style="color:${r.color}">อายะฮ์ ${range} <span style="font-weight:400;color:var(--txt3)">(${r.to-r.f+1} อายะฮ์)</span></div>`;
+            h+=`<div class="gs-range" style="color:${r.color}">${UL()} ${range} <span style="font-weight:400;color:var(--txt3)">(${r.to-r.f+1} ${UL()})</span></div>`;
             if(bc)h+=bc;
             if(r.desc){h+=`<div class="gs-desc">${hl(r.desc,q)}</div>`;}
             h+=`</div>`;
@@ -19143,10 +19228,10 @@ function grpSearchLive(q){
     });
     // ── ผลลัพธ์จากกล่องบันทึกอายะฮ์ (ความรู้ / ความหมาย / ตัฟซีร) ──
     if(noteMatched.length){
-        const TM={notes:{l:'ความรู้',c:'#6B5B7A'},meanings:{l:'ความหมาย',c:'#7A9E9F'},tafsirs:{l:'ตัฟซีร',c:'#C4867B'}};
+        const TM={notes:{l:L3('notes'),c:'#6B5B7A'},meanings:{l:L3('meanings'),c:'#7A9E9F'},tafsirs:{l:L3('tafsirs'),c:'#C4867B'}};
         const byN={};
         noteMatched.forEach(r=>{const k=r.surahNum;if(!byN[k])byN[k]={surahName:r.surahName,surahAr:r.surahAr,surahNum:r.surahNum,items:[]};byN[k].items.push(r);});
-        h+=`<div class="gs-note-sec"><span class="gs-note-secdot" style="background:var(--sec)"></span>บันทึกในอายะฮ์ · ${noteMatched.length}</div>`;
+        h+=`<div class="gs-note-sec"><span class="gs-note-secdot" style="background:var(--sec)"></span>บันทึกใน${UL()} · ${noteMatched.length}</div>`;
         Object.values(byN).forEach(sg=>{
             h+=`<div class="gs-surah-hdr"><span class="gs-sn">${thaiWB(sg.surahName)} (${sg.surahNum})</span>${sg.surahAr?`<span class="gs-sa">${sg.surahAr}</span>`:''}</div>`;
             sg.items.forEach(r=>{
@@ -19159,7 +19244,7 @@ function grpSearchLive(q){
                 h+=`<div class="gs-result">`;
                 h+=`<div class="gs-dot" style="background:${tm.c}"></div>`;
                 h+=`<div class="gs-info">`;
-                h+=`<div class="gs-title"><span class="gs-note-tag" style="background:${tm.c}1F;color:${tm.c}">${tm.l}</span>อายะฮ์ ${r.ayah}</div>`;
+                h+=`<div class="gs-title"><span class="gs-note-tag" style="background:${tm.c}1F;color:${tm.c}">${tm.l}</span>${UL()} ${r.ayah}</div>`;
                 h+=`<div class="gs-desc">${snip}</div>`;
                 h+=`</div>`;
                 h+=`<button class="gs-go-btn" style="background:${tm.c}15;color:${tm.c}" onclick="_goToAyahNote(${snArg},'${r.type}','${r.ayah}')">ไป <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>`;
@@ -19207,7 +19292,7 @@ function _bldBanner(sn){if(_gf===null||_gf==='all-grp')return '';
         bh+='</div></div>';return bh;
     }
     const d=getSurah(sn);const gs=d.ayahGroups||[];const g=gs[_gf];if(!g)return '';
-    const cl=g.color||_GC[_gf%_GC.length];const lbl=g.f===g.to?`อายะฮ์ ${g.f}`:`อายะฮ์ ${g.f} - ${g.to}`;
+    const cl=g.color||_GC[_gf%_GC.length];const _u=UL(sn);const lbl=g.f===g.to?`${_u} ${g.f}`:`${_u} ${g.f} - ${g.to}`;
     let h=`<div class="grp-banner-v2" style="background:${cl}06;border:1px solid ${cl}15"><div class="gb-dot" style="background:${cl}"></div><div style="flex:1"><div class="gb-range" style="color:${cl}">${lbl} <span style="font-weight:400;color:var(--txt3)">(${g.to-g.f+1} อายะฮ์)</span></div><div class="gb-title">${thaiWB(g.title)}</div>`;
     if(g.desc)h+=`<div class="gb-desc">${thaiWB(g.desc)}</div>`;
     h+='</div></div>';return h;}
@@ -19295,7 +19380,7 @@ function _bldGV(gs,snA,tA,sN){if(_gvm==='edit')return _gEdit(gs,snA);if(_gvm==='
 
 // FIX #3: Edit mode - NO border-left, use number badge + rounded card
 function _gEdit(gs,snA){let h='';
-    gs.map((g,i)=>({g,i})).sort((a,b)=>a.g.f-b.g.f).forEach(({g,i},sI)=>{const cl=g.color||_GC[i%_GC.length];const lbl=g.f===g.to?`อายะฮ์ ${g.f}`:`อายะฮ์ ${g.f} - ${g.to}`;
+    gs.map((g,i)=>({g,i})).sort((a,b)=>a.g.f-b.g.f).forEach(({g,i},sI)=>{const cl=g.color||_GC[i%_GC.length];const _u=UL();const lbl=g.f===g.to?`${_u} ${g.f}`:`${_u} ${g.f} - ${g.to}`;
         h+=`<div class="grp-card-v2" style="border-color:${cl}20"><div style="padding:10px 12px 8px;display:flex;align-items:flex-start;gap:10px"><div style="width:22px;height:22px;border-radius:6px;background:${cl};color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${sI+1}</div><div style="flex:1;min-width:0"><div style="font-size:var(--text-sm);font-weight:700;color:var(--txt);line-height:1.4">${thaiWB(g.title)}</div><div style="font-size:var(--text-3xs);color:${cl};font-weight:600;margin-top:2px">${lbl} <span style="color:var(--txt3);font-weight:400">(${g.to-g.f+1} อายะฮ์)</span></div>${g.desc?`<div style="font-size:var(--text-3xs);color:var(--txt2);margin-top:4px;line-height:1.5">${thaiWB(g.desc)}</div>`:''}</div><div style="display:flex;gap:3px;flex-shrink:0"><button onclick="_eG(${snA},${i})" style="width:24px;height:24px;border-radius:6px;border:none;background:var(--grp-ll);cursor:pointer;display:flex;align-items:center;justify-content:center" title="แก้ไข"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--grp)" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button onclick="_dG(${snA},${i})" style="width:24px;height:24px;border-radius:6px;border:none;background:#ffeeee;cursor:pointer;display:flex;align-items:center;justify-content:center" title="ลบ"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#cc4444" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div></div>`;
         if(g.subs&&g.subs.length){h+=`<div style="padding:4px 12px 8px 48px;background:${cl}03;border-top:1px solid ${cl}08">`;
             const _sortedSE=[...g.subs].sort((a,b)=>a.f-b.f);
@@ -19328,9 +19413,9 @@ function _gTL(gs,tA){if(!gs.length)return '<div class="empty-state">ยังไ
     if(!window._tlOrd)window._tlOrd=['arText','notes','meanings','tafsirs'];
     const ts=window._tlShow;const tOrd=window._tlOrd;
     const anyShow=ts.arText||ts.notes||ts.meanings||ts.tafsirs;
-    const _oL={arText:'ตัวบท',notes:'ความรู้',meanings:'ความหมาย',tafsirs:'ตัฟซีร'};
+    const _oL={arText:L3('text'),notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs')};
     let h='<div style="display:flex;gap:3px;margin-bottom:4px;flex-wrap:wrap;align-items:center"><span style="font-size:var(--text-3xs);color:var(--txt3)">แสดง :</span>';
-    [{k:'arText',l:'ตัวบท'},{k:'notes',l:'ความรู้'},{k:'meanings',l:'ความหมาย'},{k:'tafsirs',l:'ตัฟซีร'}].forEach(t=>{const on=ts[t.k];
+    [{k:'arText',l:L3('text')},{k:'notes',l:L3('notes')},{k:'meanings',l:L3('meanings')},{k:'tafsirs',l:L3('tafsirs')}].forEach(t=>{const on=ts[t.k];
         h+=`<button onclick="window._tlShow.${t.k}=!window._tlShow.${t.k};_sGVM('timeline')" style="padding:4px 10px;border-radius:var(--r-full);font-size:var(--text-3xs);border:1px solid ${on?'var(--pri)':'var(--bdr)'};background:${on?'var(--pri)':'var(--card)'};color:${on?'#fff':'var(--txt3)'};cursor:pointer;font-family:var(--f-th)">${t.l}</button>`;});
     h+='</div>';
     if(anyShow){const act=tOrd.filter(k=>ts[k]);
@@ -19382,7 +19467,7 @@ function _gCS(gs,tA,snA){if(!gs.length)return '<div class="empty-state">ยั�
     [...gs].sort((a,b)=>a.f-b.f).forEach((g,idx,arr)=>{const oi=gs.indexOf(g);const cl=g.color||_GC[oi%_GC.length];const lbl=g.f===g.to?`${g.f}`:`${g.f}-${g.to}`;const total=g.to-g.f+1;let nC=0,mC=0,tC=0;for(let a=g.f;a<=g.to;a++){const ak=String(a);if(d.notes&&d.notes[ak]&&d.notes[ak].replace(/<[^>]*>/g,'').trim())nC++;if(d.meanings&&d.meanings[ak]&&d.meanings[ak].replace(/<[^>]*>/g,'').trim())mC++;if(d.tafsirs&&d.tafsirs[ak]&&d.tafsirs[ak].replace(/<[^>]*>/g,'').trim())tC++;}
         const pN=Math.round(nC/total*100),pM=Math.round(mC/total*100),pT=Math.round(tC/total*100);
         h+=`<div style="padding:var(--sp-2) var(--sp-1);${idx<arr.length-1?'border-bottom:1px solid var(--bdr-l);':''}"><div style="display:flex;align-items:center;gap:var(--sp-2)"><div style="width:10px;height:10px;border-radius:50%;background:${cl};flex-shrink:0"></div><div style="flex:1;min-width:0"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--txt)">${thaiWB(g.title)}</div><div style="font-size:var(--text-3xs);color:var(--txt3)">${lbl} (${total} อายะฮ์)</div></div><div style="display:flex;gap:var(--sp-1);flex-shrink:0">`;
-        [{l:'ความรู้',p:pN,c:'var(--pri)'},{l:'ความหมาย',p:pM,c:'var(--sec)'},{l:'ตัฟซีร',p:pT,c:'var(--tafsir)'}].forEach(bar=>{
+        [{l:L3('notes'),p:pN,c:'var(--pri)'},{l:L3('meanings'),p:pM,c:'var(--sec)'},{l:L3('tafsirs'),p:pT,c:'var(--tafsir)'}].forEach(bar=>{
             h+=`<div style="text-align:center"><svg width="${cR*2}" height="${cR*2}" viewBox="0 0 ${cR*2} ${cR*2}">${_a2(bar.p,bar.c)}<text x="${cR}" y="${cR+3}" text-anchor="middle" fill="var(--txt2)" font-size="${isWide?7:5.5}" font-weight="600">${bar.p}</text></svg><div style="font-size:5px;color:var(--txt3);margin-top:-2px;letter-spacing:-0.2px">${bar.l}</div></div>`;});
         h+=`</div></div>`;
         if(g.subs&&g.subs.length){const _sortedS=[...g.subs].sort((a,b)=>a.f-b.f);_sortedS.forEach(s=>{const sl=s.f===s.to?`${s.f}`:`${s.f}-${s.to}`;const sT=s.to-s.f+1;
@@ -19498,7 +19583,7 @@ function _gMM(gs,sN,tA){if(!gs.length)return '<div class="empty-state">ยัง
     const pos=rawPos.map(p=>({...p,y:p.y+shiftY}));
     const rootW=Math.round(vw*0.2);
     let h=`<div style="display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap;align-items:center"><span style="font-size:var(--text-3xs);color:var(--txt3)">popup :</span>`;
-    [{k:'arText',l:'ตัวบท'},{k:'notes',l:'ความรู้'},{k:'meanings',l:'ความหมาย'},{k:'tafsirs',l:'ตัฟซีร'}].forEach(t=>{const on=_mmTypes.includes(t.k);
+    [{k:'arText',l:L3('text')},{k:'notes',l:L3('notes')},{k:'meanings',l:L3('meanings')},{k:'tafsirs',l:L3('tafsirs')}].forEach(t=>{const on=_mmTypes.includes(t.k);
         h+=`<button onclick="_mmTgl('${t.k}')" style="padding:4px 10px;border-radius:var(--r-full);font-size:var(--text-3xs);border:1px solid ${on?'var(--pri)':'var(--bdr)'};background:${on?'var(--pri)':'var(--card)'};color:${on?'#fff':'var(--txt3)'};cursor:pointer;font-family:var(--f-th)">${t.l}</button>`;});
     h+=`</div><div class="grp-mm-wrap" style="position:relative;overflow:visible;padding-bottom:200px"><div id="mm-popup" style="display:none;position:absolute;z-index:50;min-width:200px;max-width:300px;max-height:none;overflow-y:visible;padding:10px 12px;background:var(--card);border-radius:var(--r-md);box-shadow:0 8px 32px rgba(0,0,0,0.18);border:1px solid var(--bdr-l)"><div id="mm-popup-inner"></div></div><svg width="100%" viewBox="0 0 ${vw} ${finalSvgH}" style="min-height:${finalSvgH}px">`;
     h+=`<rect x="0" y="${rY-20}" width="${rootW}" height="40" rx="12" fill="var(--grp)" opacity="0.9" style="cursor:pointer" data-mm="root" onclick="_mmPop(event,'root')"/>`;
@@ -19597,7 +19682,7 @@ function _mmGetD(d,f,to,type){
 function _mmPop(ev,key){ev.stopPropagation();const wrap=ev.target.closest('.grp-mm-wrap');if(!wrap)return;const popup=wrap.querySelector('#mm-popup');if(!popup)return;
     const d=getSurah(currentSurah);const gs=d.ayahGroups||[];
     const sI=[...ALL_SURAHS,...PLUS_SURAHS].find(x=>x.n===currentSurah);
-    const typeL={notes:'ความรู้',meanings:'ความหมาย',tafsirs:'ตัฟซีร',arText:'ตัวบท'};let ih='';
+    const typeL={notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs'),arText:L3('text')};let ih='';
     function _rN(f,to,cl,exSubs){_mmTypes.forEach(type=>{
         let data=_mmGetD(d,f,to,type);if(exSubs)data=data.filter(n=>!exSubs.some(s=>n.a>=s.f&&n.a<=s.to));if(!data.length)return;
         const isAr=type==='arText';
@@ -19654,7 +19739,7 @@ function _renderKnowToggles(){
     [{k:'overview',l:'ภาพรวม',bg:'#E8ECF5',c:'#6B7FA3'},{k:'reasons',l:'สาเหตุการประทาน',bg:'#F0EAE4',c:'#8A7462'},{k:'stories',l:'เรื่องราวนบี',bg:'#EDDADA',c:'#8B5656'},{k:'similar',l:'คำคล้ายคลึง',bg:'#EBDAE3',c:'#7A4A65'}].forEach(x=>{const on=t[x.k]!==false;
         h+=`<button class="know-dtoggle ${on?'on':''}" style="${on?'background:'+x.bg+';color:'+x.c+';border:none':'color:var(--txt3);border:none;background:var(--card2)'}" onclick="_toggleKnowDisplay('${x.k}')">${x.l}</button>`;});h+='</div></div>';
     h+='<div style="margin-bottom:2px"><span style="font-size:var(--text-3xs);color:var(--txt3);margin-bottom:1px;display:block">บันทึก :</span><div style="display:inline-flex;flex-wrap:wrap;gap:3px">';
-    [{k:'notes',l:'ความรู้',bg:'var(--pri-ll)',c:'var(--pri)'},{k:'meanings',l:'ความหมาย',bg:'var(--sec-ll)',c:'var(--sec)'},{k:'tafsirs',l:'ตัฟซีร',bg:'var(--tafsir-ll)',c:'var(--tafsir)'}].forEach(x=>{const on=t[x.k]!==false;
+    [{k:'notes',l:L3('notes'),bg:'var(--pri-ll)',c:'var(--pri)'},{k:'meanings',l:L3('meanings'),bg:'var(--sec-ll)',c:'var(--sec)'},{k:'tafsirs',l:L3('tafsirs'),bg:'var(--tafsir-ll)',c:'var(--tafsir)'}].forEach(x=>{const on=t[x.k]!==false;
         h+=`<button class="know-dtoggle ${on?'on':''}" style="${on?'background:'+x.bg+';color:'+x.c+';border:none':'color:var(--txt3);border:none;background:var(--card2)'}" onclick="_toggleKnowDisplay('${x.k}')">${x.l}</button>`;});h+='</div></div>';
     if(grps.length){h+='<div style="margin-top:2px"><span style="font-size:var(--text-3xs);color:var(--txt3);display:flex;align-items:center;gap:2px;margin-bottom:1px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--txt3)" stroke-width="1.5"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>กลุ่มอายะฮ์ :</span>';
         h+='<div style="display:inline-flex;flex-wrap:wrap;gap:3px;margin-bottom:2px">';
@@ -19757,11 +19842,19 @@ function _getFilters(){
     if(!Array.isArray(f)){
         const custom=get('customPlusCategories',[]).map(c=>c.id);
         f=[
-            {id:'f_amma',name:'ญุซอัมมา',   color:'pri', icon:'book',  topics:['amma']},
-            {id:'f_juz', name:'กุรอาน 1-29',color:'gold',icon:'pages', topics:['juz']},
-            {id:'f_plus',name:'บทเสริม',    color:'sec', icon:'star',  topics:['daily','weekly','manhaj'].concat(custom)}
+            {id:'f_juz', name:'อัลกุรอาน 1-29',color:'gold',icon:'pages', topics:['juz']},
+            {id:'f_amma',name:'ญุซอัมมา',      color:'pri', icon:'book',  topics:['amma']},
+            {id:'f_plus',name:'บทเสริม',       color:'sec', icon:'star',  topics:['daily','weekly','manhaj'].concat(custom)}
         ];
         set('plusFilters',f);
+    }else if(!get('fltMigJuzFirst',false)){
+        /* ปรับของเดิมที่บันทึกไว้แล้ว ครั้งเดียวจบ : เปลี่ยนชื่อ + ให้ 1-29 มาก่อนญุซอัมมา */
+        let ch=false;
+        const j=f.findIndex(x=>x&&x.id==='f_juz'), a=f.findIndex(x=>x&&x.id==='f_amma');
+        if(j>-1&&f[j].name==='กุรอาน 1-29'){f[j].name='อัลกุรอาน 1-29';ch=true;}
+        if(j>-1&&a>-1&&j>a){f.splice(a,0,f.splice(j,1)[0]);ch=true;}
+        if(ch)set('plusFilters',f);
+        set('fltMigJuzFirst',true);
     }
     return f;
 }
@@ -19813,7 +19906,8 @@ function setQFilter(k){
 function renderCustomCategories(){renderTopics();}
 function renderTopics(){
     const box=document.getElementById('custom-categories-container');if(!box)return;
-    const topics=_allTopics(false);
+    let topics=_allTopics(false);
+    try{if(typeof _shSortTopics==='function')topics=_shSortTopics(topics);}catch(e){}
     box.innerHTML=topics.map(t=>{
         const c=_hx(t.color),c2=_hx2(t.color);
         return `<div class="tsec qsec" id="section-${t.id}" data-q="${t.id}" style="--tc:${c};--tc2:${c2};--tcw:${_rgba(t.color,0.055)};--tcb:${_rgba(t.color,0.14)};--tcs:${_rgba(t.color,0.12)}">
@@ -19824,6 +19918,7 @@ function renderTopics(){
                     <div class="tsec-desc">${_esc(t.desc||'')}${t.desc?' · ':''}${_topicCount(t.id)} รายการ</div>
                 </div>
                 <button class="tsec-b" onclick="toggleSectionStats('${t.id}')" title="สถิติ"><svg viewBox="0 0 24 24">${_QICON.chart}</svg></button>
+                <button class="tsec-b" onclick="window.SH&&SH.openOrganize('${t.id}')" title="จัดระเบียบ · ย้าย · แชร์"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8 12 14 2 8"/><polyline points="2 14 12 20 22 14"/></svg></button>
                 <button class="tsec-b dash" onclick="showAddPlusModal('${t.id}')" title="เพิ่มตัวบท"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
                 <button class="tsec-b plain" onclick="showTopicModal('${t.id}')" title="แก้ไขหัวข้อ"><svg viewBox="0 0 24 24">${_QICON.pen}</svg></button>
             </div>
@@ -19833,7 +19928,8 @@ function renderTopics(){
     }).join('');
     topics.forEach(t=>{
         const g=document.getElementById('plus-grid-'+t.id);if(!g)return;
-        const items=PLUS_SURAHS.filter(s=>s.category===t.id&&matchesPlusSearch(s));
+        let items=PLUS_SURAHS.filter(s=>s.category===t.id&&matchesPlusSearch(s));
+        try{if(typeof _shSortCards==='function')items=_shSortCards(t.id,items);}catch(e){}
         g.innerHTML=items.length?items.map(s=>renderPlusCard(s)).join(''):'<div class="tsec-empty">ยังไม่มีรายการ</div>';
     });
 }
@@ -20868,13 +20964,14 @@ function unitBySn(sn){
     }catch(e){}
     return 'อายะฮ์';
 }
-const UNIT_OPTS=['อายะฮ์','หะดีษ','เรื่อง','บท','ประโยค','ข้อ'];
+const UNIT_OPTS=['อายะฮ์','หะดีษ','เรื่อง','บท','ตอน','หน้า','ประโยค','ข้อ','ข้อความ','คลิป','คำ','คำพูด','ครั้ง','ชุด','ย่อหน้า'];
 function unitOf(s){
     if(!s)return 'อายะฮ์';
     if(s.unit)return s.unit;
     const st=s.sourceType;
+    try{if(typeof SRC_UNIT_DEFAULT!=='undefined'&&SRC_UNIT_DEFAULT[st])return SRC_UNIT_DEFAULT[st];}catch(e){}
     if(st==='hadith')return 'หะดีษ';
-    if(st==='other')return 'เรื่อง';
+    if(st&&st!=='quran')return 'เรื่อง';
     return 'อายะฮ์';
 }
 const HABIT_STAGE_COLOR={0:'#9e9e9e',1:'#ff9800',2:'#f44336',3:'#ff5722',4:'#ffc107',5:'#8bc34a',6:'#4caf50'};
@@ -21254,6 +21351,1839 @@ window.addEventListener('resize',()=>{clearTimeout(window.__mwT);window.__mwT=se
         if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
     }catch(e){}
 })();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v322 · ศูนย์แชร์บันทึก (Share Hub) — เวอร์ชันลื่นไหล
+   ─ ส่งออก / นำเข้า เฉพาะรายการที่เลือก (การ์ด · หัวข้อ · บันทึกซูเราะฮ์)
+   ─ จัดระเบียบ : ย้ายการ์ดข้ามหัวข้อใหญ่ · เรียงลำดับ · ทำสำเนา
+   ─ ทุกการแตะอัปเดตเฉพาะจุด ไม่วาดใหม่ทั้งหน้า · ลากด้วย rAF
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+/* ── ไอคอนเส้นบาง ── */
+const SI={
+ share:'<path d="M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>',
+ down:'<path d="M4 12v7a2 2 0 002 2h12a2 2 0 002-2v-7"/><polyline points="8 11 12 15 16 11"/><line x1="12" y1="15" x2="12" y2="2"/>',
+ layers:'<polygon points="12 2 22 8 12 14 2 8"/><polyline points="2 14 12 20 22 14"/>',
+ x:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+ chev:'<polyline points="9 6 15 12 9 18"/>',
+ check:'<polyline points="20 6 9 17 4 12"/>',
+ copy:'<rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/>',
+ file:'<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>',
+ grip:'<circle cx="9" cy="6" r="1.4"/><circle cx="15" cy="6" r="1.4"/><circle cx="9" cy="12" r="1.4"/><circle cx="15" cy="12" r="1.4"/><circle cx="9" cy="18" r="1.4"/><circle cx="15" cy="18" r="1.4"/>',
+ move:'<polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/>',
+ dup:'<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16V5a2 2 0 012-2h11"/>',
+ trash:'<polyline points="3 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>',
+ search:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+ spark:'<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>',
+ folder:'<path d="M3 7a2 2 0 012-2h4l2 2.5h8a2 2 0 012 2V18a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>',
+ book:'<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>',
+ info:'<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+ back:'<polyline points="15 18 9 12 15 6"/>',
+ plus:'<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>'
+};
+const svg=(p,sz)=>'<svg viewBox="0 0 24 24" width="'+(sz||14)+'" height="'+(sz||14)+'" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+
+/* ── สไตล์ : เลี่ยง backdrop-filter และเงาหนัก เพื่อความลื่นบนมือถือ ── */
+const CSS=`
+.sh-ov{position:fixed;inset:0;z-index:100050;display:none;align-items:flex-end;justify-content:center;
+  background:rgba(30,24,38,0.6);animation:shFade .16s ease}
+.sh-ov.on{display:flex}
+@keyframes shFade{from{opacity:0}to{opacity:1}}
+@keyframes shUp{from{transform:translate3d(0,24px,0)}to{transform:translate3d(0,0,0)}}
+.sh-sheet{width:100%;max-width:600px;height:94dvh;background:var(--bg);border-radius:26px 26px 0 0;overflow:hidden;
+  display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(24,18,32,0.28);animation:shUp .24s cubic-bezier(.22,1,.36,1)}
+@media(min-width:700px){.sh-ov{align-items:center}.sh-sheet{height:88vh;border-radius:24px}}
+.sh-top{position:relative;flex:0 0 auto;padding:16px 16px 0;color:#fff;overflow:hidden;
+  background:linear-gradient(140deg,#2F2739 0%,#4A3E58 42%,#6B5B7A 78%,#8A7A99 100%)}
+.sh-top::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 70% 80% at 88% 0%,rgba(184,149,107,0.26),transparent 62%)}
+.sh-top-row{position:relative;z-index:1;display:flex;align-items:center;gap:11px}
+.sh-badge{width:34px;height:34px;flex:0 0 34px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.16);border:1px solid rgba(255,255,255,0.18);color:#fff}
+.sh-tt{flex:1;min-width:0}
+.sh-tt b{display:block;font-size:var(--text-sm);font-weight:600;letter-spacing:-.01em}
+.sh-tt span{display:block;font-size:var(--text-3xs);color:rgba(255,255,255,0.58);margin-top:1px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sh-x{width:30px;height:30px;flex:0 0 30px;border-radius:50%;border:1px solid rgba(255,255,255,0.16);
+  background:rgba(255,255,255,0.09);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sh-x:active{transform:scale(.9)}
+.sh-tabs{position:relative;z-index:1;display:flex;gap:4px;margin-top:14px;padding:4px;border-radius:13px 13px 0 0;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-bottom:none}
+.sh-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 4px;border:none;border-radius:10px;
+  background:transparent;color:rgba(255,255,255,0.55);font-family:var(--f-th);font-size:var(--text-3xs);cursor:pointer;
+  transition:background .15s,color .15s}
+.sh-tab.on{background:#fff;color:#4A3E58;font-weight:600}
+.sh-tab:active{transform:scale(.97)}
+.sh-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  padding:14px 14px 20px;transform:translateZ(0)}
+.sh-foot{flex:0 0 auto;padding:11px 14px calc(11px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--bdr-l)}
+.sh-foot:empty{display:none}
+.sh-sum{display:flex;align-items:center;gap:6px;font-size:var(--text-3xs);color:var(--txt3);margin-bottom:9px}
+.sh-sum b{color:var(--pri);font-weight:600}
+.sh-acts{display:flex;gap:8px}
+.sh-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:13px 10px;border-radius:14px;border:none;
+  font-family:var(--f-th);font-size:var(--text-2xs);font-weight:600;cursor:pointer;color:#fff;
+  background:linear-gradient(135deg,#6B5B7A,#4A3E58);transition:transform .1s,opacity .12s}
+.sh-btn.gold{background:linear-gradient(135deg,#C6A176,#A8865C)}
+.sh-btn.ghost{background:#fff;color:var(--txt2);border:1px solid var(--bdr);font-weight:500}
+.sh-btn.danger{background:#fff;color:#B03A3A;border:1px solid rgba(176,58,58,0.3)}
+.sh-btn.icon{flex:0 0 46px;padding:13px 0}
+.sh-btn:active{transform:scale(.97)}
+.sh-btn[disabled]{opacity:.42;pointer-events:none}
+.sh-hint{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;border-radius:13px;margin-bottom:12px;
+  background:rgba(184,149,107,0.08);border:1px solid rgba(184,149,107,0.2);
+  font-size:var(--text-3xs);color:var(--txt2);line-height:1.6}
+.sh-hint svg{flex:0 0 14px;color:var(--gold);margin-top:1px}
+.sh-lb{font-size:var(--text-3xs);color:var(--txt3);font-weight:600;margin:14px 2px 7px;display:flex;align-items:center;gap:6px}
+.sh-lb i{flex:1;height:1px;background:var(--bdr-l)}
+.sh-grp{border-radius:17px;margin-bottom:9px;overflow:hidden;background:var(--card);
+  border:1px solid var(--gb,rgba(107,91,122,0.14));contain:layout style}
+.sh-ghead{display:flex;align-items:center;gap:9px;padding:11px 12px;cursor:pointer;background:var(--gw,rgba(107,91,122,0.05))}
+.sh-gic{width:26px;height:26px;flex:0 0 26px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(135deg,var(--gc,#6B5B7A),var(--gc2,#8A7A99))}
+.sh-gtt{flex:1;min-width:0}
+.sh-gtt b{display:block;font-size:var(--text-2xs);font-weight:600;color:var(--txt);line-height:1.35}
+.sh-gtt span{display:block;font-size:var(--text-3xs);color:var(--txt3);margin-top:1px}
+.sh-gchev{color:var(--txt3);transition:transform .2s;flex:0 0 auto;line-height:0}
+.sh-grp.open .sh-gchev{transform:rotate(90deg)}
+.sh-glist{display:none;padding:2px 8px 9px}
+.sh-grp.open .sh-glist{display:block}
+.sh-row{display:flex;align-items:center;gap:9px;padding:9px;border-radius:12px;margin-top:5px;background:var(--card2);
+  border:1px solid transparent;transition:background .13s,border-color .13s;contain:layout style}
+.sh-row.sel{background:rgba(107,91,122,0.07);border-color:rgba(107,91,122,0.22)}
+.sh-rtt{flex:1;min-width:0;cursor:pointer}
+.sh-rtt b{display:block;font-size:var(--text-2xs);font-weight:500;color:var(--txt);line-height:1.4;word-break:break-word}
+.sh-rtt span{display:block;font-size:var(--text-3xs);color:var(--txt3);margin-top:1px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sh-ck{position:relative;width:22px;height:22px;flex:0 0 22px;border-radius:7px;border:1.6px solid var(--bdr);background:#fff;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;color:transparent;padding:0;
+  transition:background .12s,border-color .12s,color .12s,transform .1s}
+.sh-ck.on{background:linear-gradient(135deg,#7A6A89,#584A66);border-color:transparent;color:#fff}
+.sh-ck.half{background:#fff;border-color:var(--pri);color:var(--pri)}
+.sh-ck.half::after{content:'';position:absolute;width:9px;height:2px;border-radius:1px;background:var(--pri)}
+.sh-ck.half svg{display:none}
+.sh-ck:active{transform:scale(.88)}
+.sh-mini{width:26px;height:26px;flex:0 0 26px;border-radius:8px;border:1px solid var(--bdr);background:#fff;color:var(--txt3);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;
+  transition:color .13s,border-color .13s,background .13s,transform .1s}
+.sh-mini.on{border-color:var(--pri);color:var(--pri);background:rgba(107,91,122,0.08)}
+.sh-mini:active{transform:scale(.88)}
+.sh-parts{display:none;flex-wrap:wrap;gap:5px;padding:8px 9px 3px;margin-top:2px}
+.sh-parts.on{display:flex}
+.sh-chip{display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 10px;border-radius:13px;cursor:pointer;
+  border:1px solid var(--bdr);background:#fff;color:var(--txt3);font-family:var(--f-th);font-size:var(--text-3xs);
+  transition:background .12s,border-color .12s,color .12s}
+.sh-chip em{font-style:normal;opacity:.6;font-size:9px}
+.sh-chip.on{border-color:var(--pri);background:rgba(107,91,122,0.09);color:var(--pri);font-weight:600}
+.sh-chip:active{transform:scale(.95)}
+.sh-empty{text-align:center;padding:26px 16px;color:var(--txt3);font-size:var(--text-3xs);line-height:1.8}
+.sh-tag{flex:0 0 auto;height:20px;padding:0 8px;border-radius:10px;display:inline-flex;align-items:center;font-size:9px;font-weight:600}
+.sh-tag.new{background:rgba(122,158,122,0.14);color:#5C7F5C}
+.sh-tag.dup{background:rgba(184,149,107,0.16);color:#8E6F45}
+.sh-drop{border:1.6px dashed rgba(107,91,122,0.32);border-radius:18px;padding:24px 16px;text-align:center;cursor:pointer;
+  background:rgba(107,91,122,0.03);transition:background .15s,border-color .15s}
+.sh-drop:active,.sh-drop.over{background:rgba(107,91,122,0.08);border-color:var(--pri)}
+.sh-drop-ic{width:46px;height:46px;margin:0 auto 10px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+  color:#fff;background:linear-gradient(135deg,#8A7A99,#584A66)}
+.sh-drop b{display:block;font-size:var(--text-2xs);color:var(--txt);font-weight:600}
+.sh-drop span{display:block;font-size:var(--text-3xs);color:var(--txt3);margin-top:3px}
+.sh-ta{width:100%;min-height:74px;padding:11px 12px;border:1px solid var(--bdr);border-radius:13px;background:var(--card);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:var(--txt2);outline:none;resize:vertical}
+.sh-ta:focus{border-color:var(--pri)}
+.sh-from{display:flex;align-items:center;gap:10px;padding:12px;border-radius:16px;margin-bottom:12px;
+  background:rgba(107,91,122,0.07);border:1px solid rgba(107,91,122,0.16)}
+.sh-from b{font-size:var(--text-2xs);color:var(--txt);display:block}
+.sh-from span{font-size:var(--text-3xs);color:var(--txt3)}
+.sh-opt{display:grid;gap:9px;padding:12px;border-radius:16px;background:var(--card);border:1px solid var(--bdr-l);margin-bottom:11px}
+.sh-opt-r{display:flex;align-items:center;gap:9px}
+.sh-opt-r>label{flex:1;font-size:var(--text-3xs);color:var(--txt2)}
+.sh-sel{padding:8px 10px;border:1px solid var(--bdr);border-radius:10px;font-family:var(--f-th);font-size:var(--text-3xs);
+  background:#fff;color:var(--txt);max-width:60%;outline:none}
+.sh-seg{display:flex;gap:4px;padding:3px;border-radius:12px;background:var(--card2);border:1px solid var(--bdr-l)}
+.sh-seg button{flex:1;padding:8px 3px;border:none;border-radius:9px;background:transparent;color:var(--txt3);
+  font-family:var(--f-th);font-size:var(--text-3xs);cursor:pointer;transition:background .13s,color .13s;line-height:1.3}
+.sh-seg button.on{background:#fff;color:var(--pri);font-weight:600}
+.sh-note{font-size:var(--text-3xs);color:var(--txt3);line-height:1.7;padding:0 3px;margin-top:-3px}
+.sh-chips{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 9px;-webkit-overflow-scrolling:touch}
+.sh-chips::-webkit-scrollbar{height:0}
+.sh-tchip{flex:0 0 auto;display:flex;align-items:center;gap:6px;height:32px;padding:0 12px;border-radius:16px;cursor:pointer;
+  border:1px solid var(--bdr);background:#fff;color:var(--txt2);font-family:var(--f-th);font-size:var(--text-3xs);
+  transition:background .13s,border-color .13s,color .13s}
+.sh-tchip i{width:7px;height:7px;border-radius:50%;background:var(--tc,#6B5B7A);flex:0 0 7px}
+.sh-tchip.on{border-color:var(--tc,#6B5B7A);background:var(--tcl,rgba(107,91,122,0.1));color:var(--tc,#6B5B7A);font-weight:600}
+.sh-tchip:active{transform:scale(.96)}
+#sh-org-list{position:relative;touch-action:pan-y}
+.sh-drow{display:flex;align-items:center;gap:8px;padding:10px;border-radius:14px;margin-bottom:6px;background:var(--card);
+  border:1px solid var(--bdr-l);transition:background .13s,border-color .13s;contain:layout style}
+.sh-drow.sel{border-color:rgba(107,91,122,0.3);background:rgba(107,91,122,0.05)}
+.sh-drow.drag{box-shadow:0 10px 26px rgba(48,38,60,0.22);border-color:var(--pri);position:relative;z-index:20;
+  will-change:transform;transition:none;background:#fff}
+.sh-handle{width:30px;height:38px;flex:0 0 30px;display:flex;align-items:center;justify-content:center;color:var(--txt3);
+  cursor:grab;touch-action:none;border-radius:8px}
+.sh-handle:active{cursor:grabbing;background:var(--card2)}
+.sh-dline{position:absolute;top:0;left:6px;right:6px;height:2.5px;border-radius:2px;
+  background:linear-gradient(90deg,#B8956B,#6B5B7A);display:none;z-index:15;will-change:transform}
+.sh-dline.on{display:block}
+.sh-bar{display:flex;gap:7px;align-items:center;padding:9px 11px;border-radius:14px;margin-bottom:10px;
+  background:linear-gradient(140deg,#4A3E58,#6B5B7A);color:#fff}
+.sh-bar b{flex:1;font-size:var(--text-3xs);font-weight:500}
+.sh-bb{height:30px;padding:0 11px;border-radius:15px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.12);
+  color:#fff;font-family:var(--f-th);font-size:var(--text-3xs);cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.sh-bb.solid{background:#fff;color:#4A3E58;border-color:#fff;font-weight:600}
+.sh-bb:active{transform:scale(.94)}
+.sh-pop{position:fixed;inset:0;z-index:100060;display:none;align-items:flex-end;justify-content:center;background:rgba(28,22,36,0.5)}
+.sh-pop.on{display:flex}
+.sh-pop-in{width:100%;max-width:520px;background:var(--bg);border-radius:22px 22px 0 0;
+  padding:16px 14px calc(16px + env(safe-area-inset-bottom));max-height:74dvh;overflow-y:auto;overscroll-behavior:contain;
+  animation:shUp .2s cubic-bezier(.22,1,.36,1)}
+@media(min-width:700px){.sh-pop{align-items:center}.sh-pop-in{border-radius:20px}}
+.sh-pop-t{font-size:var(--text-xs);font-weight:600;color:var(--txt);margin-bottom:3px}
+.sh-pop-s{font-size:var(--text-3xs);color:var(--txt3);margin-bottom:12px}
+.sh-pick{display:flex;align-items:center;gap:10px;width:100%;padding:12px;border-radius:13px;margin-bottom:6px;cursor:pointer;
+  border:1px solid var(--bdr-l);background:var(--card);font-family:var(--f-th);text-align:left;transition:background .13s}
+.sh-pick i{width:26px;height:26px;flex:0 0 26px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(135deg,var(--pc,#6B5B7A),var(--pc2,#8A7A99))}
+.sh-pick b{flex:1;font-size:var(--text-2xs);font-weight:500;color:var(--txt)}
+.sh-pick span{font-size:var(--text-3xs);color:var(--txt3)}
+.sh-pick:active{background:var(--card2)}
+.sh-pick.cur{border-color:rgba(107,91,122,0.35);background:rgba(107,91,122,0.06)}
+.qmanage{flex-wrap:wrap}
+.qm-btn{min-width:calc(50% - 4px)}
+`;
+
+/* ── สถานะ ── */
+const SH={
+  tab:'export',
+  sel:{},
+  index:{},
+  groups:[],
+  openGrp:{},
+  opt:{progress:false},
+  search:'',
+  imp:null,
+  impSel:{},
+  impOpt:{dest:'__keep',mode:'merge',progress:false,newName:''},
+  org:{topic:null,sel:{},mode:'card'},
+  dirty:false
+};
+window.SH=SH;
+
+const PARTS=[
+  {k:'overview',  n:'ภาพรวม'},
+  {k:'reasons',   n:'ที่มา/สาเหตุ'},
+  {k:'stories',   n:'เรื่องราว'},
+  {k:'notes',     n:'บันทึกอายะฮ์'},
+  {k:'meanings',  n:'ความหมาย'},
+  {k:'tafsirs',   n:'ตัฟซีร'},
+  {k:'names',     n:'พระนามอัลลอฮ์'},
+  {k:'habits',    n:'นิสัย'},
+  {k:'ayahGroups',n:'กลุ่มอายะฮ์'},
+  {k:'_ar',       n:'ตัวบท/ไฮไลท์'}
+];
+
+/* ── ตัวช่วย ── */
+const E=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const el=id=>document.getElementById(id);
+const TOAST=m=>{try{toast(m);}catch(e){}};
+const HX=c=>{try{return _hx(c);}catch(e){return '#6B5B7A';}};
+const HX2=c=>{try{return _hx2(c);}catch(e){return '#8A7A99';}};
+const RGBA=(c,a)=>{const h=HX(c).replace('#','');return 'rgba('+parseInt(h.slice(0,2),16)+','+parseInt(h.slice(2,4),16)+','+parseInt(h.slice(4,6),16)+','+a+')';};
+const TIC=i=>{try{return _QICON[i]||_QICON.bookmark;}catch(e){return SI.folder;}};
+const topics=()=>{try{return _allTopics(false);}catch(e){return [];}};
+const topicName=id=>{try{const t=_topicById(id);return t?t.name:'ไม่มีหัวข้อ';}catch(e){return 'ไม่มีหัวข้อ';}};
+const PL=()=>(typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]);
+function kb(n){return n<1024?n+' B':(n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB');}
+
+/* ── ลำดับการ์ด / ลำดับหัวข้อ (แคชไว้ ไม่อ่าน localStorage ซ้ำ) ── */
+let COL=null;
+function ordAll(){return get('plusCardOrder',{});}
+function ordOf(t){return (ordAll()[t]||[]).slice();}
+function ordSet(t,arr){const a=ordAll();a[t]=arr;set('plusCardOrder',a);}
+function sortCards(t,arr){
+  const m=ordAll()[t];if(!m||!m.length)return arr;
+  const pos={};for(let i=0;i<m.length;i++)pos[m[i]]=i;
+  return arr.slice().sort((a,b)=>(pos[a.n]===undefined?9999:pos[a.n])-(pos[b.n]===undefined?9999:pos[b.n]));
+}
+function torder(){return get('plusTopicOrder',[]);}
+function sortTopics(list){
+  const m=torder();if(!m||!m.length)return list;
+  const pos={};for(let i=0;i<m.length;i++)pos[m[i]]=i;
+  return list.slice().sort((a,b)=>(pos[a.id]===undefined?9999:pos[a.id])-(pos[b.id]===undefined?9999:pos[b.id]));
+}
+window._shSortCards=sortCards;
+window._shSortTopics=sortTopics;
+
+/* ── แคชข้อมูล ── */
+let CACHE=null;
+function cache(){
+  if(CACHE)return CACHE;
+  const ut=get('userAyahTexts',{}),hl=get('ayahHighlights',{}),hi={};
+  Object.keys(hl).forEach(k=>{const p=k.lastIndexOf('-');if(p<1)return;const s=k.slice(0,p);(hi[s]=hi[s]||{})[k.slice(p+1)]=hl[k];});
+  CACHE={ut:ut,hl:hl,hi:hi,cnt:{}};return CACHE;
+}
+function bust(){CACHE=null;COL=null;}
+
+function counts(n){
+  const c=cache(),key=String(n);
+  if(c.cnt[key])return c.cnt[key];
+  const d=(typeof getSurah==='function')?(getSurah(n)||{}):{};
+  return c.cnt[key]={
+    overview:d.overview?1:0,
+    reasons:d.reasons?1:0,
+    stories:d.stories?1:0,
+    notes:Object.keys(d.notes||{}).length,
+    meanings:Object.keys(d.meanings||{}).length,
+    tafsirs:Object.keys(d.tafsirs||{}).length,
+    names:(d.names||[]).length,
+    habits:(d.habits||[]).length,
+    ayahGroups:(d.ayahGroups||[]).length,
+    _ar:Object.keys(c.ut[key]||{}).length+Object.keys(c.hi[key]||{}).length
+  };
+}
+function total(c){let t=0;for(let i=0;i<PARTS.length;i++)t+=c[PARTS[i].k]||0;return t;}
+
+function extract(n,parts,withProgress){
+  const d=(typeof getSurah==='function')?(getSurah(n)||{}):{},o={},c=cache(),key=String(n);
+  ['overview','reasons','stories'].forEach(k=>{if(parts[k]&&d[k])o[k]=d[k];});
+  ['notes','meanings','tafsirs'].forEach(k=>{if(parts[k]&&d[k]&&Object.keys(d[k]).length)o[k]=d[k];});
+  ['names','habits','ayahGroups'].forEach(k=>{if(parts[k]&&(d[k]||[]).length)o[k]=d[k];});
+  if(parts._ar){
+    if(Object.keys(c.ut[key]||{}).length)o._ar=c.ut[key];
+    if(Object.keys(c.hi[key]||{}).length)o._hl=c.hi[key];
+  }
+  if(withProgress)o._p={text:d.text||0,meaning:d.meaning||0,tafsir:d.tafsir||0};
+  return o;
+}
+
+/* ── โครงหน้าต่าง ── */
+function mount(){
+  if(el('sh-ov'))return;
+  const st=document.createElement('style');st.id='sh-style';st.textContent=CSS;document.head.appendChild(st);
+  const ov=document.createElement('div');ov.id='sh-ov';ov.className='sh-ov';
+  ov.innerHTML=
+   '<div class="sh-sheet" role="dialog" aria-label="ศูนย์แชร์บันทึก">'+
+     '<div class="sh-top">'+
+       '<div class="sh-top-row">'+
+         '<div class="sh-badge">'+svg(SI.share,17)+'</div>'+
+         '<div class="sh-tt"><b>ศูนย์แชร์บันทึก</b><span id="sh-sub"></span></div>'+
+         '<button class="sh-x" onclick="SH.close()" aria-label="ปิด">'+svg(SI.x,15)+'</button>'+
+       '</div>'+
+       '<div class="sh-tabs">'+
+         '<button class="sh-tab" data-t="export" onclick="SH.go(\'export\')">'+svg(SI.share,13)+'<span>ส่งออก</span></button>'+
+         '<button class="sh-tab" data-t="import" onclick="SH.go(\'import\')">'+svg(SI.down,13)+'<span>นำเข้า</span></button>'+
+         '<button class="sh-tab" data-t="organize" onclick="SH.go(\'organize\')">'+svg(SI.layers,13)+'<span>จัดระเบียบ</span></button>'+
+       '</div>'+
+     '</div>'+
+     '<div class="sh-body" id="sh-body"></div>'+
+     '<div class="sh-foot" id="sh-foot"></div>'+
+   '</div>';
+  document.body.appendChild(ov);
+  ov.addEventListener('click',e=>{if(e.target===ov)SH.close();});
+  const pop=document.createElement('div');pop.id='sh-pop';pop.className='sh-pop';
+  pop.innerHTML='<div class="sh-pop-in" id="sh-pop-in"></div>';
+  document.body.appendChild(pop);
+  pop.addEventListener('click',e=>{if(e.target===pop)closePop();});
+  const fi=document.createElement('input');fi.type='file';fi.id='sh-file';fi.accept='.json,application/json';fi.style.display='none';
+  fi.addEventListener('change',onFile);
+  document.body.appendChild(fi);
+}
+
+/* วาดหน้าเบื้องหลังใหม่ ทำครั้งเดียวตอนปิด เพื่อไม่ให้หน่วงระหว่างใช้งาน */
+function refreshApp(){
+  ['renderPlus','renderCustomCategories','renderQTabs','updateAllSelectors','renderHome','renderKnowledge','renderGoals','renderRewards','renderRecentGrid']
+    .forEach(f=>{try{if(typeof window[f]==='function')window[f]();}catch(e){}});
+}
+function markDirty(){SH.dirty=true;}
+
+SH.open=function(tab){
+  mount();bust();
+  SH.tab=tab||'export';
+  if(!SH.org.topic){const t=sortTopics(topics());SH.org.topic=t.length?t[0].id:null;}
+  el('sh-ov').classList.add('on');
+  document.body.style.overflow='hidden';
+  draw();
+};
+SH.close=function(){
+  const o=el('sh-ov');if(o)o.classList.remove('on');
+  closePop();document.body.style.overflow='';
+  if(SH.dirty){SH.dirty=false;setTimeout(refreshApp,30);}
+};
+SH.go=function(t){SH.tab=t;draw();const b=el('sh-body');if(b)b.scrollTop=0;};
+
+function draw(){
+  mount();
+  const tabs=document.querySelectorAll('.sh-tab');
+  for(let i=0;i<tabs.length;i++)tabs[i].classList.toggle('on',tabs[i].dataset.t===SH.tab);
+  el('sh-sub').textContent=SH.tab==='export'?'เลือกทีละการ์ด หรือทั้งหัวข้อ แล้วส่งให้เพื่อน'
+    :SH.tab==='import'?'รับไฟล์จากเพื่อน · เลือกได้ว่าจะเอาอะไรบ้าง'
+    :'ย้ายการ์ดข้ามหัวข้อ · เรียงลำดับ · ทำสำเนา';
+  if(SH.tab==='export')drawExport();
+  else if(SH.tab==='import')drawImport();
+  else drawOrg();
+}
+
+/* ═══════════════════════ ส่งออก ═══════════════════════ */
+function collect(){
+  if(COL)return COL;
+  const gs=[],idx={};
+  sortTopics(topics()).forEach(t=>{
+    const cards=sortCards(t.id,PL().filter(s=>s.category===t.id));
+    const items=cards.map(s=>{
+      const c=counts(s.n);
+      const it={key:String(s.n),n:s.n,type:'card',gid:t.id,name:s.name,
+        sub:(s.ref?String(s.ref).replace(/:/g,' : ')+' · ':'')+(s.ayah||1)+' '+((typeof unitOf==='function')?unitOf(s):'อายะฮ์'),
+        c:c,total:total(c)};
+      idx[it.key]=it;return it;
+    });
+    gs.push({id:t.id,name:t.name,color:t.color,icon:t.icon,items:items});
+  });
+  const seen={},sur=[];
+  const all=[].concat(typeof SURAHS!=='undefined'?SURAHS:[],typeof ALL_SURAHS!=='undefined'?ALL_SURAHS:[]);
+  for(let i=0;i<all.length;i++){
+    const s=all[i],k=String(s.n);
+    if(seen[k])continue;seen[k]=1;
+    const c=counts(s.n),t=total(c);if(!t)continue;
+    const it={key:k,n:s.n,type:'surah',gid:'__surah',name:s.name,sub:'ซูเราะฮ์ที่ '+s.n+' · '+t+' บันทึก',c:c,total:t};
+    idx[k]=it;sur.push(it);
+  }
+  if(sur.length)gs.push({id:'__surah',name:'บันทึกซูเราะฮ์',color:'gold',icon:'book',items:sur});
+  if(!Object.keys(SH.openGrp).length&&gs.length&&gs[0].items.length&&gs[0].items.length<=20)SH.openGrp[gs[0].id]=true;
+  SH.groups=gs;SH.index=idx;COL={gs:gs,idx:idx};
+  return COL;
+}
+
+function defParts(it){const p={};for(let i=0;i<PARTS.length;i++){const k=PARTS[i].k;if(it.c[k])p[k]=true;}return p;}
+function isSel(k){return !!SH.sel[k];}
+function selCount(){return Object.keys(SH.sel).length;}
+function partsOn(k){return SH.sel[k]?SH.sel[k].parts:{};}
+function visible(it){
+  if(!SH.search)return true;
+  return (it.name||'').toLowerCase().indexOf(SH.search)>-1||(it.sub||'').toLowerCase().indexOf(SH.search)>-1;
+}
+function ck(state,handler,id){
+  return '<button'+(id?' id="'+id+'"':'')+' class="sh-ck'+(state==='on'?' on':state==='half'?' half':'')+'" onclick="'+handler+'">'+svg(SI.check,13)+'</button>';
+}
+
+/* ── อัปเดตเฉพาะจุด ── */
+function syncRow(k){
+  const r=el('shr-'+k);if(!r)return;
+  const on=isSel(k);
+  r.classList.toggle('sel',on);
+  const c=r.firstElementChild;if(c&&c.classList.contains('sh-ck'))c.classList.toggle('on',on);
+}
+function syncGroup(gid){
+  const g=SH.groups.find(x=>x.id===gid);if(!g)return;
+  let vis=0,on=0;
+  for(let i=0;i<g.items.length;i++){const it=g.items[i];if(!visible(it))continue;vis++;if(isSel(it.key))on++;}
+  const c=el('shgc-'+gid);
+  if(c){c.classList.toggle('on',vis>0&&on===vis);c.classList.toggle('half',on>0&&on<vis);}
+  const n=el('shgn-'+gid);
+  if(n)n.textContent=vis+' รายการ'+(on?' · เลือกแล้ว '+on:'');
+}
+let sizeT=null;
+function syncFoot(){
+  const n=selCount(),c=el('sh-cnt');
+  if(!c)return;
+  c.innerHTML='เลือกแล้ว <b>'+n+'</b> รายการ';
+  const b1=el('sh-b1'),b2=el('sh-b2');
+  if(b1)b1.disabled=!n;if(b2)b2.disabled=!n;
+  clearTimeout(sizeT);
+  if(!n)return;
+  sizeT=setTimeout(()=>{
+    let size=0;try{size=new Blob([JSON.stringify(payload())]).size;}catch(e){}
+    const cc=el('sh-cnt');
+    if(cc&&selCount()===n&&size)cc.innerHTML='เลือกแล้ว <b>'+n+'</b> รายการ · ราว '+kb(size);
+  },420);
+}
+
+SH.pick=function(k){
+  const it=SH.index[k];if(!it)return;
+  if(SH.sel[k])delete SH.sel[k];else SH.sel[k]={parts:defParts(it)};
+  syncRow(k);syncGroup(it.gid);syncPartsChips(k);syncFoot();
+};
+SH.pickGrp=function(gid){
+  const g=SH.groups.find(x=>x.id===gid);if(!g)return;
+  const vis=g.items.filter(visible);
+  const allOn=vis.length>0&&vis.every(i=>isSel(i.key));
+  for(let i=0;i<vis.length;i++){
+    const it=vis[i];
+    if(allOn)delete SH.sel[it.key];else SH.sel[it.key]={parts:defParts(it)};
+    syncRow(it.key);syncPartsChips(it.key);
+  }
+  syncGroup(gid);syncFoot();
+};
+SH.pickAll=function(){
+  const any=selCount()>0;
+  for(let i=0;i<SH.groups.length;i++){
+    const g=SH.groups[i];
+    for(let j=0;j<g.items.length;j++){
+      const it=g.items[j];if(!visible(it))continue;
+      if(any)delete SH.sel[it.key];else SH.sel[it.key]={parts:defParts(it)};
+      syncRow(it.key);syncPartsChips(it.key);
+    }
+    syncGroup(g.id);
+  }
+  syncFoot();
+};
+function rowHTML(it){
+  const sel=isSel(it.key);
+  return '<div class="sh-row'+(sel?' sel':'')+'" id="shr-'+it.key+'">'+
+      ck(sel?'on':'off','SH.pick(\''+it.key+'\')')+
+      '<div class="sh-rtt" onclick="SH.pick(\''+it.key+'\')"><b>'+E(it.name)+'</b><span>'+E(it.sub)+(it.total?' · '+it.total+' บันทึก':' · ยังไม่มีบันทึก')+'</span></div>'+
+      (it.total?'<button id="shb-'+it.key+'" class="sh-mini" title="เลือกเนื้อหา" onclick="SH.toggleParts(\''+it.key+'\')">'+svg(SI.spark,13)+'</button>':'')+
+    '</div>'+
+    (it.total?'<div class="sh-parts" id="shp-'+it.key+'"></div>':'');
+}
+/* วาดรายการในหัวข้อเมื่อกางออกเท่านั้น — เปิดหน้าจึงไวมาก */
+function fillGroup(gid){
+  const box=el('shl-'+gid);if(!box)return;
+  if(box.dataset.q===SH.search&&box.dataset.built)return;
+  const g=SH.groups.find(x=>x.id===gid);if(!g)return;
+  const items=g.items.filter(visible);
+  if(!items.length){box.innerHTML='<div class="sh-empty">'+(SH.search?'ไม่พบรายการที่ตรงกับคำค้น':'ยังไม่มีรายการในหัวข้อนี้')+'</div>';}
+  else{const h=[];for(let i=0;i<items.length;i++)h.push(rowHTML(items[i]));box.innerHTML=h.join('');}
+  box.dataset.built='1';box.dataset.q=SH.search;
+}
+SH.toggleGrp=function(gid){
+  const g=el('shg-'+gid);if(!g)return;
+  const willOpen=!g.classList.contains('open');
+  if(willOpen)fillGroup(gid);
+  g.classList.toggle('open',willOpen);
+};
+
+function partsLine(k){
+  const it=SH.index[k];if(!it)return '';
+  return 'เลือก '+Object.keys(partsOn(k)).length+' จาก '+Object.keys(defParts(it)).length+' ส่วน';
+}
+function partsHTML(it){
+  let h='';const ps=partsOn(it.key);
+  for(let i=0;i<PARTS.length;i++){
+    const p=PARTS[i];if(!it.c[p.k])continue;
+    let nm=p.n;
+    try{if(typeof L3==='function'&&(p.k==='notes'||p.k==='meanings'||p.k==='tafsirs'))nm=L3(p.k,it.n)||p.n;}catch(e){}
+    h+='<button id="shc-'+it.key+'-'+p.k+'" class="sh-chip'+(ps[p.k]?' on':'')+'" onclick="SH.togglePart(\''+it.key+'\',\''+p.k+'\')">'+
+       svg(SI.check,10)+E(nm)+' <em>'+it.c[p.k]+'</em></button>';
+  }
+  h+='<div id="shn-'+it.key+'" style="width:100%;font-size:9px;color:var(--txt3);padding:2px 4px">'+partsLine(it.key)+'</div>';
+  return h;
+}
+function syncPartsChips(k){
+  const box=el('shp-'+k);if(!box||!box.dataset.built)return;
+  const ps=partsOn(k),it=SH.index[k];if(!it)return;
+  for(let i=0;i<PARTS.length;i++){
+    const p=PARTS[i];if(!it.c[p.k])continue;
+    const c=el('shc-'+k+'-'+p.k);if(c)c.classList.toggle('on',!!ps[p.k]);
+  }
+  const n=el('shn-'+k);if(n)n.textContent=partsLine(k);
+}
+SH.toggleParts=function(k){
+  const box=el('shp-'+k);if(!box)return;
+  if(!box.dataset.built){box.innerHTML=partsHTML(SH.index[k]);box.dataset.built='1';}
+  const on=box.classList.toggle('on');
+  const b=el('shb-'+k);if(b)b.classList.toggle('on',on);
+};
+SH.togglePart=function(k,p){
+  const it=SH.index[k];if(!it)return;
+  if(!SH.sel[k])SH.sel[k]={parts:{}};
+  const ps=SH.sel[k].parts;
+  if(ps[p])delete ps[p];else ps[p]=true;
+  if(!Object.keys(ps).length)delete SH.sel[k];
+  const c=el('shc-'+k+'-'+p);if(c)c.classList.toggle('on',!!(SH.sel[k]&&SH.sel[k].parts[p]));
+  const n=el('shn-'+k);if(n)n.textContent=partsLine(k);
+  syncRow(k);syncGroup(it.gid);syncFoot();
+};
+SH.optProg=function(){
+  SH.opt.progress=!SH.opt.progress;
+  const b=el('sh-prog');if(b)b.classList.toggle('on',SH.opt.progress);
+  syncFoot();
+};
+
+let searchT=null;
+SH.setSearch=function(v){
+  SH.search=(v||'').trim().toLowerCase();
+  clearTimeout(searchT);searchT=setTimeout(applySearch,130);
+};
+function applySearch(){
+  let any=0;
+  for(let i=0;i<SH.groups.length;i++){
+    const g=SH.groups[i];
+    let shown=0;
+    for(let j=0;j<g.items.length;j++)if(visible(g.items[j]))shown++;
+    const ge=el('shg-'+g.id);
+    if(ge){
+      ge.style.display=shown?'':'none';
+      if(SH.search&&shown)ge.classList.add('open');
+      if(shown&&ge.classList.contains('open'))fillGroup(g.id);
+    }
+    syncGroup(g.id);any+=shown;
+  }
+  const n=el('sh-none');if(n)n.style.display=any?'none':'';
+}
+
+function drawExport(){
+  collect();
+  const body=el('sh-body');
+  const h=[];
+  h.push('<div class="sh-hint">'+svg(SI.info,14)+'<div>เลือก <b>ทั้งหัวข้อ</b> ได้ที่แถวหัวข้อ หรือกดลูกศรเพื่อเลือก<b>ทีละการ์ด</b> · แตะปุ่ม '+svg(SI.spark,11)+' ที่การ์ดเพื่อเลือกเฉพาะเนื้อหาบางส่วน</div></div>');
+  h.push('<div style="display:flex;gap:7px;align-items:center;margin-bottom:11px">'+
+      '<div style="flex:1;position:relative">'+
+        '<span style="position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--txt3);line-height:0">'+svg(SI.search,13)+'</span>'+
+        '<input id="sh-q" class="mdl-in" style="padding-left:32px" placeholder="ค้นหาการ์ด / ซูเราะฮ์ ..." value="'+E(SH.search)+'" oninput="SH.setSearch(this.value)">'+
+      '</div>'+
+      '<button class="sh-mini" style="width:36px;height:36px;flex:0 0 36px;border-radius:11px" title="เลือกทั้งหมด" onclick="SH.pickAll()">'+svg(SI.check,15)+'</button>'+
+     '</div>');
+
+  for(let i=0;i<SH.groups.length;i++){
+    const g=SH.groups[i];
+    const vis=g.items.filter(visible);
+    const on=vis.filter(x=>isSel(x.key)).length;
+    const state=on===0?'off':(on===vis.length&&vis.length?'on':'half');
+    const open=!!SH.openGrp[g.id]||!!SH.search;
+    h.push('<div class="sh-grp'+(open?' open':'')+'" id="shg-'+g.id+'" style="--gc:'+HX(g.color)+';--gc2:'+HX2(g.color)+';--gb:'+RGBA(g.color,0.16)+';--gw:'+RGBA(g.color,0.06)+'">'+
+      '<div class="sh-ghead">'+
+        ck(state,'event.stopPropagation();SH.pickGrp(\''+g.id+'\')','shgc-'+g.id)+
+        '<div class="sh-gic"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+TIC(g.icon)+'</svg></div>'+
+        '<div class="sh-gtt" onclick="SH.toggleGrp(\''+g.id+'\')"><b>'+E(g.name)+'</b><span id="shgn-'+g.id+'">'+vis.length+' รายการ'+(on?' · เลือกแล้ว '+on:'')+'</span></div>'+
+        '<span class="sh-gchev" onclick="SH.toggleGrp(\''+g.id+'\')">'+svg(SI.chev,15)+'</span>'+
+      '</div><div class="sh-glist" id="shl-'+g.id+'"></div></div>');
+  }
+  h.push('<div class="sh-empty" id="sh-none" style="display:none">ไม่พบรายการที่ตรงกับคำค้น</div>');
+  h.push('<div class="sh-opt" style="margin-top:12px">'+
+      '<div class="sh-opt-r">'+ck(SH.opt.progress?'on':'off','SH.optProg()','sh-prog')+'<label onclick="SH.optProg()">แนบความคืบหน้าของฉันไปด้วย (ท่องแล้วกี่อายะฮ์)</label></div>'+
+      '<div class="sh-note">ปกติแล้วส่งเฉพาะ “เนื้อหาบันทึก” เท่านั้น เพื่อนจะได้เก็บความคืบหน้าของตัวเองไว้</div>'+
+    '</div>');
+  body.innerHTML=h.join('');
+
+  el('sh-foot').innerHTML=
+    '<div class="sh-sum">'+svg(SI.file,12)+'<span id="sh-cnt"></span></div>'+
+    '<div class="sh-acts">'+
+      '<button id="sh-b1" class="sh-btn ghost" onclick="SH.copy()">'+svg(SI.copy,14)+'คัดลอกโค้ด</button>'+
+      '<button id="sh-b2" class="sh-btn gold" onclick="SH.download()">'+svg(SI.share,14)+'ส่งออกไฟล์</button>'+
+    '</div>';
+  syncFoot();
+  if(SH.search)applySearch();
+  else for(let i=0;i<SH.groups.length;i++)if(SH.openGrp[SH.groups[i].id])fillGroup(SH.groups[i].id);
+}
+
+function payload(){
+  const out={app:'juz-amma-tracker',kind:'share',v:1,date:new Date().toISOString(),
+    from:(typeof getUsername==='function'?(getUsername()||''):''),topics:[],cards:[],surahs:[]};
+  const tids={};
+  Object.keys(SH.sel).forEach(k=>{
+    const it=SH.index[k];if(!it)return;
+    const data=extract(it.n,SH.sel[k].parts,SH.opt.progress);
+    if(it.type==='card'){
+      const s=PL().find(x=>String(x.n)===k);if(!s)return;
+      const m={};['n','name','ar','ref','ayah','category','usage','desc','hadith','hadithStrength','sourceType','unit'].forEach(f=>{if(s[f]!==undefined)m[f]=s[f];});
+      out.cards.push({meta:m,data:data});tids[s.category]=1;
+    }else out.surahs.push({n:it.n,name:it.name,data:data});
+  });
+  Object.keys(tids).forEach(id=>{try{const t=_topicById(id);if(t)out.topics.push({id:t.id,name:t.name,desc:t.desc||'',color:t.color||'pri',icon:t.icon||'bookmark'});}catch(e){}});
+  return out;
+}
+SH.payload=payload;
+
+SH.download=function(){
+  const p=payload();
+  if(!p.cards.length&&!p.surahs.length)return TOAST('ยังไม่ได้เลือกรายการ');
+  const blob=new Blob([JSON.stringify(p)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const who=(p.from||'บันทึก').replace(/[^a-zA-Z0-9ก-๙_-]/g,'_');
+  const d=new Date(),ds=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const a=document.createElement('a');a.href=url;a.download='แชร์บันทึก_'+who+'_'+ds+'.json';a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),800);
+  TOAST('ส่งออก '+(p.cards.length+p.surahs.length)+' รายการแล้ว ✓');
+};
+SH.copy=function(){
+  const p=payload();
+  if(!p.cards.length&&!p.surahs.length)return TOAST('ยังไม่ได้เลือกรายการ');
+  const txt=JSON.stringify(p);
+  const done=()=>TOAST('คัดลอกแล้ว · ส่งให้เพื่อนวางในแท็บ “นำเข้า”');
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(done).catch(()=>fallback(txt,done));
+  else fallback(txt,done);
+};
+function fallback(txt,done){
+  const ta=document.createElement('textarea');ta.value=txt;ta.style.cssText='position:fixed;left:-9999px';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');done();}catch(e){TOAST('คัดลอกไม่สำเร็จ ลองใช้ปุ่มส่งออกไฟล์');}
+  ta.remove();
+}
+
+/* เปิดพร้อมเลือกไว้ล่วงหน้า */
+SH.openForTopic=function(tid){
+  SH.open('export');SH.sel={};SH.search='';SH.openGrp[tid]=true;
+  collect();
+  const g=SH.groups.find(x=>x.id===tid);
+  if(g)g.items.forEach(i=>{SH.sel[i.key]={parts:defParts(i)};});
+  drawExport();
+};
+SH.openForSurah=function(n){
+  if(n===undefined||n===null){const s=el('surah-know-select');n=s?s.value:null;}
+  if(!n||n==='all')return TOAST('เลือกซูเราะฮ์ก่อน');
+  SH.open('export');SH.sel={};SH.search='';
+  collect();
+  const key=String(n),it=SH.index[key];
+  if(!it)return TOAST('ซูเราะฮ์นี้ยังไม่มีบันทึก');
+  SH.sel[key]={parts:defParts(it)};
+  SH.openGrp[it.gid]=true;
+  drawExport();
+};
+
+/* ═══════════════════════ นำเข้า ═══════════════════════ */
+SH.chooseFile=function(){const f=el('sh-file');if(f){f.value='';f.click();}};
+function onFile(e){
+  const f=e.target.files&&e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=ev=>{parse(String(ev.target.result));};
+  r.onerror=()=>TOAST('อ่านไฟล์ไม่ได้');
+  r.readAsText(f);
+}
+SH.parseBox=function(){
+  const t=el('sh-paste');
+  if(!t||!t.value.trim())return TOAST('วางโค้ดก่อน');
+  parse(t.value);
+};
+SH.reset=function(){SH.imp=null;SH.impSel={};drawImport();};
+SH.parseText=function(t){parse(t);};
+
+function parse(txt){
+  let d;
+  try{d=JSON.parse(txt);}catch(e){return TOAST('ไฟล์/โค้ดไม่ถูกต้อง');}
+  if(!d||typeof d!=='object')return TOAST('ไฟล์ไม่ถูกต้อง');
+  if(d.kind!=='share'||(!Array.isArray(d.cards)&&!Array.isArray(d.surahs))){
+    if(d._allKeys)return TOAST('นี่คือไฟล์สำรองทั้งเครื่อง · ใช้เมนู “ย้ายข้ามเครื่อง” แทน');
+    return TOAST('ไม่ใช่ไฟล์แชร์บันทึก');
+  }
+  bust();
+  const items=[];
+  (d.cards||[]).forEach((c,i)=>{
+    if(!c||!c.meta)return;
+    const ex=findCard(c.meta);
+    items.push({i:'c'+i,type:'card',name:c.meta.name||'ไม่มีชื่อ',
+      sub:(c.meta.ref?String(c.meta.ref).replace(/:/g,' : ')+' · ':'')+'จากหัวข้อ '+tnameIn(d,c.meta.category),
+      n:c.meta.n,meta:c.meta,data:c.data||{},dup:!!ex,cnt:cnt(c.data)});
+  });
+  (d.surahs||[]).forEach((s,i)=>{
+    if(!s)return;
+    items.push({i:'s'+i,type:'surah',name:s.name||('ซูเราะฮ์ '+s.n),sub:'บันทึกซูเราะฮ์ที่ '+s.n,
+      n:s.n,data:s.data||{},dup:total(counts(s.n))>0,cnt:cnt(s.data)});
+  });
+  SH.imp={raw:d,items:items};
+  SH.impSel={};items.forEach(x=>SH.impSel[x.i]=true);
+  SH.impOpt={dest:'__keep',mode:'merge',progress:false,newName:''};
+  SH.tab='import';draw();
+  const b=el('sh-body');if(b)b.scrollTop=0;
+}
+function tnameIn(d,id){
+  const t=(d.topics||[]).find(x=>x.id===id);
+  return t?t.name:topicName(id);
+}
+function cnt(data){
+  let n=0;if(!data)return 0;
+  ['overview','reasons','stories'].forEach(k=>{if(data[k])n++;});
+  ['notes','meanings','tafsirs','_ar','_hl'].forEach(k=>{if(data[k])n+=Object.keys(data[k]).length;});
+  ['names','habits','ayahGroups'].forEach(k=>{if(data[k])n+=data[k].length;});
+  return n;
+}
+function findCard(meta){
+  const L=PL();
+  let f=L.find(x=>String(x.n)===String(meta.n));
+  if(f)return f;
+  f=L.find(x=>(x.name||'')===(meta.name||'')&&String(x.ref||'')===String(meta.ref||''));
+  return f||null;
+}
+
+function impCount(){let n=0;Object.keys(SH.impSel).forEach(k=>{if(SH.impSel[k])n++;});return n;}
+function syncImpFoot(){
+  const n=impCount(),c=el('sh-icnt');
+  if(c)c.innerHTML='จะนำเข้า <b>'+n+'</b> รายการ · เก็บสำเนาสำรองอัตโนมัติก่อนเริ่ม';
+  const b=el('sh-ib');if(b)b.disabled=!n;
+  const t=el('sh-ilb');if(t)t.textContent='รายการในไฟล์ · เลือก '+n+'/'+(SH.imp?SH.imp.items.length:0);
+}
+SH.impPick=function(i){
+  SH.impSel[i]=!SH.impSel[i];
+  const r=el('shi-'+i);
+  if(r){r.classList.toggle('sel',!!SH.impSel[i]);const c=r.firstElementChild;if(c)c.classList.toggle('on',!!SH.impSel[i]);}
+  syncImpFoot();
+};
+SH.impAll=function(){
+  const any=impCount()>0;
+  SH.imp.items.forEach(x=>{
+    SH.impSel[x.i]=!any;
+    const r=el('shi-'+x.i);
+    if(r){r.classList.toggle('sel',!any);const c=r.firstElementChild;if(c)c.classList.toggle('on',!any);}
+  });
+  syncImpFoot();
+};
+SH.impSet=function(k,v){SH.impOpt[k]=v;drawImport();};
+SH.impName=function(v){SH.impOpt.newName=v;};
+SH.impProg=function(){
+  SH.impOpt.progress=!SH.impOpt.progress;
+  const b=el('sh-iprog');if(b)b.classList.toggle('on',SH.impOpt.progress);
+};
+
+function drawImport(){
+  const body=el('sh-body'),foot=el('sh-foot');
+  if(!SH.imp){
+    body.innerHTML=
+      '<div class="sh-hint">'+svg(SI.info,14)+'<div>รับไฟล์ <b>.json</b> ที่เพื่อนส่งมา หรือวาง<b>โค้ด</b>ที่คัดลอกมา · ข้อมูลเดิมของคุณจะไม่ถูกลบ ระบบเก็บสำเนาสำรองก่อนเสมอ</div></div>'+
+      '<div class="sh-drop" id="sh-drop" onclick="SH.chooseFile()">'+
+        '<div class="sh-drop-ic">'+svg(SI.down,22)+'</div>'+
+        '<b>แตะเพื่อเลือกไฟล์แชร์</b><span>หรือลากไฟล์มาวางตรงนี้</span>'+
+      '</div>'+
+      '<div class="sh-lb">หรือวางโค้ดที่คัดลอกมา<i></i></div>'+
+      '<textarea class="sh-ta" id="sh-paste" placeholder=\'วางโค้ดที่ขึ้นต้นด้วย {"app":"juz-amma-tracker" ...\'></textarea>'+
+      '<button class="sh-btn ghost" style="margin-top:9px" onclick="SH.parseBox()">'+svg(SI.check,14)+'ตรวจสอบโค้ด</button>';
+    foot.innerHTML='';
+    const dz=el('sh-drop');
+    if(dz){
+      ['dragenter','dragover'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.add('over');}));
+      ['dragleave','drop'].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();dz.classList.remove('over');}));
+      dz.addEventListener('drop',e=>{
+        const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];if(!f)return;
+        const r=new FileReader();r.onload=ev=>parse(String(ev.target.result));r.readAsText(f);
+      });
+    }
+    return;
+  }
+  const d=SH.imp.raw,items=SH.imp.items;
+  const dt=d.date?new Date(d.date):null;
+  const ds=dt&&!isNaN(dt)?(dt.getDate()+'/'+(dt.getMonth()+1)+'/'+dt.getFullYear()):'';
+  const h=[];
+  h.push('<div class="sh-from">'+
+      '<div class="sh-badge" style="background:linear-gradient(150deg,#8A7A99,#584A66);border:none">'+svg(SI.file,16)+'</div>'+
+      '<div style="flex:1;min-width:0"><b>'+E(d.from||'ไฟล์แชร์บันทึก')+'</b><span>'+items.length+' รายการ'+(ds?' · ส่งเมื่อ '+ds:'')+'</span></div>'+
+      '<button class="sh-mini" title="เลือกไฟล์อื่น" onclick="SH.reset()">'+svg(SI.back,13)+'</button>'+
+    '</div>');
+  const tlist=sortTopics(topics());
+  h.push('<div class="sh-opt">'+
+      '<div class="sh-opt-r"><label>นำการ์ดไปไว้ที่หัวข้อ</label>'+
+        '<select class="sh-sel" onchange="SH.impSet(\'dest\',this.value)">'+
+          '<option value="__keep"'+(SH.impOpt.dest==='__keep'?' selected':'')+'>ตามไฟล์ (สร้างหัวข้อให้อัตโนมัติ)</option>'+
+          tlist.map(t=>'<option value="'+t.id+'"'+(SH.impOpt.dest===t.id?' selected':'')+'>'+E(t.name)+'</option>').join('')+
+          '<option value="__new"'+(SH.impOpt.dest==='__new'?' selected':'')+'>+ สร้างหัวข้อใหม่ ...</option>'+
+        '</select>'+
+      '</div>'+
+      (SH.impOpt.dest==='__new'?'<input class="mdl-in" placeholder="ชื่อหัวข้อใหม่ เช่น บันทึกจากเพื่อน" value="'+E(SH.impOpt.newName||'')+'" oninput="SH.impName(this.value)">':'')+
+      '<div><label class="mdl-lb">ถ้ามีรายการนี้อยู่แล้ว</label><div class="sh-seg">'+
+        ['merge|ผสาน<br>(เติมที่ยังว่าง)','replace|ทับ<br>ของเดิม','new|เก็บทั้งสอง<br>(สร้างใหม่)','skip|ข้าม<br>ไปเลย'].map(x=>{
+          const p=x.split('|');
+          return '<button class="'+(SH.impOpt.mode===p[0]?'on':'')+'" onclick="SH.impSet(\'mode\',\''+p[0]+'\')">'+p[1]+'</button>';
+        }).join('')+
+      '</div></div>'+
+      '<div class="sh-opt-r">'+ck(SH.impOpt.progress?'on':'off','SH.impProg()','sh-iprog')+'<label onclick="SH.impProg()">รับความคืบหน้าของผู้ส่งมาด้วย</label></div>'+
+    '</div>');
+  h.push('<div class="sh-lb"><span id="sh-ilb">รายการในไฟล์</span><i></i>'+
+     '<button class="sh-mini" title="เลือก/ไม่เลือกทั้งหมด" onclick="SH.impAll()">'+svg(SI.check,13)+'</button></div>');
+  h.push('<div class="sh-grp open" style="--gb:var(--bdr-l)"><div class="sh-glist" style="padding:6px 8px 9px">');
+  for(let i=0;i<items.length;i++){
+    const x=items[i],on=!!SH.impSel[x.i];
+    h.push('<div class="sh-row'+(on?' sel':'')+'" id="shi-'+x.i+'">'+
+        ck(on?'on':'off','SH.impPick(\''+x.i+'\')')+
+        '<div class="sh-rtt" onclick="SH.impPick(\''+x.i+'\')"><b>'+E(x.name)+'</b><span>'+E(x.sub)+' · '+x.cnt+' บันทึก</span></div>'+
+        '<span class="sh-tag '+(x.dup?'dup':'new')+'">'+(x.dup?'มีอยู่แล้ว':'ใหม่')+'</span>'+
+      '</div>');
+  }
+  h.push('</div></div>');
+  body.innerHTML=h.join('');
+  foot.innerHTML='<div class="sh-sum">'+svg(SI.down,12)+'<span id="sh-icnt"></span></div>'+
+    '<div class="sh-acts">'+
+      '<button class="sh-btn ghost" onclick="SH.reset()">ยกเลิก</button>'+
+      '<button id="sh-ib" class="sh-btn" onclick="SH.doImport()">'+svg(SI.check,14)+'นำเข้าเลย</button>'+
+    '</div>';
+  syncImpFoot();
+}
+
+/* ── ผสานข้อมูล ── */
+function mergeInto(n,inc,mode,withProgress){
+  const d=(typeof getSurah==='function')?(getSurah(n)||{}):{};
+  const ow=mode==='replace';
+  d.notes=d.notes||{};d.meanings=d.meanings||{};d.tafsirs=d.tafsirs||{};
+  ['overview','reasons','stories'].forEach(k=>{if(inc[k]&&(ow||!d[k]))d[k]=inc[k];});
+  ['notes','meanings','tafsirs'].forEach(k=>{
+    if(!inc[k])return;
+    Object.keys(inc[k]).forEach(a=>{if(ow||!d[k][a])d[k][a]=inc[k][a];});
+  });
+  ['names','habits','ayahGroups'].forEach(k=>{
+    if(!inc[k]||!inc[k].length)return;
+    if(ow){d[k]=inc[k].slice();return;}
+    d[k]=d[k]||[];
+    const seen={};d[k].forEach(x=>seen[JSON.stringify(x)]=1);
+    inc[k].forEach(x=>{const s=JSON.stringify(x);if(!seen[s]){seen[s]=1;d[k].push(x);}});
+  });
+  if(withProgress&&inc._p){
+    d.text=Math.max(d.text||0,inc._p.text||0);
+    d.meaning=Math.max(d.meaning||0,inc._p.meaning||0);
+    d.tafsir=Math.max(d.tafsir||0,inc._p.tafsir||0);
+  }
+  if(typeof setSurah==='function')setSurah(n,d);
+  const key=String(n);
+  if(inc._ar&&Object.keys(inc._ar).length){
+    const ut=get('userAyahTexts',{});ut[key]=ut[key]||{};
+    Object.keys(inc._ar).forEach(a=>{if(ow||!ut[key][a])ut[key][a]=inc._ar[a];});
+    set('userAyahTexts',ut);
+  }
+  if(inc._hl&&Object.keys(inc._hl).length){
+    const hl=get('ayahHighlights',{});
+    Object.keys(inc._hl).forEach(a=>{const kk=key+'-'+a;if(ow||!hl[kk])hl[kk]=inc._hl[a];});
+    set('ayahHighlights',hl);
+  }
+}
+function ensureTopic(t){
+  if(!t||!t.id)return null;
+  try{if(_topicById(t.id))return t.id;}catch(e){}
+  const del=get('plusTopicsDeleted',[]);
+  if(del.indexOf(t.id)>-1){set('plusTopicsDeleted',del.filter(x=>x!==t.id));try{if(_topicById(t.id))return t.id;}catch(e){}}
+  const cc=get('customPlusCategories',[]);
+  if(!cc.some(c=>c.id===t.id)){
+    cc.push({id:t.id,name:t.name||'หัวข้อที่รับมา',desc:t.desc||'',color:t.color||'sec',icon:t.icon||'bookmark'});
+    set('customPlusCategories',cc);
+  }
+  return t.id;
+}
+function newTopic(name){
+  const id='custom_'+Date.now();
+  const cc=get('customPlusCategories',[]);
+  cc.push({id:id,name:name||'บันทึกจากเพื่อน',desc:'รับมาจากการแชร์',color:'sec',icon:'bookmark'});
+  set('customPlusCategories',cc);
+  return id;
+}
+/* เขียน localStorage ครั้งเดียวต่อชุด — ย้ายหลายการ์ดพร้อมกันจึงไม่หน่วง */
+function upsertCards(metas){
+  const L=PL(),cp=get('customPlusSurahs',[]),dn=get('deletedPlusSurahs',[]);
+  let dnCh=false;
+  for(let x=0;x<metas.length;x++){
+    const meta=metas[x];
+    const i=L.findIndex(y=>String(y.n)===String(meta.n));
+    if(i>=0)L[i]=Object.assign({},L[i],meta);else L.push(Object.assign({},meta));
+    const j=cp.findIndex(y=>String(y.n)===String(meta.n));
+    if(j>=0)cp[j]=Object.assign({},cp[j],meta);else cp.push(Object.assign({},meta));
+    const k=dn.findIndex(y=>String(y)===String(meta.n));
+    if(k>=0){dn.splice(k,1);dnCh=true;}
+  }
+  set('customPlusSurahs',cp);
+  if(dnCh)set('deletedPlusSurahs',dn);
+}
+function upsertCard(meta){upsertCards([meta]);}
+
+SH.doImport=async function(){
+  const d=SH.imp;if(!d)return;
+  const picked=d.items.filter(x=>SH.impSel[x.i]);
+  if(!picked.length)return TOAST('ยังไม่ได้เลือกรายการ');
+  const b=el('sh-ib');if(b){b.disabled=true;b.innerHTML=svg(SI.down,14)+'กำลังนำเข้า ...';}
+  try{if(typeof _bk!=='undefined'&&_bk&&_bk.ready&&_bk.saveSnapshot)await _bk.saveSnapshot();}catch(e){}
+  const mode=SH.impOpt.mode;
+  let destFixed=null;
+  if(SH.impOpt.dest==='__new')destFixed=newTopic((SH.impOpt.newName||'').trim()||('บันทึกจาก '+(d.raw.from||'เพื่อน')));
+  else if(SH.impOpt.dest!=='__keep')destFixed=SH.impOpt.dest;
+
+  let added=0,merged=0,skipped=0;
+  const touched={};
+  picked.forEach(x=>{
+    if(x.type==='card'){
+      const ex=findCard(x.meta);
+      if(ex&&mode==='skip'){skipped++;return;}
+      let targetN=x.meta.n,meta=Object.assign({},x.meta);
+      if(ex&&mode==='new'){
+        targetN='p'+Date.now()+Math.floor(Math.random()*900+100);
+        meta.n=targetN;meta.name=(meta.name||'')+' (สำเนา)';
+      }else if(ex){
+        targetN=ex.n;meta=Object.assign({},ex,mode==='replace'?meta:{},{n:ex.n});
+      }
+      let cat=destFixed;
+      if(!cat){
+        const tin=(d.raw.topics||[]).find(t=>t.id===x.meta.category);
+        cat=tin?ensureTopic(tin):(x.meta.category||null);
+        try{if(!cat||!_topicById(cat))cat=ensureTopic({id:x.meta.category||'custom_shared',name:tnameIn(d.raw,x.meta.category)||'บันทึกจากเพื่อน',color:'sec',icon:'bookmark'});}catch(e){}
+      }
+      if(ex&&mode==='merge'&&!destFixed)cat=ex.category;
+      meta.category=cat||meta.category||'daily';
+      if(!meta.ayah)meta.ayah=1;
+      upsertCard(meta);
+      mergeInto(targetN,x.data,ex?mode:'replace',SH.impOpt.progress);
+      touched[meta.category]=touched[meta.category]||[];
+      touched[meta.category].push(meta.n);
+      ex?merged++:added++;
+    }else{
+      if(x.dup&&mode==='skip'){skipped++;return;}
+      mergeInto(x.n,x.data,x.dup?mode:'replace',SH.impOpt.progress);
+      x.dup?merged++:added++;
+    }
+  });
+  Object.keys(touched).forEach(cat=>{
+    const o=ordOf(cat);
+    touched[cat].forEach(n=>{if(o.indexOf(n)<0)o.push(n);});
+    ordSet(cat,o);
+  });
+  bust();markDirty();
+  SH.imp=null;SH.impSel={};
+  TOAST('นำเข้าแล้ว ✓ ใหม่ '+added+(merged?' · ผสาน '+merged:'')+(skipped?' · ข้าม '+skipped:''));
+  SH.tab='organize';draw();
+};
+
+/* ═══════════════════════ จัดระเบียบ ═══════════════════════ */
+function orgCards(){
+  const t=SH.org.topic;if(!t)return [];
+  return sortCards(t,PL().filter(s=>s.category===t));
+}
+function orgSelN(){return Object.keys(SH.org.sel);}
+
+SH.orgTopic=function(id){SH.org.topic=id;SH.org.sel={};drawOrg();};
+SH.orgMode=function(m){SH.org.mode=m;SH.org.sel={};drawOrg();};
+SH.orgPick=function(n){
+  if(SH.org.sel[n])delete SH.org.sel[n];else SH.org.sel[n]=true;
+  const r=el('shd-'+n);
+  if(r){
+    const on=!!SH.org.sel[n];
+    r.classList.toggle('sel',on);
+    const c=r.querySelector('.sh-ck');if(c)c.classList.toggle('on',on);
+  }
+  syncOrgBar();
+};
+SH.orgAll=function(){
+  const list=orgCards(),any=orgSelN().length>0;
+  SH.org.sel={};
+  if(!any)list.forEach(s=>SH.org.sel[s.n]=true);
+  for(let i=0;i<list.length;i++){
+    const r=el('shd-'+list[i].n);if(!r)continue;
+    const on=!!SH.org.sel[list[i].n];
+    r.classList.toggle('sel',on);
+    const c=r.querySelector('.sh-ck');if(c)c.classList.toggle('on',on);
+  }
+  syncOrgBar();
+};
+
+function syncOrgBar(){
+  const n=orgSelN().length,bar=el('sh-orgbar'),foot=el('sh-foot');
+  if(bar){
+    bar.innerHTML=n?
+      '<div class="sh-bar"><b>เลือก '+n+' การ์ด</b>'+
+        '<button class="sh-bb" onclick="SH.orgAll()">ล้าง</button>'+
+        '<button class="sh-bb solid" onclick="SH.askMove(\'move\')">'+svg(SI.move,12)+'ย้ายไป</button></div>'
+      :
+      '<div class="sh-hint">'+svg(SI.info,14)+'<div>ลากปุ่ม '+svg(SI.grip,11)+' เพื่อ<b>เรียงลำดับ</b> · แตะช่องสี่เหลี่ยมเพื่อ<b>เลือกหลายการ์ด</b> แล้วย้ายข้ามหัวข้อได้ในครั้งเดียว</div></div>';
+  }
+  if(foot){
+    foot.innerHTML=n?
+      '<div class="sh-sum">'+svg(SI.layers,12)+'<span>เลือก <b>'+n+'</b> การ์ด จาก “'+E(topicName(SH.org.topic))+'”</span></div>'+
+      '<div class="sh-acts">'+
+        '<button class="sh-btn ghost" onclick="SH.askMove(\'copy\')">'+svg(SI.dup,13)+'ทำสำเนา</button>'+
+        '<button class="sh-btn ghost" onclick="SH.orgExport()">'+svg(SI.share,13)+'ส่งออก</button>'+
+        '<button class="sh-btn danger icon" title="ลบ" onclick="SH.orgDelete()">'+svg(SI.trash,14)+'</button>'+
+      '</div>'
+      :
+      '<div class="sh-acts">'+
+        '<button class="sh-btn ghost" onclick="SH.orgAll()">'+svg(SI.check,13)+'เลือกทั้งหมด</button>'+
+        '<button class="sh-btn gold" onclick="SH.openForTopic(\''+(SH.org.topic||'')+'\')">'+svg(SI.share,13)+'ส่งออกทั้งหัวข้อ</button>'+
+      '</div>';
+  }
+}
+
+function chipsHTML(tl){
+  const cnt={};const L=PL();
+  for(let i=0;i<L.length;i++)cnt[L[i].category]=(cnt[L[i].category]||0)+1;
+  const h=[];
+  for(let i=0;i<tl.length;i++){
+    const t=tl[i];
+    h.push('<button class="sh-tchip'+(SH.org.topic===t.id?' on':'')+'" style="--tc:'+HX(t.color)+';--tcl:'+RGBA(t.color,0.12)+'" onclick="SH.orgTopic(\''+t.id+'\')"><i></i>'+E(t.name)+' · '+(cnt[t.id]||0)+'</button>');
+  }
+  return h.join('');
+}
+function refreshChips(){const c=el('sh-chips');if(c)c.innerHTML=chipsHTML(sortTopics(topics()));}
+
+function drawOrg(){
+  const body=el('sh-body'),foot=el('sh-foot');
+  const tl=sortTopics(topics());
+  const h=[];
+  h.push('<div class="sh-seg" style="margin-bottom:11px">'+
+     '<button class="'+(SH.org.mode==='card'?'on':'')+'" onclick="SH.orgMode(\'card\')">การ์ดในหัวข้อ</button>'+
+     '<button class="'+(SH.org.mode==='topic'?'on':'')+'" onclick="SH.orgMode(\'topic\')">ลำดับหัวข้อใหญ่</button>'+
+     '<button class="'+(SH.org.mode==='filter'?'on':'')+'" onclick="SH.orgMode(\'filter\')">ลำดับตัวกรอง</button>'+
+   '</div>');
+
+  if(SH.org.mode==='filter'){
+    let fs=[];try{fs=(typeof _getFilters==='function')?_getFilters():get('plusFilters',[]);}catch(e){fs=get('plusFilters',[]);}
+    h.push('<div class="sh-hint">'+svg(SI.info,14)+'<div>ลากปุ่ม '+svg(SI.grip,11)+' เพื่อ<b>เรียงลำดับแท็บตัวกรอง</b>ด้านบนหน้าบันทึก · แท็บ “ทั้งหมด” จะอยู่หน้าสุดเสมอ</div></div>');
+    h.push('<div id="sh-org-list" data-kind="filter"><div class="sh-dline" id="sh-dline"></div>');
+    if(!fs.length)h.push('<div class="sh-empty">ยังไม่มีตัวกรอง</div>');
+    for(let i=0;i<fs.length;i++){
+      const f=fs[i];if(!f||!f.id)continue;
+      const n=(f.topics||[]).length;
+      h.push('<div class="sh-drow" data-id="'+E(f.id)+'">'+
+        '<span class="sh-handle" data-drag="1">'+svg(SI.grip,15)+'</span>'+
+        '<div class="sh-gic" style="--gc:'+HX(f.color)+';--gc2:'+HX2(f.color)+'"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+TIC(f.icon)+'</svg></div>'+
+        '<div class="sh-rtt" style="cursor:default"><b>'+E(f.name)+'</b><span>'+n+' หัวข้อในตัวกรองนี้</span></div>'+
+        '<button class="sh-mini" title="แก้ไขตัวกรอง" onclick="SH.close();showFilterModal(\''+f.id+'\')">'+svg(SI.chev,13)+'</button>'+
+      '</div>');
+    }
+    h.push('</div>');
+    body.innerHTML=h.join('');foot.innerHTML='';
+    dragInit(el('sh-org-list'),'filter');
+    return;
+  }
+
+  if(SH.org.mode==='topic'){
+    h.push('<div class="sh-hint">'+svg(SI.info,14)+'<div>ลากปุ่ม '+svg(SI.grip,11)+' เพื่อ<b>เรียงลำดับหัวข้อใหญ่</b> · ลำดับจะไปแสดงในหน้าบันทึกทันทีที่ปิดหน้าต่างนี้</div></div>');
+    h.push('<div id="sh-org-list" data-kind="topic"><div class="sh-dline" id="sh-dline"></div>');
+    if(!tl.length)h.push('<div class="sh-empty">ยังไม่มีหัวข้อใหญ่</div>');
+    for(let i=0;i<tl.length;i++){
+      const t=tl[i],n=PL().filter(s=>s.category===t.id).length;
+      h.push('<div class="sh-drow" data-id="'+E(t.id)+'">'+
+        '<span class="sh-handle" data-drag="1">'+svg(SI.grip,15)+'</span>'+
+        '<div class="sh-gic" style="--gc:'+HX(t.color)+';--gc2:'+HX2(t.color)+'"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+TIC(t.icon)+'</svg></div>'+
+        '<div class="sh-rtt" style="cursor:default"><b>'+E(t.name)+'</b><span>'+n+' การ์ด'+(t.desc?' · '+E(t.desc):'')+'</span></div>'+
+        '<button class="sh-mini" title="ส่งออกทั้งหัวข้อ" onclick="SH.openForTopic(\''+t.id+'\')">'+svg(SI.share,13)+'</button>'+
+        '<button class="sh-mini" title="แก้ไขหัวข้อ" onclick="SH.close();showTopicModal(\''+t.id+'\')">'+svg(SI.chev,13)+'</button>'+
+      '</div>');
+    }
+    h.push('</div>');
+    body.innerHTML=h.join('');foot.innerHTML='';
+    dragInit(el('sh-org-list'),'topic');
+    return;
+  }
+
+  h.push('<div class="sh-chips" id="sh-chips">'+chipsHTML(tl)+'</div><div id="sh-orgbar"></div>');
+
+  const list=orgCards();
+  h.push('<div id="sh-org-list" data-kind="card"><div class="sh-dline" id="sh-dline"></div>');
+  if(!list.length)h.push('<div class="sh-empty">หัวข้อนี้ยังไม่มีการ์ด<br><span style="font-size:9px">เพิ่มได้จากปุ่ม + ในหน้าบันทึก</span></div>');
+  for(let i=0;i<list.length;i++){
+    const s=list[i],on=!!SH.org.sel[s.n],t=total(counts(s.n));
+    h.push('<div class="sh-drow'+(on?' sel':'')+'" id="shd-'+s.n+'" data-id="'+E(s.n)+'">'+
+      '<span class="sh-handle" data-drag="1">'+svg(SI.grip,15)+'</span>'+
+      ck(on?'on':'off','SH.orgPick(\''+s.n+'\')')+
+      '<div class="sh-rtt" onclick="SH.orgPick(\''+s.n+'\')"><b>'+E(s.name)+'</b><span>'+(s.ref?E(String(s.ref).replace(/:/g,' : '))+' · ':'')+(s.ayah||1)+' '+((typeof unitOf==='function')?unitOf(s):'อายะฮ์')+(t?' · '+t+' บันทึก':'')+'</span></div>'+
+      '<button class="sh-mini" title="แก้ไข" onclick="SH.close();editPlusSurah(\''+s.n+'\')">'+svg(SI.chev,13)+'</button>'+
+    '</div>');
+  }
+  h.push('</div>');
+  body.innerHTML=h.join('');
+  syncOrgBar();
+  dragInit(el('sh-org-list'),'card');
+}
+
+/* ── ชีตเลือกปลายทาง ── */
+function openPop(html){
+  mount();
+  el('sh-pop-in').innerHTML=html;
+  el('sh-pop').classList.add('on');
+}
+function closePop(){const p=el('sh-pop');if(p)p.classList.remove('on');}
+SH.closePop=closePop;
+
+SH.askMove=function(kind){
+  const sel=orgSelN();if(!sel.length)return;
+  const tl=sortTopics(topics());
+  const h=['<div class="sh-pop-t">'+(kind==='copy'?'ทำสำเนาไปที่':'ย้ายไปที่')+'</div>'+
+        '<div class="sh-pop-s">'+sel.length+' การ์ด · '+(kind==='copy'?'ของเดิมยังอยู่ที่หัวข้อนี้':'บันทึกทั้งหมดในการ์ดจะย้ายตามไปด้วย')+'</div>'];
+  for(let i=0;i<tl.length;i++){
+    const t=tl[i],cur=t.id===SH.org.topic,off=cur&&kind==='move';
+    h.push('<button class="sh-pick'+(cur?' cur':'')+'" style="--pc:'+HX(t.color)+';--pc2:'+HX2(t.color)+(off?';opacity:.42':'')+'" '+
+      (off?'disabled':'onclick="SH.doMove(\''+kind+'\',\''+t.id+'\')"')+'>'+
+      '<i><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+TIC(t.icon)+'</svg></i>'+
+      '<b>'+E(t.name)+'</b><span>'+(cur?'อยู่ที่นี่':'')+'</span></button>');
+  }
+  h.push('<button class="sh-pick" style="--pc:#B8956B;--pc2:#D8B98B" onclick="SH.doMove(\''+kind+'\',\'__new\')"><i>'+svg(SI.plus,13)+'</i><b>สร้างหัวข้อใหม่ ...</b></button>');
+  h.push('<button class="sh-btn ghost" style="margin-top:8px" onclick="SH.closePop()">ยกเลิก</button>');
+  openPop(h.join(''));
+};
+
+SH.doMove=function(kind,tid){
+  const sel=orgSelN();if(!sel.length)return closePop();
+  if(tid==='__new'){
+    const nm=prompt('ชื่อหัวข้อใหม่','หัวข้อใหม่');
+    if(!nm||!nm.trim())return;
+    tid=newTopic(nm.trim());
+  }
+  const L=PL(),ord=ordOf(tid);
+  const fromOrders={},metas=[];
+  sel.forEach((n,ix)=>{
+    const s=L.find(x=>String(x.n)===String(n));if(!s)return;
+    if(kind==='copy'){
+      const nid='p'+Date.now()+ix+Math.floor(Math.random()*900+100);
+      metas.push(Object.assign({},s,{n:nid,category:tid}));
+      try{const d=getSurah(s.n);if(d)setSurah(nid,JSON.parse(JSON.stringify(d)),true);}catch(e){}
+      if(ord.indexOf(nid)<0)ord.push(nid);
+    }else{
+      const from=s.category;
+      metas.push(Object.assign({},s,{category:tid}));
+      fromOrders[from]=(fromOrders[from]||ordOf(from)).filter(x=>String(x)!==String(n));
+      if(ord.indexOf(s.n)<0)ord.push(s.n);
+    }
+  });
+  upsertCards(metas);
+  Object.keys(fromOrders).forEach(f=>ordSet(f,fromOrders[f]));
+  ordSet(tid,ord);
+  SH.org.sel={};
+  closePop();bust();markDirty();
+  /* อัปเดตเฉพาะจุด : เอาแถวที่ย้ายออกจากรายการ ไม่วาดใหม่ทั้งหน้า */
+  if(kind!=='copy'&&tid!==SH.org.topic)sel.forEach(n=>{const r=el('shd-'+n);if(r)r.remove();});
+  else if(kind!=='copy')drawOrg();
+  refreshChips();syncOrgBar();
+  const box=el('sh-org-list');
+  if(box&&!box.querySelector('.sh-drow')&&!box.querySelector('.sh-empty'))drawOrg();
+  TOAST((kind==='copy'?'ทำสำเนา ':'ย้าย ')+sel.length+' การ์ด ไป “'+topicName(tid)+'” แล้ว ✓');
+};
+
+SH.orgDelete=function(){
+  const sel=orgSelN();if(!sel.length)return;
+  if(!confirm('ลบ '+sel.length+' การ์ดนี้ ?\n\nบันทึกข้างในจะถูกลบไปด้วย (ยังกู้ได้จากสำเนาสำรองอัตโนมัติ)'))return;
+  const L=PL(),dn=get('deletedPlusSurahs',[]);
+  let cp=get('customPlusSurahs',[]);
+  sel.forEach(n=>{
+    const i=L.findIndex(x=>String(x.n)===String(n));if(i>=0)L.splice(i,1);
+    cp=cp.filter(x=>String(x.n)!==String(n));
+    if(!dn.some(x=>String(x)===String(n)))dn.push(n);
+    try{localStorage.removeItem(String(n).indexOf('p')===0?'plus_'+n:'surah_'+n);}catch(e){}
+  });
+  set('customPlusSurahs',cp);set('deletedPlusSurahs',dn);
+  const t=SH.org.topic;
+  ordSet(t,ordOf(t).filter(x=>!sel.some(s=>String(s)===String(x))));
+  SH.org.sel={};bust();markDirty();
+  sel.forEach(n=>{const r=el('shd-'+n);if(r)r.remove();});
+  refreshChips();syncOrgBar();
+  const box=el('sh-org-list');
+  if(box&&!box.querySelector('.sh-drow'))drawOrg();
+  TOAST('ลบแล้ว');
+};
+
+SH.orgExport=function(){
+  const sel=orgSelN();if(!sel.length)return;
+  SH.tab='export';SH.sel={};SH.search='';
+  collect();
+  sel.forEach(n=>{const it=SH.index[String(n)];if(it)SH.sel[String(n)]={parts:defParts(it)};});
+  SH.openGrp[SH.org.topic]=true;
+  draw();
+};
+
+/* ── ลากเรียงลำดับ : rAF + ไม่วาดรายการใหม่หลังปล่อยนิ้ว ── */
+function dragInit(box,kind){
+  if(!box||box._dg)return;box._dg=1;
+  const line=box.querySelector('.sh-dline');
+  let row=null,rows=[],geo=[],startY=0,curY=0,boxTop=0,target=-1,raf=0,lastLine=-1;
+
+  function paint(){
+    raf=0;if(!row)return;
+    row.style.transform='translate3d(0,'+(curY-startY)+'px,0)';
+    let idx=geo.length;
+    for(let i=0;i<geo.length;i++){if(curY<geo[i].mid){idx=i;break;}}
+    if(idx!==target){
+      target=idx;
+      const ly=(idx>=geo.length?geo[geo.length-1].bot:geo[idx].top-3)-boxTop;
+      if(ly!==lastLine){lastLine=ly;line.style.transform='translate3d(0,'+ly+'px,0)';}
+      if(!line.classList.contains('on'))line.classList.add('on');
+    }
+  }
+  box.addEventListener('pointerdown',function(e){
+    const h=e.target.closest('[data-drag]');if(!h)return;
+    const r=h.closest('.sh-drow');if(!r)return;
+    e.preventDefault();
+    row=r;
+    rows=[].slice.call(box.querySelectorAll('.sh-drow'));
+    boxTop=box.getBoundingClientRect().top;
+    geo=rows.map(x=>{const q=x.getBoundingClientRect();return {top:q.top,mid:q.top+q.height/2,bot:q.bottom};});
+    startY=curY=e.clientY;target=-1;lastLine=-1;
+    row.classList.add('drag');
+    try{row.setPointerCapture(e.pointerId);}catch(_){}
+    document.body.style.userSelect='none';
+  },{passive:false});
+  box.addEventListener('pointermove',function(e){
+    if(!row)return;
+    e.preventDefault();
+    curY=e.clientY;
+    if(!raf)raf=requestAnimationFrame(paint);
+  },{passive:false});
+  function end(){
+    if(!row)return;
+    /* ปัดเฟรมสุดท้ายให้ทัน ก่อนสรุปลำดับ */
+    if(raf){cancelAnimationFrame(raf);raf=0;paint();}
+    const r=row;row=null;
+    r.style.transform='';r.classList.remove('drag');
+    line.classList.remove('on');
+    document.body.style.userSelect='';
+    const from=rows.indexOf(r);
+    let to=target;if(to<0)return;
+    if(to>from)to--;
+    if(from<0||to===from)return;
+    /* ย้ายโหนดจริงในหน้า ไม่ต้องวาดรายการใหม่ */
+    if(target>=rows.length)box.appendChild(r);
+    else box.insertBefore(r,rows[target]);
+    const ids=[].slice.call(box.querySelectorAll('.sh-drow')).map(x=>x.dataset.id);
+    if(kind==='topic')set('plusTopicOrder',ids);
+    else if(kind==='filter'){
+      let fs=[];try{fs=(typeof _getFilters==='function')?_getFilters():get('plusFilters',[]);}catch(e){fs=get('plusFilters',[]);}
+      const by={};fs.forEach(f=>{if(f&&f.id)by[f.id]=f;});
+      const out=[];ids.forEach(i=>{if(by[i]){out.push(by[i]);delete by[i];}});
+      fs.forEach(f=>{if(f&&f.id&&by[f.id])out.push(f);});
+      set('plusFilters',out);
+    }
+    else ordSet(SH.org.topic,ids);
+    COL=null;markDirty();
+  }
+  box.addEventListener('pointerup',end);
+  box.addEventListener('pointercancel',end);
+}
+
+/* ═══════════════════════ ทางเข้า ═══════════════════════ */
+SH.openExport=function(){SH.open('export');};
+SH.openImport=function(){SH.open('import');};
+SH.openOrganize=function(t){if(t)SH.org.topic=t;SH.open('organize');};
+window.openShareHub=function(t){SH.open(t||'export');};
+
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   v323 · จัดเรียงแผ่นการ์ดในตัวนำทาง (Sheet Sorter)
+   ─ กดค้างที่แผ่นการ์ดแล้วลากไปวางตำแหน่งที่ต้องการ
+   ─ แตะในโหมดจัดเรียง : ย้าย / ทำสำเนา ไปตัวบทอื่น · ลบแผ่นนี้
+   ─ ใช้ได้กับตัวบทที่สร้างเอง (การ์ดในหัวข้อใหญ่) เท่านั้น
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+const NVXS={mode:false,blockClick:false};
+window.NVXS=NVXS;
+
+const CSS=`
+#nvx-sort-btn{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 11px;border-radius:12px;
+  border:1px solid var(--nx,#6B5B7A);background:var(--nvxT,rgba(107,91,122,0.09));
+  color:var(--nx,#6B5B7A);font-family:var(--f-th);font-size:9.5px;font-weight:600;letter-spacing:0;text-transform:none;
+  cursor:pointer;transition:background .15s,color .15s;-webkit-tap-highlight-color:transparent;flex:0 0 auto}
+#nvx-sort-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#nvx-sort-btn.on{background:var(--nx,#6B5B7A);color:#fff;border-color:var(--nx,#6B5B7A)}
+#nvx-sort-btn:active{transform:scale(.94)}
+#nvx-grid-lbl{gap:6px}
+#nvx-grid-lbl span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* กันเมนู/การเลือกข้อความของระบบตอนกดค้าง — สาเหตุที่ลากไม่ติดบนมือถือ */
+.nvx-n{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+#nvx-grid.nvx-sorting{max-height:232px}
+#nvx-grid.nvx-sorting .nvx-n{border-style:dashed;border-color:rgba(107,91,122,0.3);touch-action:none;cursor:grab}
+#nvx-grid.nvx-sorting .nvx-n.addu{opacity:.3;pointer-events:none}
+body.nvx-dragging{overflow:hidden!important;touch-action:none}
+/* ปุ่มเลือกตำแหน่ง (ใช้ได้แม้ลากไม่ถนัด) */
+.nvxm-pos{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.nvxm-p{width:38px;height:34px;border-radius:11px;border:1px solid var(--bdr);background:#fff;color:var(--txt2);
+  font-family:Georgia,serif;font-size:12px;cursor:pointer;transition:background .13s,color .13s}
+.nvxm-p.cur{background:rgba(107,91,122,0.12);border-color:rgba(107,91,122,0.35);color:var(--pri);font-weight:700}
+.nvxm-p:active{transform:scale(.92)}
+.nvx-n.nvx-hold{transform:scale(1.08);box-shadow:0 4px 12px var(--nxs,rgba(107,91,122,0.25))}
+.nvx-n.nvx-drag{z-index:6;background:#fff!important;border-style:solid!important;border-color:var(--nx,#6B5B7A)!important;
+  color:var(--nx,#6B5B7A)!important;box-shadow:0 10px 22px rgba(48,38,60,0.28);will-change:transform;transition:none;
+  transform-origin:center}
+.nvx-n.nvx-slot{opacity:.55}
+/* ── ชีตคำสั่งของแผ่นการ์ด ── */
+.nvxm-ov{position:fixed;inset:0;z-index:1000030;display:none;align-items:flex-end;justify-content:center;background:rgba(28,22,36,0.5)}
+.nvxm-ov.on{display:flex}
+.nvxm{width:100%;max-width:460px;background:var(--bg);border-radius:22px 22px 0 0;padding:16px 14px calc(16px + env(safe-area-inset-bottom));
+  max-height:76dvh;overflow-y:auto;overscroll-behavior:contain;animation:nvxmUp .22s cubic-bezier(.22,1,.36,1)}
+@keyframes nvxmUp{from{transform:translate3d(0,22px,0)}to{transform:translate3d(0,0,0)}}
+@media(min-width:700px){.nvxm-ov{align-items:center}.nvxm{border-radius:20px}}
+.nvxm-t{font-size:var(--text-xs);font-weight:600;color:var(--txt)}
+.nvxm-s{font-size:var(--text-3xs);color:var(--txt3);margin:2px 0 12px}
+.nvxm-b{display:flex;align-items:center;gap:10px;width:100%;padding:12px;border-radius:13px;margin-bottom:6px;cursor:pointer;
+  border:1px solid var(--bdr-l);background:var(--card);font-family:var(--f-th);font-size:var(--text-2xs);color:var(--txt);
+  text-align:left;transition:background .13s}
+.nvxm-b i{width:26px;height:26px;flex:0 0 26px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;
+  background:linear-gradient(135deg,#8A7A99,#584A66)}
+.nvxm-b b{flex:1;font-weight:500}
+.nvxm-b span{font-size:var(--text-3xs);color:var(--txt3)}
+.nvxm-b:active{background:var(--card2)}
+.nvxm-b.danger{color:#B03A3A;border-color:rgba(176,58,58,0.28)}
+.nvxm-b.danger i{background:linear-gradient(135deg,#C46A6A,#9E3B3B)}
+.nvxm-b.ghost{justify-content:center;color:var(--txt3);background:transparent;border-style:dashed}
+.nvxm-lb{font-size:var(--text-3xs);color:var(--txt3);font-weight:600;margin:12px 2px 6px;display:flex;align-items:center;gap:6px}
+.nvxm-lb i{flex:1;height:1px;background:var(--bdr-l)}
+.nvxm-card{display:flex;align-items:center;gap:9px;width:100%;padding:10px 12px;border-radius:12px;margin-bottom:5px;cursor:pointer;
+  border:1px solid var(--bdr-l);background:var(--card);font-family:var(--f-th);text-align:left;transition:background .13s}
+.nvxm-card u{width:7px;height:7px;flex:0 0 7px;border-radius:50%;text-decoration:none;background:var(--cc,#6B5B7A)}
+.nvxm-card b{flex:1;font-size:var(--text-2xs);font-weight:500;color:var(--txt);min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nvxm-card span{font-size:var(--text-3xs);color:var(--txt3);flex:0 0 auto}
+.nvxm-card:active{background:var(--card2)}
+`;
+const ic=p=>'<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+const I_MOVE='<polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><polyline points="15 19 12 22 9 19"/><polyline points="19 9 22 12 19 15"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/>';
+const I_DUP='<rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16V5a2 2 0 012-2h11"/>';
+const I_DEL='<polyline points="3 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>';
+const E=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const TOAST=m=>{try{toast(m);}catch(e){}};
+const el=id=>document.getElementById(id);
+
+function style(){
+  if(el('nvxs-style'))return;
+  const s=document.createElement('style');s.id='nvxs-style';s.textContent=CSS;document.head.appendChild(s);
+}
+
+/* ── การ์ดปัจจุบัน (เฉพาะตัวบทที่สร้างเอง) ── */
+function curCard(){
+  if(typeof currentSurah==='undefined'||typeof currentSurah!=='string'||currentSurah.charAt(0)!=='p')return null;
+  return (typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]).find(x=>String(x.n)===String(currentSurah))||null;
+}
+function unitLbl(s){try{return unitOf(s);}catch(e){return 'แผ่น';}}
+function saveCard(s){
+  const L=(typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]);
+  const i=L.findIndex(x=>String(x.n)===String(s.n));if(i>=0)L[i]=s;
+  const cp=get('customPlusSurahs',[]);
+  const j=cp.findIndex(x=>String(x.n)===String(s.n));
+  if(j>=0)cp[j]=Object.assign({},cp[j],s);else cp.push(Object.assign({},s));
+  set('customPlusSurahs',cp);
+}
+function gridNums(){
+  const g=el('nvx-grid');if(!g)return [];
+  return [].slice.call(g.querySelectorAll('.nvx-n:not(.addu)')).map(x=>parseInt(x.dataset.n)).filter(n=>!isNaN(n));
+}
+
+/* ── ย้ายเลขแผ่น พร้อมเนื้อหาทุกชนิด ── */
+function remapUnits(sn,pairs){
+  const d=(typeof getSurah==='function')?(getSurah(sn)||{}):{};
+  ['notes','meanings','tafsirs'].forEach(k=>{
+    const src=d[k]||{},out={};
+    pairs.forEach(pr=>{const v=src[pr[0]];if(v!==undefined&&v!==null&&v!=='')out[pr[1]]=v;});
+    d[k]=out;
+  });
+  if(typeof setSurah==='function')setSurah(sn,d);
+  const key=String(sn);
+  const ut=get('userAyahTexts',{}),src=ut[key]||{},o2={};
+  pairs.forEach(pr=>{const v=src[pr[0]];if(v!==undefined)o2[pr[1]]=v;});
+  ut[key]=o2;set('userAyahTexts',ut);
+  const hl=get('ayahHighlights',{}),tmp={};
+  pairs.forEach(pr=>{const v=hl[key+'-'+pr[0]];if(v!==undefined)tmp[key+'-'+pr[1]]=v;});
+  Object.keys(hl).forEach(k=>{if(k.indexOf(key+'-')===0)delete hl[k];});
+  Object.keys(tmp).forEach(k=>{hl[k]=tmp[k];});
+  set('ayahHighlights',hl);
+  const s=(typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]).find(x=>String(x.n)===String(sn));
+  if(s&&Array.isArray(s.verses)){
+    const by={};s.verses.forEach(v=>{by[v.num]=v;});
+    s.verses=pairs.map(pr=>({num:pr[1],ar:(by[pr[0]]&&by[pr[0]].ar)||''})).sort((a,b)=>a.num-b.num);
+    saveCard(s);
+  }
+}
+function applyOrder(order){
+  const slots=order.slice().sort((a,b)=>a-b);
+  const pairs=order.map((o,i)=>[o,slots[i]]);
+  let changed=false;
+  for(let i=0;i<pairs.length;i++)if(pairs[i][0]!==pairs[i][1]){changed=true;break;}
+  if(!changed)return false;
+  remapUnits(currentSurah,pairs);
+  return true;
+}
+function deleteUnit(num){
+  const s=curCard();if(!s)return false;
+  const nums=gridNums();if(nums.length<2)return TOAST('เหลือแผ่นเดียว ลบไม่ได้'),false;
+  const slots=nums.slice().sort((a,b)=>a-b);
+  const rest=slots.filter(n=>n!==num);
+  const pairs=rest.map((o,i)=>[o,slots[i]]);
+  remapUnits(currentSurah,pairs);
+  const s2=curCard();
+  s2.ayah=Math.max(1,(parseInt(s2.ayah)||1)-1);
+  saveCard(s2);
+  return true;
+}
+function moveUnit(num,targetId,copy){
+  const t=(typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]).find(x=>String(x.n)===String(targetId));
+  if(!t)return false;
+  const d=(typeof getSurah==='function')?(getSurah(currentSurah)||{}):{};
+  const td=(typeof getSurah==='function')?(getSurah(targetId)||{}):{};
+  const key=String(currentSurah),tkey=String(targetId);
+  const tn=(parseInt(t.ayah)||0)+1;
+  ['notes','meanings','tafsirs'].forEach(k=>{
+    const v=(d[k]||{})[num];
+    if(v!==undefined&&v!==null&&v!==''){td[k]=td[k]||{};td[k][tn]=v;}
+  });
+  if(typeof setSurah==='function')setSurah(targetId,td);
+  const ut=get('userAyahTexts',{}),ar=(ut[key]||{})[num];
+  if(ar!==undefined){ut[tkey]=ut[tkey]||{};ut[tkey][tn]=ar;set('userAyahTexts',ut);}
+  const hl=get('ayahHighlights',{}),h=hl[key+'-'+num];
+  if(h!==undefined){hl[tkey+'-'+tn]=h;set('ayahHighlights',hl);}
+  /* ตัวบทอาหรับของแผ่นนี้ (คนละที่กับตัวบทที่ผู้ใช้พิมพ์เอง) */
+  let vAr='';
+  const src=curCard();
+  if(src&&Array.isArray(src.verses)){const v=src.verses.find(x=>String(x.num)===String(num));if(v)vAr=v.ar||'';}
+  t.ayah=tn;
+  if(Array.isArray(t.verses))t.verses.push({num:tn,ar:vAr});
+  else if(vAr)t.verses=[{num:tn,ar:vAr}];
+  saveCard(t);
+  if(!copy)deleteUnit(num);
+  return true;
+}
+
+function refresh(){
+  try{
+    const k=(typeof currentNoteTab!=='undefined'&&currentNoteTab)?currentNoteTab:'notes';
+    const tb=document.querySelector('.note-tab.t-'+k);
+    if(tb&&typeof switchNoteTab==='function')switchNoteTab(k,tb,currentSurah);
+  }catch(e){}
+  try{if(typeof _snavBuildGrid==='function')_snavBuildGrid();}catch(e){}
+  try{if(typeof _snavBuildGroups==='function')_snavBuildGroups();}catch(e){}
+  ['renderSurahKnowledge','updateAllSelectors','renderPlus'].forEach(f=>{
+    try{if(typeof window[f]==='function')window[f]();}catch(e){}
+  });
+}
+
+/* ── ปุ่มโหมดจัดเรียง ── */
+window.nvxSortToggle=function(){
+  if(!curCard())return TOAST('จัดเรียงได้เฉพาะตัวบทที่สร้างเอง');
+  NVXS.mode=!NVXS.mode;
+  paint();
+  if(NVXS.mode)TOAST('ลากแผ่นเพื่อสลับที่ · แตะแผ่นเพื่อดูคำสั่ง');
+};
+function paint(){
+  const ok=!!curCard(),b=el('nvx-sort-btn'),g=el('nvx-grid');
+  if(!ok)NVXS.mode=false;
+  if(b){
+    b.style.display=ok?'':'none';
+    b.classList.toggle('on',NVXS.mode);
+    b.innerHTML=(NVXS.mode
+      ?'<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>เสร็จสิ้น'
+      :'<svg viewBox="0 0 24 24"><polyline points="8 6 4 10 8 14"/><polyline points="16 10 20 14 16 18"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="4" y1="14" x2="20" y2="14"/></svg>จัดเรียง');
+  }
+  if(g)g.classList.toggle('nvx-sorting',NVXS.mode);
+  const lb=document.querySelector('#nvx-grid-lbl span');
+  if(lb)lb.textContent=NVXS.mode?'ลากเพื่อสลับที่ · แตะเพื่อดูคำสั่ง'
+    :(ok?'แตะเพื่อไป · กดค้างเพื่อจัดเรียง':'แตะเพื่อไปทันที');
+}
+window._nvxAfterGrid=function(){style();paint();bind();try{if(window._nvxRelabel)_nvxRelabel();}catch(e){}};
+
+/* ── ลากเรียง : รองรับนิ้วเต็มรูปแบบ (pointer + touch fallback) ── */
+let DRAGGING=false;
+/* กันหน้าจอเลื่อนระหว่างลาก — ต้องเป็น non-passive ถึงจะกันได้บน iOS */
+document.addEventListener('touchmove',function(e){if(DRAGGING)e.preventDefault();},{passive:false});
+document.addEventListener('contextmenu',function(e){
+  if(DRAGGING||(e.target&&e.target.closest&&e.target.closest('#nvx-grid .nvx-n')))e.preventDefault();
+});
+
+function bind(){
+  const g=el('nvx-grid');if(!g||g._nvxb)return;g._nvxb=1;
+
+  let dg=null,hold=null,raf=0,px=0,py=0,dx0=0,dy0=0;
+  const PT=('PointerEvent' in window);
+  const pt=e=>(e.touches&&e.touches.length)?e.touches[0]:(e.changedTouches&&e.changedTouches.length?e.changedTouches[0]:e);
+
+  g.addEventListener('click',function(e){
+    if(!NVXS.blockClick&&!NVXS.mode)return;
+    const b=e.target.closest?e.target.closest('.nvx-n'):null;
+    if(!b||b.classList.contains('addu'))return;
+    e.preventDefault();e.stopPropagation();
+    if(NVXS.blockClick)return;
+    openMenu(parseInt(b.dataset.n));
+  },true);
+
+  function begin(b,x,y,fromHold){
+    dg={el:b,sx:x,sy:y,moved:false,hold:!!fromHold,n:parseInt(b.dataset.n)};
+    DRAGGING=true;
+    b.classList.remove('nvx-hold');b.classList.add('nvx-drag');
+    g.style.touchAction='none';
+    document.body.classList.add('nvx-dragging');
+    try{if(navigator.vibrate)navigator.vibrate(14);}catch(e){}
+  }
+  function paintDrag(){
+    raf=0;if(!dg)return;
+    dg.el.style.transform='translate3d('+(px-dg.sx)+'px,'+(py-dg.sy)+'px,0)';
+    const items=[].slice.call(g.querySelectorAll('.nvx-n:not(.addu)')).filter(x=>x!==dg.el);
+    let best=null,bd=Infinity,br=null;
+    for(let i=0;i<items.length;i++){
+      const r=items[i].getBoundingClientRect();
+      const ax=r.left+r.width/2-px,ay=r.top+r.height/2-py,d=ax*ax+ay*ay;
+      if(d<bd){bd=d;best=items[i];br=r;}
+    }
+    if(!best||!br)return;
+    if(bd>Math.pow(Math.max(br.width,br.height)*2.4,2))return;
+    const after=px>br.left+br.width/2;
+    const ref=after?best.nextSibling:best;
+    if(ref===dg.el)return;
+    const b0=dg.el.getBoundingClientRect();
+    g.insertBefore(dg.el,ref);
+    const b1=dg.el.getBoundingClientRect();
+    dg.sx+=b1.left-b0.left;dg.sy+=b1.top-b0.top;
+    dg.el.style.transform='translate3d('+(px-dg.sx)+'px,'+(py-dg.sy)+'px,0)';
+  }
+
+  function down(e){
+    if(dg)return;
+    const b=e.target.closest?e.target.closest('.nvx-n'):null;
+    if(!b||b.classList.contains('addu')||!curCard())return;
+    const p=pt(e);
+    px=dx0=p.clientX;py=dy0=p.clientY;
+    if(NVXS.mode){
+      if(e.cancelable)e.preventDefault();
+      begin(b,p.clientX,p.clientY,false);
+      if(PT&&e.pointerId!==undefined){try{b.setPointerCapture(e.pointerId);}catch(_){}}
+      return;
+    }
+    b.classList.add('nvx-hold');
+    const x=p.clientX,y=p.clientY,pid=e.pointerId;
+    if(hold)clearTimeout(hold);
+    hold=setTimeout(function(){
+      hold=null;
+      if(!document.body.contains(b))return;
+      begin(b,x,y,true);
+      if(PT&&pid!==undefined){try{b.setPointerCapture(pid);}catch(_){}}
+    },330);
+  }
+  function move(e){
+    const p=pt(e);
+    if(hold){
+      if(Math.abs(p.clientX-dx0)>9||Math.abs(p.clientY-dy0)>9){
+        clearTimeout(hold);hold=null;
+        const h=g.querySelector('.nvx-hold');if(h)h.classList.remove('nvx-hold');
+      }
+      return;
+    }
+    if(!dg)return;
+    if(e.cancelable)e.preventDefault();
+    px=p.clientX;py=p.clientY;
+    if(!dg.moved&&(Math.abs(px-dg.sx)>3||Math.abs(py-dg.sy)>3))dg.moved=true;
+    if(!raf)raf=requestAnimationFrame(paintDrag);
+  }
+  function end(){
+    if(hold){clearTimeout(hold);hold=null;}
+    const h=g.querySelector('.nvx-hold');if(h)h.classList.remove('nvx-hold');
+    if(!dg)return;
+    /* ปัดครั้งสุดท้ายให้ทัน ก่อนสรุปลำดับ (กันปล่อยนิ้วเร็วแล้วตำแหน่งไม่ทันอัปเดต) */
+    if(raf){cancelAnimationFrame(raf);raf=0;paintDrag();}
+    const d=dg;dg=null;DRAGGING=false;
+    d.el.style.transform='';d.el.classList.remove('nvx-drag');
+    g.style.touchAction='';
+    document.body.classList.remove('nvx-dragging');
+    if(!d.moved){
+      if(d.hold){
+        NVXS.blockClick=true;setTimeout(()=>{NVXS.blockClick=false;},300);
+        openMenu(d.n);
+      }
+      return;
+    }
+    NVXS.blockClick=true;setTimeout(()=>{NVXS.blockClick=false;},300);
+    if(applyOrder(gridNums())){refresh();TOAST('จัดลำดับใหม่แล้ว ✓');}
+  }
+
+  if(PT){
+    g.addEventListener('pointerdown',down,{passive:false});
+    g.addEventListener('pointermove',move,{passive:false});
+    g.addEventListener('pointerup',end);
+    g.addEventListener('pointercancel',end);
+  }
+  /* ใส่ touch ไว้เสมอ : บางเบราว์เซอร์มือถือยกเลิก pointer กลางคัน */
+  g.addEventListener('touchstart',function(e){if(!PT||!dg&&!hold)down(e);},{passive:false});
+  g.addEventListener('touchmove',move,{passive:false});
+  g.addEventListener('touchend',end);
+  g.addEventListener('touchcancel',end);
+  g.addEventListener('mousedown',function(e){if(!PT)down(e);});
+  if(!PT){
+    document.addEventListener('mousemove',move);
+    document.addEventListener('mouseup',end);
+  }
+}
+
+/* ── API สาธารณะ (ใช้ในเมนู / ทดสอบ / เรียกจากที่อื่น) ── */
+NVXS.reorder=function(order){const ok=applyOrder(order);if(ok)refresh();return ok;};
+NVXS.remove=function(num){const ok=deleteUnit(num);if(ok)refresh();return ok;};
+NVXS.move=function(num,tid,copy){const ok=moveUnit(num,tid,!!copy);if(ok)refresh();return ok;};
+NVXS.nums=gridNums;
+/* ย้ายแผ่นไปตำแหน่งที่ต้องการด้วยการแตะ (ทางเลือกแทนการลาก) */
+window.nvxToPos=function(num,pos){
+  const nums=gridNums();
+  const from=nums.indexOf(num);
+  if(from<0||pos<1||pos>nums.length)return;
+  if(from===pos-1){closeMenu();return;}
+  const order=nums.slice();
+  order.splice(from,1);
+  order.splice(pos-1,0,num);
+  if(applyOrder(order)){closeMenu();refresh();TOAST('ย้ายไปเป็นแผ่นที่ '+pos+' แล้ว ✓');}
+  else closeMenu();
+};
+
+/* ── ชีตคำสั่ง ── */
+function ov(){
+  let o=el('nvxm-ov');
+  if(!o){
+    style();
+    o=document.createElement('div');o.id='nvxm-ov';o.className='nvxm-ov';
+    o.innerHTML='<div class="nvxm" id="nvxm-in"></div>';
+    document.body.appendChild(o);
+    o.addEventListener('click',e=>{if(e.target===o)closeMenu();});
+  }
+  return o;
+}
+function openSheet(html){ov();el('nvxm-in').innerHTML=html;ov().classList.add('on');}
+window.nvxCloseMenu=closeMenu;
+function closeMenu(){const o=el('nvxm-ov');if(o)o.classList.remove('on');}
+
+function openMenu(num){
+  const s=curCard();if(!s||isNaN(num))return;
+  const u=unitLbl(s);
+  const d=(typeof getSurah==='function')?(getSurah(currentSurah)||{}):{};
+  const cnt=['notes','meanings','tafsirs'].reduce((a,k)=>a+(((d[k]||{})[num]&&String((d[k]||{})[num]).replace(/<[^>]*>/g,'').trim())?1:0),0);
+  const nums=gridNums(),pos=nums.indexOf(num)+1;
+  let chips='';
+  if(nums.length>1){
+    chips='<div class="nvxm-lb">ย้ายไปเป็นแผ่นที่<i></i></div><div class="nvxm-pos">'+
+      nums.map((x,i)=>'<button class="nvxm-p'+((i+1)===pos?' cur':'')+'" onclick="nvxToPos('+num+','+(i+1)+')">'+(i+1)+'</button>').join('')+
+      '</div><div class="nvxm-s" style="margin:2px 2px 10px">แตะเลขตำแหน่งได้เลย ไม่ต้องลากก็ได้</div>';
+  }
+  openSheet(
+    '<div class="nvxm-t">'+E(u)+' '+num+'</div>'+
+    '<div class="nvxm-s">'+E(s.name||'')+' · '+(cnt?'มีบันทึก '+cnt+' ส่วน':'ยังไม่มีบันทึก')+'</div>'+
+    chips+
+    '<button class="nvxm-b" onclick="nvxPickCard('+num+',0)"><i>'+ic(I_MOVE)+'</i><b>ย้ายไปตัวบทอื่น</b><span>พาบันทึกไปด้วย</span></button>'+
+    '<button class="nvxm-b" onclick="nvxPickCard('+num+',1)"><i>'+ic(I_DUP)+'</i><b>ทำสำเนาไปตัวบทอื่น</b><span>ของเดิมยังอยู่</span></button>'+
+    '<button class="nvxm-b danger" onclick="nvxDelete('+num+')"><i>'+ic(I_DEL)+'</i><b>ลบแผ่นนี้</b><span>เลขที่เหลือจะเลื่อนขึ้น</span></button>'+
+    '<button class="nvxm-b ghost" onclick="nvxCloseMenu()">ยกเลิก</button>'
+  );
+}
+window.nvxDelete=function(num){
+  const s=curCard();if(!s)return;
+  if(!confirm('ลบ'+unitLbl(s)+' '+num+' ?\n\nบันทึกทั้งหมดในแผ่นนี้จะถูกลบ และเลขแผ่นที่เหลือจะเลื่อนขึ้น'))return;
+  if(deleteUnit(num)){closeMenu();refresh();TOAST('ลบแล้ว');}
+};
+window.nvxPickCard=function(num,copy){
+  const s=curCard();if(!s)return;
+  const L=(typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]);
+  let tops=[];try{tops=_allTopics(false);}catch(e){}
+  try{if(typeof _shSortTopics==='function')tops=_shSortTopics(tops);}catch(e){}
+  const h=['<div class="nvxm-t">'+(copy?'ทำสำเนาไปที่':'ย้ายไปที่')+'</div>'+
+    '<div class="nvxm-s">'+E(unitLbl(s))+' '+num+' จะไปต่อท้ายตัวบทที่เลือก</div>'];
+  let any=0;
+  tops.forEach(t=>{
+    let cards=L.filter(x=>x.category===t.id&&String(x.n)!==String(s.n));
+    try{if(typeof _shSortCards==='function')cards=_shSortCards(t.id,cards);}catch(e){}
+    if(!cards.length)return;
+    any++;
+    let cc='#6B5B7A';try{cc=_hx(t.color);}catch(e){}
+    h.push('<div class="nvxm-lb">'+E(t.name)+'<i></i></div>');
+    cards.forEach(c=>{
+      h.push('<button class="nvxm-card" style="--cc:'+cc+'" onclick="nvxDoMove('+num+',\''+c.n+'\','+(copy?1:0)+')">'+
+        '<u></u><b>'+E(c.name)+'</b><span>'+(c.ayah||1)+' '+E(unitLbl(c))+'</span></button>');
+    });
+  });
+  if(!any)h.push('<div class="nvxm-s" style="text-align:center;padding:18px 8px">ยังไม่มีตัวบทอื่นให้ย้ายไป</div>');
+  h.push('<button class="nvxm-b ghost" style="margin-top:8px" onclick="nvxCloseMenu()">ยกเลิก</button>');
+  openSheet(h.join(''));
+};
+window.nvxDoMove=function(num,tid,copy){
+  const t=(typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]).find(x=>String(x.n)===String(tid));
+  if(moveUnit(num,tid,!!copy)){
+    closeMenu();refresh();
+    TOAST((copy?'ทำสำเนาไป ':'ย้ายไป ')+'“'+((t&&t.name)||'ตัวบท')+'” แล้ว ✓');
+  }else TOAST('ย้ายไม่สำเร็จ');
+};
+
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   v325 · ระบบคำเรียกตามประเภทแหล่งที่มา (Source Label Engine)
+   ─ ตัวบท / ความรู้ / ความหมาย / ตัฟซีร  จะเปลี่ยนคำตามชนิดของแหล่งที่มา
+   ─ ใช้ร่วมกันทุกที่ : หน้าบันทึก · ตัวนำทาง · คลังความรู้ · สุ่ม · แฟลชการ์ด
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+/* คำเรียกของแต่ละชั้นข้อมูล แยกตามประเภทแหล่งที่มา */
+const SET={
+  quran  :{ar:'ตัวบท',  notes:'ความรู้', meanings:'ความหมาย', tafsirs:'ตัฟซีร',      name:'อัลกุรอาน'},
+  hadith :{ar:'ตัวบท',  notes:'ความรู้', meanings:'ความหมาย', tafsirs:'ชัรห์',       name:'หะดีษ/ซุนนะฮ์'},
+  athar  :{ar:'ตัวบท',  notes:'ความรู้', meanings:'ความหมาย', tafsirs:'คำอธิบาย',    name:'อะษัร/คำพูดสลัฟ'},
+  dua    :{ar:'ตัวบท',  notes:'ความรู้', meanings:'ความหมาย', tafsirs:'คำอธิบาย',    name:'ดุอาอ์/ซิกร์'},
+  matn   :{ar:'ตัวบท',  notes:'ความรู้', meanings:'ความหมาย', tafsirs:'ชัรห์',       name:'มัตน์/บทท่องจำ'},
+  fatwa  :{ar:'คำถาม',  notes:'ความรู้', meanings:'คำตอบ',    tafsirs:'หลักฐาน',     name:'ฟัตวา/ถาม-ตอบ'},
+  khutbah:{ar:'ตัวบท',  notes:'ความรู้', meanings:'ใจความ',   tafsirs:'ข้อคิด',      name:'คุฏบะฮ์/บรรยาย'},
+  book   :{ar:'เนื้อหา',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'ขยายความ',    name:'หนังสือ'},
+  article:{ar:'เนื้อหา',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'ขยายความ',    name:'บทความ'},
+  video  :{ar:'เนื้อหา',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'ข้อคิด',      name:'วิดีโอ'},
+  audio  :{ar:'เนื้อหา',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'ข้อคิด',      name:'คลิปเสียง'},
+  social :{ar:'เนื้อหา',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'ข้อคิด',      name:'โซเชียลมีเดีย'},
+  lesson :{ar:'เนื้อหา',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'สรุปบทเรียน', name:'บทเรียน/ดัรส์'},
+  exam   :{ar:'โจทย์',  notes:'ความรู้', meanings:'เฉลย',     tafsirs:'วิธีทำ',      name:'ข้อสอบ/แบบฝึกหัด'},
+  vocab  :{ar:'คำศัพท์',notes:'ความรู้', meanings:'คำแปล',    tafsirs:'ตัวอย่างใช้', name:'คำศัพท์'},
+  translate:{ar:'ต้นฉบับ',notes:'ความรู้',meanings:'คำแปล',   tafsirs:'เชิงอรรถ',    name:'ตัรญะมะฮ์/งานแปล'},
+  idea   :{ar:'ข้อความ',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'ต่อยอด',      name:'บันทึกส่วนตัว/ไอเดีย'},
+  other  :{ar:'เนื้อหา',notes:'ความรู้', meanings:'ใจความ',   tafsirs:'คำอธิบาย',    name:'อื่น ๆ'}
+};
+/* หน่วยเรียกเริ่มต้นของแต่ละแหล่งที่มา */
+const UNIT={quran:'อายะฮ์',hadith:'หะดีษ',athar:'คำพูด',dua:'บท',matn:'บท',fatwa:'ข้อ',khutbah:'ตอน',
+            book:'หน้า',article:'ตอน',video:'ตอน',audio:'ตอน',social:'ข้อความ',
+            lesson:'ครั้ง',exam:'ข้อ',vocab:'คำ',translate:'ย่อหน้า',idea:'เรื่อง',other:'เรื่อง'};
+/* จัดกลุ่มในเมนูเลือก */
+const GROUPS=[
+  {g:'อิสลามศึกษา',k:['quran','hadith','athar','dua','matn','fatwa','khutbah']},
+  {g:'สื่อและเอกสาร',k:['book','article','video','audio','social']},
+  {g:'การเรียนและงานเขียน',k:['lesson','exam','vocab','translate']},
+  {g:'อื่น ๆ',k:['idea','other']}
+];
+window.SRC_GROUPS=GROUPS;
+/* สร้าง <option> พร้อมกลุ่ม ใช้ได้ทั้งหน้าเพิ่มและหน้าแก้ไข */
+window.srcOptionsHTML=function(cur){
+  cur=cur||'quran';
+  return GROUPS.map(function(gr){
+    return '<optgroup label="'+gr.g+'">'+gr.k.map(function(k){
+      return '<option value="'+k+'"'+(cur===k?' selected':'')+'>'+SET[k].name+'</option>';
+    }).join('')+'</optgroup>';
+  }).join('');
+};
+
+window.SRC_SETS=SET;
+window.SRC_UNIT_DEFAULT=UNIT;
+
+function cardOf(sn){
+  try{
+    if(sn&&typeof sn==='object')return sn;
+    if(sn===undefined||sn===null)sn=(typeof currentSurah!=='undefined')?currentSurah:null;
+    if(sn===null||sn===''||sn==='all')return null;
+    const st=String(sn);
+    if(/^[0-9]+$/.test(st))return null;              /* ซูเราะฮ์อัลกุรอาน */
+    return (typeof PLUS_SURAHS!=='undefined'?PLUS_SURAHS:[]).find(x=>String(x.n)===st)||null;
+  }catch(e){return null;}
+}
+function setOf(sn){
+  const c=cardOf(sn);
+  const k=(c&&c.sourceType)||'quran';
+  return SET[k]||SET.other;
+}
+window.L3SET=setOf;
+window.L3SRC=function(sn){const c=cardOf(sn);return (c&&c.sourceType)||'quran';};
+
+/* คำเรียกของชั้นข้อมูล : L3('tafsirs') ใช้การ์ดที่เปิดอยู่ · L3('tafsirs',sn) ระบุเอง */
+window.L3=function(type,sn){
+  const s=setOf(sn);
+  switch(type){
+    case 'text':case 'arText':case 'ar':return s.ar;
+    case 'notes':case 'note':return s.notes;
+    case 'meanings':case 'meaning':return s.meanings;
+    case 'tafsirs':case 'tafsir':return s.tafsirs;
+    case 'overview':return 'ภาพรวม';
+    case 'reasons':return cardOf(sn)?'ที่มา':'สาเหตุ';
+    case 'stories':return cardOf(sn)?'เรื่องราว':'นบี/กลุ่มชน';
+    case 'similar':return 'คล้ายคลึง';
+    default:return '';
+  }
+};
+
+/* หน่วยเรียกของการ์ด : UL() = การ์ดที่เปิดอยู่ · UL(sn) = ระบุเอง */
+window.UL=function(sn){
+  try{
+    const c=cardOf(sn);
+    if(!c)return 'อายะฮ์';
+    return (typeof unitOf==='function')?unitOf(c):(c.unit||UNIT[c.sourceType]||'อายะฮ์');
+  }catch(e){return 'อายะฮ์';}
+};
+
+/* ป้ายในตัวนำทาง (ปุ่ม 3 แท็บ) — อัปเดตทุกครั้งที่เปิด/สร้างตาราง */
+window._nvxRelabel=function(){
+  try{
+    const map={notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs')};
+    document.querySelectorAll('#nvx-panel .nvx-sg').forEach(b=>{
+      const k=b.dataset.k;if(!map[k])return;
+      const n=[].slice.call(b.childNodes).filter(x=>x.nodeType===3&&x.textContent.trim());
+      if(n.length)n[n.length-1].textContent=map[k];
+      else b.appendChild(document.createTextNode(map[k]));
+    });
+  }catch(e){}
+};
+
+})();
+
 </script>
 </body>
 </html>
