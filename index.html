@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v338</title>
+<title>Juz' Amma Tracker v344</title>
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -9237,13 +9237,31 @@ function renderDetailBody(s,d,isPlus){
     html+=`</div>`;
     
     const customCats=get('habitCategories',['ทั่วไป','อิบาดะห์','อัคลาก','ความสัมพันธ์','การเรียนรู้']);
-    html+=`<div class="tab-content" id="main-tab-habits"><div class="habits-container"><div class="habit-add-row"><input type="text" class="habit-input" id="habit-input" placeholder="นิสัยที่ได้เรียนรู้"><input type="number" class="habit-input habit-input-sm" id="habit-ayah" placeholder="อายะฮ์"><select class="habit-input" id="habit-category" style="width:90px">${customCats.map(c=>`<option value="${c}">${c}</option>`).join('')}</select><button class="add-btn" onclick="addHabit(${sn})">+</button></div><div class="habits-grid" id="habits-list">${renderHabits(s.n,d)}</div></div></div>`;
+    const _hu=(typeof UL==='function')?UL(s.n):'อายะฮ์';
+    html+=`<div class="tab-content" id="main-tab-habits"><div class="habits-container">
+      <div class="hb-form">
+        <div class="hb-head"><i><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></i><b>เพิ่มนิสัยที่ได้จากบทเรียนนี้</b></div>
+        <input type="text" class="hb-in" id="habit-input" placeholder="เช่น อ่านก่อนนอนทุกคืน" onkeydown="if(event.key==='Enter')addHabit(${sn})">
+        <div class="hb-lb">หมวดหมู่</div>
+        <div class="hb-chips" id="hb-chips">${customCats.map((c,i)=>`<button type="button" class="hb-chip${i===0?' on':''}" onclick="_hbCat(this,'${c}')">${c}</button>`).join('')}</div>
+        <select id="habit-category" style="display:none">${customCats.map(c=>`<option value="${c}">${c}</option>`).join('')}</select>
+        <div class="hb-lb">ผูกกับ${_hu} <span>(ไม่บังคับ)</span></div>
+        <div class="hb-row">
+          <button type="button" class="hb-step" onclick="_hbStep(-1)">−</button>
+          <input type="number" class="hb-num" id="habit-ayah" placeholder="—" min="1">
+          <button type="button" class="hb-step" onclick="_hbStep(1)">+</button>
+          <button type="button" class="hb-chip sm" onclick="document.getElementById('habit-ayah').value=''">ไม่ระบุ</button>
+          <button type="button" class="hb-save" onclick="addHabit(${sn})"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>เพิ่มนิสัย</button>
+        </div>
+      </div>
+      <div class="habits-grid" id="habits-list">${renderHabits(s.n,d)}</div></div></div>`;
     
     html+=`<div class="tab-content" id="main-tab-names"><div class="names-container">`;
     html+=`<div class="name-add-toggle" onclick="toggleNameForm()"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>เพิ่มพระนาม</div>`;
     html+=`<div class="name-add-form" id="name-add-form">`;
     html+=`<div class="name-add-form-title"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>เพิ่มพระนาม</div>`;
-    html+=`<div class="name-add-grid"><input type="text" id="name-input" class="name-add-input ar" placeholder="พระนาม"><input type="text" id="name-meaning-short" class="name-add-input" placeholder="ความหมาย"><input type="number" id="name-ayah" class="name-add-input" placeholder="อายะฮ์" style="text-align:center"></div>`;
+    const _nu=(typeof UL==='function')?UL(s.n):'อายะฮ์';
+    html+=`<div class="name-add-grid"><input type="text" id="name-input" class="name-add-input ar" placeholder="พระนาม"><input type="text" id="name-meaning-short" class="name-add-input" placeholder="ความหมาย"><input type="number" id="name-ayah" class="name-add-input" placeholder="${_nu}" style="text-align:center"></div>`;
     html+=`<div class="name-add-row2"><div class="name-add-col"><label>ความรู้ที่ได้</label><div contenteditable="true" class="name-add-edit" id="name-lesson" data-placeholder="สิ่งที่เรียนรู้ ..."></div></div><div class="name-add-col"><label>ดุอาอ์/นิสัย</label><div contenteditable="true" class="name-add-edit" id="name-dua" data-placeholder="ดุอาอ์หรือนิสัย ..."></div></div></div>`;
     html+=`<div class="name-add-footer" style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;gap:8px"><div class="ayah-mini-wrap" style="flex:1"><button class="ayah-mini-btn text-btn" onmousedown="event.preventDefault()" onclick="toggleMiniMenuHorizontal(this)">🎨 เครื่องมือ</button><div class="ayah-mini-menu horizontal"><button class="ayah-mini-close" onclick="this.closest('.ayah-mini-wrap').classList.remove('open')">✕</button><div style="display:flex;justify-content:center;margin-bottom:5px"><button class="ayah-mini-item mini-img" style="width:auto;height:22px;padding:0 9px;background:rgba(107,91,122,0.09);color:var(--pri);font-size:8px;border-radius:11px;display:inline-flex;align-items:center;gap:4px;font-family:var(--f-th)" onmousedown="event.preventDefault()" onclick="imgBtnClick(this)" title="แทรกรูปภาพ"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="8.6" cy="9.4" r="1.7"/><path d="M21 16l-4.6-4.6L7 20"/></svg>รูปภาพ</button></div><div class="toolbar-row" style="justify-content:center"><button class="ayah-mini-item" style="background:#f5f5f5;font-weight:700;width:18px;height:18px;font-size:10px" onmousedown="event.preventDefault()" onclick="formatText('bold')">B</button><button class="ayah-mini-item" style="background:#f5f5f5;font-style:italic;width:18px;height:18px;font-size:10px" onmousedown="event.preventDefault()" onclick="formatText('italic')">I</button><button class="tb-size-btn up" style="width:18px;height:18px;font-size:11px" onmousedown="event.preventDefault()" onclick="fontSizeUp()">+</button><button class="tb-size-btn dn" style="width:18px;height:18px;font-size:11px" onmousedown="event.preventDefault()" onclick="fontSizeDown()">−</button><button class="tb-icon-btn" style="width:18px;height:18px" onmousedown="event.preventDefault()" onclick="fontSizeReset()" title="รีเซ็ทขนาด"><svg viewBox="0 0 20 20" fill="none"><line x1="2" y1="5" x2="10" y2="5" stroke="#666" stroke-width="1.6" stroke-linecap="round"/><line x1="6" y1="5" x2="6" y2="16" stroke="#666" stroke-width="1.6" stroke-linecap="round"/><line x1="12" y1="8" x2="18" y2="8" stroke="#666" stroke-width="1.3" stroke-linecap="round"/><line x1="15" y1="8" x2="15" y2="16" stroke="#666" stroke-width="1.3" stroke-linecap="round"/></svg></button><button class="tb-icon-btn" style="width:18px;height:18px;background:#e8f5e9" onmousedown="event.preventDefault()" onclick="normalizeLineHeight()" title="รีเซ็ทระยะห่างบรรทัด"><svg viewBox="0 0 20 20" fill="none"><line x1="6" y1="4" x2="18" y2="4" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="10" x2="18" y2="10" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="16" x2="18" y2="16" stroke="#2e7d32" stroke-width="1.5" stroke-linecap="round"/><line x1="2.5" y1="6.5" x2="2.5" y2="13.5" stroke="#2e7d32" stroke-width="1.2" stroke-linecap="round"/><polygon points="2.5,4 1,7 4,7" fill="#2e7d32"/><polygon points="2.5,16 1,13 4,13" fill="#2e7d32"/></svg></button><button class="tb-icon-btn" style="width:18px;height:18px;background:#fce4ec" onmousedown="event.preventDefault()" onclick="removeAllFormat()" title="ลบทั้งหมด"><svg viewBox="0 0 20 20" fill="none"><path d="M4 7L7 3L10 7" stroke="#c2185b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><line x1="5.5" y1="5.5" x2="8.5" y2="5.5" stroke="#c2185b" stroke-width="1.2" stroke-linecap="round"/><rect x="1" y="9" width="12" height="7" rx="2" fill="#ffcdd2" stroke="#c2185b" stroke-width="1.2"/><line x1="0" y1="18" x2="14" y2="18" stroke="#888" stroke-width="1.2" stroke-linecap="round"/><circle cx="15" cy="5" r="1" fill="#c2185b"/><circle cx="17.5" cy="8" r="0.8" fill="#c2185b"/><circle cx="14" cy="9" r="0.6" fill="#c2185b"/></svg></button><button class="tb-icon-btn" style="width:18px;height:18px;background:#f3e5f5" onmousedown="event.preventDefault()" onclick="removeFont()" title="รีเซ็ทฟอนต์"><svg viewBox="0 0 20 20" fill="none"><path d="M3 16L3 4L10 4" stroke="#7b1fa2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="10" x2="8" y2="10" stroke="#7b1fa2" stroke-width="1.6" stroke-linecap="round"/><line x1="13" y1="4" x2="18" y2="9" stroke="#e53935" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="4" x2="13" y2="9" stroke="#e53935" stroke-width="2" stroke-linecap="round"/></svg></button><button class="tb-icon-btn" style="width:18px;height:18px;background:#fff3e0" onmousedown="event.preventDefault()" onclick="removeHighlightOnly()" title="ลบไฮไลท์"><svg viewBox="0 0 20 20" fill="none"><rect x="1" y="5" width="11" height="9" rx="1.5" fill="#FFE082" stroke="#e65100" stroke-width="1.3"/><line x1="3" y1="9.5" x2="10" y2="9.5" stroke="#e65100" stroke-width="1.4" stroke-linecap="round"/><line x1="13" y1="4" x2="18" y2="9" stroke="#e53935" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="4" x2="13" y2="9" stroke="#e53935" stroke-width="2" stroke-linecap="round"/></svg></button><button class="tb-icon-btn" style="width:18px;height:18px;background:#e3f2fd" onmousedown="event.preventDefault()" onclick="removeTextColorOnly()" title="ลบสีตัวอักษร"><svg viewBox="0 0 20 20" fill="none"><defs><linearGradient id="rbow3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#e53935"/><stop offset="50%" stop-color="#f9a825"/><stop offset="100%" stop-color="#1e88e5"/></linearGradient></defs><path d="M3 14L6.5 4L10 14" stroke="#1565c0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><line x1="4" y1="11" x2="9" y2="11" stroke="#1565c0" stroke-width="1.4" stroke-linecap="round"/><rect x="2" y="15" width="9" height="3" rx="1" fill="url(#rbow3)"/><line x1="13" y1="4" x2="18" y2="9" stroke="#e53935" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="4" x2="13" y2="9" stroke="#e53935" stroke-width="2" stroke-linecap="round"/></svg></button></div><div class="toolbar-row"><button class="ayah-mini-color" style="background:#FADEE3" onmousedown="event.preventDefault()" onclick="formatText('hiliteColor','#FADEE3')"></button><button class="ayah-mini-color" style="background:#D4EDEC" onmousedown="event.preventDefault()" onclick="formatText('hiliteColor','#D4EDEC')"></button><button class="ayah-mini-color" style="background:#FFF3CD" onmousedown="event.preventDefault()" onclick="formatText('hiliteColor','#FFF3CD')"></button><button class="ayah-mini-color" style="background:#E8D5E8" onmousedown="event.preventDefault()" onclick="formatText('hiliteColor','#E8D5E8')"></button><button class="ayah-mini-color" style="background:#FFCECE" onmousedown="event.preventDefault()" onclick="formatText('hiliteColor','#FFCECE')"></button><button class="ayah-mini-color" style="background:#C5E8FF" onmousedown="event.preventDefault()" onclick="formatText('hiliteColor','#C5E8FF')"></button><div class="tool-divider"></div><div class="custom-slot hl-slot-0" onmousedown="event.preventDefault()" onclick="handleCustomSlot(this,'hl',0)">+</div><div class="custom-slot hl-slot-1" onmousedown="event.preventDefault()" onclick="handleCustomSlot(this,'hl',1)">+</div><div class="custom-slot hl-slot-2" onmousedown="event.preventDefault()" onclick="handleCustomSlot(this,'hl',2)">+</div><div class="picked-color-box picked-hl-box" onmousedown="event.preventDefault()" onclick="applyPickedHilite()" title="ใช้สีไฮไลท์ที่ดูด"></div><div class="tb-textcolor-pick" onmousedown="event.preventDefault()" onclick="pickHiliteColor()">🖌️</div><div class="color-edit-btn" onmousedown="event.preventDefault()" onclick="toggleColorEditMode(this)">🌈</div></div><div class="toolbar-row"><div class="tb-textcolor" style="background:#e53935" onmousedown="event.preventDefault()" onclick="applyTextColor('#e53935')"></div><div class="tb-textcolor" style="background:#1e88e5" onmousedown="event.preventDefault()" onclick="applyTextColor('#1e88e5')"></div><div class="tb-textcolor" style="background:#43a047" onmousedown="event.preventDefault()" onclick="applyTextColor('#43a047')"></div><div class="tb-textcolor" style="background:#8e24aa" onmousedown="event.preventDefault()" onclick="applyTextColor('#8e24aa')"></div><div class="tb-textcolor" style="background:#f9a825" onmousedown="event.preventDefault()" onclick="applyTextColor('#f9a825')"></div><div class="tb-textcolor" style="background:#6d4c41" onmousedown="event.preventDefault()" onclick="applyTextColor('#6d4c41')"></div><div class="tool-divider"></div><div class="custom-slot tc-slot-0" onmousedown="event.preventDefault()" onclick="handleCustomSlot(this,'tc',0)">+</div><div class="custom-slot tc-slot-1" onmousedown="event.preventDefault()" onclick="handleCustomSlot(this,'tc',1)">+</div><div class="custom-slot tc-slot-2" onmousedown="event.preventDefault()" onclick="handleCustomSlot(this,'tc',2)">+</div><div class="picked-color-box picked-tc-box" onmousedown="event.preventDefault()" onclick="applyPickedTextColor()" title="ใช้สีที่ดูด"></div><div class="tb-textcolor-pick" onmousedown="event.preventDefault()" onclick="pickTextColor()">🖌️</div><div class="color-edit-btn" onmousedown="event.preventDefault()" onclick="confirmResetCustomColors()">🧼</div></div></div></div><button class="name-add-btn primary" onclick="addName(${sn})">บันทึก</button></div>`;
     html+=`</div>`;
@@ -11888,20 +11906,23 @@ function renderPlusCard(s){
     const arText = s.ar ? `<div class="surah-ar">${s.ar}</div>` : '';
     const refDisplay = s.ref ? s.ref.replace(/:/g,' : ') : '';
     
-    return `<div class="surah-card s${status}" data-card="${s.n}" onclick="openDetail('${s.n}')">
-        <div class="surah-top">
+    const hasHead = !!(refDisplay || s.ar);
+    return `<div class="surah-card s${status}${hasHead?'':' nohead'}" data-card="${s.n}" onclick="openDetail('${s.n}')">
+        ${hasHead?`<div class="surah-top">
             ${refDisplay ? `<div class="surah-num">${refDisplay}</div>` : ''}
             ${arText}
-        </div>
+        </div>`:''}
         <div class="surah-name">${thaiWB(s.name)}</div>
-        <div class="surah-meta">${metaText}</div>
+        <div class="surah-foot">
+            <span class="surah-meta">${metaText}</span>
+            ${status===4?'<span class="surah-chip-done"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>':''}
+            <button class="surah-edit" onclick="event.stopPropagation();editPlusSurah('${s.n}')" aria-label="แก้ไข"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        </div>
         <div class="surah-bars">
             <div class="surah-bar b1"><div class="surah-bar-fill" style="width:${tP}%"></div></div>
             <div class="surah-bar b2"><div class="surah-bar-fill" style="width:${mP}%"></div></div>
             <div class="surah-bar b3"><div class="surah-bar-fill" style="width:${tfP}%"></div></div>
         </div>
-        <button onclick="event.stopPropagation();editPlusSurah('${s.n}')" style="position:absolute;bottom:4px;right:4px;width:18px;height:18px;border-radius:4px;border:none;background:rgba(107,91,122,0.1);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:5;opacity:0.7" title="แก้ไข"><svg viewBox="0 0 24 24" width="9" height="9" fill="none" stroke="var(--pri)" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-        ${doneHtml}
     </div>`;
 }
 
@@ -19153,6 +19174,7 @@ function snavOpen(focus){
     snavClearQ(true);
     try{document.querySelectorAll('.tb-special-wrap.open,.tb-colors-wrap.open,.ayah-mini-wrap.open').forEach(x=>x.classList.remove('open'));}catch(e){}
     try{if(window._nvxRelabel)_nvxRelabel();}catch(e){}
+    try{if(window._nvxAnchor)_nvxAnchor();}catch(e){}
     const p=document.getElementById('nvx-panel'),sc=document.getElementById('nvx-scrim'),fb=document.getElementById('nvx-fab');
     if(p)p.classList.add('open');if(sc)sc.classList.add('open');if(fb)fb.classList.add('on');
     if(focus==='search')setTimeout(()=>{const q=document.getElementById('nvx-q');if(q)q.focus();},260);
@@ -19406,9 +19428,9 @@ function _bldBanner(sn){if(_gf===null||_gf==='all-grp')return '';
         const d3=getSurah(sn);const gs3=d3.ayahGroups||[];const pg=gs3[gi];
         if(!pg||!pg.subs||!pg.subs[si])return '';
         const sub=pg.subs[si];const cl3=pg.color||_GC[gi%_GC.length];
-        const sl=sub.f===sub.to?'อายะฮ์ '+sub.f:'อายะฮ์ '+sub.f+' - '+sub.to;
+        const _su=UL();const sl=sub.f===sub.to?_su+' '+sub.f:_su+' '+sub.f+' - '+sub.to;
         let bh='<div class="grp-banner-v2" style="background:'+cl3+'06;border:1px solid '+cl3+'15"><div class="gb-dot" style="background:'+cl3+'"></div><div style="flex:1">';
-        bh+='<div class="gb-range" style="color:'+cl3+'">'+sl+' <span style="font-weight:400;color:var(--txt3)">('+( sub.to-sub.f+1)+' อายะฮ์) กลุ่มย่อยของ '+pg.title+'</span></div>';
+        bh+='<div class="gb-range" style="color:'+cl3+'">'+sl+' <span style="font-weight:400;color:var(--txt3)">('+( sub.to-sub.f+1)+' '+UL()+') กลุ่มย่อยของ '+pg.title+'</span></div>';
         bh+='<div class="gb-title">'+thaiWB(sub.title)+'</div>';
         if(sub.desc)bh+='<div class="gb-desc">'+thaiWB(sub.desc)+'</div>';
         bh+='<div style="margin-top:4px"><button onclick="_setGF('+gi+')" style="padding:2px 8px;border-radius:var(--r-full);font-size:7px;border:1px solid '+cl3+'40;background:'+cl3+'08;color:'+cl3+';cursor:pointer;font-family:var(--f-th)">&#9664; กลับ '+pg.title+'</button></div>';
@@ -19416,7 +19438,7 @@ function _bldBanner(sn){if(_gf===null||_gf==='all-grp')return '';
     }
     const d=getSurah(sn);const gs=d.ayahGroups||[];const g=gs[_gf];if(!g)return '';
     const cl=g.color||_GC[_gf%_GC.length];const _u=UL(sn);const lbl=g.f===g.to?`${_u} ${g.f}`:`${_u} ${g.f} - ${g.to}`;
-    let h=`<div class="grp-banner-v2" style="background:${cl}06;border:1px solid ${cl}15"><div class="gb-dot" style="background:${cl}"></div><div style="flex:1"><div class="gb-range" style="color:${cl}">${lbl} <span style="font-weight:400;color:var(--txt3)">(${g.to-g.f+1} อายะฮ์)</span></div><div class="gb-title">${thaiWB(g.title)}</div>`;
+    let h=`<div class="grp-banner-v2" style="background:${cl}06;border:1px solid ${cl}15"><div class="gb-dot" style="background:${cl}"></div><div style="flex:1"><div class="gb-range" style="color:${cl}">${lbl} <span style="font-weight:400;color:var(--txt3)">(${g.to-g.f+1} ${_u})</span></div><div class="gb-title">${thaiWB(g.title)}</div>`;
     if(g.desc)h+=`<div class="gb-desc">${thaiWB(g.desc)}</div>`;
     h+='</div></div>';return h;}
 
@@ -19504,7 +19526,7 @@ function _bldGV(gs,snA,tA,sN){if(_gvm==='edit')return _gEdit(gs,snA);if(_gvm==='
 // FIX #3: Edit mode - NO border-left, use number badge + rounded card
 function _gEdit(gs,snA){let h='';
     gs.map((g,i)=>({g,i})).sort((a,b)=>a.g.f-b.g.f).forEach(({g,i},sI)=>{const cl=g.color||_GC[i%_GC.length];const _u=UL();const lbl=g.f===g.to?`${_u} ${g.f}`:`${_u} ${g.f} - ${g.to}`;
-        h+=`<div class="grp-card-v2" style="border-color:${cl}20"><div style="padding:10px 12px 8px;display:flex;align-items:flex-start;gap:10px"><div style="width:22px;height:22px;border-radius:6px;background:${cl};color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${sI+1}</div><div style="flex:1;min-width:0"><div style="font-size:var(--text-sm);font-weight:700;color:var(--txt);line-height:1.4">${thaiWB(g.title)}</div><div style="font-size:var(--text-3xs);color:${cl};font-weight:600;margin-top:2px">${lbl} <span style="color:var(--txt3);font-weight:400">(${g.to-g.f+1} อายะฮ์)</span></div>${g.desc?`<div style="font-size:var(--text-3xs);color:var(--txt2);margin-top:4px;line-height:1.5">${thaiWB(g.desc)}</div>`:''}</div><div style="display:flex;gap:3px;flex-shrink:0"><button onclick="_eG(${snA},${i})" style="width:24px;height:24px;border-radius:6px;border:none;background:var(--grp-ll);cursor:pointer;display:flex;align-items:center;justify-content:center" title="แก้ไข"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--grp)" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button onclick="_dG(${snA},${i})" style="width:24px;height:24px;border-radius:6px;border:none;background:#ffeeee;cursor:pointer;display:flex;align-items:center;justify-content:center" title="ลบ"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#cc4444" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div></div>`;
+        h+=`<div class="grp-card-v2" style="border-color:${cl}20"><div style="padding:10px 12px 8px;display:flex;align-items:flex-start;gap:10px"><div style="width:22px;height:22px;border-radius:6px;background:${cl};color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${sI+1}</div><div style="flex:1;min-width:0"><div style="font-size:var(--text-sm);font-weight:700;color:var(--txt);line-height:1.4">${thaiWB(g.title)}</div><div style="font-size:var(--text-3xs);color:${cl};font-weight:600;margin-top:2px">${lbl} <span style="color:var(--txt3);font-weight:400">(${g.to-g.f+1} ${UL()})</span></div>${g.desc?`<div style="font-size:var(--text-3xs);color:var(--txt2);margin-top:4px;line-height:1.5">${thaiWB(g.desc)}</div>`:''}</div><div style="display:flex;gap:3px;flex-shrink:0"><button onclick="_eG(${snA},${i})" style="width:24px;height:24px;border-radius:6px;border:none;background:var(--grp-ll);cursor:pointer;display:flex;align-items:center;justify-content:center" title="แก้ไข"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--grp)" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button onclick="_dG(${snA},${i})" style="width:24px;height:24px;border-radius:6px;border:none;background:#ffeeee;cursor:pointer;display:flex;align-items:center;justify-content:center" title="ลบ"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#cc4444" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button></div></div>`;
         if(g.subs&&g.subs.length){h+=`<div style="padding:4px 12px 8px 48px;background:${cl}03;border-top:1px solid ${cl}08">`;
             const _sortedSE=[...g.subs].sort((a,b)=>a.f-b.f);
             _sortedSE.forEach((s,j)=>{const sl=s.f===s.to?`${s.f}`:`${s.f}-${s.to}`;
@@ -19517,14 +19539,14 @@ function _gEdit(gs,snA){let h='';
     h+=`<button onclick="_sMF(${snA})" style="width:100%;padding:10px;border:1.5px dashed rgba(107,142,159,0.35);border-radius:var(--r-md);background:var(--card);cursor:pointer;font-size:var(--text-2xs);font-weight:500;color:var(--grp);font-family:var(--f-th);display:flex;align-items:center;justify-content:center;gap:4px;margin-top:4px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--grp)" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>เพิ่มกลุ่มหลักใหม่</button><div id="gfa"></div>`;return h;}
 
 // Edit/Add/Delete functions
-function _eG(sn,i){const d=getSurah(sn);const g=d.ayahGroups[i];if(!g)return;const a=document.getElementById('gfa');if(!a)return;a.innerHTML=`<div class="grp-edit-form"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--grp);margin-bottom:2px">แก้ไขกลุ่มที่ ${i+1}</div><input type="text" id="ge-t" value="${g.title}"><textarea id="ge-d" rows="4" placeholder="คำอธิบาย">${g.desc||''}</textarea><div style="display:flex;gap:6px"><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">เริ่ม</label><input type="number" id="ge-f" value="${g.f}"></div><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">ถึง</label><input type="number" id="ge-to" value="${g.to}"></div></div><div style="display:flex;gap:6px"><button onclick="document.getElementById('gfa').innerHTML=''" style="flex:1;padding:6px;border:1px solid var(--bdr);border-radius:var(--r-sm);background:var(--card);font-size:9px;cursor:pointer;font-family:var(--f-th)">ยกเลิก</button><button onclick="_svEG(${typeof sn==='string'?"'"+sn+"'":sn},${i})" style="flex:1;padding:6px;border:none;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--grp),var(--grp-l));color:#fff;font-size:9px;font-weight:600;cursor:pointer;font-family:var(--f-th)">บันทึก</button></div></div>`;}
+function _eG(sn,i){_grpForm({kind:'main',mode:'edit',sn:sn,gi:i});}
 function _svEG(sn,i){const t=document.getElementById('ge-t')?.value?.trim();const desc=document.getElementById('ge-d')?.value?.trim();const f=parseInt(document.getElementById('ge-f')?.value);const to=parseInt(document.getElementById('ge-to')?.value);if(!t||!f||isNaN(f)){toast('กรุณากรอกข้อมูลให้ครบ');return;}const d=getSurah(sn);d.ayahGroups[i].title=t;d.ayahGroups[i].desc=desc||'';d.ayahGroups[i].f=f;d.ayahGroups[i].to=to||f;setSurah(sn,d);toast('แก้ไขแล้ว');_grpInit(sn);}
-function _eS(sn,gi,si){const d=getSurah(sn);const s=d.ayahGroups[gi]?.subs?.[si];if(!s)return;const a=document.getElementById('gfa');if(!a)return;a.innerHTML=`<div class="grp-edit-form"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--grp);margin-bottom:2px">แก้ไขกลุ่มย่อย</div><input type="text" id="ges-t" value="${s.title}"><textarea id="ges-d" rows="1" placeholder="คำอธิบาย">${s.desc||''}</textarea><div style="display:flex;gap:6px"><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">เริ่ม</label><input type="number" id="ges-f" value="${s.f}"></div><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">ถึง</label><input type="number" id="ges-to" value="${s.to}"></div></div><div style="display:flex;gap:6px"><button onclick="document.getElementById('gfa').innerHTML=''" style="flex:1;padding:6px;border:1px solid var(--bdr);border-radius:var(--r-sm);background:var(--card);font-size:9px;cursor:pointer;font-family:var(--f-th)">ยกเลิก</button><button onclick="_svES(${typeof sn==='string'?"'"+sn+"'":sn},${gi},${si})" style="flex:1;padding:6px;border:none;border-radius:var(--r-sm);background:var(--grp);color:#fff;font-size:9px;font-weight:600;cursor:pointer;font-family:var(--f-th)">บันทึก</button></div></div>`;}
+function _eS(sn,gi,si){_grpForm({kind:'sub',mode:'edit',sn:sn,gi:gi,si:si});}
 function _svES(sn,gi,si){const t=document.getElementById('ges-t')?.value?.trim();const desc=document.getElementById('ges-d')?.value?.trim();const f=parseInt(document.getElementById('ges-f')?.value);const to=parseInt(document.getElementById('ges-to')?.value);if(!t||!f||isNaN(f)){toast('กรุณากรอกข้อมูลให้ครบ');return;}const d=getSurah(sn);d.ayahGroups[gi].subs[si]={title:t,desc:desc||'',f,to:to||f};setSurah(sn,d);toast('แก้ไขแล้ว');_grpInit(sn);}
-function _sMF(sn){const a=document.getElementById('gfa');if(!a)return;a.innerHTML=`<div class="grp-edit-form"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--grp);margin-bottom:2px">เพิ่มกลุ่มหลักใหม่</div><input type="text" id="gft" placeholder="ชื่อหัวข้อกลุ่ม"><textarea id="gfd" placeholder="คำอธิบาย (ไม่บังคับ)" rows="4"></textarea><div style="display:flex;gap:6px"><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">อายะฮ์เริ่ม</label><input type="number" id="gff"></div><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">อายะฮ์สุดท้าย</label><input type="number" id="gfto"></div></div><div style="display:flex;gap:6px"><button onclick="document.getElementById('gfa').innerHTML=''" style="flex:1;padding:7px;border:1px solid var(--bdr);border-radius:var(--r-sm);background:var(--card);font-size:var(--text-2xs);cursor:pointer;font-family:var(--f-th)">ยกเลิก</button><button onclick="_sM(${typeof sn==='string'?"'"+sn+"'":sn})" style="flex:1;padding:7px;border:none;border-radius:var(--r-sm);background:linear-gradient(135deg,var(--grp),var(--grp-l));color:#fff;font-size:var(--text-2xs);font-weight:600;cursor:pointer;font-family:var(--f-th)">บันทึก</button></div></div>`;}
+function _sMF(sn){_grpForm({kind:'main',mode:'add',sn:sn});}
 function _sM(sn){const t=document.getElementById('gft')?.value?.trim();const desc=document.getElementById('gfd')?.value?.trim();const f=parseInt(document.getElementById('gff')?.value);const to=parseInt(document.getElementById('gfto')?.value);if(!t||!f||isNaN(f)){toast('กรุณากรอกข้อมูลให้ครบ');return;}const d=getSurah(sn);if(!d.ayahGroups)d.ayahGroups=[];d.ayahGroups.push({title:t,desc:desc||'',f,to:to||f,color:_GC[d.ayahGroups.length%_GC.length],subs:[]});setSurah(sn,d);toast('เพิ่มกลุ่มหลักแล้ว');_grpInit(sn);}
 function _dG(sn,i){if(!confirm('ลบกลุ่มนี้ ?'))return;const d=getSurah(sn);d.ayahGroups.splice(i,1);setSurah(sn,d);_gf=null;toast('ลบกลุ่มแล้ว');_grpInit(sn);}
-function _sSF(sn,gi){const a=document.getElementById('gfa');if(!a)return;a.innerHTML=`<div class="grp-edit-form"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--grp);margin-bottom:2px">เพิ่มกลุ่มย่อย</div><input type="text" id="gsft" placeholder="ชื่อกลุ่มย่อย"><textarea id="gsfd" placeholder="คำอธิบาย (ไม่บังคับ)" rows="1"></textarea><div style="display:flex;gap:6px"><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">เริ่ม</label><input type="number" id="gsff"></div><div style="flex:1"><label style="font-size:8px;color:var(--txt3)">ถึง</label><input type="number" id="gsfto"></div></div><div style="display:flex;gap:6px"><button onclick="document.getElementById('gfa').innerHTML=''" style="flex:1;padding:6px;border:1px solid var(--bdr);border-radius:var(--r-sm);background:var(--card);font-size:9px;cursor:pointer;font-family:var(--f-th)">ยกเลิก</button><button onclick="_sS(${typeof sn==='string'?"'"+sn+"'":sn},${gi})" style="flex:1;padding:6px;border:none;border-radius:var(--r-sm);background:var(--grp);color:#fff;font-size:9px;font-weight:600;cursor:pointer;font-family:var(--f-th)">เพิ่ม</button></div></div>`;}
+function _sSF(sn,gi){_grpForm({kind:'sub',mode:'add',sn:sn,gi:gi});}
 function _sS(sn,gi){const t=document.getElementById('gsft')?.value?.trim();const desc=document.getElementById('gsfd')?.value?.trim();const f=parseInt(document.getElementById('gsff')?.value);const to=parseInt(document.getElementById('gsfto')?.value);if(!t||!f||isNaN(f)){toast('กรุณากรอกข้อมูลให้ครบ');return;}const d=getSurah(sn);if(!d.ayahGroups[gi].subs)d.ayahGroups[gi].subs=[];d.ayahGroups[gi].subs.push({title:t,desc:desc||'',f,to:to||f});setSurah(sn,d);toast('เพิ่มกลุ่มย่อยแล้ว');_grpInit(sn);}
 function _dS(sn,gi,si){const d=getSurah(sn);d.ayahGroups[gi].subs.splice(si,1);setSurah(sn,d);_grpInit(sn);}
 
@@ -19537,7 +19559,8 @@ function _gTL(gs,tA){if(!gs.length)return '<div class="empty-state">ยังไ
     const ts=window._tlShow;const tOrd=window._tlOrd;
     const anyShow=ts.arText||ts.notes||ts.meanings||ts.tafsirs;
     const _oL={arText:L3('text'),notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs')};
-    let h='<div style="display:flex;gap:3px;margin-bottom:4px;flex-wrap:wrap;align-items:center"><span style="font-size:var(--text-3xs);color:var(--txt3)">แสดง :</span>';
+    let h=_tlFontBar();
+    h+='<div style="display:flex;gap:3px;margin-bottom:4px;flex-wrap:wrap;align-items:center"><span style="font-size:var(--text-3xs);color:var(--txt3)">แสดง :</span>';
     [{k:'arText',l:L3('text')},{k:'notes',l:L3('notes')},{k:'meanings',l:L3('meanings')},{k:'tafsirs',l:L3('tafsirs')}].forEach(t=>{const on=ts[t.k];
         h+=`<button onclick="window._tlShow.${t.k}=!window._tlShow.${t.k};_sGVM('timeline')" style="padding:4px 10px;border-radius:var(--r-full);font-size:var(--text-3xs);border:1px solid ${on?'var(--pri)':'var(--bdr)'};background:${on?'var(--pri)':'var(--card)'};color:${on?'#fff':'var(--txt3)'};cursor:pointer;font-family:var(--f-th)">${t.l}</button>`;});
     h+='</div>';
@@ -19545,7 +19568,7 @@ function _gTL(gs,tA){if(!gs.length)return '<div class="empty-state">ยังไ
         h+='<div style="display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap;align-items:center"><span style="font-size:var(--text-3xs);color:var(--txt3)">ลำดับ :</span>';
         act.forEach((k,idx)=>{h+=`<span style="display:inline-flex;align-items:center;gap:1px;font-size:var(--text-3xs);color:var(--txt2);background:var(--card2);padding:3px 8px;border-radius:var(--r-full);border:1px solid var(--bdr-l)">`;
             if(idx>0)h+=`<button onclick="_tlMv('${k}',-1)" style="border:none;background:none;cursor:pointer;font-size:8px;color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25C0</button>`;
-            h+=_oL[k];if(idx<act.length-1)h+=`<button onclick="_tlMv('${k}',1)" style="border:none;background:none;cursor:pointer;font-size:8px;color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25B6</button>`;
+            h+=_oL[k];if(idx<act.length-1)h+=`<button onclick="_tlMv('${k}',1)" style="border:none;background:none;cursor:pointer;font-size:var(--text-3xs);color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25B6</button>`;
             h+=`</span>`;});h+='</div>';}
     h+=`<div class="grp-tl-wrap"><div class="grp-tl-line" style="background:linear-gradient(to bottom,${cols})"></div>`;
     function _uc(htm){return htm&&(/<[^>]+style\s*=\s*"[^"]*color/i).test(htm);}
@@ -19553,11 +19576,11 @@ function _gTL(gs,tA){if(!gs.length)return '<div class="empty-state">ยังไ
         const arR=_mmGetD(d,a,a,'arText');const arH=arR.length?arR[0].h:'';
         const sA=ts.arText&&arH,sN=ts.notes&&notes,sM=ts.meanings&&meanings,sT=ts.tafsirs&&tafsirs;
         if(!sA&&!sN&&!sM&&!sT)return '';
-        let r=`<div style="padding:3px 0;border-top:1px solid ${cl}08;font-size:8px"><span style="color:${cl};font-weight:700;font-size:7px">${a}</span> `;
-        const mp={arText:{ok:sA,h:`<span dir="rtl" style="font-family:var(--f-ar);font-size:10px;color:var(--txt)">${arH}</span> `},
-            notes:{ok:sN,h:`<div style="font-size:7px;${_uc(notes)?'':'color:var(--pri);'}margin-top:1px;line-height:1.3">${notes}</div>`},
-            meanings:{ok:sM,h:`<div style="font-size:7px;${_uc(meanings)?'':'color:var(--sec);'}margin-top:1px;line-height:1.3">${meanings}</div>`},
-            tafsirs:{ok:sT,h:`<div style="font-size:7px;${_uc(tafsirs)?'':'color:var(--tafsir);'}margin-top:1px;line-height:1.3">${tafsirs}</div>`}};
+        let r=`<div style="padding:3px 0;border-top:1px solid ${cl}08;font-size:calc(var(--tl-s,1) * 9px)"><span style="color:${cl};font-weight:700;font-size:calc(var(--tl-s,1) * 9px)">${a}</span> `;
+        const mp={arText:{ok:sA,h:`<span dir="rtl" style="font-family:var(--f-ar);font-size:calc(var(--tl-s,1) * 12px);color:var(--txt)">${arH}</span> `},
+            notes:{ok:sN,h:`<div style="font-size:calc(var(--tl-s,1) * 9px);${_uc(notes)?'':'color:var(--pri);'}margin-top:1px;line-height:1.3">${notes}</div>`},
+            meanings:{ok:sM,h:`<div style="font-size:calc(var(--tl-s,1) * 9px);${_uc(meanings)?'':'color:var(--sec);'}margin-top:1px;line-height:1.3">${meanings}</div>`},
+            tafsirs:{ok:sT,h:`<div style="font-size:calc(var(--tl-s,1) * 9px);${_uc(tafsirs)?'':'color:var(--tafsir);'}margin-top:1px;line-height:1.3">${tafsirs}</div>`}};
         tOrd.forEach(k=>{if(mp[k]&&mp[k].ok)r+=mp[k].h;});return r+`</div>`;}
     sorted.forEach(g=>{const oi=gs.indexOf(g);const cl=g.color||_GC[oi%_GC.length];const lbl=g.f===g.to?`${g.f}`:`${g.f} - ${g.to}`;
         const hasSubs=g.subs&&g.subs.length;
@@ -19569,18 +19592,18 @@ function _gTL(gs,tA){if(!gs.length)return '<div class="empty-state">ยังไ
                 const _hasChildren=!_isChild&&ss.some(c=>c!==s&&c.f>=s.f&&c.to<=s.to&&(c.f!==s.f||c.to!==s.to));
                 const _children=_hasChildren?ss.filter(c=>c!==s&&c.f>=s.f&&c.to<=s.to&&(c.f!==s.f||c.to!==s.to)):[];
                 let sd='';if(anyShow){for(let a=s.f;a<=s.to;a++){if(_hasChildren&&_children.some(c=>a>=c.f&&a<=c.to))continue;sd+=_aR(a,cl);}}
-                subsHtml+=`<div style="border-bottom:1px solid ${cl}06"><div style="padding:5px 10px ${_isChild?'5px 22px':'5px 10px'};background:linear-gradient(135deg,${cl}${_isChild?'08':'14'},${cl}${_isChild?'04':'08'});display:flex;align-items:center;gap:5px;font-size:9px"><div style="width:${_isChild?3:5}px;height:${_isChild?3:5}px;border-radius:50%;background:${cl};opacity:${_isChild?0.4:0.6}"></div><span style="color:${cl};font-weight:600;font-size:8px">${sl2}</span><span style="color:${_isChild?cl:'var(--txt)'};font-weight:500;${_isChild?'opacity:0.8':''}">${thaiWB(s.title)}</span></div>${s.desc?`<div style="font-size:8px;color:var(--txt3);margin:0 10px 3px ${_isChild?'32px':'20px'}">${thaiWB(s.desc)}</div>`:''}${sd?`<div style="padding:2px 10px 4px;background:var(--card)">${sd}</div>`:''}</div>`;
+                subsHtml+=`<div style="border-bottom:1px solid ${cl}06"><div style="padding:5px 10px ${_isChild?'5px 22px':'5px 10px'};background:linear-gradient(135deg,${cl}${_isChild?'08':'14'},${cl}${_isChild?'04':'08'});display:flex;align-items:center;gap:5px;font-size:calc(var(--tl-s,1) * 9.5px)"><div style="width:${_isChild?3:5}px;height:${_isChild?3:5}px;border-radius:50%;background:${cl};opacity:${_isChild?0.4:0.6}"></div><span style="color:${cl};font-weight:600;font-size:calc(var(--tl-s,1) * 9px)">${sl2}</span><span style="color:${_isChild?cl:'var(--txt)'};font-weight:500;${_isChild?'opacity:0.8':''}">${thaiWB(s.title)}</span></div>${s.desc?`<div style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3);margin:0 10px 3px ${_isChild?'32px':'20px'}">${thaiWB(s.desc)}</div>`:''}${sd?`<div style="padding:2px 10px 4px;background:var(--card)">${sd}</div>`:''}</div>`;
             });
             if(anyShow)for(let a=g.f;a<=g.to;a++){if(!g.subs.some(s2=>a>=s2.f&&a<=s2.to))orphanHtml+=_aR(a,cl);}
             subsHtml+=`</div>`;
         }
         let mainData='';if(!hasSubs&&anyShow)for(let a=g.f;a<=g.to;a++)mainData+=_aR(a,cl);
-        h+=`<div style="margin-bottom:10px;position:relative"><div class="grp-tl-dot" style="background:${cl};box-shadow:0 0 0 1.5px ${cl}40"></div><div style="background:var(--card);border-radius:var(--r-md);overflow:hidden;border:1px solid ${cl}18;box-shadow:0 1px 4px ${cl}06"><div style="padding:8px 10px"><div style="display:flex;align-items:center;gap:4px;margin-bottom:2px"><span style="font-size:8px;font-weight:700;color:#fff;background:${cl};padding:1px 6px;border-radius:4px">${lbl}</span>${hasSubs?`<span style="font-size:7px;color:var(--txt3)">${g.subs.length} กลุ่มย่อย</span>`:''}</div><div style="font-size:var(--text-xs);font-weight:600;color:var(--txt);line-height:1.4">${thaiWB(g.title)}</div>${g.desc?`<div style="font-size:9px;color:var(--txt2);margin-top:2px;line-height:1.5">${thaiWB(g.desc)}</div>`:''}</div><div style="height:2px;background:${cl}08"><div style="height:100%;background:linear-gradient(90deg,${cl},${cl}40);width:${((g.to-g.f+1)/tA)*100}%"></div></div>${orphanHtml?`<div style="padding:4px 10px 4px;border-top:1px solid ${cl}10">${orphanHtml}</div>`:''}${subsHtml}${mainData?`<div style="padding:4px 10px 6px;border-top:1px solid ${cl}10">${mainData}</div>`:''}</div></div>`;
+        h+=`<div style="margin-bottom:10px;position:relative"><div class="grp-tl-dot" style="background:${cl};box-shadow:0 0 0 1.5px ${cl}40"></div><div style="background:var(--card);border-radius:var(--r-md);overflow:hidden;border:1px solid ${cl}18;box-shadow:0 1px 4px ${cl}06"><div style="padding:8px 10px"><div style="display:flex;align-items:center;gap:4px;margin-bottom:2px"><span style="font-size:calc(var(--tl-s,1) * 9px);font-weight:700;color:#fff;background:${cl};padding:1px 6px;border-radius:4px">${lbl}</span>${hasSubs?`<span style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3)">${g.subs.length} กลุ่มย่อย</span>`:''}</div><div style="font-size:calc(var(--tl-s,1) * 11px);font-weight:600;color:var(--txt);line-height:1.4">${thaiWB(g.title)}</div>${g.desc?`<div style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--txt2);margin-top:2px;line-height:1.5">${thaiWB(g.desc)}</div>`:''}</div><div style="height:2px;background:${cl}08"><div style="height:100%;background:linear-gradient(90deg,${cl},${cl}40);width:${((g.to-g.f+1)/tA)*100}%"></div></div>${orphanHtml?`<div style="padding:4px 10px 4px;border-top:1px solid ${cl}10">${orphanHtml}</div>`:''}${subsHtml}${mainData?`<div style="padding:4px 10px 6px;border-top:1px solid ${cl}10">${mainData}</div>`:''}</div></div>`;
     });h+='</div>';return h;}
 function _tlMv(k,dir){if(!window._tlOrd)return;const o=window._tlOrd;const i=o.indexOf(k);const n=i+dir;if(i<0||n<0||n>=o.length)return;[o[i],o[n]]=[o[n],o[i]];_sGVM('timeline');}
 
 // FIX #1: Color Stripe with dark cells for memorized
-function _gCS(gs,tA,snA){if(!gs.length)return '<div class="empty-state">ยังไม่มีกลุ่ม</div>';const sn=typeof snA==='string'&&snA.startsWith("'")?snA.slice(1,-1):snA;const d=getSurah(typeof sn==='string'?sn:parseInt(sn));const textProg=d.text||0;const mx=tA;const _csz=tA>200?'16px':tA>100?'18px':'22px';let h=`<div style="padding:6px;background:var(--card);border-radius:var(--r-md);border:1px solid var(--bdr-l);margin-bottom:8px"><div style="font-size:8px;color:var(--txt3);margin-bottom:4px">${mx} อายะฮ์ <span style="margin-left:6px">&#9632; เข้ม = ท่องจำแล้ว</span></div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(${_csz},1fr));gap:1.5px">`;
+function _gCS(gs,tA,snA){if(!gs.length)return '<div class="empty-state">ยังไม่มีกลุ่ม</div>';const sn=typeof snA==='string'&&snA.startsWith("'")?snA.slice(1,-1):snA;const d=getSurah(typeof sn==='string'?sn:parseInt(sn));const textProg=d.text||0;const mx=tA;const _csz=tA>200?'16px':tA>100?'18px':'22px';let h=`<div style="padding:6px;background:var(--card);border-radius:var(--r-md);border:1px solid var(--bdr-l);margin-bottom:8px"><div style="font-size:8px;color:var(--txt3);margin-bottom:4px">${mx} ${UL()} <span style="margin-left:6px">&#9632; เข้ม = ท่องจำแล้ว</span></div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(${_csz},1fr));gap:1.5px">`;
     for(let a=1;a<=mx;a++){const gi=gs.findIndex(x=>a>=x.f&&a<=x.to);const cl=gi>=0?(gs[gi].color||_GC[gi%_GC.length]):'#ddd';const memorized=a<=textProg;h+=`<div style="aspect-ratio:1;border-radius:3px;background:${cl};opacity:${memorized?1:0.35};display:flex;align-items:center;justify-content:center;font-size:6px;color:#fff;font-weight:600;${memorized?'box-shadow:inset 0 -1px 2px rgba(0,0,0,0.15)':''}">${a}</div>`;}
     h+='</div></div>';
     // FIX 6: Bigger responsive circles
@@ -19589,7 +19612,7 @@ function _gCS(gs,tA,snA){if(!gs.length)return '<div class="empty-state">ยั�
     h+='<div style="background:var(--card);border-radius:var(--r-sm);padding:var(--sp-2);border:1px solid var(--bdr-l)">';
     [...gs].sort((a,b)=>a.f-b.f).forEach((g,idx,arr)=>{const oi=gs.indexOf(g);const cl=g.color||_GC[oi%_GC.length];const lbl=g.f===g.to?`${g.f}`:`${g.f}-${g.to}`;const total=g.to-g.f+1;let nC=0,mC=0,tC=0;for(let a=g.f;a<=g.to;a++){const ak=String(a);if(d.notes&&d.notes[ak]&&d.notes[ak].replace(/<[^>]*>/g,'').trim())nC++;if(d.meanings&&d.meanings[ak]&&d.meanings[ak].replace(/<[^>]*>/g,'').trim())mC++;if(d.tafsirs&&d.tafsirs[ak]&&d.tafsirs[ak].replace(/<[^>]*>/g,'').trim())tC++;}
         const pN=Math.round(nC/total*100),pM=Math.round(mC/total*100),pT=Math.round(tC/total*100);
-        h+=`<div style="padding:var(--sp-2) var(--sp-1);${idx<arr.length-1?'border-bottom:1px solid var(--bdr-l);':''}"><div style="display:flex;align-items:center;gap:var(--sp-2)"><div style="width:10px;height:10px;border-radius:50%;background:${cl};flex-shrink:0"></div><div style="flex:1;min-width:0"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--txt)">${thaiWB(g.title)}</div><div style="font-size:var(--text-3xs);color:var(--txt3)">${lbl} (${total} อายะฮ์)</div></div><div style="display:flex;gap:var(--sp-1);flex-shrink:0">`;
+        h+=`<div style="padding:var(--sp-2) var(--sp-1);${idx<arr.length-1?'border-bottom:1px solid var(--bdr-l);':''}"><div style="display:flex;align-items:center;gap:var(--sp-2)"><div style="width:10px;height:10px;border-radius:50%;background:${cl};flex-shrink:0"></div><div style="flex:1;min-width:0"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--txt)">${thaiWB(g.title)}</div><div style="font-size:var(--text-3xs);color:var(--txt3)">${lbl} (${total} ${UL()})</div></div><div style="display:flex;gap:var(--sp-1);flex-shrink:0">`;
         [{l:L3('notes'),p:pN,c:'var(--pri)'},{l:L3('meanings'),p:pM,c:'var(--sec)'},{l:L3('tafsirs'),p:pT,c:'var(--tafsir)'}].forEach(bar=>{
             h+=`<div style="text-align:center"><svg width="${cR*2}" height="${cR*2}" viewBox="0 0 ${cR*2} ${cR*2}">${_a2(bar.p,bar.c)}<text x="${cR}" y="${cR+3}" text-anchor="middle" fill="var(--txt2)" font-size="${isWide?7:5.5}" font-weight="600">${bar.p}</text></svg><div style="font-size:5px;color:var(--txt3);margin-top:-2px;letter-spacing:-0.2px">${bar.l}</div></div>`;});
         h+=`</div></div>`;
@@ -22994,7 +23017,7 @@ function paint(){
   if(lb)lb.textContent=NVXS.mode?'ลากเพื่อสลับที่ · แตะเพื่อดูคำสั่ง'
     :(ok?'แตะเพื่อไป · กดค้างเพื่อจัดเรียง':'แตะเพื่อไปทันที');
 }
-window._nvxAfterGrid=function(){style();paint();bind();try{if(window._nvxRelabel)_nvxRelabel();}catch(e){}};
+window._nvxAfterGrid=function(){style();paint();bind();try{if(window._nvxRelabel)_nvxRelabel();}catch(e){}try{if(window._nvxAnchor&&document.getElementById('nvx-panel').classList.contains('open'))_nvxAnchor();}catch(e){}};
 
 /* ── ลากเรียง : รองรับนิ้วเต็มรูปแบบ (pointer + touch fallback) ── */
 let DRAGGING=false;
@@ -24192,6 +24215,519 @@ function start(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start);
 else start();
 window._navFix=req;
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   v339 · การ์ดในหน้าบันทึก : จัดวางใหม่ให้หายใจได้
+   ─ ไม่มีอ้างอิง/ชื่ออาหรับ → ตัดแถวหัวทิ้ง แล้วให้ชื่อใช้ 3 บรรทัด
+   ─ แถวล่างรวม จำนวน + สถานะ + ปุ่มแก้ไข ไม่ทับแถบความคืบหน้าอีก
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+const CSS=`
+/* ขนาดเท่าเดิมทุกจอ แต่ยืดได้ถ้าเนื้อหาล้น (เดิมตัดทิ้ง) */
+.surah-card{height:auto!important;min-height:100px;padding:10px 10px 9px!important;
+  border-radius:16px;box-shadow:0 2px 10px rgba(60,48,72,0.055),inset 0 1px 0 rgba(255,255,255,0.85)}
+@media(max-width:600px){.surah-card{min-height:115px;padding:12px 11px 10px!important}}
+@media(min-width:768px) and (max-width:1023px){.surah-card{min-height:100px}}
+@media(min-width:1024px){.surah-card{min-height:85px;padding:9px 9px 8px!important}}
+
+.surah-top{min-height:0!important;margin-bottom:5px!important;gap:7px;align-items:center}
+.surah-top:empty{display:none}
+.surah-num{font-size:8.5px;font-weight:600;letter-spacing:.02em;padding:2px 7px;border-radius:7px;
+  background:rgba(60,48,72,0.055);color:var(--txt3)}
+.surah-ar{font-size:14px;line-height:1.5}
+
+.surah-name{font-size:11.5px;font-weight:600;line-height:1.5;margin:0 0 5px!important;
+  -webkit-line-clamp:2;flex:1 1 auto;min-height:0;letter-spacing:-.005em}
+.surah-card.nohead .surah-name{-webkit-line-clamp:3;font-size:12px;line-height:1.6}
+
+.surah-meta{font-size:9.5px;color:var(--txt3);margin-top:auto;margin-bottom:8px}
+.surah-foot{display:flex;align-items:center;gap:6px;margin-top:auto;margin-bottom:7px;flex-shrink:0}
+.surah-foot .surah-meta{flex:1;min-width:0;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.surah-edit{width:21px;height:21px;flex:0 0 21px;border-radius:7px;border:none;padding:0;cursor:pointer;
+  background:rgba(107,91,122,0.09);color:var(--pri);display:flex;align-items:center;justify-content:center;
+  transition:background .2s cubic-bezier(.32,.72,0,1),transform .2s cubic-bezier(.32,.72,0,1)}
+.surah-edit:active{transform:scale(.88);background:rgba(107,91,122,0.16)}
+.surah-chip-done{width:18px;height:18px;flex:0 0 18px;border-radius:50%;background:var(--done);
+  display:flex;align-items:center;justify-content:center}
+.surah-chip-done svg{width:10px;height:10px;stroke:#fff;stroke-width:2.6;fill:none}
+
+.surah-bars{height:3px!important;gap:3px!important;margin-top:0!important}
+.surah-bar{background:rgba(60,48,72,0.07)}
+.surah-bar-fill{transition:width .5s cubic-bezier(.32,.72,0,1)}
+/* การ์ดซูเราะฮ์ปกติ : ตราติ๊กถูกไม่ทับแถบ */
+.surah-done{bottom:10px!important;right:10px!important;box-shadow:0 0 0 3px var(--card)}
+`;
+function inject(){
+  if(document.getElementById('card-style'))return;
+  const s=document.createElement('style');s.id='card-style';s.textContent=CSS;document.head.appendChild(s);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',inject);
+else inject();
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   v340 · ฟอร์มจัดกลุ่มโฉมใหม่
+   ─ ใช้หน่วยเรียกของการ์ดทุกจุด (ตอน/หน้า/ข้อ ไม่ใช่ "อายะฮ์" ตายตัว)
+   ─ เลือกช่วงด้วยปุ่ม +/− และชิปลัด พร้อมพรีวิวสดว่าครอบคลุมเท่าไร
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+const CSS=`
+.gform{margin-top:8px;padding:12px;border-radius:16px;background:var(--card);
+  border:1px solid rgba(107,142,159,0.22);box-shadow:0 6px 20px rgba(60,48,72,0.07);
+  animation:gfIn .28s cubic-bezier(.32,.72,0,1)}
+@keyframes gfIn{from{opacity:0;transform:translate3d(0,8px,0)}to{opacity:1;transform:none}}
+.gform-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.gform-head i{width:24px;height:24px;flex:0 0 24px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--grp),var(--grp-l));color:#fff}
+.gform-head b{flex:1;font-size:var(--text-2xs);font-weight:600;color:var(--txt)}
+.gform-head span{font-size:var(--text-3xs);color:var(--txt3)}
+.gform-in{width:100%;padding:10px 12px;border:1px solid var(--bdr);border-radius:11px;background:#fff;
+  font-family:var(--f-th);font-size:var(--text-2xs);color:var(--txt);outline:none;margin-bottom:7px;
+  transition:border-color .2s,box-shadow .2s}
+.gform-in:focus{border-color:var(--grp);box-shadow:0 0 0 3px rgba(107,142,159,0.12)}
+textarea.gform-in{resize:vertical;min-height:46px;line-height:1.6}
+.gr-box{padding:10px;border-radius:12px;background:var(--card2);border:1px solid var(--bdr-l);margin-bottom:9px}
+.gr-lb{display:flex;align-items:center;justify-content:space-between;font-size:var(--text-3xs);color:var(--txt3);margin-bottom:7px}
+.gr-lb b{color:var(--grp);font-weight:600}
+.gr-lb.bad b{color:#B03A3A}
+.gr-row{display:flex;align-items:center;gap:5px}
+.gr-cap{font-size:var(--text-3xs);color:var(--txt3);flex:0 0 auto}
+.gr-step{width:28px;height:32px;flex:0 0 28px;border-radius:9px;border:1px solid var(--bdr);background:#fff;
+  color:var(--grp);font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .18s,transform .14s;-webkit-tap-highlight-color:transparent}
+.gr-step:active{transform:scale(.88);background:var(--grp-ll)}
+.gr-num{flex:1;min-width:0;height:32px;text-align:center;border:1px solid var(--bdr);border-radius:9px;background:#fff;
+  font-family:Georgia,serif;font-size:13px;color:var(--txt);outline:none;-moz-appearance:textfield}
+.gr-num::-webkit-outer-spin-button,.gr-num::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.gr-num:focus{border-color:var(--grp)}
+.gr-dash{color:var(--txt3);font-size:11px;flex:0 0 auto;padding:0 1px}
+.gr-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.gr-chip{height:26px;padding:0 10px;border-radius:13px;border:1px solid var(--bdr);background:#fff;color:var(--txt3);
+  font-family:var(--f-th);font-size:var(--text-3xs);cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+.gr-chip:active{transform:scale(.95)}
+.gr-chip.on{border-color:var(--grp);color:var(--grp);background:var(--grp-ll)}
+.gform-act{display:flex;gap:7px}
+.gform-act button{flex:1;padding:11px;border-radius:12px;font-family:var(--f-th);font-size:var(--text-2xs);
+  font-weight:600;cursor:pointer;transition:transform .16s}
+.gform-act button:active{transform:scale(.97)}
+.gform-act .gf-cancel{border:1px solid var(--bdr);background:#fff;color:var(--txt2);font-weight:500}
+.gform-act .gf-save{border:none;background:linear-gradient(135deg,var(--grp),var(--grp-l));color:#fff}
+.gform-act .gf-save[disabled]{opacity:.45;pointer-events:none}
+`;
+function style(){
+  if(document.getElementById('gform-style'))return;
+  const s=document.createElement('style');s.id='gform-style';s.textContent=CSS;document.head.appendChild(s);
+}
+const E=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const U=()=>{try{return UL();}catch(e){return 'อายะฮ์';}};
+function curCard(){
+  try{
+    if(typeof currentSurah==='string'&&currentSurah.charAt(0)==='p')
+      return PLUS_SURAHS.find(x=>String(x.n)===String(currentSurah))||null;
+    let s=SURAHS.find(x=>x.n===currentSurah);
+    if(!s&&typeof ALL_SURAHS!=='undefined')s=ALL_SURAHS.find(x=>x.n===currentSurah);
+    return s||null;
+  }catch(e){return null;}
+}
+function maxUnit(){const c=curCard();return c?(parseInt(c.ayah)||1):1;}
+
+let CFG=null;
+
+window._grpStep=function(id,d){
+  const el=document.getElementById(id);if(!el)return;
+  const v=(parseInt(el.value)||0)+d;
+  el.value=Math.max(1,Math.min(maxUnit(),v));
+  _grpPv();
+};
+window._grpQuick=function(k){
+  const f=document.getElementById(CFG.idF),t=document.getElementById(CFG.idT);
+  if(!f||!t)return;
+  if(k==='all'){f.value=CFG.lo;t.value=CFG.hi;}
+  else if(k==='one'){f.value=parseInt(f.value)||CFG.lo;t.value=f.value;}
+  else if(k==='next'){f.value=CFG.nextStart;t.value=Math.min(CFG.hi,CFG.nextStart);}
+  else if(k==='parent'){f.value=CFG.lo;t.value=CFG.hi;}
+  _grpPv();
+};
+window._grpPv=function(){
+  if(!CFG)return;
+  const f=parseInt((document.getElementById(CFG.idF)||{}).value),
+        t=parseInt((document.getElementById(CFG.idT)||{}).value);
+  const box=document.getElementById('gr-pv'),lb=document.getElementById('gr-lbl'),
+        save=document.getElementById('gf-save');
+  if(!box)return;
+  const u=U();
+  const bad=!(f>=1&&t>=f&&t<=maxUnit()&&f>=CFG.lo&&t<=CFG.hi);
+  if(lb)lb.classList.toggle('bad',bad);
+  if(save)save.disabled=bad;
+  box.innerHTML=bad
+    ? '<b>ช่วงไม่ถูกต้อง ('+CFG.lo+' – '+CFG.hi+')</b>'
+    : '<b>'+(t-f+1)+' '+E(u)+'</b> · '+E(u)+' '+f+(t!==f?' – '+t:'');
+  document.querySelectorAll('.gr-chip').forEach(c=>{
+    const k=c.dataset.k;
+    let on=false;
+    if(k==='all'||k==='parent')on=(f===CFG.lo&&t===CFG.hi);
+    else if(k==='one')on=(f===t);
+    else if(k==='next')on=(f===CFG.nextStart);
+    c.classList.toggle('on',on);
+  });
+};
+
+/* ฟอร์มเดียว ใช้ได้ทั้งเพิ่ม/แก้ไข · กลุ่มหลัก/กลุ่มย่อย */
+window._grpForm=function(o){
+  style();
+  const a=document.getElementById('gfa');if(!a)return;
+  const d=(typeof getSurah==='function')?(getSurah(o.sn)||{}):{};
+  const gs=d.ayahGroups||[];
+  const parent=(o.kind==='sub')?gs[o.gi]:null;
+  const cur=(o.mode==='edit')?(o.kind==='sub'?((parent&&parent.subs)||[])[o.si]:gs[o.gi]):null;
+  const u=U(),mx=maxUnit();
+  const lo=parent?parent.f:1, hi=parent?parent.to:mx;
+  /* กลุ่มถัดไปควรเริ่มตรงไหน */
+  let nextStart=lo;
+  const pool=parent?((parent.subs)||[]):gs;
+  pool.forEach(g=>{if(g&&typeof g.to==='number'&&g.to+1>nextStart&&g.to<hi)nextStart=g.to+1;});
+  const f=cur?cur.f:nextStart, t=cur?cur.to:Math.min(hi,nextStart);
+
+  const ids=(o.kind==='sub')
+      ?(o.mode==='edit'?{t:'ges-t',d:'ges-d',f:'ges-f',to:'ges-to'}:{t:'gsft',d:'gsfd',f:'gsff',to:'gsfto'})
+      :(o.mode==='edit'?{t:'ge-t',d:'ge-d',f:'ge-f',to:'ge-to'}:{t:'gft',d:'gfd',f:'gff',to:'gfto'});
+  const snA=(typeof o.sn==='string')?("'"+o.sn+"'"):o.sn;
+  const save=(o.kind==='sub')
+      ?(o.mode==='edit'?`_svES(${snA},${o.gi},${o.si})`:`_sS(${snA},${o.gi})`)
+      :(o.mode==='edit'?`_svEG(${snA},${o.gi})`:`_sM(${snA})`);
+  const head=(o.kind==='sub')
+      ?(o.mode==='edit'?'แก้ไขกลุ่มย่อย':'เพิ่มกลุ่มย่อย')
+      :(o.mode==='edit'?'แก้ไขกลุ่มที่ '+(o.gi+1):'เพิ่มกลุ่มหลัก');
+  const sub=parent?('อยู่ใน “'+E(parent.title||'')+'” · '+u+' '+lo+' – '+hi):(u+' 1 – '+mx);
+
+  CFG={idF:ids.f,idT:ids.to,lo:lo,hi:hi,nextStart:nextStart,kind:o.kind};
+
+  const chips=[];
+  if(o.kind==='sub')chips.push(['parent','เท่ากับกลุ่มหลัก']);
+  else chips.push(['all','ทั้งหมด ('+lo+'–'+hi+')']);
+  chips.push(['one','เฉพาะ'+u+'เดียว']);
+  if(nextStart>lo)chips.push(['next','ต่อจากกลุ่มก่อน ('+nextStart+')']);
+
+  a.innerHTML=
+   '<div class="gform">'+
+     '<div class="gform-head"><i><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+
+        (o.mode==='edit'?'<path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>':'<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>')+
+        '</svg></i><b>'+head+'</b><span>'+sub+'</span></div>'+
+     '<input type="text" class="gform-in" id="'+ids.t+'" value="'+E(cur?cur.title:'')+'" placeholder="ชื่อกลุ่ม เช่น มารยาทการเรียน" oninput="_grpPv()">'+
+     '<textarea class="gform-in" id="'+ids.d+'" rows="2" placeholder="คำอธิบายสั้น ๆ (ไม่บังคับ)">'+E(cur?(cur.desc||''):'')+'</textarea>'+
+     '<div class="gr-box">'+
+       '<div class="gr-lb" id="gr-lbl"><span>ครอบคลุม</span><span id="gr-pv"></span></div>'+
+       '<div class="gr-row">'+
+         '<span class="gr-cap">จาก</span>'+
+         '<button type="button" class="gr-step" onclick="_grpStep(\''+ids.f+'\',-1)">−</button>'+
+         '<input type="number" class="gr-num" id="'+ids.f+'" value="'+f+'" min="1" max="'+mx+'" oninput="_grpPv()">'+
+         '<button type="button" class="gr-step" onclick="_grpStep(\''+ids.f+'\',1)">+</button>'+
+         '<span class="gr-dash">–</span>'+
+         '<span class="gr-cap">ถึง</span>'+
+         '<button type="button" class="gr-step" onclick="_grpStep(\''+ids.to+'\',-1)">−</button>'+
+         '<input type="number" class="gr-num" id="'+ids.to+'" value="'+t+'" min="1" max="'+mx+'" oninput="_grpPv()">'+
+         '<button type="button" class="gr-step" onclick="_grpStep(\''+ids.to+'\',1)">+</button>'+
+       '</div>'+
+       '<div class="gr-chips">'+chips.map(c=>'<button type="button" class="gr-chip" data-k="'+c[0]+'" onclick="_grpQuick(\''+c[0]+'\')">'+E(c[1])+'</button>').join('')+'</div>'+
+     '</div>'+
+     '<div class="gform-act">'+
+       '<button type="button" class="gf-cancel" onclick="document.getElementById(\'gfa\').innerHTML=\'\'">ยกเลิก</button>'+
+       '<button type="button" class="gf-save" id="gf-save" onclick="'+save+'">'+(o.mode==='edit'?'บันทึก':'เพิ่มกลุ่ม')+'</button>'+
+     '</div>'+
+   '</div>';
+  _grpPv();
+  setTimeout(function(){const el=document.getElementById(ids.t);if(el&&!cur)el.focus();},60);
+  try{a.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){}
+};
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   v341 · ไทม์ไลน์ : ปรับขนาดตัวอักษรได้ + ฐานใหญ่ขึ้นบนจอกว้าง
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+const CSS=`
+.tl-fbar{display:inline-flex;align-items:center;gap:4px;padding:2px 0;margin-bottom:6px}
+.tl-fbar>span.lb{font-size:8px;color:var(--txt3)}
+.tl-fb{width:18px;height:18px;border-radius:var(--r-full);border:1px solid var(--bdr);background:var(--card);
+  font-size:12px;line-height:1;color:var(--txt2);cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-th);padding:0;transition:background .18s,transform .14s;-webkit-tap-highlight-color:transparent}
+.tl-fb:active{transform:scale(.85);background:var(--card2)}
+.tl-fv{font-size:8px;color:var(--txt2);min-width:24px;text-align:center}
+.tl-frs{border:none;background:none;font-size:7px;color:var(--grp);cursor:pointer;font-family:var(--f-th);padding:0 2px}
+.grp-tl-wrap{font-size:calc(var(--tl-s,1) * 9.5px)}
+`;
+
+function style(){
+  if(document.getElementById('tl-font-style'))return;
+  const s=document.createElement('style');s.id='tl-font-style';s.textContent=CSS;document.head.appendChild(s);
+}
+function scale(){
+  let v=parseFloat(localStorage.getItem('tlFontScale'));
+  if(!v||isNaN(v))v=1;
+  return Math.max(0.7,Math.min(2.2,v));
+}
+function applyScale(){
+  const box=document.getElementById('grp-vb');
+  if(box)box.style.setProperty('--tl-s',scale());
+  const v=document.getElementById('tl-fv');
+  if(v)v.textContent=Math.round(scale()*100)+'%';
+}
+window._tlFont=function(d){
+  let v=scale();
+  v=d===0?1:Math.max(0.7,Math.min(2.2,Math.round((v+d)*100)/100));
+  localStorage.setItem('tlFontScale',v);
+  applyScale();
+  try{if(typeof _sGVM==='function')_sGVM('timeline');}catch(e){}
+};
+window._tlFontBar=function(){
+  style();
+  setTimeout(applyScale,0);
+  const def=1;
+  const cur=scale();
+  return '<div class="tl-fbar">'+
+    '<span class="lb">อักษร :</span>'+
+    '<button type="button" class="tl-fb" onclick="_tlFont(-0.1)" aria-label="เล็กลง">&#8722;</button>'+
+    '<span class="tl-fv" id="tl-fv">100%</span>'+
+    '<button type="button" class="tl-fb" onclick="_tlFont(0.1)" aria-label="ใหญ่ขึ้น">+</button>'+
+    (Math.abs(cur-def)>0.01?'<button type="button" class="tl-frs" onclick="_tlFont(0)">รีเซ็ต</button>':'')+
+  '</div>';
+};
+
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   v342 · ฟอร์มเพิ่มนิสัย โทนสีเดียวกับการ์ดนิสัย
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+const CSS=`
+/* ── นิสัย ── */
+.hb-form{padding:12px;border-radius:16px;background:linear-gradient(150deg,var(--sec-ll),var(--card) 60%);border:1px solid rgba(122,158,159,0.22);
+  box-shadow:0 3px 14px rgba(60,48,72,0.05);margin-bottom:12px}
+.hb-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.hb-head i{width:24px;height:24px;flex:0 0 24px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  color:#fff;background:linear-gradient(135deg,var(--sec),var(--sec-l))}
+.hb-head b{font-size:var(--text-2xs);font-weight:600;color:var(--txt)}
+.hb-in{width:100%;padding:11px 12px;border:1px solid var(--bdr);border-radius:12px;background:#fff;
+  font-family:var(--f-th);font-size:var(--text-2xs);color:var(--txt);outline:none;
+  transition:border-color .2s,box-shadow .2s}
+.hb-in:focus{border-color:var(--sec);box-shadow:0 0 0 3px rgba(122,158,159,0.16)}
+.hb-lb{font-size:var(--text-3xs);color:var(--txt3);margin:10px 0 6px}
+.hb-lb span{opacity:.7}
+.hb-chips{display:flex;flex-wrap:wrap;gap:5px}
+.hb-chip{height:28px;padding:0 12px;border-radius:14px;border:1px solid var(--bdr);background:#fff;color:var(--txt3);
+  font-family:var(--f-th);font-size:var(--text-3xs);cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s,transform .14s}
+.hb-chip:active{transform:scale(.94)}
+.hb-chip.on{border-color:var(--sec);color:var(--sec);background:var(--sec-ll);font-weight:600}
+.hb-chip.sm{height:32px;padding:0 10px}
+.hb-row{display:flex;align-items:center;gap:6px}
+.hb-step{width:30px;height:32px;flex:0 0 30px;border-radius:9px;border:1px solid var(--bdr);background:#fff;
+  color:var(--sec);font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .18s,transform .14s;-webkit-tap-highlight-color:transparent}
+.hb-step:active{transform:scale(.88);background:var(--sec-ll)}
+.hb-num{width:56px;flex:0 0 56px;height:32px;text-align:center;border:1px solid var(--bdr);border-radius:9px;
+  background:#fff;font-family:Georgia,serif;font-size:13px;color:var(--txt);outline:none;-moz-appearance:textfield}
+.hb-num::-webkit-outer-spin-button,.hb-num::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.hb-save{margin-left:auto;height:34px;padding:0 16px;border-radius:12px;border:none;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;font-family:var(--f-th);font-size:var(--text-2xs);font-weight:600;
+  color:#fff;background:linear-gradient(135deg,var(--sec),#5C8384);transition:transform .16s}
+.hb-save:active{transform:scale(.96)}
+`;
+function style(){
+  if(document.getElementById('hbnm-style'))return;
+  const s=document.createElement('style');s.id='hbnm-style';s.textContent=CSS;document.head.appendChild(s);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',style);
+else style();
+
+function maxU(){
+  try{
+    let c=null;
+    if(typeof currentSurah==='string'&&currentSurah.charAt(0)==='p')c=PLUS_SURAHS.find(x=>String(x.n)===String(currentSurah));
+    else{c=SURAHS.find(x=>x.n===currentSurah)||(typeof ALL_SURAHS!=='undefined'?ALL_SURAHS.find(x=>x.n===currentSurah):null);}
+    return c?(parseInt(c.ayah)||1):999;
+  }catch(e){return 999;}
+}
+function step(id,d){
+  const el=document.getElementById(id);if(!el)return;
+  const cur=parseInt(el.value);
+  let v=isNaN(cur)?(d>0?1:1):cur+d;
+  el.value=Math.max(1,Math.min(maxU(),v));
+}
+window._hbStep=function(d){step('habit-ayah',d);};
+window._hbCat=function(btn,v){
+  const box=document.getElementById('hb-chips');
+  if(box)box.querySelectorAll('.hb-chip').forEach(c=>c.classList.remove('on'));
+  if(btn)btn.classList.add('on');
+  const sel=document.getElementById('habit-category');
+  if(sel)sel.value=v;
+};
+})();
+
+/* ═══════════════════════════════════════════════════════════════════
+   v342 · ปุ่มวงกลมตัวนำทาง : ลากย้ายไปวางตรงไหนก็ได้
+   ─ ลากได้ทันทีเมื่อเลื่อนนิ้วเกิน 8px · แตะเฉย ๆ ยังเปิดตัวนำทางเหมือนเดิม
+   ─ จำตำแหน่งไว้ และดึงกลับเข้าจอเองเมื่อหมุนจอ / เปลี่ยนขนาด
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+const CSS=`
+#nvx-fab{touch-action:none;-webkit-touch-callout:none;user-select:none;
+  transition:box-shadow .22s cubic-bezier(.32,.72,0,1),transform .18s cubic-bezier(.34,1.32,.64,1)}
+#nvx-fab.fab-drag{transition:none;transform:scale(1.08);
+  box-shadow:0 16px 34px rgba(48,38,60,0.26),0 3px 8px rgba(48,38,60,0.14);z-index:1000014}
+#nvx-fab.fab-moved{right:auto;bottom:auto}
+`;
+const KEY='nvxFabPos';
+let fab=null,dg=null,raf=0,px=0,py=0;
+
+function style(){
+  if(document.getElementById('fab-drag-style'))return;
+  const s=document.createElement('style');s.id='fab-drag-style';s.textContent=CSS;document.head.appendChild(s);
+}
+function el(){return document.getElementById('nvx-fab');}
+function size(){const f=el();if(!f)return {w:52,h:52};const r=f.getBoundingClientRect();return {w:r.width||52,h:r.height||52};}
+function navH(){
+  const n=document.querySelector('.nav');
+  if(!n)return 66;
+  const r=n.getBoundingClientRect();
+  return r.height||66;
+}
+function clamp(x,y){
+  const s=size(),m=8;
+  const maxX=Math.max(m,window.innerWidth-s.w-m);
+  const maxY=Math.max(m,window.innerHeight-s.h-navH()-6);
+  return {x:Math.min(Math.max(m,x),maxX),y:Math.min(Math.max(m+40,y),maxY)};
+}
+function place(x,y){
+  const f=el();if(!f)return;
+  const c=clamp(x,y);
+  f.classList.add('fab-moved');
+  f.style.left=c.x+'px';f.style.top=c.y+'px';
+  return c;
+}
+function save(c){try{localStorage.setItem(KEY,JSON.stringify(c));}catch(e){}}
+function restore(){
+  const f=el();if(!f)return;
+  let p=null;
+  try{p=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
+  if(p&&typeof p.x==='number')place(p.x,p.y);
+}
+
+function paint(){
+  raf=0;if(!dg)return;
+  place(px-dg.ox,py-dg.oy);
+}
+const pt=e=>(e.touches&&e.touches.length)?e.touches[0]:(e.changedTouches&&e.changedTouches.length?e.changedTouches[0]:e);
+
+function down(e){
+  const f=el();if(!f)return;
+  const tgt=e.target.closest?e.target.closest('#nvx-fab'):null;
+  if(!tgt)return;
+  const p=pt(e),r=f.getBoundingClientRect();
+  dg={ox:p.clientX-r.left,oy:p.clientY-r.top,sx:p.clientX,sy:p.clientY,moved:false};
+  px=p.clientX;py=p.clientY;
+  if(e.pointerId!==undefined){try{f.setPointerCapture(e.pointerId);}catch(_){}}
+}
+function move(e){
+  if(!dg)return;
+  const p=pt(e);
+  px=p.clientX;py=p.clientY;
+  if(!dg.moved){
+    if(Math.abs(px-dg.sx)<8&&Math.abs(py-dg.sy)<8)return;
+    dg.moved=true;
+    const f=el();if(f)f.classList.add('fab-drag');
+    try{if(navigator.vibrate)navigator.vibrate(10);}catch(_){}
+  }
+  if(e.cancelable)e.preventDefault();
+  if(!raf)raf=requestAnimationFrame(paint);
+}
+function up(){
+  if(!dg)return;
+  if(raf){cancelAnimationFrame(raf);raf=0;paint();}
+  const wasMoved=dg.moved;dg=null;
+  const f=el();if(!f)return;
+  f.classList.remove('fab-drag');
+  if(!wasMoved)return;
+  const r=f.getBoundingClientRect();
+  save(place(r.left,r.top));
+  try{_nvxAnchor();}catch(e){}
+  /* กันไม่ให้การลากกลายเป็นการเปิดตัวนำทาง */
+  window._fabBlock=Date.now()+300;
+}
+
+/* ── แผงตัวนำทางเกาะไปกับปุ่มเสมอ ── */
+window._nvxAnchor=function(){
+  const f=el(),p=document.getElementById('nvx-panel');
+  if(!f||!p)return;
+  const wasOpen=p.classList.contains('open');
+  if(!wasOpen){p.style.visibility='hidden';p.classList.add('open');}
+  const fr=f.getBoundingClientRect();
+  const nh=navH(),m=8,gap=10;
+  const maxH=Math.max(180,window.innerHeight-nh-m*2-fr.height-gap);
+  p.style.maxHeight=maxH+'px';
+  const pr=p.getBoundingClientRect();
+  const pw=pr.width||320,ph=Math.min(pr.height||320,maxH);
+  /* แนวตั้ง : วางเหนือปุ่มก่อน ถ้าไม่พอค่อยลงล่าง */
+  let top=fr.top-ph-gap;
+  if(top<m)top=Math.min(fr.bottom+gap,window.innerHeight-nh-ph-m);
+  top=Math.max(m,Math.min(top,window.innerHeight-nh-ph-m));
+  /* แนวนอน : ชิดขอบเดียวกับปุ่ม */
+  const rightSide=(fr.left+fr.width/2)>window.innerWidth/2;
+  let left=rightSide?(fr.right-pw):fr.left;
+  left=Math.max(m,Math.min(left,window.innerWidth-pw-m));
+  p.style.left=left+'px';p.style.top=top+'px';
+  p.style.right='auto';p.style.bottom='auto';
+  p.style.transformOrigin=(top<fr.top?'bottom ':'top ')+(rightSide?'right':'left');
+  if(!wasOpen){p.classList.remove('open');p.style.visibility='';}
+};
+
+function bind(){
+  style();restore();
+  const PT=('PointerEvent' in window);
+  if(PT){
+    document.addEventListener('pointerdown',down,{passive:true});
+    document.addEventListener('pointermove',move,{passive:false});
+    document.addEventListener('pointerup',up);
+    document.addEventListener('pointercancel',up);
+  }
+  document.addEventListener('touchstart',function(e){if(!PT&&!dg)down(e);},{passive:true});
+  document.addEventListener('touchmove',move,{passive:false});
+  document.addEventListener('touchend',up);
+  document.addEventListener('touchcancel',up);
+  if(!PT){
+    document.addEventListener('mousedown',down);
+    document.addEventListener('mousemove',move);
+    document.addEventListener('mouseup',up);
+  }
+  /* บล็อกคลิกหลังลากเสร็จ */
+  document.addEventListener('click',function(e){
+    if(!window._fabBlock||Date.now()>window._fabBlock)return;
+    const t=e.target.closest?e.target.closest('#nvx-fab'):null;
+    if(!t)return;
+    e.preventDefault();e.stopPropagation();
+  },true);
+  window.addEventListener('resize',function(){
+    const f=el();
+    if(f&&f.classList.contains('fab-moved')){const r=f.getBoundingClientRect();save(place(r.left,r.top));}
+    try{_nvxAnchor();}catch(e){}
+  });
+}
+window._fabReset=function(){
+  try{localStorage.removeItem(KEY);}catch(e){}
+  const f=el();if(!f)return;
+  f.classList.remove('fab-moved');f.style.left='';f.style.top='';
+  try{_nvxAnchor();}catch(e){}
+  try{toast('คืนปุ่มกลับที่เดิมแล้ว');}catch(e){}
+};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);
+else setTimeout(bind,0);
 })();
 
 </script>
