@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v344</title>
+<title>Juz' Amma Tracker v359</title>
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -2298,6 +2298,156 @@ body:has(.flashcard-overlay) .nav{display:none!important}
         <div class="review-list" id="home-review-list" role="list" style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px"></div>
     </div>
 </div>
+<style>
+/* v352 · แผนการท่องจำ — ใช้ภาษาเดียวกับการ์ดเป้าหมายเดิม */
+.gc-plan{font-size:9px;font-weight:400;color:var(--txt3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gc-edit{font-size:9px;font-weight:400;color:var(--gold);cursor:pointer;margin-left:auto;flex-shrink:0}
+.gc-ref{font-weight:600;color:var(--txt)}
+.gc-sub{font-size:9px;font-weight:400;color:var(--gold)}
+.gc-empty{padding:10px 4px;text-align:center;font-size:9px;color:var(--txt3)}
+.gc-empty a{color:var(--gold);cursor:pointer;margin-left:6px}
+/* ---- หน้าตั้งค่า ---- */
+.pl-row{flex-wrap:wrap}
+.pl-row.pl-block{display:block}
+.pl-label{font-size:var(--text-3xs);color:var(--txt3);margin-bottom:6px;letter-spacing:0.04em}
+.pl-chips{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;flex:1;min-width:120px}
+.pl-chip{padding:4px 11px;border:1px solid var(--bdr);border-radius:var(--r-full);
+    font-size:var(--text-3xs);color:var(--txt3);cursor:pointer;white-space:nowrap;transition:.2s}
+.pl-chip.on{border-color:var(--pri-l);background:var(--pri-ll);color:var(--pri);font-weight:500}
+.pl-chip-add{color:var(--bdr);border-style:dashed;padding:4px 9px}
+.pl-links{width:100%;display:flex;gap:14px;justify-content:flex-end;margin-top:2px}
+.pl-links a{font-size:var(--text-3xs);color:var(--txt3);cursor:pointer}
+.pl-links a:last-child{color:#B45050;opacity:.75}
+.pl-seg{display:flex;border:1px solid var(--bdr);border-radius:var(--r-md);overflow:hidden;background:#fff}
+.pl-seg-i{flex:1;text-align:center;padding:7px 2px;font-size:var(--text-3xs);color:var(--txt3);
+    cursor:pointer;border-right:1px solid var(--bdr-l);transition:.2s}
+.pl-seg-i:last-child{border-right:none}
+.pl-seg-i.on{background:var(--pri-ll);color:var(--pri);font-weight:600}
+.pl-select{width:100%;max-width:none}
+.pl-hint{width:100%;font-size:var(--text-3xs);color:var(--txt3);line-height:1.6;margin-top:6px}
+.pl-dash{color:var(--txt3);font-size:var(--text-3xs)}
+.pl-unit{font-size:var(--text-3xs);color:var(--txt3);min-width:26px}
+
+/* ---- แผงนำทาง : โหมดเครื่องมือ ---- */
+.nvx-mode{display:flex;gap:5px;padding:0 12px 8px}
+.nvx-m{flex:1;padding:6px 0;border:1px solid var(--bdr);background:#fff;border-radius:10px;
+    font-family:var(--f-th);font-size:9.5px;color:var(--txt3);cursor:pointer;transition:.2s}
+.nvx-m.on{background:var(--pri-ll);border-color:var(--pri-l);color:var(--pri);font-weight:600}
+#nvx-tools{padding:0 12px 14px;overflow-y:auto;flex:1;min-height:0}
+.nvt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+.nvt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    padding:11px 4px;border:1px solid var(--bdr-l);border-radius:12px;background:#fff;cursor:pointer;
+    font-family:var(--f-th);text-align:center;line-height:1.3;min-height:62px;transition:.2s}
+.nvt svg{width:15px;height:15px;fill:none;stroke:var(--txt3);stroke-width:1.6;
+    stroke-linecap:round;stroke-linejoin:round}
+.nvt b{font-size:9px;font-weight:600;color:var(--txt)}
+.nvt-sub{font-size:7.5px;color:var(--txt3);max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nvt:active{background:var(--bg)}
+.nvt.on{border-color:var(--gold);background:var(--gold-l)}
+.nvt.on svg{stroke:var(--gold)}
+.nvt.on b{color:var(--gold)}
+
+/* ---- เครื่องมือจัดรูปแบบแบบลอย ---- */
+#ftk{position:fixed;z-index:1000030;width:46px;height:46px;opacity:0;pointer-events:none;
+    transition:opacity .28s cubic-bezier(.32,.72,0,1)}
+#ftk.live{opacity:1;pointer-events:auto}
+.ftk-orb{width:46px;height:46px;border-radius:50%;background:linear-gradient(145deg,#FFFFFF,#F8F5F0);
+    border:1px solid rgba(184,149,107,0.38);box-shadow:0 6px 20px rgba(0,0,0,0.14),0 1px 3px rgba(0,0,0,0.06);
+    display:flex;align-items:center;justify-content:center;cursor:grab;touch-action:none;
+    transition:transform .26s cubic-bezier(.32,.72,0,1),box-shadow .26s}
+.ftk-orb svg{width:20px;height:20px;fill:none;stroke:var(--gold);stroke-width:1.4;color:var(--gold)}
+#ftk.dragging .ftk-orb{transform:scale(1.08);box-shadow:0 12px 30px rgba(0,0,0,0.2)}
+#ftk.open .ftk-orb{transform:scale(.9) rotate(45deg)}
+.ftk-panel{position:absolute;bottom:56px;right:0;width:224px;padding:10px;border-radius:18px;
+    background:rgba(255,255,255,0.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    border:1px solid rgba(0,0,0,0.06);box-shadow:0 14px 38px rgba(0,0,0,0.16),0 2px 6px rgba(0,0,0,0.05);
+    transform-origin:bottom right;transform:scale(.9) translateY(8px);opacity:0;pointer-events:none;
+    transition:transform .3s cubic-bezier(.32,.72,0,1),opacity .22s}
+#ftk.left .ftk-panel{right:auto;left:0;transform-origin:bottom left}
+#ftk.top .ftk-panel{bottom:auto;top:56px;transform-origin:top right}
+#ftk.top.left .ftk-panel{transform-origin:top left}
+#ftk.open .ftk-panel{transform:none;opacity:1;pointer-events:auto}
+.ftk-head{display:flex;align-items:center;margin-bottom:8px}
+.ftk-title{font-family:var(--f-th);font-size:9.5px;font-weight:600;color:var(--txt2);letter-spacing:.04em;flex:1}
+.ftk-x{border:none;background:none;color:var(--txt3);font-size:11px;cursor:pointer;padding:0 2px;line-height:1}
+.ftk-tabs{display:flex;gap:3px;background:var(--bg);padding:3px;border-radius:11px;margin-bottom:9px}
+.ftk-tab{flex:1;border:none;background:none;border-radius:9px;padding:5px 0;cursor:pointer;
+    font-family:var(--f-th);font-size:8.5px;color:var(--txt3);transition:.24s cubic-bezier(.32,.72,0,1)}
+.ftk-tab.on{background:#fff;color:var(--txt);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+.ftk-body{transition:opacity .18s ease,transform .18s ease}
+.ftk-body.swap{opacity:0;transform:translateY(3px)}
+.ftk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.ftk-b{height:31px;border:1px solid var(--bdr-l);border-radius:10px;background:#fff;cursor:pointer;
+    font-family:var(--f-th);font-size:11px;color:var(--txt);display:flex;align-items:center;justify-content:center;
+    transition:.2s cubic-bezier(.32,.72,0,1)}
+.ftk-b:active{transform:scale(.94);background:var(--bg)}
+.ftk-b.wide{grid-column:span 2}
+.ftk-b.danger .ftk-t{color:#B45050}
+.ftk-t{font-size:8.5px;color:var(--txt2)}
+.ftk-b sup{font-size:7px}
+.ftk-sws{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin-bottom:7px}
+.ftk-sw{width:100%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(0,0,0,0.08);cursor:pointer;
+    transition:transform .2s cubic-bezier(.32,.72,0,1)}
+.ftk-sw:active{transform:scale(.88)}
+
+/* ---- แผงนำทาง : สองโหมดสูงเท่ากัน ---- */
+#nvx-panel{display:flex;flex-direction:column;overflow:hidden;height:auto;
+    max-height:min(520px,calc(100vh - 152px - env(safe-area-inset-bottom)))}
+#nvx-body,#nvx-tools{flex:0 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+#nvx-res{max-height:170px;overflow-y:auto;flex-shrink:0}
+#nvx-tools{padding:0 1px 4px}
+#nvx-tools::-webkit-scrollbar,#nvx-body::-webkit-scrollbar{width:3px}
+#nvx-tools::-webkit-scrollbar-thumb{background:rgba(107,91,122,0.18);border-radius:3px}
+.nvt-grid{margin-bottom:10px}
+/* ---- จานสีที่เพิ่มเองได้ ---- */
+.ftk-sws{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-bottom:6px}
+.ftk-swwrap{position:relative;display:block;line-height:0}
+.ftk-swx{position:absolute;top:-4px;right:-4px;width:13px;height:13px;border-radius:50%;
+    background:#B45050;color:#fff;font-size:7px;font-style:normal;display:flex;align-items:center;
+    justify-content:center;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.ftk-add{background:#fff!important;border:1px dashed var(--bdr)!important;color:var(--txt3);
+    font-size:13px;line-height:1;display:flex;align-items:center;justify-content:center}
+.ftk-swbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.ftk-swbar span{font-size:7.5px;color:var(--txt3)}
+.ftk-swbar a{font-size:7.5px;color:var(--gold);cursor:pointer}
+.ftk-b.full{grid-column:1/-1;width:100%;margin-top:6px}
+.ftk-row{display:flex;align-items:center;gap:8px;margin-top:8px;padding:7px 9px;border-radius:11px;
+    background:var(--bg);cursor:pointer}
+.ftk-row-t{flex:1;display:flex;flex-direction:column;gap:1px}
+.ftk-row-t b{font-size:8.5px;font-weight:600;color:var(--txt)}
+.ftk-row-t span{font-size:7.5px;color:var(--txt3)}
+.ftk-tg{width:28px;height:16px;border-radius:9px;background:var(--bdr);position:relative;
+    flex-shrink:0;transition:background .24s cubic-bezier(.32,.72,0,1)}
+.ftk-tg i{position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;
+    box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .24s cubic-bezier(.32,.72,0,1)}
+.ftk-tg.on{background:var(--gold)}
+.ftk-tg.on i{transform:translateX(12px)}
+
+/* ---- ปุ่มเครื่องมือเล็กลง + แถบหมวด ---- */
+.nvc-bar{display:flex;gap:4px;padding:1px 1px 8px;position:sticky;top:0;background:rgba(253,251,248,0.97);z-index:2}
+.nvc{flex:1;padding:5px 0;border:1px solid var(--bdr-l);border-radius:9px;background:#fff;cursor:pointer;
+    font-family:var(--f-th);font-size:8.5px;color:var(--txt3);transition:.22s cubic-bezier(.32,.72,0,1)}
+.nvc.on{background:var(--pri-ll);border-color:var(--pri-l);color:var(--pri);font-weight:600}
+.nvt-grid{grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:8px}
+.nvt{min-height:46px;padding:7px 3px;gap:3px;border-radius:10px}
+.nvt svg{width:13px;height:13px}
+.nvt b{font-size:8.5px}
+.nvt-sub{font-size:7px}
+.ftk-tabs{margin-bottom:8px}
+.ftk-b{height:29px}
+
+.pl-name{width:100%;display:flex;gap:6px;align-items:center;margin-top:7px}
+.pl-name input{flex:1;padding:6px 9px;border:1px solid var(--bdr);border-radius:9px;background:#fff;
+    font-family:var(--f-th);font-size:9.5px;color:var(--txt)}
+.pl-name input:focus{outline:none;border-color:var(--pri-l)}
+.pl-del{padding:6px 10px;border:1px solid var(--bdr);border-radius:9px;background:#fff;cursor:pointer;
+    font-family:var(--f-th);font-size:8.5px;color:var(--txt3);white-space:nowrap;transition:.2s}
+.pl-del.arm{border-color:#B45050;background:rgba(180,80,80,.08);color:#B45050;font-weight:600}
+
+/* ---- แถบเครื่องมือเดิมที่บังพื้นที่พิมพ์ : ปิดถาวร ใช้ลูกกลมลอยแทน ---- */
+.ayah-mini-menu,.tb-special-menu,.tb-colors-menu{display:none!important}
+</style>
+
 
 <style>
 @media(min-width:600px){
@@ -2522,6 +2672,11 @@ body:has(.flashcard-overlay) .nav{display:none!important}
         <button class="nvx-x" onclick="snavClose()" aria-label="ปิด">✕</button>
     </div>
 
+    <div class="nvx-mode" id="nvx-mode">
+        <button class="nvx-m on" data-m="nav" onclick="nvxMode('nav')">นำทาง</button>
+        <button class="nvx-m" data-m="tools" onclick="nvxMode('tools')">เครื่องมือ</button>
+    </div>
+
     <div class="nvx-seg" id="nvx-seg">
         <button class="nvx-sg on" data-k="notes" onclick="snavTab('notes')"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.1 2.1 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>ความรู้</button>
         <button class="nvx-sg" data-k="meanings" onclick="snavTab('meanings')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.2a2.8 2.8 0 015.4 1c0 1.9-2.7 2.8-2.7 2.8"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>ความหมาย</button>
@@ -2550,6 +2705,8 @@ body:has(.flashcard-overlay) .nav{display:none!important}
             <button class="nvx-b" onclick="snavScrollBottom()"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>ล่างสุด</button>
         </div>
     </div>
+
+    <div id="nvx-tools" style="display:none"></div>
 </div>
 </div>
 
@@ -2955,46 +3112,19 @@ body:has(.flashcard-overlay) .nav{display:none!important}
     </div>
 </div>
 <div class="settings-section">
-    <div class="settings-title">เป้าหมายรายวัน</div>
+    <div class="settings-title">แผนการท่องจำ</div>
     <div class="settings-card">
-        <div class="settings-row">
-            <div class="settings-row-left">
-                <div class="settings-icon si1"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div>
-                <div class="settings-info"><h4>ตัวบท</h4><p>ขั้นต่ำ - สูงสุด</p></div>
-            </div>
-            <div class="settings-row-right">
-                <input type="number" class="settings-input settings-input-sm" id="goal-text-min" onchange="saveSettings()">
-                <span style="color:var(--txt3)">-</span>
-                <input type="number" class="settings-input settings-input-sm" id="goal-text-max" onchange="saveSettings()">
-            </div>
-        </div>
-        <div class="settings-row">
-            <div class="settings-row-left">
-                <div class="settings-icon si2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-                <div class="settings-info"><h4>ความหมาย</h4><p>ขั้นต่ำ - สูงสุด</p></div>
-            </div>
-            <div class="settings-row-right">
-                <input type="number" class="settings-input settings-input-sm" id="goal-meaning-min" onchange="saveSettings()">
-                <span style="color:var(--txt3)">-</span>
-                <input type="number" class="settings-input settings-input-sm" id="goal-meaning-max" onchange="saveSettings()">
-            </div>
-        </div>
-        <div class="settings-row" style="border-bottom:none">
-            <div class="settings-row-left">
-                <div class="settings-icon si3"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
-                <div class="settings-info"><h4>ตัฟซีร</h4><p>ขั้นต่ำ - สูงสุด</p></div>
-            </div>
-            <div class="settings-row-right">
-                <input type="number" class="settings-input settings-input-sm" id="goal-tafsir-min" onchange="saveSettings()">
-                <span style="color:var(--txt3)">-</span>
-                <input type="number" class="settings-input settings-input-sm" id="goal-tafsir-max" onchange="saveSettings()">
-            </div>
+        <div id="plan-manager-body"></div>
+        <div style="display:none">
+            <input type="number" id="goal-text-min"><input type="number" id="goal-text-max">
+            <input type="number" id="goal-meaning-min"><input type="number" id="goal-meaning-max">
+            <input type="number" id="goal-tafsir-min"><input type="number" id="goal-tafsir-max">
         </div>
         <div id="settings-predict-wrapper" style="padding:var(--sp-3);background:linear-gradient(180deg,rgba(122,158,159,0.08),rgba(122,158,159,0.15));border-top:1px solid rgba(122,158,159,0.12)">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:var(--sp-2)">
                 <div style="width:28px;height:28px;background:linear-gradient(135deg,var(--sec),#5d8a8b);border-radius:6px;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg></div>
                 <div style="flex:1"><div style="font-size:var(--text-2xs);font-weight:600;color:var(--sec)">คาดการณ์</div><div style="font-size:var(--text-3xs);color:var(--txt3)">ตามเป้าหมายขั้นต่ำ</div></div>
-                <select id="predict-scope" onchange="calculateCompletion()" style="padding:4px 8px;border:1px solid var(--bdr);border-radius:6px;font-size:8px;font-family:var(--f-th);background:#fff;cursor:pointer;max-width:140px">
+                <select id="predict-unit" onchange="mqSetUnit(this.value)" style="padding:4px 6px;border:1px solid var(--bdr);border-radius:6px;font-size:8px;font-family:var(--f-th);background:#fff;cursor:pointer;margin-right:4px"></select><select id="predict-scope" onchange="mqScopePicked(this.value)" style="padding:4px 8px;border:1px solid var(--bdr);border-radius:6px;font-size:8px;font-family:var(--f-th);background:#fff;cursor:pointer;max-width:140px">
                     <option value="all">ทั้งหมด 114 ซูเราะฮ์</option>
                     <option value="juz30">ญุซอัมมา (30)</option>
                     <option value="juz1-29">ญุซ 1-29 รวม</option>
@@ -6518,6 +6648,7 @@ function updateRoutineSettingsLive(){
 }
 
 function renderHomeGoalsAndReview(){
+    if(typeof mqSyncGoals==='function')mqSyncGoals();
     const today=getLocalDate(),log=getLog(),todayLog=log[today]||{text:0,meaning:0,tafsir:0},s=getSettings();
     const routineSettings = getRoutineSettings();
     const routineProgress = getRoutineProgress();
@@ -6537,7 +6668,7 @@ function renderHomeGoalsAndReview(){
     
     const allGoalsMet = meetsTextMin && meetsMeaningMin && meetsTafsirMin && allRoutineDone;
     
-    document.getElementById('home-goal-card').innerHTML=`<div class="goal-check-title" style="font-size:11px;color:var(--txt)"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--txt)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>เป้าหมาย ${allGoalsMet?'<span style="color:var(--done);margin-left:auto">✓</span>':''}</div><div class="goal-check-grid" style="gap:4px"><div class="goal-check-item ${meetsTextMin?'completed':''}" style="padding:4px 6px"><div class="goal-checkbox ${meetsTextMin?'checked':''}" style="width:12px;height:12px;${meetsTextMin?'background:var(--pri);border-color:var(--pri)':''}"><svg viewBox="0 0 24 24" width="8" height="8"><polyline points="20 6 9 17 4 12"/></svg></div><div class="goal-check-info"><div class="goal-check-text" style="font-size:10px">ตัวบท ${s.textMin||0}+</div><div class="goal-check-meta" style="font-size:9px">${meetsTextMin?'✓'+todayLog.text:'เหลือ'+Math.max(0,(s.textMin||0)-(todayLog.text||0))}</div></div></div><div class="goal-check-item ${meetsMeaningMin?'completed':''}" style="padding:4px 6px"><div class="goal-checkbox ${meetsMeaningMin?'checked':''}" style="width:12px;height:12px;${meetsMeaningMin?'background:var(--sec);border-color:var(--sec)':''}"><svg viewBox="0 0 24 24" width="8" height="8"><polyline points="20 6 9 17 4 12"/></svg></div><div class="goal-check-info"><div class="goal-check-text" style="font-size:10px">ความหมาย ${s.meaningMin||0}+</div><div class="goal-check-meta" style="font-size:9px">${meetsMeaningMin?'✓'+todayLog.meaning:'เหลือ'+Math.max(0,(s.meaningMin||0)-(todayLog.meaning||0))}</div></div></div><div class="goal-check-item ${meetsTafsirMin?'completed':''}" style="padding:4px 6px"><div class="goal-checkbox ${meetsTafsirMin?'checked':''}" style="width:12px;height:12px;${meetsTafsirMin?'background:var(--tafsir);border-color:var(--tafsir)':''}"><svg viewBox="0 0 24 24" width="8" height="8"><polyline points="20 6 9 17 4 12"/></svg></div><div class="goal-check-info"><div class="goal-check-text" style="font-size:10px">ตัฟซีร ${s.tafsirMin||0}+</div><div class="goal-check-meta" style="font-size:9px">${meetsTafsirMin?'✓'+todayLog.tafsir:'เหลือ'+Math.max(0,(s.tafsirMin||0)-(todayLog.tafsir||0))}</div></div></div><div class="goal-check-item ${allRoutineDone?'completed':''}" style="padding:4px 6px"><div class="goal-checkbox ${allRoutineDone?'checked':''}" style="width:12px;height:12px;${allRoutineDone?'background:var(--gold);border-color:var(--gold)':''}"><svg viewBox="0 0 24 24" width="8" height="8"><polyline points="20 6 9 17 4 12"/></svg></div><div class="goal-check-info"><div class="goal-check-text" style="font-size:10px">กิจวัตร</div><div class="goal-check-meta" style="font-size:9px">${totalRoutine?`${doneRoutine}/${totalRoutine}`:'✓'}</div></div></div></div>`;
+    renderGoalPlanCard(todayLog, doneRoutine, totalRoutine, allRoutineDone);
     
     // ===== การ์ดทบทวนวันนี้ - เฉพาะตัวบทรายวัน =====
     const reviewList = document.getElementById('home-review-list');
@@ -6557,6 +6688,7 @@ function renderHomeGoalsAndReview(){
                                 const key = h.id+'-'+i;
                                 historyReviews.push({
                                     name:(h.name||''),
+                                    sn:h.surahNum,
                                     from:h.from||'',
                                     to:h.to||'',
                                     type:h.type,
@@ -6585,7 +6717,7 @@ function renderHomeGoalsAndReview(){
                 
                 return `<div class="review-item ${isDone?'done-item':''}" onclick="${clickFn}" style="display:flex;align-items:center;gap:4px;padding:6px 10px;border-radius:12px;background:${isDone?'rgba(122,178,140,0.15)':'linear-gradient(90deg,#FFFFFF 0%,rgba(122,158,159,0.12) 100%)'};cursor:pointer;border:1px solid ${isDone?'rgba(122,178,140,0.3)':'rgba(122,158,159,0.2)'};min-height:32px">
                     <div class="review-check ${isDone?'done':''}" style="width:14px;height:14px;border:2px solid ${isDone?'var(--done)':'rgba(122,158,159,0.35)'};border-radius:50%;background:${isDone?'var(--done)':'#fff'};display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" width="8" height="8" fill="none" stroke="${isDone?'#fff':'transparent'}" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <span class="review-text" style="font-size:9px;font-weight:500;flex:1;word-break:break-word;line-height:1.3">${thaiWB(r.name)} ${r.from}-${r.to}</span>
+                    <span class="review-text" style="font-size:9px;font-weight:500;flex:1;word-break:break-word;line-height:1.3">${thaiWB(r.name)} ${r.from}-${r.to}<span style="color:var(--txt3);font-weight:400"> ${mqTag(r.sn,r.from,r.to)}</span></span>
                     <span class="review-badge rb${badgeColor==='pri'?'1':badgeColor==='sec'?'2':'3'}" style="font-size:7px;padding:2px 5px;border-radius:4px;font-weight:500;flex-shrink:0;background:var(--${badgeColor}-ll);color:var(--${badgeColor})">${badgeType}ร.${r.round}</span>
                 </div>`;
             }).join('');
@@ -10864,7 +10996,9 @@ function logActivity(type,surahNum,count,from,to){
     const today=getLocalDate(),log=getLog(),settings=getSettings();
     if(!log[today])log[today]={text:0,meaning:0,tafsir:0,goals:{textMin:settings.textMin||0,meaningMin:settings.meaningMin||0,tafsirMin:settings.tafsirMin||0}};
     if(!log[today].goals)log[today].goals={textMin:settings.textMin||0,meaningMin:settings.meaningMin||0,tafsirMin:settings.tafsirMin||0};
-    log[today][type]+=count;set('log',log);
+    log[today][type]+=count;
+    try{const _p=mqActivePlan();log[today].goalsU={unit:_p.unit,plan:_p.name,scope:_p.scope,text:(_p.text||{}).min||0,meaning:(_p.meaning||{}).min||0,tafsir:(_p.tafsir||{}).min||0};}catch(e){}
+    set('log',log);
     const history=getHistory();
     const isPlus=typeof surahNum==='string'&&surahNum.startsWith('p');
     // หาจาก SURAHS, PLUS_SURAHS, และ ALL_SURAHS (ญุซ 1-29)
@@ -13727,12 +13861,13 @@ function showDayModal(dateStr){
     const isToday=dateStr===getLocalDate();
     
     let planHtml='';
+    try{ if(typeof mqPlanDayHtml==='function') planHtml += mqPlanDayHtml(dateStr); }catch(e){}
     // แสดงข้อมูลทั้งวันที่ผ่านไปแล้วและวันปัจจุบัน/อนาคต
     {
         let dailyGoals=[];
-        if((dayGoals.textMin||0)>0)dailyGoals.push({text:'ท่องตัวบท '+(dayGoals.textMin)+'+',done:(dayLog.text||0)>=(dayGoals.textMin||0),color:'pri'});
-        if((dayGoals.meaningMin||0)>0)dailyGoals.push({text:'อ่านความหมาย '+(dayGoals.meaningMin)+'+',done:(dayLog.meaning||0)>=(dayGoals.meaningMin||0),color:'sec'});
-        if((dayGoals.tafsirMin||0)>0)dailyGoals.push({text:'อ่านตัฟซีร '+(dayGoals.tafsirMin)+'+',done:(dayLog.tafsir||0)>=(dayGoals.tafsirMin||0),color:'tafsir'});
+        if((dayGoals.textMin||0)>0)dailyGoals.push({text:'ท่องตัวบท '+mqDayGoalTxt('text',dayGoals,dayLog),done:(dayLog.text||0)>=(dayGoals.textMin||0),color:'pri'});
+        if((dayGoals.meaningMin||0)>0)dailyGoals.push({text:'อ่านความหมาย '+mqDayGoalTxt('meaning',dayGoals,dayLog),done:(dayLog.meaning||0)>=(dayGoals.meaningMin||0),color:'sec'});
+        if((dayGoals.tafsirMin||0)>0)dailyGoals.push({text:'อ่านตัฟซีร '+mqDayGoalTxt('tafsir',dayGoals,dayLog),done:(dayLog.tafsir||0)>=(dayGoals.tafsirMin||0),color:'tafsir'});
         
         // ดึงงานทบทวนตัวบทรายวัน
         let historyReviews=[];
@@ -13741,7 +13876,7 @@ function showDayModal(dateStr){
                 reviews.forEach(r=>{
                     if(r){
                         const typeLabel=r.type==='text'?'ตัวบท':r.type==='meaning'?'ความหมาย':'ตัฟซีร';
-                        historyReviews.push({text:(r.name||'')+' '+(r.from||'')+'-'+(r.to||''),sub:typeLabel,round:r.round||1,done:reviewDone[r.key]||false,color:r.type==='text'?'pri':r.type==='meaning'?'sec':'tafsir'});
+                        historyReviews.push({text:(r.name||'')+' '+(r.from||'')+'-'+(r.to||'')+' '+mqTag(r.surahNum,r.from,r.to),sub:typeLabel,round:r.round||1,done:reviewDone[r.key]||false,color:r.type==='text'?'pri':r.type==='meaning'?'sec':'tafsir'});
                     }
                 });
             }
@@ -13832,6 +13967,8 @@ function showDayModal(dateStr){
 
 function renderSettings(){
     if(typeof renderFontSettings==='function')renderFontSettings();
+    if(typeof mqSyncGoals==='function')mqSyncGoals();
+    if(typeof renderPlanManager==='function')renderPlanManager();
     const s=getSettings();
     document.getElementById('settings-username').value=getUsername();
     document.getElementById('goal-text-min').value=s.textMin!==undefined?s.textMin:3;
@@ -24729,6 +24866,1209 @@ window._fabReset=function(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);
 else setTimeout(bind,0);
 })();
+
+
+
+/* ============================================================
+   v345 · MUSHAF ENGINE + ระบบแผนการท่องจำ (Plan System)
+   ------------------------------------------------------------
+   ข้อมูลจริงจากมุศฮัฟมะดีนะฮ์ : 604 หน้า · 240 รุบุอ์ · 60 ฮิซบ์ · 30 ญุซ
+   หน่วยเก็บข้อมูลจริงภายในระบบ = "อายะฮ์" เสมอ
+   หน่วยอื่น (หน้า/รุบุอ์/ฮิซบ์/ญุซ) เป็นเพียง "เลนส์" ที่แปลงไป-กลับได้
+   → บันทึกเป็นหน้า ก็รู้ว่าเป็นอายะฮ์ไหน · บันทึกเป็นอายะฮ์ ก็รู้ว่าอยู่หน้าไหน
+   ============================================================ */
+
+/* ---------- 1. ข้อมูลขอบเขต (global ayah index 1..6236) ---------- */
+const MQ_COUNTS=[7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85,54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6];
+const MQ_PAGE=[1,8,13,24,32,37,45,56,65,69,77,84,91,96,101,109,113,120,127,134,142,149,153,161,171,177,184,189,194,198,204,210,218,223,227,232,238,241,245,253,256,260,264,267,272,277,282,289,290,294,303,309,316,323,331,339,346,355,364,371,377,385,394,402,409,415,426,434,442,447,451,459,467,474,480,488,494,500,505,508,513,517,520,527,531,538,545,553,559,568,573,580,585,588,595,599,607,615,621,628,634,641,648,656,664,669,672,675,679,683,687,693,701,706,711,715,720,727,734,740,746,752,759,765,773,778,783,790,798,808,817,825,834,842,849,858,863,871,880,884,891,900,908,914,921,927,932,936,941,947,955,966,977,985,992,998,1006,1012,1022,1028,1036,1042,1050,1059,1075,1085,1092,1098,1104,1110,1114,1118,1125,1133,1142,1150,1161,1169,1177,1186,1194,1201,1206,1213,1222,1230,1236,1242,1249,1256,1262,1267,1272,1276,1283,1290,1297,1304,1308,1315,1322,1329,1335,1342,1347,1353,1358,1365,1371,1379,1385,1390,1398,1407,1418,1426,1435,1443,1453,1462,1471,1479,1486,1493,1502,1511,1519,1527,1536,1545,1555,1562,1571,1582,1591,1601,1611,1619,1627,1634,1640,1649,1660,1666,1675,1683,1692,1700,1708,1713,1721,1726,1736,1742,1750,1756,1761,1769,1775,1784,1793,1803,1818,1834,1854,1873,1893,1908,1916,1928,1936,1944,1956,1966,1974,1981,1989,1995,2004,2012,2020,2030,2037,2047,2057,2068,2079,2088,2096,2105,2116,2126,2134,2145,2156,2161,2168,2175,2186,2194,2202,2215,2224,2238,2251,2262,2276,2289,2302,2315,2327,2346,2361,2386,2400,2413,2425,2436,2447,2462,2474,2484,2494,2508,2519,2528,2541,2556,2565,2574,2585,2596,2601,2611,2619,2626,2634,2642,2651,2660,2668,2674,2691,2701,2716,2733,2748,2763,2778,2792,2802,2812,2819,2823,2828,2835,2845,2850,2853,2858,2867,2876,2888,2899,2911,2923,2933,2952,2972,2993,3016,3044,3069,3092,3116,3139,3160,3173,3182,3195,3204,3215,3223,3236,3248,3258,3266,3274,3281,3288,3296,3303,3312,3323,3330,3337,3347,3355,3364,3371,3379,3386,3393,3404,3415,3425,3434,3442,3451,3460,3470,3481,3489,3498,3504,3515,3524,3534,3540,3549,3556,3564,3569,3577,3584,3588,3596,3607,3614,3621,3629,3638,3646,3655,3664,3672,3679,3691,3699,3705,3718,3733,3746,3760,3776,3789,3813,3840,3865,3891,3915,3942,3971,3987,3997,4013,4032,4054,4064,4069,4080,4090,4099,4106,4115,4126,4133,4141,4150,4159,4167,4174,4183,4192,4200,4211,4219,4230,4239,4248,4257,4265,4273,4283,4288,4295,4304,4317,4324,4336,4348,4359,4373,4386,4399,4415,4433,4454,4474,4487,4496,4506,4516,4525,4531,4539,4546,4557,4565,4575,4584,4593,4599,4607,4612,4617,4624,4631,4646,4666,4682,4706,4727,4750,4767,4785,4811,4829,4853,4874,4896,4918,4942,4969,4996,5030,5056,5079,5087,5094,5100,5105,5111,5116,5126,5130,5136,5143,5151,5156,5162,5169,5178,5186,5193,5200,5209,5218,5223,5230,5237,5242,5254,5268,5287,5314,5332,5358,5386,5415,5430,5448,5461,5476,5495,5513,5543,5571,5597,5617,5642,5673,5703,5728,5759,5801,5830,5855,5883,5910,5932,5964,5994,6017,6044,6073,6099,6126,6138,6156,6177,6194,6208,6222];
+const MQ_RUB=[1,33,51,67,82,99,113,131,149,165,184,196,210,226,240,250,260,270,279,290,308,326,345,368,386,406,426,446,464,479,494,505,517,529,551,567,581,593,607,628,641,656,670,681,696,710,720,736,751,766,778,802,825,848,863,884,900,916,930,940,955,985,1001,1019,1042,1071,1096,1110,1125,1143,1161,1182,1201,1221,1236,1254,1269,1281,1295,1310,1328,1346,1357,1375,1390,1417,1435,1454,1479,1497,1514,1534,1557,1581,1603,1626,1649,1673,1697,1712,1726,1742,1760,1778,1803,1852,1902,1931,1952,1976,1991,2012,2030,2052,2079,2099,2128,2157,2172,2191,2215,2239,2272,2309,2349,2403,2431,2459,2484,2512,2534,2566,2596,2614,2633,2655,2674,2709,2748,2792,2812,2826,2844,2856,2876,2908,2933,2984,3043,3113,3160,3186,3215,3241,3264,3281,3303,3328,3341,3366,3386,3410,3440,3463,3491,3514,3534,3551,3564,3584,3593,3616,3630,3652,3675,3701,3733,3765,3810,3871,3933,3991,4022,4066,4090,4111,4134,4154,4174,4199,4227,4243,4265,4285,4299,4323,4349,4382,4431,4485,4511,4531,4555,4578,4601,4613,4626,4657,4706,4759,4810,4855,4902,4980,5054,5091,5105,5118,5137,5157,5178,5192,5218,5230,5242,5272,5324,5394,5448,5495,5552,5610,5673,5759,5830,5885,5949,6024,6091,6155];
+const MQ_JUZ=[1,149,260,386,517,641,751,900,1042,1201,1328,1479,1649,1803,2030,2215,2484,2674,2876,3215,3386,3564,3733,4090,4265,4511,4706,5105,5242,5673];
+
+
+const MQ_TOTAL = 6236;
+const MQ_CUM = (() => { const c = [0]; for (let i = 0; i < MQ_COUNTS.length; i++) c.push(c[i] + MQ_COUNTS[i]); return c; })();
+const MQ_HIZB = MQ_RUB.filter((_, i) => i % 4 === 0);
+const MQ_SURAH_START = MQ_CUM.slice(0, 114).map(x => x + 1);
+
+const MQ_UNITS = {
+    ayah:  { key: 'ayah',  label: 'อายะฮ์', short: 'อายะฮ์', starts: null,           total: MQ_TOTAL, step: 1,   dec: false },
+    page:  { key: 'page',  label: 'หน้า',   short: 'หน้า',   starts: MQ_PAGE,        total: 604,      step: 0.5, dec: true  },
+    rub:   { key: 'rub',   label: 'รุบุอ์',  short: 'รุบุอ์',  starts: MQ_RUB,         total: 240,      step: 0.5, dec: true  },
+    hizb:  { key: 'hizb',  label: 'ฮิซบ์',  short: 'ฮิซบ์',   starts: MQ_HIZB,        total: 60,       step: 0.5, dec: true  },
+    juz:   { key: 'juz',   label: 'ญุซ',    short: 'ญุซ',     starts: MQ_JUZ,         total: 30,       step: 0.25,dec: true  },
+    surah: { key: 'surah', label: 'ซูเราะฮ์',short: 'ซูเราะฮ์',starts: MQ_SURAH_START, total: 114,      step: 1,   dec: false }
+};
+const MQ_UNIT_KEYS = ['ayah', 'page', 'rub', 'hizb', 'juz', 'surah'];
+
+/* ---------- 2. แปลงตำแหน่ง ---------- */
+function mqGi(surah, ayah) {              // ซูเราะฮ์:อายะฮ์ → ดัชนีรวม
+    surah = parseInt(surah); ayah = parseInt(ayah) || 1;
+    if (!(surah >= 1 && surah <= 114)) return 0;
+    return MQ_CUM[surah - 1] + Math.max(1, Math.min(ayah, MQ_COUNTS[surah - 1]));
+}
+function mqPos(gi) {                       // ดัชนีรวม → {s,a}
+    gi = Math.max(1, Math.min(MQ_TOTAL, Math.round(gi)));
+    let lo = 0, hi = 113;
+    while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (MQ_CUM[mid] < gi) lo = mid; else hi = mid - 1; }
+    return { s: lo + 1, a: gi - MQ_CUM[lo] };
+}
+function mqSurahAyahCount(n) { return MQ_COUNTS[n - 1] || 0; }
+function mqSurahName(n) {
+    try {
+        const f = (typeof ALL_SURAHS !== 'undefined' && ALL_SURAHS.find(x => x.n === n))
+            || (typeof SURAHS !== 'undefined' && SURAHS.find(x => x.n === n));
+        if (f) return f.name;
+    } catch (e) {}
+    return 'ซูเราะฮ์ ' + n;
+}
+
+/* ---------- 3. หน่วย ↔ ตำแหน่ง ---------- */
+function mqUnitIndex(gi, unit) {           // อยู่ในหน่วยที่เท่าไหร่ (1-based)
+    const U = MQ_UNITS[unit] || MQ_UNITS.ayah;
+    if (!U.starts) return Math.max(1, Math.min(MQ_TOTAL, Math.round(gi)));
+    const a = U.starts; let lo = 0, hi = a.length - 1;
+    while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (a[mid] <= gi) lo = mid; else hi = mid - 1; }
+    return lo + 1;
+}
+function mqUnitStartGi(unit, i) {
+    const U = MQ_UNITS[unit] || MQ_UNITS.ayah;
+    if (!U.starts) return Math.max(1, Math.min(MQ_TOTAL, i));
+    return U.starts[Math.max(1, Math.min(U.total, i)) - 1];
+}
+function mqUnitEndGi(unit, i) {
+    const U = MQ_UNITS[unit] || MQ_UNITS.ayah;
+    if (!U.starts) return Math.max(1, Math.min(MQ_TOTAL, i));
+    return (i >= U.total) ? MQ_TOTAL : (U.starts[i] - 1);
+}
+function mqUnitLen(unit, i) { return mqUnitEndGi(unit, i) - mqUnitStartGi(unit, i) + 1; }
+
+/* ตำแหน่งแบบทศนิยม เช่น หน้า 582.5 = กลางหน้า 582 (ใช้ทำ "ครึ่งหน้า") */
+function mqUnitPos(gi, unit) {
+    const U = MQ_UNITS[unit] || MQ_UNITS.ayah;
+    if (!U.starts) return gi - 1;
+    const i = mqUnitIndex(gi, unit);
+    const st = mqUnitStartGi(unit, i), len = mqUnitLen(unit, i);
+    return (i - 1) + (gi - st) / len;
+}
+function mqGiAtUnitPos(pos, unit) {
+    const U = MQ_UNITS[unit] || MQ_UNITS.ayah;
+    if (!U.starts) return Math.round(pos) + 1;
+    if (pos <= 0) return 1;
+    if (pos >= U.total) return MQ_TOTAL + 1;
+    const i = Math.floor(pos) + 1;
+    const frac = pos - Math.floor(pos);
+    const st = mqUnitStartGi(unit, i), len = mqUnitLen(unit, i);
+    return st + Math.round(frac * len);
+}
+/* เดินหน้าไปข้างหน้า N หน่วย (รับทศนิยม) → คืนอายะฮ์สุดท้ายของช่วง */
+function mqAdvance(gi, unit, amount) {
+    if (!(amount > 0)) return gi;
+    const end = mqGiAtUnitPos(mqUnitPos(gi, unit) + amount, unit) - 1;
+    return Math.max(gi, Math.min(MQ_TOTAL, end));
+}
+/* เหลืออีกกี่หน่วย (ทศนิยม) */
+function mqUnitsBetween(fromGi, toGi, unit) {
+    if (toGi < fromGi) return 0;
+    return Math.max(0, mqUnitPos(toGi + 1, unit) - mqUnitPos(fromGi, unit));
+}
+
+/* ---------- 4. ป้ายกำกับ ---------- */
+function mqFmt(n) {
+    if (!isFinite(n)) return '0';
+    const r = Math.round(n * 100) / 100;
+    return (Math.abs(r - Math.round(r)) < 0.005) ? String(Math.round(r)) : String(r);
+}
+function mqUnitText(amount, unit) {
+    const U = MQ_UNITS[unit] || MQ_UNITS.ayah;
+    if (unit === 'page' && Math.abs(amount - 0.5) < 0.001) return 'ครึ่งหน้า';
+    return mqFmt(amount) + ' ' + U.short;
+}
+function mqSplitBySurah(a, b) {            // ช่วงอายะฮ์ → แยกตามซูเราะฮ์
+    const out = [];
+    let g = a;
+    while (g <= b) {
+        const p = mqPos(g);
+        const endOfSurah = MQ_CUM[p.s - 1] + MQ_COUNTS[p.s - 1];
+        const to = Math.min(b, endOfSurah);
+        out.push({ n: p.s, from: p.a, to: mqPos(to).a, count: to - g + 1 });
+        g = to + 1;
+    }
+    return out;
+}
+/* ช่วงแบบสั้น : ข้ามซูเราะฮ์กลางที่ไม่จำเป็นต้องเอ่ยชื่อ */
+function mqRangeLabelCompact(a, b) {
+    const parts = mqSplitBySurah(a, b);
+    if (parts.length === 1) {
+        const r = parts[0];
+        return mqSurahName(r.n) + ' ' + r.from + (r.to > r.from ? '–' + r.to : '');
+    }
+    const f = parts[0], l = parts[parts.length - 1];
+    return mqSurahName(f.n) + ' ' + f.from + ' – ' + mqSurahName(l.n) + ' ' + l.to;
+}
+function mqRangeLabel(a, b) {              // "อันนะบะอ์ 1–40"
+    return mqSplitBySurah(a, b).map(r =>
+        mqSurahName(r.n) + ' ' + r.from + (r.to > r.from ? '–' + r.to : '')).join(' · ');
+}
+function mqPageLabel(a, b) {               // "หน้า 582–583"
+    const p1 = mqUnitIndex(a, 'page'), p2 = mqUnitIndex(b, 'page');
+    return 'หน้า ' + p1 + (p2 > p1 ? '–' + p2 : '');
+}
+/* ถ้าช่วงอยู่ในหน่วยเดียวและไม่เต็มหน่วย → บอกว่าเป็นส่วนไหนของหน่วยนั้น */
+function mqSubLabel(a, b, unit) {
+    const U = MQ_UNITS[unit];
+    if (!U || !U.starts) return '';
+    const i = mqUnitIndex(a, unit);
+    if (mqUnitIndex(b, unit) !== i) return '';
+    const p0 = mqUnitPos(a, unit) - (i - 1);
+    const p1 = mqUnitPos(b + 1, unit) - (i - 1);
+    if (p0 <= 0.02 && p1 >= 0.98) return '';                 // เต็มหน่วยพอดี
+    const size = p1 - p0;
+    // หน้าที่มีอายะฮ์น้อยจะแบ่งครึ่งไม่ลงตัว จึงผ่อนเกณฑ์ตามจำนวนอายะฮ์ในหน่วยนั้น
+    const tol = Math.max(0.06, 0.55 / mqUnitLen(unit, i));
+    let best = 0, bestErr = 9;
+    for (let N = 2; N <= 4; N++) {
+        const err = Math.abs(size - 1 / N);
+        if (err < tol && err < bestErr) { bestErr = err; best = N; }
+    }
+    if (!best) return '';
+    const k = Math.min(best, Math.round(p0 * best) + 1);
+    if (best === 2) return k === 1 ? 'ครึ่งแรก' : 'ครึ่งหลัง';
+    return 'ส่วนที่ ' + k + '/' + best;
+}
+function mqUnitRangeLabel(a, b, unit) {
+    if (unit === 'ayah' || unit === 'surah') {
+        const sub = mqSubLabel(a, b, 'page');
+        return mqPageLabel(a, b) + (sub ? ' (' + sub + ')' : '');
+    }
+    const U = MQ_UNITS[unit];
+    const i1 = mqUnitIndex(a, unit), i2 = mqUnitIndex(b, unit);
+    const sub = mqSubLabel(a, b, unit);
+    return U.short + ' ' + i1 + (i2 > i1 ? '–' + i2 : '') + (sub ? ' (' + sub + ')' : '');
+}
+/* ป้ายหน้าจากซูเราะฮ์+ช่วงอายะฮ์ (ใช้กับรายการทบทวน) */
+function mqTag(surahNum, from, to) {
+    try {
+        let n = surahNum;
+        if (typeof n === 'string' && n.startsWith('p')) {
+            const ps = (typeof PLUS_SURAHS !== 'undefined') ? PLUS_SURAHS.find(x => x.n === n) : null;
+            const ref = ps && ps.ref ? String(ps.ref) : '';
+            const m = ref.match(/^(\d+)\s*:\s*(\d+)/);
+            if (!m) return '';
+            n = parseInt(m[1]);
+            const base = parseInt(m[2]) - 1;
+            from = base + (parseInt(from) || 1);
+            to = base + (parseInt(to) || parseInt(from) || 1);
+        }
+        n = parseInt(n);
+        if (!(n >= 1 && n <= 114)) return '';
+        const a = mqGi(n, parseInt(from) || 1), b = mqGi(n, parseInt(to) || parseInt(from) || 1);
+        if (!a || !b) return '';
+        return mqPageLabel(a, Math.max(a, b));
+    } catch (e) { return ''; }
+}
+
+/* ---------- 5. ขอบเขตแผน (scope) ---------- */
+function mqSurahJuzRange(n) {
+    const a = mqUnitIndex(mqGi(n, 1), 'juz');
+    const b = mqUnitIndex(mqGi(n, MQ_COUNTS[n - 1]), 'juz');
+    return [a, b];
+}
+function mqScopeList(scope) {
+    const all = [];
+    for (let n = 1; n <= 114; n++) all.push({ n, ayah: MQ_COUNTS[n - 1] });
+    if (!scope || scope === 'all') return all;
+    if (scope.startsWith('surah-')) {
+        const n = parseInt(scope.slice(6));
+        return MQ_COUNTS[n - 1] ? [{ n, ayah: MQ_COUNTS[n - 1] }] : [];
+    }
+    let j1 = 1, j2 = 30;
+    if (scope === 'juz30') { j1 = 30; j2 = 30; }
+    else if (scope === 'juz1-29') { j1 = 1; j2 = 29; }
+    else if (scope.startsWith('juz-')) { j1 = j2 = parseInt(scope.slice(4)); }
+    else return all;
+    return all.filter(x => { const r = mqSurahJuzRange(x.n); return r[0] <= j2 && r[1] >= j1; });
+}
+function mqScopeName(scope) {
+    if (!scope || scope === 'all') return 'ทั้งเล่ม 114 ซูเราะฮ์';
+    if (scope === 'juz30') return 'ญุซอัมมา';
+    if (scope === 'juz1-29') return 'ญุซ 1–29';
+    if (scope.startsWith('juz-')) return 'ญุซ ' + parseInt(scope.slice(4));
+    if (scope.startsWith('surah-')) return mqSurahName(parseInt(scope.slice(6)));
+    return 'ทั้งเล่ม';
+}
+const MQ_TYPES = ['text', 'meaning', 'tafsir'];
+const MQ_TYPE_LABEL = { text: 'ตัวบท', meaning: 'ความหมาย', tafsir: 'ตัฟซีร' };
+const MQ_TYPE_COLOR = { text: 'var(--pri)', meaning: 'var(--sec)', tafsir: 'var(--tafsir)' };
+
+/* ---------- 6. คลังแผน ---------- */
+function mqPlans() {
+    let st = get('memPlans', null);
+    if (!st || !st.list || !st.list.length) {
+        const s = getSettings();
+        st = {
+            active: 'plan_default',
+            list: [{
+                id: 'plan_default', name: 'แผนหลัก', unit: 'ayah', scope: 'juz30',
+                text:    { min: s.textMin    !== undefined ? s.textMin    : 3, max: s.textMax    !== undefined ? s.textMax    : 10 },
+                meaning: { min: s.meaningMin !== undefined ? s.meaningMin : 0, max: s.meaningMax !== undefined ? s.meaningMax : 5 },
+                tafsir:  { min: s.tafsirMin  !== undefined ? s.tafsirMin  : 0, max: s.tafsirMax  !== undefined ? s.tafsirMax  : 3 }
+            }]
+        };
+        set('memPlans', st);
+    }
+    return st;
+}
+function mqActivePlan() {
+    const st = mqPlans();
+    return st.list.find(p => p.id === st.active) || st.list[0];
+}
+function mqSavePlans(st) { set('memPlans', st); }
+function mqPatchActive(patch) {
+    const st = mqPlans();
+    if (patch && patch.scope && patch.scope !== mqActivePlan().scope) set('mqDayAnchor', {});
+    const i = st.list.findIndex(p => p.id === st.active);
+    const idx = i >= 0 ? i : 0;
+    st.list[idx] = Object.assign({}, st.list[idx], patch);
+    mqSavePlans(st);
+    mqSyncGoals(true);
+    mqRefreshAll();
+}
+function mqSwitchPlan(id) {
+    const st = mqPlans();
+    if (!st.list.find(p => p.id === id)) return;
+    st.active = id;
+    mqSavePlans(st);
+    mqSyncGoals(true);
+    mqRefreshAll();
+    if (typeof toast === 'function') toast('สลับไป "' + mqActivePlan().name + '" แล้ว');
+}
+function mqAddPlan() {
+    const st = mqPlans();
+    const base = mqActivePlan();
+    const id = 'plan_' + Date.now();
+    st.list.push({
+        id, name: 'แผนใหม่ ' + (st.list.length + 1), unit: base.unit, scope: base.scope,
+        text: { min: 1, max: 2 }, meaning: { min: 0, max: 0 }, tafsir: { min: 0, max: 0 }
+    });
+    st.active = id;
+    mqSavePlans(st);
+    mqSyncGoals(true);
+    mqRefreshAll();
+}
+function mqDeletePlan(id) {
+    const st = mqPlans();
+    if (st.list.length <= 1) { if (typeof toast === 'function') toast('ต้องมีอย่างน้อย 1 แผน'); return; }
+    st.list = st.list.filter(p => p.id !== id);
+    if (st.active === id) st.active = st.list[0].id;
+    mqSavePlans(st);
+    mqSyncGoals(true);
+    mqRefreshAll();
+}
+/* เปลี่ยนชื่อ : พิมพ์ในช่องได้เลย ไม่ใช้ป๊อปอัประบบ (บางเครื่องบล็อก prompt) */
+let _mqDelArm = false, _mqDelTimer = null;
+function mqSetPlanName(v) {
+    const st = mqPlans();
+    const p = st.list.find(x => x.id === st.active); if (!p) return;
+    const name = (v || '').trim();
+    if (!name || name === p.name) return;
+    p.name = name.slice(0, 24);
+    mqSavePlans(st);
+    mqRefreshAll();
+}
+function mqDelClick() {
+    const st = mqPlans();
+    if (!_mqDelArm) {
+        _mqDelArm = true;
+        clearTimeout(_mqDelTimer);
+        _mqDelTimer = setTimeout(() => { _mqDelArm = false; if (typeof renderPlanManager === 'function') renderPlanManager(); }, 3500);
+        if (typeof renderPlanManager === 'function') renderPlanManager();
+        return;
+    }
+    _mqDelArm = false;
+    clearTimeout(_mqDelTimer);
+    mqDeletePlan(st.active);
+    if (typeof toast === 'function') toast('ลบแผนแล้ว · ความคืบหน้าไม่หาย');
+}
+
+/* ---------- 7. เคอร์เซอร์ : ตอนนี้ท่องถึงไหนแล้ว ---------- */
+function mqCursorGi(type, scope) {
+    const list = mqScopeList(scope);
+    for (let i = 0; i < list.length; i++) {
+        const it = list[i];
+        const d = (typeof getSurah === 'function') ? (getSurah(it.n) || {}) : {};
+        const done = Math.min(d[type] || 0, it.ayah);
+        if (done < it.ayah) return mqGi(it.n, done + 1);
+    }
+    return null;                                   // จบขอบเขตนี้แล้ว
+}
+/* จุดตั้งต้นของ "วันนี้" — ตรึงไว้ไม่ให้เป้าเลื่อนหนีระหว่างวัน */
+function mqDayAnchor(type, scope) {
+    const today = getLocalDate();
+    const anchors = get('mqDayAnchor', {});
+    if (anchors.date === today && anchors[type]) return anchors[type];
+    const cur = mqCursorGi(type, scope);
+    if (!cur) return null;
+    const log = getLog()[today] || {};
+    const doneToday = log[type] || 0;
+    const anchor = Math.max(1, cur - doneToday);   // ย้อนกลับไปจุดเริ่มต้นของวัน
+    const next = (anchors.date === today) ? anchors : { date: today };
+    next[type] = anchor;
+    set('mqDayAnchor', next);
+    return anchor;
+}
+
+/* ---------- 8. ส่วนที่ต้องท่องวันนี้ ---------- */
+/* หาอายะฮ์สุดท้ายของช่วง โดยเคารพตัวเลือก "จบพอดีขอบ"
+   รองรับทั้งจำนวนเต็ม (จบพอดีหน้า) และเศษส่วน 1/2 1/3 1/4 (จบพอดีครึ่งหน้า ฯลฯ) */
+function mqSnapStep(amount) {
+    for (let N = 1; N <= 8; N++) {
+        const v = amount * N;
+        if (Math.round(v) >= 1 && Math.abs(v - Math.round(v)) < 0.01) return 1 / N;
+    }
+    return 0;
+}
+function mqSpanEnd(startGi, unit, amount, snap) {
+    let endGi = mqAdvance(startGi, unit, amount);
+    if (unit === 'ayah' || snap === false) return endGi;
+    const step = mqSnapStep(amount);
+    if (!step) return endGi;
+    const posEnd = mqUnitPos(endGi + 1, unit);
+    let cand = mqGiAtUnitPos(Math.round(posEnd / step) * step, unit) - 1;
+    if (cand < startGi) cand = mqGiAtUnitPos(Math.ceil(posEnd / step) * step, unit) - 1;
+    if (cand >= startGi) endGi = Math.min(MQ_TOTAL, cand);
+    return endGi;
+}
+function mqPortion(type, which) {
+    const p = mqActivePlan();
+    const amount = (p[type] && p[type][which || 'min']) || 0;
+    const unit = p.unit || 'ayah';
+    const startGi = mqDayAnchor(type, p.scope);
+    if (!amount || !startGi) return { amount, unit, empty: true, finished: !startGi };
+    const endGi = mqSpanEnd(startGi, unit, amount, p.snap);
+    const count = endGi - startGi + 1;
+    return {
+        amount, unit, startGi, endGi, count, empty: false, finished: false,
+        ranges: mqSplitBySurah(startGi, endGi),
+        unitLabel: mqUnitRangeLabel(startGi, endGi, unit),
+        rangeLabel: mqRangeLabel(startGi, endGi),
+        pageLabel: mqPageLabel(startGi, endGi)
+    };
+}
+/* จำนวนอายะฮ์ที่ต้องทำวันนี้ (แปลงจากหน่วยแผน ณ ตำแหน่งจริง) */
+function mqRequiredAyah(type, which) {
+    const P = mqPortion(type, which);
+    if (P.empty) return 0;
+    return P.count;
+}
+
+/* ---------- 9. ซิงก์เป้าหมายกลับเข้า settings (ให้โค้ดเดิมทำงานต่อได้) ---------- */
+function mqSyncGoals(force) {
+    const p = mqActivePlan();
+    const s = getSettings();
+    let changed = false;
+    MQ_TYPES.forEach(t => {
+        const minA = mqRequiredAyah(t, 'min');
+        const maxA = mqRequiredAyah(t, 'max');
+        const kMin = t + 'Min', kMax = t + 'Max';
+        if (s[kMin] !== minA) { s[kMin] = minA; changed = true; }
+        if (s[kMax] !== maxA) { s[kMax] = maxA; changed = true; }
+    });
+    if (s.goalUnit !== p.unit) { s.goalUnit = p.unit; changed = true; }
+    if (changed || force) set('settings', s);
+    return s;
+}
+
+/* ---------- 10. บันทึกตามแผน (หน่วย → อายะฮ์ อัตโนมัติ) ---------- */
+function mqApplyPortion(type) {
+    const P = mqPortion(type, 'min');
+    if (P.empty) { if (typeof toast === 'function') toast(P.finished ? 'ขอบเขตนี้ครบแล้ว' : 'ยังไม่ได้ตั้งเป้าหมาย'); return; }
+    let total = 0;
+    P.ranges.forEach(r => {
+        const d = (typeof getSurah === 'function') ? (getSurah(r.n) || {}) : {};
+        const old = d[type] || 0;
+        const nw = Math.max(old, r.to);
+        if (nw > old) {
+            d[type] = nw;
+            d.lastActive = new Date().toISOString();
+            setSurah(r.n, d);
+            logActivity(type, r.n, nw - old, old + 1, nw);
+            total += nw - old;
+            if (type === 'text' && nw >= (MQ_COUNTS[r.n - 1] || 0)) {
+                const mem = get('memorizedSurahs', []);
+                if (!mem.includes(r.n)) {
+                    mem.push(r.n); set('memorizedSurahs', mem);
+                    const rd = get('surahReviewData', {});
+                    if (!rd[r.n]) { rd[r.n] = { reviewCount: 0 }; set('surahReviewData', rd); }
+                }
+            }
+        }
+    });
+    if (typeof toast === 'function') toast(total ? ('บันทึกแล้ว · ' + total + ' อายะฮ์') : 'ส่วนนี้บันทึกไว้แล้ว');
+    mqRefreshAll();
+}
+
+/* ---------- 11. รีเฟรชหน้าจอที่เกี่ยวข้อง ---------- */
+function mqRefreshAll() {
+    try {
+        if (typeof renderHomeGoalsAndReview === 'function') renderHomeGoalsAndReview();
+        if (typeof renderPlanTodayCard === 'function') renderPlanTodayCard();
+        if (typeof renderPlanManager === 'function') renderPlanManager();
+        if (typeof calculateCompletion === 'function') calculateCompletion();
+        if (typeof renderStats === 'function') renderStats();
+        if (typeof renderSurahGrid === 'function') renderSurahGrid();
+        if (typeof renderContinueCard === 'function') renderContinueCard();
+        const cal = document.getElementById('page-calendar');
+        if (cal && cal.classList.contains('active') && typeof renderCalendar === 'function') renderCalendar();
+    } catch (e) { console.log('mqRefreshAll', e); }
+}
+
+/* ---------- 17. ฉายแผนไปข้างหน้า : วันไหนจะได้ท่องอะไร ---------- */
+function mqProjectPortion(dateStr, type) {
+    const p = mqActivePlan();
+    const amount = (p[type] && p[type].min) || 0;
+    const unit = p.unit || 'ayah';
+    if (!amount) return null;
+    const today = getLocalDate();
+    const diff = Math.round((new Date(dateStr + 'T00:00:00') - new Date(today + 'T00:00:00')) / 86400000);
+    if (diff < 0 || diff > 400) return null;
+    let start = mqDayAnchor(type, p.scope);
+    if (!start) return null;
+    const list = mqScopeList(p.scope);
+    const lastGi = list.length ? mqGi(list[list.length - 1].n, list[list.length - 1].ayah) : MQ_TOTAL;
+    for (let i = 0; i < diff; i++) {
+        start = mqSpanEnd(start, unit, amount, p.snap) + 1;
+        if (start > lastGi || start > MQ_TOTAL) return { done: true };
+    }
+    const end = Math.min(lastGi, mqSpanEnd(start, unit, amount, p.snap));
+    return {
+        done: false, startGi: start, endGi: end, count: end - start + 1, unit, amount,
+        unitLabel: mqUnitRangeLabel(start, end, unit),
+        rangeLabel: mqRangeLabel(start, end)
+    };
+}
+function mqPlanDayHtml(dateStr) {
+    try {
+        const today = getLocalDate();
+        if (dateStr < today) return '';
+        const p = mqActivePlan();
+        let rows = '';
+        MQ_TYPES.forEach(t => {
+            const P = mqProjectPortion(dateStr, t);
+            if (!P) return;
+            rows += `<div style="display:flex;align-items:baseline;gap:8px;padding:7px 10px;border-top:1px solid var(--bdr-l)">
+                <span style="font-size:0.46rem;color:var(--txt3);width:38px;flex-shrink:0">${MQ_TYPE_LABEL[t]}</span>
+                <div style="flex:1">
+                    <div style="font-size:0.54rem;font-weight:600;color:var(--txt)">${P.done ? 'ครบขอบเขตแล้ว' : P.unitLabel}</div>
+                    ${P.done ? '' : `<div style="font-size:0.46rem;color:var(--txt3);margin-top:1px">${P.rangeLabel} · ${P.count} อายะฮ์</div>`}
+                </div></div>`;
+        });
+        if (!rows) return '';
+        return `<div style="margin-bottom:10px">
+            <div style="font-size:0.46rem;font-weight:600;color:var(--txt3);letter-spacing:0.08em;margin-bottom:5px">${dateStr === today ? 'แผนวันนี้' : 'แผนล่วงหน้า'}</div>
+            <div style="background:#fff;border-radius:8px;border:1px solid var(--bdr-l);overflow:hidden">${rows}</div>
+        </div>`;
+    } catch (e) { return ''; }
+}
+
+/* เลือกขอบเขตจากการ์ดคาดการณ์ → ใช้เป็นขอบเขตของแผนด้วย (คุมที่เดียว) */
+function mqScopePicked(v) {
+    try {
+        const known = ['all', 'juz30', 'juz1-29'];
+        if (known.includes(v) || /^juz-\d+$/.test(v) || /^surah-\d+$/.test(v)) {
+            if (mqActivePlan().scope !== v) { mqPatchActive({ scope: v }); return; }
+        }
+    } catch (e) {}
+    if (typeof calculateCompletion === 'function') calculateCompletion();
+}
+
+/* ---------- 12. การ์ด "เป้าหมายวันนี้" (รวมแผนไว้ในใบเดียว) ---------- */
+function renderPlanTodayCard() { /* รวมเข้ากับการ์ดเป้าหมายแล้ว */ }
+
+function renderGoalPlanCard(todayLog, doneRoutine, totalRoutine, allRoutineDone) {
+    const el = document.getElementById('home-goal-card');
+    if (!el) return;
+    mqSyncGoals();
+    const p = mqActivePlan();
+    const log = todayLog || {};
+    const color = { text: 'var(--pri)', meaning: 'var(--sec)', tafsir: 'var(--tafsir)' };
+    let cells = '', allMet = true;
+
+    const cell = (on, dot, text, meta, tap) =>
+        `<div class="goal-check-item ${on ? 'completed' : ''}" style="padding:4px 6px">
+            <div class="goal-checkbox ${on ? 'checked' : ''}" ${tap ? `onclick="${tap}" role="button" aria-label="บันทึกส่วนของวันนี้"` : ''} style="width:12px;height:12px;${tap ? '' : 'cursor:default;'}${on ? 'background:' + dot + ';border-color:' + dot : ''}">
+                <svg viewBox="0 0 24 24" width="8" height="8"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="goal-check-info">
+                <div class="goal-check-text" style="font-size:10px">${text}</div>
+                <div class="goal-check-meta" style="font-size:9px">${meta}</div>
+            </div></div>`;
+
+    MQ_TYPES.forEach(t => {
+        const amt = (p[t] && p[t].min) || 0;
+        if (!amt) return;
+        const P = mqPortion(t, 'min');
+        if (P.finished) {
+            cells += cell(true, color[t], MQ_TYPE_LABEL[t] + ' ครบแล้ว', 'ครบ' + mqScopeName(p.scope));
+            return;
+        }
+        const need = P.count, doneAy = Math.min(log[t] || 0, need), done = doneAy >= need;
+        if (!done) allMet = false;
+        const ref = P.unitLabel.replace(/\s*\(([^)]+)\)\s*$/, '');
+        const sub = (P.unitLabel.match(/\(([^)]+)\)\s*$/) || [, ''])[1];
+        const text = MQ_TYPE_LABEL[t] + ' <b class="gc-ref">' + ref + '</b>'
+            + (sub ? ' <span class="gc-sub">' + sub + '</span>' : '');
+        const meta = mqRangeLabelCompact(P.startGi, P.endGi)
+            + (done ? ' · ✓ ' + need : ' · เหลือ ' + (need - doneAy));
+        cells += cell(done, color[t], text, meta, done ? '' : `mqApplyPortion('${t}')`);
+    });
+
+    if (totalRoutine) {
+        if (!allRoutineDone) allMet = false;
+        cells += cell(allRoutineDone, 'var(--gold)', 'กิจวัตร', doneRoutine + '/' + totalRoutine);
+    }
+
+    if (!cells) {
+        el.innerHTML = `<div class="goal-check-title" style="font-size:11px;color:var(--txt)">${MQ_GOAL_ICON}เป้าหมายวันนี้</div>
+            <div class="gc-empty">ยังไม่ได้ตั้งแผน<a onclick="goToPage('settings')">ตั้งแผน</a></div>`;
+        return;
+    }
+    el.innerHTML = `<div class="goal-check-title" style="font-size:11px;color:var(--txt)">${MQ_GOAL_ICON}เป้าหมายวันนี้
+            <span class="gc-plan">${p.name}</span>
+            ${allMet ? '<span style="color:var(--done);margin-left:auto">✓</span>'
+                     : '<a class="gc-edit" onclick="goToPage(\'settings\')">แก้ไข</a>'}
+        </div>
+        <div class="goal-check-grid" style="gap:4px">${cells}</div>`;
+}
+const MQ_GOAL_ICON = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="var(--txt)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+function renderPlanTodayCard() { /* รวมเข้ากับการ์ดเป้าหมายแล้ว */ }
+
+/* ---------- 13. ตัวจัดการแผน (หน้าตั้งค่า) ---------- */
+function mqSetUnit(u) { mqPatchActive({ unit: u }); }
+function mqSetScope(v) { mqPatchActive({ scope: v }); }
+function mqSetAmount(type, which, val) {
+    const p = mqActivePlan();
+    const cur = Object.assign({ min: 0, max: 0 }, p[type]);
+    let v = parseFloat(val); if (!isFinite(v) || v < 0) v = 0;
+    cur[which] = v;
+    if (cur.max < cur.min) cur.max = cur.min;
+    const patch = {}; patch[type] = cur;
+    mqPatchActive(patch);
+}
+function renderPlanManager() {
+    const el = document.getElementById('plan-manager-body');
+    if (!el) return;
+    const st = mqPlans(), p = mqActivePlan();
+    const U = MQ_UNITS[p.unit] || MQ_UNITS.ayah;
+
+    const chips = st.list.map(pl =>
+        `<span class="pl-chip${pl.id === st.active ? ' on' : ''}" onclick="mqSwitchPlan('${pl.id}')">${pl.name}</span>`
+    ).join('') + `<span class="pl-chip pl-chip-add" onclick="mqAddPlan()">+</span>`;
+
+    const icon = { text: 'si1', meaning: 'si2', tafsir: 'si3' };
+    const svg = {
+        text: '<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>',
+        meaning: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+        tafsir: '<path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>'
+    };
+    const rows = MQ_TYPES.map(t => {
+        const v = Object.assign({ min: 0, max: 0 }, p[t]);
+        const P = mqPortion(t, 'min');
+        const hint = (v.min > 0 && !P.empty) ? (P.unitLabel + ' · ' + P.rangeLabel + ' · ' + P.count + ' อายะฮ์')
+            : (P.finished ? 'ครบขอบเขตนี้แล้ว' : 'ยังไม่ได้ตั้ง');
+        return `<div class="settings-row pl-row">
+            <div class="settings-row-left">
+                <div class="settings-icon ${icon[t]}"><svg viewBox="0 0 24 24">${svg[t]}</svg></div>
+                <div class="settings-info"><h4>${MQ_TYPE_LABEL[t]}</h4><p>ขั้นต่ำ – สูงสุด</p></div>
+            </div>
+            <div class="settings-row-right">
+                <input type="number" step="${U.step}" min="0" value="${v.min}" class="settings-input settings-input-sm" onchange="mqSetAmount('${t}','min',this.value)">
+                <span class="pl-dash">–</span>
+                <input type="number" step="${U.step}" min="0" value="${v.max}" class="settings-input settings-input-sm" onchange="mqSetAmount('${t}','max',this.value)">
+                <span class="pl-unit">${U.short}</span>
+            </div>
+            <div class="pl-hint">${hint}</div>
+        </div>`;
+    }).join('');
+
+    el.innerHTML = `
+        <div class="settings-row pl-row">
+            <div class="settings-row-left">
+                <div class="settings-icon si4"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.9H21l-5.3 4 2 6.6L12 15.6 6.3 19.5l2-6.6L3 8.9h6.6z"/></svg></div>
+                <div class="settings-info"><h4>แผน</h4><p>${mqScopeName(p.scope)} · หน่วย${U.short} · สลับได้ตลอด</p></div>
+            </div>
+            <div class="pl-chips">${chips}</div>
+            <div class="pl-name">
+                <input type="text" value="${(p.name || '').replace(/"/g, '&quot;')}" maxlength="24"
+                    onchange="mqSetPlanName(this.value)" onblur="mqSetPlanName(this.value)" placeholder="ชื่อแผน">
+                ${st.list.length > 1 ? `<button class="pl-del${_mqDelArm ? ' arm' : ''}" onclick="mqDelClick()">${_mqDelArm ? 'แตะอีกครั้งเพื่อลบ' : 'ลบแผนนี้'}</button>` : ''}
+            </div>
+        </div>
+        ${rows}`;
+    mqSyncPredictControls();
+}
+
+function mqSyncPredictControls() {
+    const p = mqActivePlan();
+    try {
+        const sel = document.getElementById('predict-scope');
+        if (sel && [...sel.options].some(o => o.value === p.scope)) sel.value = p.scope;
+    } catch (e) {}
+    try {
+        const us = document.getElementById('predict-unit');
+        if (us) {
+            if (!us.options.length) us.innerHTML = MQ_UNIT_KEYS.map(k =>
+                `<option value="${k}">${MQ_UNITS[k].label}</option>`).join('');
+            us.value = p.unit;
+        }
+    } catch (e) {}
+}
+
+/* ---------- 14. คำนวณวันจบ (ตามหน่วยของแผน) ---------- */
+function mqScopeForPredict(scope) {
+    if (scope === 'juz30') return { list: mqScopeList('juz30'), name: 'ญุซอัมมา (30)', plus: null };
+    if (scope === 'juz1-29') return { list: mqScopeList('juz1-29'), name: 'ญุซ 1-29 รวม', plus: null };
+    if (scope === 'all') return { list: mqScopeList('all'), name: 'ทั้งหมด 114 ซูเราะฮ์', plus: null };
+    if (scope && scope.startsWith('juz-')) return { list: mqScopeList(scope), name: 'ญุซ ' + parseInt(scope.slice(4)), plus: null };
+    if (scope && scope.startsWith('surah-')) return { list: mqScopeList(scope), name: mqSurahName(parseInt(scope.slice(6))), plus: null };
+    let plusList = [], nm = '';
+    try {
+        if (scope === 'daily') { plusList = PLUS_SURAHS.filter(s => s.category === 'daily'); nm = 'การคุ้มครองและบะเราะกะฮ์'; }
+        else if (scope === 'weekly') { plusList = PLUS_SURAHS.filter(s => s.category === 'weekly'); nm = 'ซุนนะฮ์รายสัปดาห์'; }
+        else if (scope === 'manhaj') { plusList = PLUS_SURAHS.filter(s => s.category === 'manhaj'); nm = 'หลักมันฮัจญ์และอัคลาก'; }
+        else if (scope && scope.startsWith('custom-')) {
+            const id = scope.slice(7);
+            plusList = PLUS_SURAHS.filter(s => s.category === id);
+            const cat = get('customPlusCategories', []).find(c => c.id === id);
+            nm = cat ? cat.name : 'หัวข้อที่กำหนดเอง';
+        }
+    } catch (e) {}
+    return { list: [], name: nm || 'ขอบเขต', plus: plusList };
+}
+function calculateCompletion() {
+    const p = mqActivePlan();
+    const unit = p.unit || 'ayah';
+    const U = MQ_UNITS[unit] || MQ_UNITS.ayah;
+    const scopeEl = document.getElementById('predict-scope');
+    const scope = scopeEl ? scopeEl.value : 'juz30';
+
+    // เติมหมวด Plus ที่ผู้ใช้สร้างเองลงใน dropdown
+    try {
+        const customCats = get('customPlusCategories', []);
+        const optGroup = scopeEl && scopeEl.querySelector('optgroup[label="หัวข้อ Plus"]');
+        if (optGroup && customCats.length) {
+            optGroup.querySelectorAll('option[data-custom]').forEach(o => o.remove());
+            customCats.forEach(cat => {
+                if (!optGroup.querySelector(`option[value="custom-${cat.id}"]`)) {
+                    const opt = document.createElement('option');
+                    opt.value = 'custom-' + cat.id; opt.textContent = cat.name;
+                    opt.setAttribute('data-custom', 'true');
+                    optGroup.appendChild(opt);
+                }
+            });
+        }
+    } catch (e) {}
+
+    mqSyncPredictControls();
+    const S = mqScopeForPredict(scope);
+    const res = {};
+    MQ_TYPES.forEach(t => {
+        let remainAyah = 0, remainUnit = 0, totalAyah = 0;
+        if (S.plus) {                                   // หมวด Plus → คิดเป็นอายะฮ์
+            S.plus.forEach(su => {
+                const d = (typeof getSurah === 'function') ? (getSurah(su.n) || {}) : {};
+                totalAyah += su.ayah;
+                remainAyah += Math.max(0, su.ayah - Math.min(d[t] || 0, su.ayah));
+            });
+            remainUnit = remainAyah;
+        } else {
+            S.list.forEach(su => {
+                const d = (typeof getSurah === 'function') ? (getSurah(su.n) || {}) : {};
+                const done = Math.min(d[t] || 0, su.ayah);
+                totalAyah += su.ayah;
+                if (done < su.ayah) {
+                    const a = mqGi(su.n, done + 1), b = mqGi(su.n, su.ayah);
+                    remainAyah += (b - a + 1);
+                    remainUnit += mqUnitsBetween(a, b, unit);
+                }
+            });
+        }
+        const perDay = (p[t] && p[t].min) || 0;
+        const perDayUnit = S.plus ? Math.max(1, mqRequiredAyah(t, 'min') || perDay) : perDay;
+        const days = (perDay > 0) ? Math.ceil(remainUnit / perDayUnit) : 0;
+        res[t] = { remainAyah, remainUnit, days, perDay, totalAyah };
+    });
+
+    predictDate = new Date();
+    predictDate.setDate(predictDate.getDate() + (res.text.days || 0));
+
+    const formatDuration = days => {
+        if (days <= 0) return 'จบแล้ว !';
+        const y = Math.floor(days / 365), m = Math.floor((days % 365) / 30), d = days % 30;
+        const parts = [];
+        if (y > 0) parts.push(y + ' ปี');
+        if (m > 0) parts.push(m + ' เดือน');
+        if (d > 0 || !parts.length) parts.push(d + ' วัน');
+        return parts.join(' ');
+    };
+    const fmtDate = dt => dt.toLocaleDateString('th-TH', { day: 'numeric', month: 'short', year: 'numeric' });
+    const predictStr = fmtDate(predictDate);
+    const unitShort = S.plus ? 'อายะฮ์' : U.short;
+
+    const el = document.getElementById('settings-predict');
+    if (el) {
+        const cell = (t, color, label) => {
+            const r = res[t];
+            const dt = new Date(); dt.setDate(dt.getDate() + r.days);
+            if (!(r.perDay > 0)) return `<div style="text-align:center"><div style="color:${color};font-weight:600;margin-bottom:4px">${label}</div><div style="color:var(--txt2)">ไม่ได้ตั้ง</div><div style="color:var(--txt3);font-size:0.5rem">-</div><div style="margin-top:2px">-</div></div>`;
+            if (r.remainAyah <= 0) return `<div style="text-align:center"><div style="color:${color};font-weight:600;margin-bottom:4px">${label}</div><div style="color:var(--done)">จบแล้ว</div><div style="color:var(--txt3);font-size:0.5rem">-</div><div style="margin-top:2px">-</div></div>`;
+            return `<div style="text-align:center">
+                <div style="color:${color};font-weight:600;margin-bottom:4px">${label}</div>
+                <div style="color:var(--txt2)">เหลือ ${mqFmt(r.remainUnit)} ${unitShort}</div>
+                <div style="color:var(--txt3);font-size:0.5rem">${r.remainAyah} อายะฮ์ · ${formatDuration(r.days)}</div>
+                <div style="color:var(--txt);font-weight:500;margin-top:2px">${fmtDate(dt)}</div></div>`;
+        };
+        el.innerHTML = `<div style="font-size:8px;color:var(--txt3);margin-bottom:6px;text-align:center">${S.name} · ${(res.text.totalAyah || 0).toLocaleString()} อายะฮ์ · คิดเป็น${unitShort}ตามมุศฮัฟจริง<br>แผน "${p.name}" — ตัวบท ${mqFmt(res.text.perDay)} ${unitShort}/วัน</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:0.55rem">
+                ${cell('text', 'var(--pri)', 'ตัวบท')}
+                <div style="border-left:1px solid var(--bdr-l);border-right:1px solid var(--bdr-l);padding:0 8px">${cell('meaning', 'var(--sec)', 'ความหมาย')}</div>
+                ${cell('tafsir', 'var(--tafsir)', 'ตัฟซีร')}
+            </div>`;
+    }
+    const cd = document.getElementById('calc-date');
+    if (cd) cd.textContent = (res.text.perDay > 0) ? (res.text.remainAyah <= 0 ? 'จบแล้ว !' : predictStr) : 'ไม่ได้ตั้ง';
+}
+
+/* ---------- 15. จำนวนหน้าที่ท่องได้จริง (แทนการเดา 15 อายะฮ์/หน้า) ---------- */
+function calculateTotalMemorizedPages() {
+    let pages = 0;
+    try {
+        for (let n = 1; n <= 114; n++) {
+            const d = (typeof getSurah === 'function') ? (getSurah(n) || {}) : {};
+            const done = Math.min(d.text || 0, MQ_COUNTS[n - 1]);
+            if (done > 0) pages += mqUnitsBetween(mqGi(n, 1), mqGi(n, done), 'page');
+        }
+    } catch (e) {}
+    return Math.round(pages);
+}
+
+/* ---------- 18. แผงนำทาง : สลับโหมด นำทาง ↔ เครื่องมือ ---------- */
+let _nvxMode = 'nav';
+const NVT_ICON = {
+    back: '<path d="M3 12a9 9 0 109-9 9 9 0 00-6.36 2.64L3 8"/><polyline points="3 3 3 8 8 8"/>',
+    up: '<polyline points="18 15 12 9 6 15"/>',
+    down: '<polyline points="6 9 12 15 18 9"/>',
+    minus: '<line x1="5" y1="12" x2="19" y2="12"/>',
+    plus: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+    card: '<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>',
+    note: '<path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 013 3L12 15l-4 1 1-4z"/>',
+    clock: '<circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/>',
+    book: '<path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>',
+    check: '<path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+    gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9v.09a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/>',
+    prev: '<polyline points="15 18 9 12 15 6"/>',
+    next: '<polyline points="9 18 15 12 9 6"/>',
+    search: '<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
+    help: '<circle cx="12" cy="12" r="9"/><path d="M9.3 9.2a2.8 2.8 0 015.4 1c0 1.9-2.7 2.6-2.7 2.6"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+    palette: '<circle cx="12" cy="12" r="9"/><circle cx="9" cy="9.6" r="1.1"/><circle cx="14.8" cy="9.6" r="1.1"/><circle cx="9" cy="14.8" r="1.1"/><circle cx="14.8" cy="14.8" r="1.1"/>',
+    cal: '<rect x="3" y="4" width="18" height="17" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/>',
+    out: '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+    'in': '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+    home: '<path d="M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+    swap: '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/>'
+};
+function nvxTile(icon, label, sub, action, on) {
+    return `<button class="nvt${on ? ' on' : ''}" onclick="${action}">
+        <svg viewBox="0 0 24 24">${NVT_ICON[icon] || ''}</svg>
+        <b>${label}</b>${sub ? `<span class="nvt-sub">${sub}</span>` : ''}</button>`;
+}
+function nvxMode(m) {
+    _nvxMode = (m === 'tools') ? 'tools' : 'nav';
+    const tools = _nvxMode === 'tools';
+    document.querySelectorAll('#nvx-mode .nvx-m').forEach(b =>
+        b.classList.toggle('on', b.getAttribute('data-m') === _nvxMode));
+    ['nvx-seg', 'nvx-body'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.style.display = tools ? 'none' : '';
+    });
+    const sw = document.querySelector('#nvx-panel .nvx-sw'); if (sw) sw.style.display = tools ? 'none' : '';
+    const res = document.getElementById('nvx-res'); if (res && tools) res.style.display = 'none';
+    const tl = document.getElementById('nvx-tools');
+    if (tl) { tl.style.display = tools ? '' : 'none'; if (tools) renderNvxTools(); }
+}
+function nvxDo(fn) {                                   // ทำแล้วปิดแผง
+    try { fn(); } catch (e) { console.log('nvxDo', e); }
+    try { snavClose(); } catch (e) {}
+}
+function nvxSearchMode() {
+    nvxMode('nav');
+    setTimeout(() => { const q = document.getElementById('nvx-q'); if (q) q.focus(); }, 120);
+}
+const NVX_CATS = [
+    { k: 'plan', label: 'แผน' },
+    { k: 'read', label: 'อ่าน' },
+    { k: 'study', label: 'เนื้อหา' },
+    { k: 'data', label: 'ข้อมูล' }
+];
+let _nvxCat = 'plan';
+function nvxCat(k) {
+    _nvxCat = k;
+    renderNvxTools();
+}
+function renderNvxTools() {
+    const el = document.getElementById('nvx-tools');
+    if (!el) return;
+    const p = mqActivePlan();
+    const log = getLog()[getLocalDate()] || {};
+    const chips = NVX_CATS.map(c =>
+        `<button class="nvc${c.k === _nvxCat ? ' on' : ''}" onmousedown="event.preventDefault()" onclick="nvxCat('${c.k}')">${c.label}</button>`).join('');
+    let body = '';
+
+    if (_nvxCat === 'plan') {
+        let tiles = '';
+        MQ_TYPES.forEach(t => {
+            const amt = (p[t] && p[t].min) || 0;
+            if (!amt) return;
+            const P = mqPortion(t, 'min');
+            if (P.empty) return;
+            const done = (log[t] || 0) >= P.count;
+            tiles += nvxTile('check', MQ_TYPE_LABEL[t],
+                done ? 'ครบแล้ว' : P.unitLabel.replace(/\s*\([^)]*\)\s*$/, ''),
+                done ? '' : `mqApplyPortion('${t}')`, done);
+        });
+        body += tiles ? `<div class="nvt-grid">${tiles}</div>` : '';
+        const st = mqPlans();
+        body += `<div class="nvx-lbl"><span>สลับแผน</span></div><div class="nvt-grid">
+            ${st.list.map(pl => nvxTile('swap', pl.name, pl.id === st.active ? 'ใช้อยู่' : mqScopeName(pl.scope),
+                pl.id === st.active ? '' : `mqSwitchPlan('${pl.id}');renderNvxTools()`, pl.id === st.active)).join('')}
+            ${nvxTile('book', 'จัดการแผน', '', "nvxDo(()=>goToPage('settings'))")}</div>`;
+    } else if (_nvxCat === 'read') {
+        body = `<div class="nvt-grid">
+            ${nvxTile('back', 'ที่ค้างไว้', '', 'snavJumpLast()')}
+            ${nvxTile('prev', 'ก่อนหน้า', '', 'snavStep(-1)')}
+            ${nvxTile('next', 'ถัดไป', '', 'snavStep(1)')}
+            ${nvxTile('up', 'บนสุด', '', 'snavScrollTop()')}
+            ${nvxTile('down', 'ล่างสุด', '', 'snavScrollBottom()')}
+            ${nvxTile('search', 'ค้นหา', '', 'nvxSearchMode()')}
+            ${nvxTile('minus', 'ย่อ', '', 'changeSurahFontSize(-1)')}
+            ${nvxTile('plus', 'ขยาย', '', 'changeSurahFontSize(1)')}
+            ${nvxTile('gear', 'ตั้งค่าฟอนต์', '', "nvxDo(()=>goToPage('settings'))")}</div>`;
+    } else if (_nvxCat === 'study') {
+        body = `<div class="nvt-grid">
+            ${nvxTile('note', 'ความรู้', '', "snavTab('notes')")}
+            ${nvxTile('help', 'ความหมาย', '', "snavTab('meanings')")}
+            ${nvxTile('book', 'ตัฟซีร', '', "snavTab('tafsirs')")}
+            ${nvxTile('card', 'แฟลชการ์ด', '', 'nvxDo(openFlashcardMode)')}
+            ${nvxTile('note', 'บันทึกวันนี้', '', "nvxDo(()=>openDailyNoteModal(getLocalDate()))")}
+            ${nvxTile('clock', 'ประวัติทบทวน', '', 'nvxDo(openReviewHistoryPopup)')}
+            ${nvxTile('cal', 'วันทบทวน', '', 'nvxDo(openReviewDaysPopup)')}</div>`;
+    } else {
+        body = `<div class="nvt-grid">
+            ${nvxTile('out', 'ส่งออก', '', 'nvxDo(exportData)')}
+            ${nvxTile('in', 'นำเข้า', '', 'nvxDo(importData)')}
+            ${nvxTile('home', 'หน้าหลัก', '', "nvxDo(()=>goToPage('home'))")}
+            ${nvxTile('cal', 'ปฏิทิน', '', "nvxDo(()=>goToPage('calendar'))")}
+            ${nvxTile('gear', 'ตั้งค่า', '', "nvxDo(()=>goToPage('settings'))")}</div>`;
+    }
+    el.innerHTML = `<div class="nvc-bar">${chips}</div><div class="nvc-body">${body}</div>`;
+}
+/* เปิดแผงแล้วให้โหมดเดิมยังอยู่ และข้อมูลเครื่องมือสดเสมอ */
+try {
+    if (typeof snavOpen === 'function') {
+        const _nvxOpen = snavOpen;
+        snavOpen = function (f) { _nvxOpen(f); try { nvxMode(_nvxMode); } catch (e) {} };
+    }
+} catch (e) { console.log('nvx hook', e); }
+
+/* ---------- 19. เครื่องมือจัดรูปแบบแบบลอย (ลากได้ · สลับหมวดได้) ---------- */
+const FTK_TC = ['#E53935', '#F9A825', '#43A047', '#1E88E5', '#8E24AA', '#6D4C41'];
+const FTK_HL = ['#FFF3CD', '#FFCECE', '#FADEE3', '#E8D5E8', '#D4EDEC', '#C5E8FF'];
+const FTK_TABS = [
+    { k: 'type', label: 'ตัวอักษร' },
+    { k: 'color', label: 'สี' },
+    { k: 'mark', label: 'ไฮไลต์' },
+    { k: 'more', label: 'อื่น ๆ' }
+];
+let _ftkTab = 'type', _ftkOpen = false, _ftkPos = null, _ftkEditSw = false;
+
+function ftkPalette() { return get('ftkPalette', { tc: [], hl: [] }); }
+function ftkAddColor(kind) {
+    const inp = document.getElementById('ftk-picker');
+    if (!inp) return;
+    inp.value = kind === 'tc' ? '#B8956B' : '#FFF3CD';
+    inp.onchange = () => {
+        const pal = ftkPalette();
+        const v = (inp.value || '').toUpperCase();
+        if (v && !pal[kind].includes(v)) { pal[kind].push(v); set('ftkPalette', pal); }
+        ftkRenderBody();
+    };
+    inp.click();
+}
+function ftkDelColor(kind, hex) {
+    const pal = ftkPalette();
+    pal[kind] = pal[kind].filter(c => c !== hex);
+    set('ftkPalette', pal);
+    ftkRenderBody();
+}
+function ftkToggleEditSw() { _ftkEditSw = !_ftkEditSw; ftkRenderBody(); }
+/* หมายเหตุ : get() ของแอปใช้ || จึงเก็บค่า false ตรง ๆ ไม่ได้ ต้องเก็บเป็นข้อความ */
+function ftkPastePlain() { return get('pastePlain', 'on') !== 'off'; }
+function ftkSetPastePlain(v) { set('pastePlain', v ? 'on' : 'off'); ftkRenderBody(); }
+function ftkSwatchRow(kind, apply) {
+    const base = kind === 'tc' ? FTK_TC : FTK_HL;
+    const pal = ftkPalette()[kind] || [];
+    const one = (c, custom) => `<span class="ftk-swwrap">
+        <button class="ftk-sw" style="background:${c}" onmousedown="event.preventDefault()" onclick="${apply(c)}"></button>
+        ${(custom && _ftkEditSw) ? `<i class="ftk-swx" onmousedown="event.preventDefault()" onclick="ftkDelColor('${kind}','${c}')">✕</i>` : ''}</span>`;
+    return `<div class="ftk-sws">
+        ${base.map(c => one(c, false)).join('')}
+        ${pal.map(c => one(c, true)).join('')}
+        <button class="ftk-sw ftk-add" onmousedown="event.preventDefault()" onclick="ftkAddColor('${kind}')" title="เพิ่มสี">+</button>
+    </div>
+    <div class="ftk-swbar">
+        <span>${pal.length ? pal.length + ' สีที่เพิ่มเอง' : 'กด + เพื่อเพิ่มสีเก็บไว้ถาวร'}</span>
+        ${pal.length ? `<a onmousedown="event.preventDefault()" onclick="ftkToggleEditSw()">${_ftkEditSw ? 'เสร็จ' : 'แก้ไข'}</a>` : ''}
+    </div>`;
+}
+
+function ftkEl() { return document.getElementById('ftk'); }
+function ftkBtn(label, action, title, cls) {
+    return `<button class="ftk-b${cls ? ' ' + cls : ''}" title="${title || ''}" onmousedown="event.preventDefault()" onclick="${action}">${label}</button>`;
+}
+function ftkSwatch(c, action) {
+    return `<button class="ftk-sw" style="background:${c}" onmousedown="event.preventDefault()" onclick="${action}"></button>`;
+}
+function ftkRenderBody() {
+    const b = document.getElementById('ftk-body');
+    if (!b) return;
+    let h = '';
+    if (_ftkTab === 'type') {
+        h = `<div class="ftk-grid">
+            ${ftkBtn('<b>B</b>', "formatText('bold')", 'ตัวหนา')}
+            ${ftkBtn('<i>I</i>', "formatText('italic')", 'ตัวเอียง')}
+            ${ftkBtn('A<sup>+</sup>', 'fontSizeUp()', 'ขยายตัวอักษร')}
+            ${ftkBtn('A<sup>−</sup>', 'fontSizeDown()', 'ย่อตัวอักษร')}
+            ${ftkBtn('<span class="ftk-t">ขนาดเดิม</span>', 'fontSizeReset()', 'รีเซ็ตขนาด', 'wide')}
+            ${ftkBtn('<span class="ftk-t">ระยะบรรทัด</span>', 'normalizeLineHeight()', 'จัดระยะบรรทัด', 'wide')}
+        </div>`;
+    } else if (_ftkTab === 'color') {
+        h = ftkSwatchRow('tc', c => `applyTextColor('${c}')`)
+            + `<div class="ftk-grid">
+                ${ftkBtn('<span class="ftk-t">ล้างสีตัวอักษร</span>', 'removeTextColorOnly()', 'ล้างสีตัวอักษร', 'wide')}
+                ${ftkBtn('<span class="ftk-t">ล้างรูปแบบทั้งหมด</span>', 'removeAllFormat()', 'ล้างรูปแบบทั้งหมด', 'wide danger')}
+            </div>`;
+    } else if (_ftkTab === 'mark') {
+        h = ftkSwatchRow('hl', c => `formatText('hiliteColor','${c}')`)
+            + `<div class="ftk-grid">
+                ${ftkBtn('<span class="ftk-t">ล้างไฮไลต์</span>', 'removeHighlightOnly()', 'ล้างไฮไลต์', 'wide')}
+                ${ftkBtn('<span class="ftk-t">ล้างรูปแบบทั้งหมด</span>', 'removeAllFormat()', 'ล้างรูปแบบทั้งหมด', 'wide danger')}
+            </div>`;
+    } else {
+        const pp = ftkPastePlain();
+        h = `<div class="ftk-grid">
+            ${ftkBtn('<span class="ftk-t">แทรกรูปภาพ</span>', 'imgBtnClick(this)', 'แทรกรูปภาพ', 'wide')}
+            ${ftkBtn('<span class="ftk-t">รีเซ็ตฟอนต์</span>', 'removeFont()', 'รีเซ็ตฟอนต์', 'wide')}
+            ${ftkBtn('<span class="ftk-t">ระยะบรรทัด</span>', 'normalizeLineHeight()', 'จัดระยะบรรทัด', 'wide')}
+            ${ftkBtn('<span class="ftk-t">ล้างรูปแบบทั้งหมด</span>', 'removeAllFormat()', 'ล้างรูปแบบทั้งหมด', 'wide danger')}
+        </div>
+        <div class="ftk-row" onmousedown="event.preventDefault()" onclick="ftkSetPastePlain(${pp ? 'false' : 'true'})">
+            <div class="ftk-row-t"><b>วางเป็นข้อความล้วน</b><span>วางแล้วเหมือนพิมพ์เอง ปรับขนาดได้</span></div>
+            <span class="ftk-tg${pp ? ' on' : ''}"><i></i></span>
+        </div>
+        ${ftkBtn('<span class="ftk-t">ล้างรูปแบบที่ติดมากับข้อความที่วาง</span>', 'ftkStripPasted()', 'ล้างรูปแบบที่วางมา', 'wide full')}`;
+    }
+    b.innerHTML = h;
+}
+function ftkTab(k) {
+    _ftkTab = k;
+    document.querySelectorAll('#ftk .ftk-tab').forEach(t => t.classList.toggle('on', t.getAttribute('data-k') === k));
+    const b = document.getElementById('ftk-body');
+    if (b) { b.classList.add('swap'); setTimeout(() => { ftkRenderBody(); b.classList.remove('swap'); }, 90); }
+}
+/* ---------- ลูกกลมลอย : ลากได้ · สลับหมวดได้ ---------- */
+function ftkBuild() {
+    if (document.getElementById('ftk')) return;
+    const d = document.createElement('div');
+    d.id = 'ftk';
+    d.innerHTML = `
+        <div class="ftk-panel" id="ftk-panel">
+            <div class="ftk-head">
+                <span class="ftk-title">เครื่องมือ</span>
+                <button class="ftk-x" onmousedown="event.preventDefault()" onclick="ftkHide()">✕</button>
+            </div>
+            <div class="ftk-tabs">${FTK_TABS.map(t =>
+                `<button class="ftk-tab${t.k === _ftkTab ? ' on' : ''}" data-k="${t.k}" onmousedown="event.preventDefault()" onclick="ftkTab('${t.k}')">${t.label}</button>`).join('')}</div>
+            <div class="ftk-body" id="ftk-body"></div>
+            <input type="color" id="ftk-picker" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
+        </div>
+        <div class="ftk-orb" id="ftk-orb" role="button" aria-label="เครื่องมือจัดรูปแบบ">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2"/><circle cx="9" cy="9.6" r="1.15" fill="currentColor" stroke="none"/><circle cx="14.6" cy="9.6" r="1.15" fill="currentColor" stroke="none"/><circle cx="9" cy="14.8" r="1.15" fill="currentColor" stroke="none"/><circle cx="14.6" cy="14.8" r="1.15" fill="currentColor" stroke="none"/></svg>
+        </div>`;
+    document.body.appendChild(d);
+    ftkRenderBody();
+    ftkDrag(d, document.getElementById('ftk-orb'));
+    const pos = get('ftkPos', null);
+    ftkMove(pos ? pos.x : (window.innerWidth - 64), pos ? pos.y : Math.round(window.innerHeight * 0.42), false);
+}
+function ftkMove(x, y, save) {
+    const d = document.getElementById('ftk'); if (!d) return;
+    const m = 8, w = 46;
+    x = Math.max(m, Math.min(window.innerWidth - w - m, x));
+    y = Math.max(m, Math.min(window.innerHeight - w - m, y));
+    _ftkPos = { x, y };
+    d.style.left = x + 'px';
+    d.style.top = y + 'px';
+    d.classList.toggle('left', x < window.innerWidth / 2);
+    d.classList.toggle('top', y < window.innerHeight / 2);
+    if (save) set('ftkPos', _ftkPos);
+}
+function ftkDrag(box, orb) {
+    let sx = 0, sy = 0, ox = 0, oy = 0, moved = false, on = false;
+    const down = e => {
+        e.preventDefault();
+        on = true; moved = false;
+        const q = e.touches ? e.touches[0] : e;
+        sx = q.clientX; sy = q.clientY;
+        ox = _ftkPos ? _ftkPos.x : 0; oy = _ftkPos ? _ftkPos.y : 0;
+        box.classList.add('dragging');
+    };
+    const move = e => {
+        if (!on) return;
+        const q = e.touches ? e.touches[0] : e;
+        const dx = q.clientX - sx, dy = q.clientY - sy;
+        if (!moved && Math.abs(dx) + Math.abs(dy) < 6) return;
+        moved = true;
+        if (e.cancelable) e.preventDefault();
+        ftkMove(ox + dx, oy + dy, false);
+    };
+    const up = () => {
+        if (!on) return;
+        on = false;
+        box.classList.remove('dragging');
+        if (moved) set('ftkPos', _ftkPos); else ftkToggle();
+    };
+    orb.addEventListener('mousedown', down);
+    orb.addEventListener('touchstart', down, { passive: false });
+    window.addEventListener('mousemove', move);
+    window.addEventListener('touchmove', move, { passive: false });
+    window.addEventListener('mouseup', up);
+    window.addEventListener('touchend', up);
+}
+function ftkShow(expand) {
+    ftkBuild();
+    const d = document.getElementById('ftk'); if (!d) return;
+    d.classList.add('live');
+    if (expand) { _ftkOpen = true; d.classList.add('open'); ftkRenderBody(); }
+}
+function ftkToggle() {
+    const d = document.getElementById('ftk'); if (!d) return;
+    _ftkOpen = !_ftkOpen;
+    d.classList.toggle('open', _ftkOpen);
+    if (_ftkOpen) ftkRenderBody();
+}
+function ftkHide() {
+    const d = document.getElementById('ftk'); if (!d) return;
+    _ftkOpen = false;
+    d.classList.remove('open', 'live');
+}
+/* โผล่เฉพาะตอนอยู่ในกล่องเขียน — ออกจากกล่องเมื่อไหร่ก็เก็บตัวเอง */
+function ftkAutoHide() {
+    setTimeout(() => {
+        try {
+            const d = document.getElementById('ftk');
+            if (!d || !d.classList.contains('live')) return;
+            if (_ftkOpen) return;
+            const a = document.activeElement;
+            if (a && (ftkEditableOf(a) || (a.closest && a.closest('#ftk')))) return;
+            ftkHide();
+        } catch (e) {}
+    }, 400);
+}
+try {
+    if (typeof toggleMiniMenuHorizontal === 'function') toggleMiniMenuHorizontal = function () { ftkShow(true); };
+    if (typeof toggleAyahMiniMenu === 'function') toggleAyahMiniMenu = function () { ftkShow(true); };
+    if (typeof toggleSpecialMenu === 'function') toggleSpecialMenu = function () { ftkShow(true); };
+    if (typeof toggleColorsMenu === 'function') toggleColorsMenu = function () { ftkShow(true); };
+    if (typeof toggleMiniToolbar === 'function') { const _tm = toggleMiniToolbar; toggleMiniToolbar = function (id) { ftkShow(true); return _tm.apply(this, arguments); }; }
+    document.addEventListener('focusin', e => {
+        try { if (ftkEditableOf(e.target)) ftkShow(false); } catch (err) {}
+    });
+    document.addEventListener('focusout', e => {
+        try { if (ftkEditableOf(e.target)) ftkAutoHide(); } catch (err) {}
+    });
+    if (typeof goToPage === 'function') {
+        const _gp = goToPage;
+        goToPage = function () { ftkHide(); return _gp.apply(this, arguments); };
+    }
+    window.addEventListener('resize', () => { if (_ftkPos) ftkMove(_ftkPos.x, _ftkPos.y, false); });
+} catch (e) { console.log('ftk hook', e); }
+
+/* ---------- วางแบบข้อความล้วน : ให้ข้อความที่วางเหมือนที่พิมพ์เอง ---------- */
+function ftkEditableOf(node) {
+    let n = node;
+    while (n && n !== document.body) {
+        if (n.nodeType === 1 && (n.getAttribute('contenteditable') === 'true' || n.isContentEditable)) return n;
+        n = n.parentNode;
+    }
+    return null;
+}
+function ftkStripPasted() {
+    const sel = window.getSelection();
+    const host = ftkEditableOf(sel && sel.anchorNode ? sel.anchorNode : document.activeElement);
+    if (!host) { if (typeof toast === 'function') toast('แตะในกล่องข้อความก่อน'); return; }
+    const txt = host.innerText;
+    host.innerHTML = '';
+    host.appendChild(document.createTextNode(txt));
+    host.dispatchEvent(new Event('input', { bubbles: true }));
+    if (typeof toast === 'function') toast('ล้างรูปแบบที่ติดมาแล้ว');
+}
+document.addEventListener('paste', e => {
+    try {
+        if (!ftkPastePlain()) return;
+        const host = ftkEditableOf(e.target);
+        if (!host) return;
+        const cd = e.clipboardData || window.clipboardData;
+        if (!cd) return;
+        const txt = cd.getData('text/plain');
+        if (txt == null) return;
+        e.preventDefault();
+        if (document.queryCommandSupported && document.queryCommandSupported('insertText')) {
+            document.execCommand('insertText', false, txt);
+        } else {
+            const sel = window.getSelection();
+            if (!sel || !sel.rangeCount) return;
+            const r = sel.getRangeAt(0);
+            r.deleteContents();
+            const n = document.createTextNode(txt);
+            r.insertNode(n);
+            r.setStartAfter(n); r.collapse(true);
+            sel.removeAllRanges(); sel.addRange(r);
+        }
+        host.dispatchEvent(new Event('input', { bubbles: true }));
+    } catch (err) { console.log('paste plain', err); }
+}, true);
+
+/* ---------- 16. ตัวช่วยสำหรับจุดที่แสดงผลเดิม ---------- */
+function mqGoalChip(type, s) {
+    try {
+        const p = mqActivePlan();
+        const amt = (p[type] || {}).min || 0;
+        if (!amt) return '0';
+        if (p.unit === 'ayah') return amt + '+';
+        return mqUnitText(amt, p.unit);
+    } catch (e) { return ((s && s[type + 'Min']) || 0) + '+'; }
+}
+function mqDayGoalTxt(type, dayGoals, dayLog) {
+    const ay = (dayGoals && dayGoals[type + 'Min']) || 0;
+    try {
+        const gu = dayLog && dayLog.goalsU;
+        if (gu && gu.unit && gu.unit !== 'ayah' && gu[type] > 0)
+            return mqUnitText(gu[type], gu.unit) + ' (' + ay + ' อายะฮ์)';
+    } catch (e) {}
+    return ay + ' อายะฮ์';
+}
+/* เริ่มระบบ */
+try {
+    mqPlans();
+    mqSyncGoals(false);
+} catch (e) { console.log('mq init', e); }
 
 </script>
 </body>
