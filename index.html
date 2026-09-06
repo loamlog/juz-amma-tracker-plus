@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>Juz' Amma Tracker v372</title>
+<title>Juz' Amma Tracker v383</title>
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Scheherazade+New:wght@400;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -2329,7 +2329,7 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 .pl-unit{font-size:var(--text-3xs);color:var(--txt3);min-width:26px}
 
 /* ---- แผงนำทาง : โหมดเครื่องมือ ---- */
-.nvx-mode{display:flex;gap:5px;padding:0 12px 8px}
+.nvx-mode{display:flex;gap:5px;padding:0 12px 8px;align-items:stretch}
 .nvx-m{flex:1;padding:6px 0;border:1px solid var(--bdr);background:#fff;border-radius:10px;
     font-family:var(--f-th);font-size:9.5px;color:var(--txt3);cursor:pointer;transition:.2s}
 .nvx-m.on{background:var(--pri-ll);border-color:var(--pri-l);color:var(--pri);font-weight:600}
@@ -2371,7 +2371,7 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 .ftk-x{position:absolute;top:3px;right:5px;border:none;background:none;color:var(--txt3);
     font-size:9px;cursor:pointer;padding:2px;line-height:1;z-index:2}
 /* ---- แผงนำทาง : โหมดเครื่องมือ ---- */
-.nvx-mode{display:flex;gap:5px;padding:0 12px 8px}
+.nvx-mode{display:flex;gap:5px;padding:0 12px 8px;align-items:stretch}
 .nvx-m{flex:1;padding:6px 0;border:1px solid var(--bdr);background:#fff;border-radius:10px;
     font-family:var(--f-th);font-size:9.5px;color:var(--txt3);cursor:pointer;transition:.2s}
 .nvx-m.on{background:var(--pri-ll);border-color:var(--pri-l);color:var(--pri);font-weight:600}
@@ -2456,7 +2456,7 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 .ftk-swbar{display:flex;align-items:center;justify-content:space-between;margin:0 1px 7px;min-height:11px}
 .ftk-swbar span{font-size:7px;color:var(--txt3)}
 .ftk-swbar a{font-size:7px;color:var(--gold);cursor:pointer}
-.ftk-b.full{grid-column:1/-1;width:100%;margin-top:5px;height:auto;min-height:26px;padding:4px}
+.ftk-b.full{grid-column:1/-1;width:100%;margin-top:4px;height:auto;min-height:24px;padding:3px}
 .ftk-row{display:flex;align-items:center;gap:6px;margin-top:6px;padding:6px 7px;border-radius:9px;
     background:var(--bg);cursor:pointer}
 .ftk-row-t{flex:1;display:flex;flex-direction:column;gap:1px}
@@ -2499,21 +2499,21 @@ body:has(.flashcard-overlay) .nav{display:none!important}
 .nvc-hint{font-size:7px;color:var(--txt3);line-height:1.5;padding:0 2px 4px}
 
 /* ---- ฟอนต์ลายมือ ---- */
-.ftk-fhead{display:flex;align-items:center;justify-content:space-between;margin:9px 1px 5px}
+.ftk-fhead{display:flex;align-items:center;justify-content:space-between;margin:7px 1px 4px}
 .ftk-sec{font-size:7.5px;color:var(--txt3);letter-spacing:.06em}
 .ftk-fsw{display:flex;gap:3px;background:var(--bg);padding:2px;border-radius:8px}
 .ftk-fsw b{font-size:7.5px;font-weight:400;color:var(--txt3);padding:3px 8px;border-radius:6px;cursor:pointer}
 .ftk-fsw b.on{background:#fff;color:var(--txt);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.ftk-flist{display:flex;flex-direction:column;gap:2px;max-height:126px;overflow-y:auto;
+.ftk-flist{display:flex;flex-direction:column;gap:1px;max-height:52px;overflow-y:auto;
     padding:2px;border:1px solid var(--bdr-l);border-radius:10px;background:#fff}
 .ftk-flist::-webkit-scrollbar{width:3px}
 .ftk-flist::-webkit-scrollbar-thumb{background:rgba(0,0,0,.14);border-radius:3px}
 .ftk-fi{display:flex;align-items:center;justify-content:space-between;gap:8px;
-    padding:4px 8px;min-height:28px;border:none;background:none;border-radius:7px;cursor:pointer;
+    padding:2px 7px;min-height:23px;border:none;background:none;border-radius:6px;cursor:pointer;
     font-family:var(--f-th);overflow:hidden;transition:.16s}
-.ftk-fn{font-size:8.5px;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-    flex:1;text-align:left;line-height:1.4}
-.ftk-fp{font-size:13px;line-height:1.7;color:var(--txt);flex-shrink:0;max-width:46%;
+.ftk-fn{font-size:8px;color:var(--txt2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    flex:1;text-align:left;line-height:1.3}
+.ftk-fp{font-size:11.5px;line-height:1.5;color:var(--txt);flex-shrink:0;max-width:46%;
     white-space:nowrap;overflow:hidden}
 .ftk-fi:active{background:var(--bg)}
 .ftk-fi.on{background:var(--gold-l)}
@@ -2556,10 +2556,10 @@ body.mq-noflt #nvx-fab,body.mq-noflt #nvx-panel,body.mq-noflt #ftk{display:none!
     .ftk-swwrap{max-width:26px}
     .ftk-swx{width:14px;height:14px;font-size:8px}
     .ftk-swbar span,.ftk-swbar a{font-size:8px}
-    .ftk-flist{max-height:150px}
-    .ftk-fi{min-height:32px;padding:5px 9px}
-    .ftk-fn{font-size:9.5px}
-    .ftk-fp{font-size:15px}
+    .ftk-flist{max-height:58px}
+    .ftk-fi{min-height:26px;padding:3px 8px}
+    .ftk-fn{font-size:9px}
+    .ftk-fp{font-size:13px}
     .ftk-sec{font-size:8px}
     .ftk-row{padding:7px 9px;border-radius:11px}
     .ftk-row-t b{font-size:9px}
@@ -2576,6 +2576,43 @@ body.mq-noflt #nvx-fab,body.mq-noflt #nvx-panel,body.mq-noflt #ftk{display:none!
 @media(min-width:1024px){
     #home-goal-card .goal-check-grid{grid-template-columns:1fr !important}
     #home-review-list{grid-template-columns:1fr !important}
+}
+
+/* ---- จัดข้อความในเครื่องมือ ---- */
+.ftk-aligns{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.ftk-al{height:26px;border:1px solid var(--bdr-l);border-radius:8px;background:#fff;cursor:pointer;
+    font-family:var(--f-th);font-size:8px;color:var(--txt2);transition:.18s}
+.ftk-al.on{border-color:var(--gold);background:var(--gold-l);color:var(--gold);font-weight:600}
+.ftk-range{width:100%;accent-color:var(--gold);margin:2px 0 2px}
+@media(min-width:600px){.ftk-al{height:29px;font-size:9px}}
+
+.nvx-aa{flex:0 0 42px;font-family:var(--f-th);font-size:11px;font-weight:600;color:var(--gold);
+    border-color:rgba(184,149,107,.4);letter-spacing:.02em}
+.nvx-aa:active{background:var(--gold-l)}
+
+/* ---- ป็อปอัปการจัดข้อความ ---- */
+.mqal-lbl{font-size:9px;color:var(--txt3);margin-bottom:6px}
+.mqal-lbl b{color:var(--gold);font-weight:600}
+.mqal-row{display:grid;grid-template-columns:1fr;gap:5px}
+.mqal{padding:9px 12px;border:1px solid var(--bdr);border-radius:10px;background:#fff;cursor:pointer;
+    font-family:var(--f-th);font-size:10px;color:var(--txt2);text-align:left;transition:.18s}
+.mqal.on{border-color:var(--pri-l);background:var(--pri-ll);color:var(--pri);font-weight:600}
+.mqal-range{width:100%;accent-color:var(--pri);margin-top:2px}
+.mqal-sample{margin-top:12px;padding:10px;border:1px dashed var(--bdr-l);border-radius:10px;
+    font-size:9.5px;color:var(--txt2);line-height:1.9}
+
+/* ---- เครื่องมือ : ไม่มีตัวกรอง ปุ่มเล็กลง ---- */
+#nvx-tools .nvt-grid{grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:7px}
+#nvx-tools .nvt{height:44px;padding:5px 2px;gap:2px;border-radius:9px}
+#nvx-tools .nvt svg{width:12px;height:12px}
+#nvx-tools .nvt b{font-size:7.5px;line-height:1.2}
+#nvx-tools .nvt-sub{font-size:6.5px}
+#nvx-tools .nvx-lbl{margin:2px 0 4px}
+@media(min-width:600px){
+    #nvx-tools .nvt{height:50px}
+    #nvx-tools .nvt svg{width:13px;height:13px}
+    #nvx-tools .nvt b{font-size:8.5px}
+    #nvx-tools .nvt-sub{font-size:7px}
 }
 </style>
 
@@ -2806,6 +2843,7 @@ body.mq-noflt #nvx-fab,body.mq-noflt #nvx-panel,body.mq-noflt #ftk{display:none!
     <div class="nvx-mode" id="nvx-mode">
         <button class="nvx-m on" data-m="nav" onclick="nvxMode('nav')">นำทาง</button>
         <button class="nvx-m" data-m="tools" onclick="nvxMode('tools')">เครื่องมือ</button>
+        <button class="nvx-m nvx-aa" title="เครื่องมือตัวอักษร" onpointerdown="event.preventDefault()" onclick="ftkOpenType()">Aa</button>
     </div>
 
     <div class="nvx-seg" id="nvx-seg">
@@ -3810,6 +3848,16 @@ body.mq-noflt #nvx-fab,body.mq-noflt #nvx-panel,body.mq-noflt #ftk{display:none!
 <div class="modal" id="modal-routine-info" onclick="if(event.target===this)closeModal('routine-info')">
     <div class="modal-content" style="max-width:380px;padding:0;overflow:hidden;display:flex;flex-direction:column">
         <div id="routine-info-content" style="overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch"></div>
+    </div>
+</div>
+
+<div class="modal" id="modal-textalign" onclick="if(event.target===this)closeModal('textalign')">
+    <div class="modal-content" style="max-width:300px;padding:0;overflow:hidden">
+        <div style="padding:14px 16px;background:linear-gradient(135deg,var(--pri),var(--pri-l));color:#fff">
+            <div style="font-size:12px;font-weight:600">การจัดข้อความ</div>
+            <div style="font-size:8px;opacity:0.8;margin-top:2px">เลือกรูปแบบการจัดเรียงข้อความ</div>
+        </div>
+        <div style="padding:14px 16px" id="textalign-body"></div>
     </div>
 </div>
 
@@ -25805,6 +25853,7 @@ const NVT_ICON = {
     'in': '<path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
     home: '<path d="M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
     star: '<path d="M12 2l2.4 6.9H21l-5.3 4 2 6.6L12 15.6 6.3 19.5l2-6.6L3 8.9h6.6z"/>',
+    align: '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="15" y2="18"/>',
     swap: '<polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/>'
 };
 function nvxTile(icon, label, sub, action, on) {
@@ -25825,7 +25874,6 @@ function nvxMode(m) {
     const tl = document.getElementById('nvx-tools');
     if (tl) { tl.style.display = tools ? '' : 'none'; if (tools) renderNvxTools(); }
     if (typeof mqCloseOverlays === 'function') mqCloseOverlays('nvx');
-    if (typeof nvxPlacePanel === 'function') setTimeout(nvxPlacePanel, 30);
 }
 function nvxDo(fn) {                                   // ปิดแผงให้จบก่อน แล้วค่อยทำงาน
     if (typeof mqLeaveFloat === 'function') {
@@ -25842,84 +25890,50 @@ function nvxSearchMode() {
     nvxMode('nav');
     setTimeout(() => { const q = document.getElementById('nvx-q'); if (q) q.focus(); }, 120);
 }
-const NVX_CATS = [
-    { k: 'plan', label: 'แผน' },
-    { k: 'type', label: 'ตัวอักษร' },
-    { k: 'study', label: 'เนื้อหา' },
-    { k: 'know', label: 'ความรู้' }
-];
-let _nvxCat = 'plan';
-function nvxCat(k) {
-    if (_nvxCat === k) return;
-    _nvxCat = k;
-    renderNvxTools();
-}
 function renderNvxTools() {
     const el = document.getElementById('nvx-tools');
     if (!el) return;
     const p = mqActivePlan();
     const log = getLog()[getLocalDate()] || {};
-    const chips = NVX_CATS.map(c =>
-        `<button class="nvc${c.k === _nvxCat ? ' on' : ''}" data-k="${c.k}" onmousedown="event.preventDefault()" onclick="nvxCat('${c.k}')">${c.label}</button>`).join('');
-    let body = '';
+    const sec = (title, tiles) => `<div class="nvx-lbl"><span>${title}</span></div><div class="nvt-grid">${tiles}</div>`;
+    let html = '';
 
-    if (_nvxCat === 'plan') {
-        let tiles = '';
-        MQ_TYPES.forEach(t => {
-            const amt = (p[t] && p[t].min) || 0;
-            if (!amt) return;
-            const P = mqPortion(t, 'min');
-            if (P.empty) return;
-            const done = (log[t] || 0) >= P.count;
-            tiles += nvxTile('check', MQ_TYPE_LABEL[t],
-                done ? 'ครบแล้ว' : P.unitLabel.replace(/\s*\([^)]*\)\s*$/, ''),
-                done ? '' : `mqApplyPortion('${t}')`, done);
-        });
-        body += tiles ? `<div class="nvt-grid">${tiles}</div>` : '';
-        const st = mqPlans();
-        body += `<div class="nvx-lbl"><span>สลับแผน</span></div><div class="nvt-grid">
-            ${st.list.map(pl => nvxTile('swap', pl.name, pl.id === st.active ? 'ใช้อยู่' : mqScopeName(pl.scope),
-                pl.id === st.active ? '' : `mqSwitchPlan('${pl.id}');renderNvxTools()`, pl.id === st.active)).join('')}
-            ${nvxTile('book', 'จัดการแผน', '', "mqJump('settings','#plan-manager-body')")}</div>`;
-    } else if (_nvxCat === 'type') {
-        body = `<div class="nvt-grid">
-            ${nvxTile('minus', 'ย่อ', '', 'changeSurahFontSize(-1)')}
-            ${nvxTile('plus', 'ขยาย', '', 'changeSurahFontSize(1)')}
-            ${nvxTile('gear', 'เลือกฟอนต์', '', "mqJump('settings','#font-th')")}</div>
-            <div class="nvc-hint">ที่ค้างไว้ · ค้นหา · บนสุด · ก่อนหน้า · ถัดไป · ล่างสุด อยู่ในโหมดนำทางแล้ว</div>`;
-    } else if (_nvxCat === 'study') {
-        body = `<div class="nvt-grid">
-            ${nvxTile('note', 'บันทึกวันนี้', '', "nvxDo(()=>openDailyNoteModal(getLocalDate()))")}
-            ${nvxTile('clock', 'ประวัติทบทวน', '', 'nvxDo(openReviewHistoryPopup)')}
-            ${nvxTile('cal', 'วันทบทวน', '', 'nvxDo(openReviewDaysPopup)')}</div>
-            <div class="nvc-hint">ความรู้ · ความหมาย · ตัฟซีร สลับได้ที่แถบแท็บในโหมดนำทาง</div>`;
-    } else {
-        body = `<div class="nvt-grid">
-            ${nvxTile('book', 'ภาพรวม', '', "mqKnowTab('overview')")}
-            ${nvxTile('search', 'ค้นหาความรู้', '', "mqKnowTab('grpsearch')")}
-            ${nvxTile('star', 'พระนาม', '', "mqKnowTab('names')")}
-            ${nvxTile('note', 'รายซูเราะฮ์', '', "mqKnowTab('surah')")}
-            ${nvxTile('card', 'สุ่มการ์ด', '', "mqKnowTab('random')")}
-            ${nvxTile('book', 'คลังข้อมูล', '', "mqKnowTab('resources')")}
-            ${nvxTile('check', 'นิสัย', '', "mqKnowTab('habits')")}
-            ${nvxTile('out', 'ส่งออกบันทึก', '', 'nvxDo(mqExportNotes)')}
-            ${nvxTile('in', 'นำเข้าบันทึก', '', 'nvxDo(mqImportNotes)')}</div>
-            <div class="nvc-hint">แตะแล้วเข้าแท็บนั้นของหน้าความรู้ทันที · ส่งออก/นำเข้าเฉพาะเนื้อหาบันทึก</div>`;
-    }
-    const cur = el.querySelector('.nvc-body');
-    if (!cur) {
-        el.innerHTML = `<div class="nvc-bar">${chips}</div><div class="nvc-body">${body}</div>`;
-        return;
-    }
-    el.querySelectorAll('.nvc').forEach(b => b.classList.toggle('on', b.getAttribute('data-k') === _nvxCat));
-    if (cur.getAttribute('data-k') === _nvxCat) { cur.innerHTML = body; return; }
-    cur.setAttribute('data-k', _nvxCat);
-    cur.classList.add('out');
-    setTimeout(() => {
-        cur.innerHTML = body;
-        cur.classList.remove('out');
-        if (typeof nvxPlacePanel === 'function') nvxPlacePanel();
-    }, 140);
+    html += sec('บันทึกและรูปแบบ',
+        nvxTile('align', 'จัดข้อความ', '', 'nvxDo(mqAlignModal)') +
+        nvxTile('note', 'บันทึกวันนี้', '', "nvxDo(()=>openDailyNoteModal(getLocalDate()))") +
+        nvxTile('clock', 'ประวัติทบทวน', '', 'nvxDo(openReviewHistoryPopup)') +
+        nvxTile('cal', 'วันทบทวน', '', 'nvxDo(openReviewDaysPopup)'));
+
+    html += sec('ความรู้',
+        nvxTile('book', 'ภาพรวม', '', "mqKnowTab('overview')") +
+        nvxTile('search', 'ค้นหา', '', "mqKnowTab('grpsearch')") +
+        nvxTile('star', 'พระนาม', '', "mqKnowTab('names')") +
+        nvxTile('note', 'รายซูเราะฮ์', '', "mqKnowTab('surah')") +
+        nvxTile('card', 'สุ่มการ์ด', '', "mqKnowTab('random')") +
+        nvxTile('book', 'คลังข้อมูล', '', "mqKnowTab('resources')") +
+        nvxTile('check', 'นิสัย', '', "mqKnowTab('habits')") +
+        nvxTile('out', 'ส่งออก', 'เฉพาะบันทึก', 'nvxDo(mqExportNotes)') +
+        nvxTile('in', 'นำเข้า', 'เฉพาะบันทึก', 'nvxDo(mqImportNotes)'));
+
+    let planTiles = '';
+    MQ_TYPES.forEach(t => {
+        const amt = (p[t] && p[t].min) || 0;
+        if (!amt) return;
+        const P = mqPortion(t, 'min');
+        if (P.empty) return;
+        const done = (log[t] || 0) >= P.count;
+        planTiles += nvxTile('check', MQ_TYPE_LABEL[t],
+            done ? 'ครบแล้ว' : P.unitLabel.replace(/\s*\([^)]*\)\s*$/, ''),
+            done ? '' : `mqApplyPortion('${t}')`, done);
+    });
+    const st = mqPlans();
+    planTiles += st.list.map(pl => nvxTile('swap', pl.name, pl.id === st.active ? 'ใช้อยู่' : mqScopeName(pl.scope),
+        pl.id === st.active ? '' : `mqSwitchPlan('${pl.id}');renderNvxTools()`, pl.id === st.active)).join('');
+    planTiles += nvxTile('book', 'จัดการแผน', '', "mqJump('settings','#plan-manager-body')");
+    html += sec('แผน · ' + p.name, planTiles);
+
+    html += `<div class="nvc-hint">จัดรูปแบบเฉพาะจุดกดปุ่ม Aa ด้านบน · เลื่อนอ่านและสลับชั้นเนื้อหาอยู่ในโหมดนำทาง</div>`;
+    el.innerHTML = html;
 }
 /* เปิดแผงแล้วให้โหมดเดิมยังอยู่ และข้อมูลเครื่องมือสดเสมอ */
 try {
@@ -25972,25 +25986,49 @@ function ftkSwatchRow(kind, apply) {
     const base = kind === 'tc' ? FTK_TC : FTK_HL;
     const pal = ftkPalette()[kind] || [];
     const one = (c, custom) => `<span class="ftk-swwrap">
-        <button class="ftk-sw" style="background:${c}" onmousedown="event.preventDefault()" onclick="${apply(c)}"></button>
-        ${(custom && _ftkEditSw) ? `<i class="ftk-swx" onmousedown="event.preventDefault()" onclick="ftkDelColor('${kind}','${c}')">✕</i>` : ''}</span>`;
+        <button class="ftk-sw" style="background:${c}" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="${apply(c)}"></button>
+        ${(custom && _ftkEditSw) ? `<i class="ftk-swx" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkDelColor('${kind}','${c}')">✕</i>` : ''}</span>`;
     return `<div class="ftk-sws">
         ${base.map(c => one(c, false)).join('')}
         ${pal.map(c => one(c, true)).join('')}
-        <button class="ftk-sw ftk-add" onmousedown="event.preventDefault()" onclick="ftkAddColor('${kind}')" title="เพิ่มสี">+</button>
+        <button class="ftk-sw ftk-add" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkAddColor('${kind}')" title="เพิ่มสี">+</button>
     </div>
     <div class="ftk-swbar">
         <span>${pal.length ? 'เพิ่มเอง ' + pal.length + ' สี' : 'กด + เพิ่มสีของตัวเอง'}</span>
-        ${pal.length ? `<a onmousedown="event.preventDefault()" onclick="ftkToggleEditSw()">${_ftkEditSw ? 'เสร็จ' : 'แก้ไข'}</a>` : ''}
+        ${pal.length ? `<a onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkToggleEditSw()">${_ftkEditSw ? 'เสร็จ' : 'แก้ไข'}</a>` : ''}
     </div>`;
 }
 
 function ftkEl() { return document.getElementById('ftk'); }
+const FTK_KEEP = 'onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()"';
 function ftkBtn(label, action, title, cls) {
-    return `<button class="ftk-b${cls ? ' ' + cls : ''}" title="${title || ''}" onmousedown="event.preventDefault()" onclick="${action}">${label}</button>`;
+    return `<button class="ftk-b${cls ? ' ' + cls : ''}" title="${title || ''}" ${FTK_KEEP} onclick="${action}">${label}</button>`;
+}
+function ftkAlignBlock() {
+    const s = (typeof getSettings === 'function') ? getSettings() : {};
+    const al = s.textAlign || 'left';
+    const spv = (s.textSpacing !== undefined) ? s.textSpacing : 2;
+    const lv = (typeof _spacingLevels !== 'undefined' && _spacingLevels[spv]) ? _spacingLevels[spv].label : 'ปกติ';
+    const opt = (v, l) => `<button class="ftk-al${al === v ? ' on' : ''}" ${FTK_KEEP} onclick="ftkSetAlign('${v}')">${l}</button>`;
+    return `<div class="ftk-fhead"><span class="ftk-sec">จัดข้อความ</span></div>
+        <div class="ftk-aligns">${opt('left', 'ชิดซ้าย')}${opt('justify', 'ชิดขอบ')}${opt('center', 'กึ่งกลาง')}</div>
+        <div class="ftk-fhead"><span class="ftk-sec">ความห่างตัวอักษร</span><span class="ftk-sec" id="ftk-splabel">${lv}</span></div>
+        <input class="ftk-range" type="range" min="0" max="4" step="1" value="${spv}"
+            ${FTK_KEEP} oninput="ftkSetSpacing(this.value)">`;
+}
+function ftkSetAlign(v) {
+    try { if (typeof setTextAlign === 'function') setTextAlign(v); } catch (e) {}
+    ftkRenderBody();
+}
+function ftkSetSpacing(v) {
+    try { if (typeof setTextSpacing === 'function') setTextSpacing(v); } catch (e) {}
+    try {
+        const l = document.getElementById('ftk-splabel');
+        if (l && typeof _spacingLevels !== 'undefined' && _spacingLevels[v]) l.textContent = _spacingLevels[v].label;
+    } catch (e) {}
 }
 function ftkSwatch(c, action) {
-    return `<button class="ftk-sw" style="background:${c}" onmousedown="event.preventDefault()" onclick="${action}"></button>`;
+    return `<button class="ftk-sw" style="background:${c}" ${FTK_KEEP} onclick="${action}"></button>`;
 }
 function ftkRenderBody() {
     const b = document.getElementById('ftk-body');
@@ -26000,9 +26038,9 @@ function ftkRenderBody() {
         h = `<div class="ftk-grid">
             ${ftkBtn('<b>B</b>', "formatText('bold')", 'ตัวหนา')}
             ${ftkBtn('<i>I</i>', "formatText('italic')", 'ตัวเอียง')}
-            ${ftkBtn('A<sup>+</sup>', 'fontSizeUp()', 'ขยายตัวอักษร')}
-            ${ftkBtn('A<sup>−</sup>', 'fontSizeDown()', 'ย่อตัวอักษร')}
-            ${ftkBtn('<span class="ftk-t">ขนาดเดิม</span>', 'fontSizeReset()', 'รีเซ็ตขนาด', 'wide')}
+            ${ftkBtn('A<sup>−</sup>', 'ftkSizeStep(-1)', 'ย่อตัวอักษร')}
+            ${ftkBtn('A<sup>+</sup>', 'ftkSizeStep(1)', 'ขยายตัวอักษร')}
+            ${ftkBtn(`<span class="ftk-t">ขนาด ${ftkCurrentSize()}%</span>`, 'ftkSizeReset()', 'กดเพื่อกลับขนาดปกติ', 'wide')}
             ${ftkBtn('<span class="ftk-t">ระยะบรรทัด</span>', 'normalizeLineHeight()', 'จัดระยะบรรทัด', 'wide')}
         </div>
         ${ftkFontPicker()}
@@ -26027,11 +26065,12 @@ function ftkRenderBody() {
             ${ftkBtn('<span class="ftk-t">ระยะบรรทัด</span>', 'normalizeLineHeight()', 'จัดระยะบรรทัด', 'wide')}
             ${ftkBtn('<span class="ftk-t">ล้างรูปแบบ</span>', 'removeAllFormat()', 'ล้างรูปแบบทั้งหมด', 'wide danger')}
         </div>
-        <div class="ftk-row" onmousedown="event.preventDefault()" onclick="ftkSetPastePlain(${pp ? 'false' : 'true'})">
+        <div class="ftk-row" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkSetPastePlain(${pp ? 'false' : 'true'})">
             <div class="ftk-row-t"><b>วางเป็นข้อความล้วน</b><span>วางแล้วเหมือนพิมพ์เอง ปรับขนาดได้</span></div>
             <span class="ftk-tg${pp ? ' on' : ''}"><i></i></span>
         </div>
-        ${ftkBtn('<span class="ftk-t">ล้างรูปแบบที่วางมา</span>', 'ftkStripPasted()', 'ล้างรูปแบบที่ติดมากับข้อความที่วาง', 'wide full')}`;
+        ${ftkBtn('<span class="ftk-t">ล้างรูปแบบที่วางมา</span>', 'ftkStripPasted()', 'ล้างรูปแบบที่ติดมากับข้อความที่วาง', 'wide full')}
+        ${ftkAlignBlock()}`;
     }
     b.innerHTML = h;
 }
@@ -26048,9 +26087,9 @@ function ftkBuild() {
     d.id = 'ftk';
     d.innerHTML = `
         <div class="ftk-panel" id="ftk-panel">
-            <button class="ftk-x" onmousedown="event.preventDefault()" onclick="ftkHide()">✕</button>
+            <button class="ftk-x" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkHide()">✕</button>
             <div class="ftk-tabs">${FTK_TABS.map(t =>
-                `<button class="ftk-tab${t.k === _ftkTab ? ' on' : ''}" data-k="${t.k}" onmousedown="event.preventDefault()" onclick="ftkTab('${t.k}')">${t.label}</button>`).join('')}</div>
+                `<button class="ftk-tab${t.k === _ftkTab ? ' on' : ''}" data-k="${t.k}" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkTab('${t.k}')">${t.label}</button>`).join('')}</div>
             <div class="ftk-body" id="ftk-body"></div>
             <input type="color" id="ftk-picker" style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
         </div>
@@ -26107,6 +26146,7 @@ function ftkDrag(box, orb) {
     window.addEventListener('mouseup', up);
     window.addEventListener('touchend', up);
 }
+function ftkOpenType() { _ftkTab = 'type'; ftkShow(true); }
 function ftkShow(expand) {
     if (typeof mqCloseOverlays === 'function') mqCloseOverlays('ftk');
     ftkBuild();
@@ -26417,6 +26457,37 @@ function mqKnowHunt(tab, tries) {
     });
 }
 
+/* ---------- 30. ป็อปอัปการจัดข้อความ ---------- */
+function mqAlignModal() {
+    const body = document.getElementById('textalign-body');
+    if (body) body.innerHTML = mqAlignBody();
+    try { if (typeof openModal === 'function') openModal('textalign'); } catch (e) {}
+}
+function mqAlignBody() {
+    const s = (typeof getSettings === 'function') ? getSettings() : {};
+    const al = s.textAlign || 'left';
+    const spv = (s.textSpacing !== undefined) ? s.textSpacing : 2;
+    const lv = (typeof _spacingLevels !== 'undefined' && _spacingLevels[spv]) ? _spacingLevels[spv].label : 'ปกติ';
+    const opt = (v, l) => `<button class="mqal${al === v ? ' on' : ''}" onclick="mqSetAlign('${v}')">${l}</button>`;
+    return `<div class="mqal-lbl">รูปแบบการจัดเรียง</div>
+        <div class="mqal-row">${opt('left', 'ชิดซ้าย')}${opt('justify', 'ชิดขอบ (ซ้าย-ขวา)')}${opt('center', 'กึ่งกลาง')}</div>
+        <div class="mqal-lbl" style="margin-top:12px">ความห่างตัวอักษร <b id="mqal-splabel">${lv}</b></div>
+        <input class="mqal-range" type="range" min="0" max="4" step="1" value="${spv}" oninput="mqSetSpacing(this.value)">
+        <div class="mqal-sample" id="mqal-sample">ตัวอย่างข้อความ الحمد لله رب العالمين อ่านทบทวนทุกวัน</div>`;
+}
+function mqSetAlign(v) {
+    try { if (typeof setTextAlign === 'function') setTextAlign(v); } catch (e) {}
+    const body = document.getElementById('textalign-body');
+    if (body) body.innerHTML = mqAlignBody();
+}
+function mqSetSpacing(v) {
+    try { if (typeof setTextSpacing === 'function') setTextSpacing(v); } catch (e) {}
+    try {
+        const l = document.getElementById('mqal-splabel');
+        if (l && typeof _spacingLevels !== 'undefined' && _spacingLevels[v]) l.textContent = _spacingLevels[v].label;
+    } catch (e) {}
+}
+
 /* ---------- 23. ฟอนต์ลายมือ (ธรรมชาติ ไม่ตวัด) ---------- */
 const MQ_HAND_FONTS = [
     { g: 'Itim',      n: 'Itim · ลายมือน่ารัก',        s: 'cursive', w: '400' },
@@ -26528,13 +26599,13 @@ function ftkFontPicker() {
     return `<div class="ftk-fhead">
             <span class="ftk-sec">ฟอนต์เฉพาะจุด</span>
             <span class="ftk-fsw">
-                <b class="${kind === 'th' ? 'on' : ''}" onmousedown="event.preventDefault()" onclick="ftkFontKind('th')">ไทย</b>
-                <b class="${kind === 'ar' ? 'on' : ''}" onmousedown="event.preventDefault()" onclick="ftkFontKind('ar')">อาหรับ</b>
+                <b class="${kind === 'th' ? 'on' : ''}" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkFontKind('th')">ไทย</b>
+                <b class="${kind === 'ar' ? 'on' : ''}" onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkFontKind('ar')">อาหรับ</b>
             </span>
         </div>
         <div class="ftk-flist">
             ${list.map(f => `<button class="ftk-fi${f.g === cur ? ' on' : ''}"
-                onmousedown="event.preventDefault()" onclick="ftkApplyFont('${kind}','${f.g}')">
+                onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()" onclick="ftkApplyFont('${kind}','${f.g}')">
                 <span class="ftk-fn">${(f.n || f.g).split(' · ')[0]}</span>
                 <span class="ftk-fp" style="font-family:${ftkFontStack(kind, f.g)}">${kind === 'ar' ? 'أبجد' : 'ก ข ค'}</span>
             </button>`).join('')}
@@ -26560,16 +26631,22 @@ function ftkWorkingRange() {
     } catch (e) {}
     return null;
 }
-function ftkWrapSelection(styleFn) {
+function ftkWrapSelection(styleFn, strip) {
     const range = ftkWorkingRange();
     if (!range) { if (typeof toast === 'function') toast('เลือกข้อความก่อน'); return false; }
     const host = ftkEditableOf(range.startContainer) || ftkEditableOf(range.commonAncestorContainer);
     if (!host) { if (typeof toast === 'function') toast('เลือกข้อความในกล่องเขียนก่อน'); return false; }
     try {
         const frag = range.extractContents();
+        const kill = strip || ['fontFamily'];
         if (frag.querySelectorAll) frag.querySelectorAll('*').forEach(e => {
-            if (e.style && e.style.fontFamily) e.style.fontFamily = '';
-            if (e.tagName === 'FONT' && e.hasAttribute('face')) e.removeAttribute('face');
+            if (!e.style) return;
+            kill.forEach(k => { if (e.style[k]) e.style[k] = ''; });
+            if (kill.indexOf('fontFamily') >= 0 && e.tagName === 'FONT' && e.hasAttribute('face')) e.removeAttribute('face');
+            if (kill.indexOf('fontSize') >= 0) {
+                if (e.hasAttribute && e.hasAttribute('data-mqsize')) e.removeAttribute('data-mqsize');
+                if (e.tagName === 'FONT' && e.hasAttribute('size')) e.removeAttribute('size');
+            }
         });
         const node = styleFn(frag);
         range.insertNode(node);
@@ -26587,15 +26664,32 @@ function ftkWrapSelection(styleFn) {
     } catch (e) { console.log('wrap', e); return false; }
 }
 /* ถ้าช่วงที่เลือกครอบคลุม span ฟอนต์เดิมทั้งอัน ให้แก้ที่ span เดิม ไม่สร้างซ้อน */
-function ftkFontAncestor(range) {
+function ftkAncestorAttr(range, attr) {
     let n = range && range.commonAncestorContainer;
     while (n && n !== document.body) {
-        if (n.nodeType === 1 && n.hasAttribute && n.hasAttribute('data-mqfont')) {
+        if (n.nodeType === 1 && n.hasAttribute && n.hasAttribute(attr)) {
             return ((range.toString() || '') === (n.textContent || '')) ? n : null;
         }
         n = n.parentNode;
     }
     return null;
+}
+function ftkFontAncestor(range) { return ftkAncestorAttr(range, 'data-mqfont'); }
+function ftkUnwrap(el) {
+    if (!el || !el.parentNode) return null;
+    const parent = el.parentNode, first = el.firstChild, last = el.lastChild;
+    while (el.firstChild) parent.insertBefore(el.firstChild, el);
+    parent.removeChild(el);
+    try {
+        const nr = document.createRange();
+        if (first) nr.setStartBefore(first);
+        if (last) nr.setEndAfter(last);
+        _ftkRange = nr.cloneRange();
+        const s = window.getSelection();
+        s.removeAllRanges();
+        s.addRange(nr);
+    } catch (e) {}
+    return parent;
 }
 function ftkReselect(node) {
     try {
@@ -26679,6 +26773,69 @@ function ftkResetFont() {
     if (ok) { ftkRenderBody(); if (typeof toast === 'function') toast('คืนฟอนต์ของระบบแล้ว'); }
 }
 
+/* ---------- 29. ย่อ/ขยายขนาดตัวอักษร แบบมีขั้นชัดเจน ไม่ซ้อนกันเอง ---------- */
+const FTK_SIZES = [70, 80, 90, 100, 115, 130, 150, 175, 200];
+function ftkCurrentSize() {
+    try {
+        const r = ftkWorkingRange() || _ftkRange;
+        const a = r && ftkAncestorAttr(r, 'data-mqsize');
+        if (a) return parseInt(a.getAttribute('data-mqsize')) || 100;
+        let n = r && r.commonAncestorContainer;
+        while (n && n !== document.body) {
+            if (n.nodeType === 1 && n.hasAttribute && n.hasAttribute('data-mqsize'))
+                return parseInt(n.getAttribute('data-mqsize')) || 100;
+            n = n.parentNode;
+        }
+    } catch (e) {}
+    return 100;
+}
+function ftkSizeStep(dir) {
+    const range = ftkWorkingRange();
+    if (!range) { if (typeof toast === 'function') toast('เลือกข้อความก่อน'); return; }
+    const anc = ftkAncestorAttr(range, 'data-mqsize');
+    const cur = anc ? (parseInt(anc.getAttribute('data-mqsize')) || 100) : ftkCurrentSize();
+    let i = FTK_SIZES.indexOf(cur);
+    if (i < 0) { i = FTK_SIZES.findIndex(v => v >= cur); if (i < 0) i = FTK_SIZES.length - 1; }
+    const ni = Math.max(0, Math.min(FTK_SIZES.length - 1, i + dir));
+    const val = FTK_SIZES[ni];
+    if (val === cur) { if (typeof toast === 'function') toast(dir > 0 ? 'ใหญ่สุดแล้ว' : 'เล็กสุดแล้ว'); return; }
+    let ok = false;
+    if (anc) {
+        if (val === 100) { const host = ftkEditableOf(anc); ftkUnwrap(anc); if (host) host.dispatchEvent(new Event('input', { bubbles: true })); }
+        else { anc.setAttribute('data-mqsize', val); anc.style.fontSize = val + '%'; anc.style.lineHeight = '1.6'; ftkReselect(anc); }
+        ok = true;
+    } else {
+        ok = ftkWrapSelection(frag => {
+            const span = document.createElement('span');
+            span.setAttribute('data-mqsize', val);
+            span.style.fontSize = val + '%';
+            span.style.lineHeight = '1.6';
+            span.appendChild(frag);
+            return span;
+        }, ['fontSize']);
+    }
+    if (ok) { ftkRenderBody(); if (typeof toast === 'function') toast(val + '%'); }
+}
+function ftkSizeReset() {
+    const range = ftkWorkingRange();
+    if (!range) { if (typeof toast === 'function') toast('เลือกข้อความก่อน'); return; }
+    const anc = ftkAncestorAttr(range, 'data-mqsize');
+    let ok = false;
+    if (anc) {
+        const host = ftkEditableOf(anc);
+        ftkUnwrap(anc);
+        if (host) host.dispatchEvent(new Event('input', { bubbles: true }));
+        ok = true;
+    } else {
+        ok = ftkWrapSelection(frag => {
+            const span = document.createElement('span');
+            span.appendChild(frag);
+            return span;
+        }, ['fontSize']);
+    }
+    if (ok) { ftkRenderBody(); if (typeof toast === 'function') toast('ขนาดปกติ'); }
+}
+
 /* ---------- 16. ตัวช่วยสำหรับจุดที่แสดงผลเดิม ---------- */
 function mqGoalChip(type, s) {
     try {
@@ -26703,6 +26860,3025 @@ try {
     mqPlans();
     mqSyncGoals(false);
 } catch (e) { console.log('mq init', e); }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v380 · แท็บ "จัดกลุ่มอายะฮ์" : เสถียร + เร็วขึ้น
+          + ล้างฟอร์แมตที่ติดมาจากการคัดลอก (ไทม์ไลน์ / มายด์แมพ)
+   ───────────────────────────────────────────────────────────────────
+   1) เรนเดอร์แบบ lazy  : ตอนเปิดซูเราะฮ์จะยังไม่สร้างแท็บจัดกลุ่ม
+                          สร้างตอนกดเข้าแท็บจริง ๆ → เปิดหน้าไวขึ้นมาก
+   2) กันพัง            : ทุกขั้นตอนแยก try/catch  ถ้าส่วนหนึ่งพัง
+                          ส่วนที่เหลือยังขึ้นครบ (เดิมพังจุดเดียว = ว่างทั้งแท็บ)
+   3) _sGVM ไม่พึ่ง event: ปุ่ม "แก้ไข / ไทม์ไลน์ / กลุ่มสี / มายด์แมพ"
+                          ไฮไลต์ถูกต้องเสมอ แม้ถูกเรียกจากโค้ด
+   4) ไทม์ไลน์ + มายด์แมพ: กรอง inline style ที่ติดมาตอนกอปวาง
+                          (font-size px, font-family, line-height, margin ...)
+                          เหลือแต่ สี / ไฮไลต์ / ตัวหนา-เอียง → ตัวอักษรเท่ากันหมด
+   5) ข้อความอาหรับในบันทึก : ตรวจจับอัตโนมัติ → ฟอนต์อาหรับ + ขนาดสัมพัทธ์
+   6) มายด์แมพ          : รีเซ็ตตัววัดความกว้างทุกครั้ง (เดิมค้างค่าเก่าเมื่อ
+                          หมุนจอ/เปลี่ยนขนาด → การ์ดเพี้ยน) + วัดใหม่เมื่อฟอนต์โหลดเสร็จ
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+/* ── CSS ── */
+(function(){
+  if(document.getElementById('v380-style'))return;
+  var s=document.createElement('style');s.id='v380-style';
+  s.textContent=[
+    '.ro-html{overflow-wrap:anywhere;word-break:normal}',
+    '.ro-html *{max-width:100%;font-family:inherit}',
+    '.ro-html img{max-width:100%;height:auto;border-radius:6px;display:block;margin:3px 0}',
+    '.ro-html p,.ro-html div,.ro-html ul,.ro-html ol{margin:0;padding-left:0}',
+    '.ro-html ul,.ro-html ol{padding-left:1.1em}',
+    '.ro-html table{border-collapse:collapse;width:100%}',
+    '.ro-html td,.ro-html th{border:1px solid var(--bdr-l);padding:2px 4px}',
+    '.ro-ar{font-family:var(--f-ar);font-size:1.5em;line-height:1.95;direction:rtl;unicode-bidi:isolate}',
+    '.ro-arhost .ro-ar{font-size:1em;line-height:inherit}',
+    '.grp-busy{display:flex;align-items:center;justify-content:center;gap:6px;padding:26px 0;',
+      'font-size:var(--text-3xs);color:var(--txt3);font-family:var(--f-th)}',
+    '.grp-busy i{width:10px;height:10px;border-radius:50%;background:var(--grp);',
+      'display:inline-block;animation:grpPls .9s ease-in-out infinite}',
+    '@keyframes grpPls{0%,100%{opacity:.25;transform:scale(.8)}50%{opacity:.9;transform:scale(1)}}',
+    '.grp-err{padding:14px;border-radius:var(--r-md);background:#fff6f6;border:1px solid #f0d5d5;',
+      'font-size:var(--text-3xs);color:#a15757;font-family:var(--f-th);line-height:1.6}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+var BUSY='<div class="grp-busy"><i></i>กำลังจัดเรียง...</div>';
+function ERR(e){return '<div class="grp-err">แสดงผลส่วนนี้ไม่สำเร็จ<br><span style="opacity:.7">'+
+  String((e&&e.message)||e).replace(/[<>]/g,'')+'</span></div>';}
+
+/* ═══ 1. ตัวล้างฟอร์แมตสำหรับ "มุมมองอ่านอย่างเดียว" ═══════════════ */
+var AR='\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF';
+var AR_TEST=new RegExp('['+AR+']');
+var AR_RUN=new RegExp('(['+AR+'][' +AR+ '\\s\\u064B-\\u0652\\u0670\\u06D6-\\u06ED\\u060C\\u061B\\u061F.,:;!?()\\[\\]{}"\'\\u00AB\\u00BB\\-\\u2013\\u2014]*)','g');
+
+/* คุณสมบัติที่ "เก็บไว้" — สื่อความหมาย (สี/ไฮไลต์/เน้น) */
+var KEEP={'color':1,'background-color':1,'font-weight':1,'font-style':1,
+          'text-decoration':1,'text-decoration-line':1,'text-decoration-color':1,
+          'text-align':1,'direction':1,'vertical-align':1};
+/* คุณสมบัติที่ "ทิ้ง" — ทำให้ตัวอักษรไม่เท่ากัน : font-size(px) font-family
+   line-height(px) margin padding width height display position float ... */
+
+function cssFilter(str){
+  var out=[];
+  String(str||'').split(';').forEach(function(part){
+    var i=part.indexOf(':');if(i<0)return;
+    var k=part.slice(0,i).trim().toLowerCase();
+    var v=part.slice(i+1).trim();
+    if(!k||!v)return;
+    if(v.indexOf('url(')>=0||v.indexOf('expression')>=0)return;
+    if(k==='font-size'){
+      /* เก็บเฉพาะหน่วยสัมพัทธ์ (% em rem) → ยังปรับตามสเกลของมุมมองได้
+         ทิ้ง px/pt/... ที่ติดมาตอนกอปวาง */
+      var m=v.match(/^([\d.]+)\s*(%|em|rem)$/);
+      if(m){var n=parseFloat(m[1]);var u=m[2]==='rem'?'em':m[2];
+        if(u==='%'){if(n<50)n=50;if(n>200)n=200;}else{if(n<.6)n=.6;if(n>2)n=2;}
+        out.push('font-size:'+n+u);}
+      return;
+    }
+    /* line-height ทิ้งทั้งหมด — ปล่อยให้มุมมองกำหนดเอง จะได้ระยะบรรทัดเท่ากัน */
+    if(k==='line-height')return;
+    if(k==='background'){
+      if(v.indexOf('gradient')<0&&/^(#|rgb|hsl|[a-z]+$)/i.test(v))out.push('background-color:'+v);
+      return;
+    }
+    if(KEEP[k])out.push(k+':'+v);
+  });
+  return out.join(';');
+}
+
+var SAFE_ATTR={'style':1,'dir':1,'src':1,'alt':1,'colspan':1,'rowspan':1,'href':1};
+var KILL='script,style,link,meta,title,iframe,object,embed,noscript,form,input,button,svg';
+var _roCache=new Map();
+
+function roSan(html){
+  if(html==null||html==='')return '';
+  html=String(html);
+  var c=_roCache.get(html);if(c!==undefined)return c;
+  var box;
+  try{
+    box=document.createElement('div');
+    box.innerHTML=html;
+
+    box.querySelectorAll(KILL).forEach(function(n){if(n.parentNode)n.parentNode.removeChild(n);});
+
+    /* <font> → <span> */
+    box.querySelectorAll('font').forEach(function(f){
+      var sp=document.createElement('span');
+      var c2=f.getAttribute('color');if(c2)sp.style.color=c2;
+      while(f.firstChild)sp.appendChild(f.firstChild);
+      if(f.parentNode)f.parentNode.replaceChild(sp,f);
+    });
+    /* หัวข้อ h1-h6 → ตัวหนาธรรมดา (กันตัวอักษรใหญ่ผิดสัดส่วน) */
+    box.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(function(hx){
+      var dv=document.createElement('div');dv.setAttribute('style','font-weight:700');
+      while(hx.firstChild)dv.appendChild(hx.firstChild);
+      if(hx.parentNode)hx.parentNode.replaceChild(dv,hx);
+    });
+
+    /* กรอง attribute + style ของทุก element */
+    box.querySelectorAll('*').forEach(function(el){
+      var keep=cssFilter(el.getAttribute('style')||'');
+      var attrs=Array.prototype.slice.call(el.attributes);
+      for(var i=0;i<attrs.length;i++){
+        var nm=attrs[i].name.toLowerCase();
+        if(!SAFE_ATTR[nm])el.removeAttribute(attrs[i].name);
+      }
+      var hrefV=el.getAttribute('href');
+      if(hrefV&&/^\s*(javascript|data|vbscript):/i.test(hrefV))el.removeAttribute('href');
+      if(el.tagName==='IMG'){el.removeAttribute('style');return;}
+      if(keep)el.setAttribute('style',keep);else el.removeAttribute('style');
+    });
+
+    /* ห่อข้อความอาหรับ → ฟอนต์อาหรับ + ขนาดสัมพัทธ์ (ไม่ทับซ้อนกัน) */
+    var walker=document.createTreeWalker(box,NodeFilter.SHOW_TEXT,null,false);
+    var texts=[],t;
+    while((t=walker.nextNode()))if(AR_TEST.test(t.nodeValue))texts.push(t);
+    texts.forEach(function(node){
+      if(node.parentNode&&node.parentNode.classList&&node.parentNode.classList.contains('ro-ar'))return;
+      var parts=String(node.nodeValue).split(AR_RUN);
+      if(parts.length<2)return;
+      var frag=document.createDocumentFragment();
+      parts.forEach(function(p){
+        if(!p)return;
+        if(AR_TEST.test(p)){
+          var sp=document.createElement('span');sp.className='ro-ar';sp.textContent=p;frag.appendChild(sp);
+        }else frag.appendChild(document.createTextNode(p));
+      });
+      if(node.parentNode)node.parentNode.replaceChild(frag,node);
+    });
+
+    var out=box.innerHTML;
+    if(_roCache.size>400)_roCache.clear();
+    _roCache.set(html,out);
+    return out;
+  }catch(e){return html;}
+}
+window._roSan=roSan;
+
+/* มีเนื้อหาจริงไหม (กัน <br> / &nbsp; ว่าง ๆ ทำให้เกิดบรรทัดเปล่า) */
+var _hasBox=null;
+function roHas(html){
+  if(!html)return false;
+  if(/<img/i.test(html))return true;
+  try{
+    if(!_hasBox)_hasBox=document.createElement('div');
+    _hasBox.innerHTML=String(html);
+    return (_hasBox.textContent||'').replace(/[\s\u00A0\u200B\u200C\u200D\uFEFF]/g,'').length>0;
+  }catch(e){
+    return String(html).replace(/<[^>]*>/g,'').replace(/&nbsp;/gi,'').replace(/[\s\u00A0\u200B]/g,'').length>0;
+  }
+}
+/* มีการกำหนดสีตัวอักษรมาเองหรือไม่ */
+function roColored(html){return /(^|[;"'\s])color\s*:/i.test(String(html||''));}
+
+/* ═══ 2. สเกลตัวอักษรไทม์ไลน์ (คงค่าไว้หลังเรนเดอร์ใหม่ทุกครั้ง) ═══ */
+function tlScale(){
+  var v=parseFloat(localStorage.getItem('tlFontScale'));
+  if(!v||isNaN(v))v=1;
+  return Math.max(0.7,Math.min(2.2,v));
+}
+function tlApply(){
+  var b=document.getElementById('grp-vb');
+  if(b)b.style.setProperty('--tl-s',tlScale());
+  var v=document.getElementById('tl-fv');
+  if(v)v.textContent=Math.round(tlScale()*100)+'%';
+}
+
+/* ═══ 3. แท็บย่อยของ "จัดกลุ่มอายะฮ์" ══════════════════════════════ */
+var MTABS=[
+ {k:'edit',l:'แก้ไข',ic:'<path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>'},
+ {k:'timeline',l:'ไทม์ไลน์',ic:'<circle cx="12" cy="4" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="20" r="2"/><path d="M12 6v4M12 14v4"/>'},
+ {k:'colorstripe',l:'กลุ่มสี',ic:'<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>'},
+ {k:'mindmap',l:'มายด์แมพ',ic:'<circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="2"/><circle cx="20" cy="5" r="2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="19" r="2"/><path d="M9.5 10L5.5 6.5M14.5 10l4-3.5M9.5 14l-4 3.5M14.5 14l4 3.5"/>'}
+];
+
+function surahOf(sn){
+  var isP=typeof sn==='string'&&sn.startsWith('p'),s;
+  if(isP)s=PLUS_SURAHS.find(function(x){return x.n===sn;});
+  else{s=SURAHS.find(function(x){return x.n===sn;});if(!s)s=ALL_SURAHS.find(function(x){return x.n===sn;});}
+  return {s:s,snA:isP?"'"+sn+"'":sn,tA:s?s.ayah:0,sN:s?s.name:''};
+}
+function bldGVSafe(gs,snA,tA,sN){
+  try{var r=_bldGV(gs,snA,tA,sN);return (r===undefined||r===null)?'':r;}
+  catch(e){try{console.warn('[v380] view '+_gvm,e);}catch(_){}return ERR(e);}
+}
+
+window._bldGroupsTab=function(sn){
+  var d=getSurah(sn),gs=d.ayahGroups||[];
+  var m=surahOf(sn);
+  var h='<div class="grp-mtabs">';
+  MTABS.forEach(function(t){
+    h+='<button class="grp-mtab '+(_gvm===t.k?'on':'')+'" data-gvm="'+t.k+'" onclick="_sGVM(\''+t.k+'\')">'+
+       '<svg viewBox="0 0 24 24">'+t.ic+'</svg>'+t.l+'</button>';
+  });
+  h+='</div>';
+  if(gs.length){
+    h+='<div style="display:flex;height:5px;border-radius:3px;overflow:hidden;margin-bottom:8px;gap:1px">';
+    gs.slice().sort(function(a,b){return a.f-b.f;}).forEach(function(g){
+      var oi=gs.indexOf(g);
+      h+='<div style="flex:'+(g.to-g.f+1)+';background:'+(g.color||_GC[oi%_GC.length])+'"></div>';
+    });
+    h+='</div>';
+  }
+  h+='<div id="grp-vb">'+bldGVSafe(gs,m.snA,m.tA,m.sN)+'</div>';
+  return h;
+};
+
+var seq=0;
+window._sGVM=function(mode){
+  _gvm=mode;
+  document.querySelectorAll('.grp-mtab').forEach(function(b){
+    b.classList.toggle('on',b.getAttribute('data-gvm')===mode);
+  });
+  var box=document.getElementById('grp-vb');
+  if(!box){var tb=document.getElementById('grp-tab-body');if(tb)paintTab(tb,currentSurah,true);return;}
+  var my=++seq;
+  var paint=function(){
+    if(my!==seq)return;
+    var el=document.getElementById('grp-vb');if(!el)return;
+    var sn=currentSurah,m=surahOf(sn),d=getSurah(sn);
+    el.innerHTML=bldGVSafe(d.ayahGroups||[],m.snA,m.tA,m.sN);
+    tlApply();
+  };
+  if(mode==='mindmap'||mode==='timeline'){
+    box.innerHTML=BUSY;
+    requestAnimationFrame(function(){requestAnimationFrame(paint);});
+  }else paint();
+};
+
+/* ═══ 4. _grpInit : ทนพัง + สร้างเนื้อแท็บเมื่อจำเป็นเท่านั้น ══════ */
+function grpVisible(){
+  var el=document.getElementById('main-tab-groups');
+  return !!el&&el.classList.contains('active');
+}
+function paintTab(tb,sn,force){
+  var fresh=(!tb.firstChild)||tb.getAttribute('data-stale')==='1';
+  var build=function(){
+    try{tb.innerHTML=_bldGroupsTab(sn);}
+    catch(e){try{console.warn('[v380] groupsTab',e);}catch(_){}tb.innerHTML=ERR(e);}
+    tb.removeAttribute('data-stale');
+    tlApply();
+  };
+  if(fresh&&!force){
+    tb.innerHTML=BUSY;
+    tb.removeAttribute('data-stale');   /* กันเรนเดอร์ซ้ำซ้อนระหว่างรอเฟรม */
+    requestAnimationFrame(function(){requestAnimationFrame(build);});
+  }else build();
+}
+
+window._grpInit=function(sn){
+  if(sn===undefined||sn===null)sn=currentSurah;
+  try{_seedDefaultGroups(sn);}catch(e){try{console.warn('[v380] seed',e);}catch(_){}}
+  try{var all=JSON.parse(localStorage.getItem('grpFilterState'))||{};var sv=all[sn];if(sv!==undefined)_gf=sv;}catch(e){}
+  try{var st=document.getElementById('nb-section-toggle');if(st)st.innerHTML=_bldSectionToggle(sn);}catch(e){try{console.warn('[v380] secToggle',e);}catch(_){}}
+  try{var fc=document.getElementById('grp-fc');if(fc)fc.innerHTML=_bldFilter(sn);}catch(e){try{console.warn('[v380] filter',e);}catch(_){}}
+  try{var bc=document.getElementById('grp-bc');if(bc)bc.innerHTML=_bldBanner(sn);}catch(e){try{console.warn('[v380] banner',e);}catch(_){}}
+  var tb=document.getElementById('grp-tab-body');
+  if(tb){
+    if(grpVisible())paintTab(tb,sn,!!tb.firstChild);
+    else{tb.innerHTML='';tb.setAttribute('data-stale','1');}
+  }
+  try{_bldFontCtl(sn);_applyFZ(sn);}catch(e){}
+  if(_gf!==null)setTimeout(function(){try{_filterAyahs();}catch(e){}},20);
+};
+
+window._grpEnsure=function(){
+  var tb=document.getElementById('grp-tab-body');if(!tb)return;
+  if(tb.firstChild&&tb.getAttribute('data-stale')!=='1'){tlApply();return;}
+  paintTab(tb,currentSurah);
+};
+
+var oSwitch=window.switchMainTab;
+window.switchMainTab=function(tab,btn){
+  try{oSwitch.apply(this,arguments);}catch(e){}
+  if(tab==='groups'){try{window._grpEnsure();}catch(e){}}
+};
+
+/* ═══ 5. ไทม์ไลน์ — ใช้เนื้อหาที่ล้างฟอร์แมตแล้ว ═══════════════════ */
+window._gTL=function(gs,tA){
+  if(!gs||!gs.length)return '<div class="empty-state">ยังไม่มีกลุ่ม</div>';
+  var sorted=gs.slice().sort(function(a,b){return a.f-b.f;});
+  var cols=sorted.map(function(g){return g.color||_GC[gs.indexOf(g)%_GC.length];}).join(',');
+  var d=getSurah(currentSurah);
+  if(!window._tlShow)window._tlShow={arText:false,notes:false,meanings:false,tafsirs:false};
+  if(!window._tlOrd)window._tlOrd=['arText','notes','meanings','tafsirs'];
+  var ts=window._tlShow,tOrd=window._tlOrd;
+  var anyShow=ts.arText||ts.notes||ts.meanings||ts.tafsirs;
+  var _oL={arText:L3('text'),notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs')};
+
+  var h=(typeof _tlFontBar==='function')?_tlFontBar():'';
+  h+='<div style="display:flex;gap:3px;margin-bottom:4px;flex-wrap:wrap;align-items:center">'+
+     '<span style="font-size:var(--text-3xs);color:var(--txt3)">แสดง :</span>';
+  [{k:'arText',l:L3('text')},{k:'notes',l:L3('notes')},{k:'meanings',l:L3('meanings')},{k:'tafsirs',l:L3('tafsirs')}].forEach(function(t){
+    var on=ts[t.k];
+    h+='<button onclick="window._tlShow.'+t.k+'=!window._tlShow.'+t.k+';_sGVM(\'timeline\')" '+
+       'style="padding:4px 10px;border-radius:var(--r-full);font-size:var(--text-3xs);border:1px solid '+
+       (on?'var(--pri)':'var(--bdr)')+';background:'+(on?'var(--pri)':'var(--card)')+';color:'+
+       (on?'#fff':'var(--txt3)')+';cursor:pointer;font-family:var(--f-th)">'+t.l+'</button>';
+  });
+  h+='</div>';
+  if(anyShow){
+    var act=tOrd.filter(function(k){return ts[k];});
+    h+='<div style="display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap;align-items:center">'+
+       '<span style="font-size:var(--text-3xs);color:var(--txt3)">ลำดับ :</span>';
+    act.forEach(function(k,idx){
+      h+='<span style="display:inline-flex;align-items:center;gap:1px;font-size:var(--text-3xs);color:var(--txt2);background:var(--card2);padding:3px 8px;border-radius:var(--r-full);border:1px solid var(--bdr-l)">';
+      if(idx>0)h+='<button onclick="_tlMv(\''+k+'\',-1)" style="border:none;background:none;cursor:pointer;font-size:8px;color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25C0</button>';
+      h+=_oL[k];
+      if(idx<act.length-1)h+='<button onclick="_tlMv(\''+k+'\',1)" style="border:none;background:none;cursor:pointer;font-size:var(--text-3xs);color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25B6</button>';
+      h+='</span>';
+    });
+    h+='</div>';
+  }
+  h+='<div class="grp-tl-wrap"><div class="grp-tl-line" style="background:linear-gradient(to bottom,'+cols+')"></div>';
+
+  function row(a,cl){
+    var notes=ts.notes?roSan((d.notes&&d.notes[a])||''):'';
+    var meanings=ts.meanings?roSan((d.meanings&&d.meanings[a])||''):'';
+    var tafsirs=ts.tafsirs?roSan((d.tafsirs&&d.tafsirs[a])||''):'';
+    var arH='';
+    if(ts.arText){try{var arR=_mmGetD(d,a,a,'arText');arH=arR.length?roSan(arR[0].h):'';}catch(e){arH='';}}
+    var sA=roHas(arH),sN=roHas(notes),sM=roHas(meanings),sT=roHas(tafsirs);
+    if(!sA&&!sN&&!sM&&!sT)return '';
+    var r='<div style="padding:3px 0;border-top:1px solid '+cl+'08;font-size:calc(var(--tl-s,1) * 9px)">'+
+          '<span style="color:'+cl+';font-weight:700;font-size:calc(var(--tl-s,1) * 9px)">'+a+'</span> ';
+    var mp={
+      arText:{ok:sA,h:'<span dir="rtl" class="ro-html ro-arhost" style="display:inline-block;font-family:var(--f-ar);font-size:calc(var(--tl-s,1) * 13px);line-height:1.95;color:var(--txt)">'+arH+'</span> '},
+      notes:{ok:sN,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);'+(roColored(notes)?'':'color:var(--pri);')+'margin-top:1px;line-height:1.55">'+notes+'</div>'},
+      meanings:{ok:sM,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);'+(roColored(meanings)?'':'color:var(--sec);')+'margin-top:1px;line-height:1.55">'+meanings+'</div>'},
+      tafsirs:{ok:sT,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);'+(roColored(tafsirs)?'':'color:var(--tafsir);')+'margin-top:1px;line-height:1.55">'+tafsirs+'</div>'}
+    };
+    tOrd.forEach(function(k){if(mp[k]&&mp[k].ok)r+=mp[k].h;});
+    return r+'</div>';
+  }
+
+  sorted.forEach(function(g){
+    var oi=gs.indexOf(g);var cl=g.color||_GC[oi%_GC.length];
+    var lbl=g.f===g.to?(''+g.f):(g.f+' - '+g.to);
+    var hasSubs=g.subs&&g.subs.length;
+    var subsHtml='',orphanHtml='';
+    if(hasSubs){
+      var ss=g.subs.slice().sort(function(a,b){return a.f-b.f;});
+      subsHtml+='<div style="border-top:1px solid '+cl+'06">';
+      ss.forEach(function(s){
+        var sl2=s.f===s.to?(''+s.f):(s.f+'-'+s.to);
+        var isChild=ss.some(function(p){return p!==s&&s.f>=p.f&&s.to<=p.to&&(s.f!==p.f||s.to!==p.to);});
+        var hasKids=!isChild&&ss.some(function(c){return c!==s&&c.f>=s.f&&c.to<=s.to&&(c.f!==s.f||c.to!==s.to);});
+        var kids=hasKids?ss.filter(function(c){return c!==s&&c.f>=s.f&&c.to<=s.to&&(c.f!==s.f||c.to!==s.to);}):[];
+        var sd='';
+        if(anyShow)for(var a=s.f;a<=s.to;a++){
+          if(hasKids&&kids.some(function(c){return a>=c.f&&a<=c.to;}))continue;
+          sd+=row(a,cl);
+        }
+        subsHtml+='<div style="border-bottom:1px solid '+cl+'06"><div style="padding:5px 10px '+(isChild?'5px 22px':'5px 10px')+
+          ';background:linear-gradient(135deg,'+cl+(isChild?'08':'14')+','+cl+(isChild?'04':'08')+
+          ');display:flex;align-items:center;gap:5px;font-size:calc(var(--tl-s,1) * 9.5px)">'+
+          '<div style="width:'+(isChild?3:5)+'px;height:'+(isChild?3:5)+'px;border-radius:50%;background:'+cl+';opacity:'+(isChild?0.4:0.6)+'"></div>'+
+          '<span style="color:'+cl+';font-weight:600;font-size:calc(var(--tl-s,1) * 9px)">'+sl2+'</span>'+
+          '<span style="color:'+(isChild?cl:'var(--txt)')+';font-weight:500;'+(isChild?'opacity:0.8':'')+'">'+thaiWB(s.title)+'</span></div>'+
+          (s.desc?'<div style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3);margin:0 10px 3px '+(isChild?'32px':'20px')+'">'+thaiWB(s.desc)+'</div>':'')+
+          (sd?'<div style="padding:2px 10px 4px;background:var(--card)">'+sd+'</div>':'')+'</div>';
+      });
+      if(anyShow)for(var a2=g.f;a2<=g.to;a2++){
+        if(!g.subs.some(function(s2){return a2>=s2.f&&a2<=s2.to;}))orphanHtml+=row(a2,cl);
+      }
+      subsHtml+='</div>';
+    }
+    var mainData='';
+    if(!hasSubs&&anyShow)for(var a3=g.f;a3<=g.to;a3++)mainData+=row(a3,cl);
+    h+='<div style="margin-bottom:10px;position:relative"><div class="grp-tl-dot" style="background:'+cl+';box-shadow:0 0 0 1.5px '+cl+'40"></div>'+
+       '<div style="background:var(--card);border-radius:var(--r-md);overflow:hidden;border:1px solid '+cl+'18;box-shadow:0 1px 4px '+cl+'06">'+
+       '<div style="padding:8px 10px"><div style="display:flex;align-items:center;gap:4px;margin-bottom:2px">'+
+       '<span style="font-size:calc(var(--tl-s,1) * 9px);font-weight:700;color:#fff;background:'+cl+';padding:1px 6px;border-radius:4px">'+lbl+'</span>'+
+       (hasSubs?'<span style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3)">'+g.subs.length+' กลุ่มย่อย</span>':'')+'</div>'+
+       '<div style="font-size:calc(var(--tl-s,1) * 11px);font-weight:600;color:var(--txt);line-height:1.4">'+thaiWB(g.title)+'</div>'+
+       (g.desc?'<div style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--txt2);margin-top:2px;line-height:1.5">'+thaiWB(g.desc)+'</div>':'')+'</div>'+
+       '<div style="height:2px;background:'+cl+'08"><div style="height:100%;background:linear-gradient(90deg,'+cl+','+cl+'40);width:'+(((g.to-g.f+1)/(tA||1))*100)+'%"></div></div>'+
+       (orphanHtml?'<div style="padding:4px 10px 4px;border-top:1px solid '+cl+'10">'+orphanHtml+'</div>':'')+
+       subsHtml+
+       (mainData?'<div style="padding:4px 10px 6px;border-top:1px solid '+cl+'10">'+mainData+'</div>':'')+
+       '</div></div>';
+  });
+  h+='</div>';
+  return h;
+};
+
+/* ═══ 6. มายด์แมพ ═══════════════════════════════════════════════════ */
+/* 6a — ล้างตัววัดความกว้างทุกครั้ง : เดิมค้าง viewBox เก่าไว้
+        พอหมุนจอ/เปลี่ยนขนาดหน้าต่าง ความกว้างการ์ดจะเพี้ยน */
+var oGMM=_gMM;
+window._gMM=function(gs,sN,tA){
+  try{
+    var a=document.getElementById('_mm-svg-measure');if(a&&a.parentNode)a.parentNode.removeChild(a);
+    var b=document.getElementById('_mm-measure');if(b&&b.parentNode)b.parentNode.removeChild(b);
+  }catch(e){}
+  return oGMM.apply(this,arguments);
+};
+
+/* 6b — popup : ใช้เนื้อหาที่ล้างฟอร์แมตแล้ว + ขนาดตัวอักษรเท่ากันหมด */
+window._mmPop=function(ev,key){
+  ev.stopPropagation();
+  var wrap=ev.target.closest('.grp-mm-wrap');if(!wrap)return;
+  var popup=wrap.querySelector('#mm-popup');if(!popup)return;
+  var d=getSurah(currentSurah);var gs=d.ayahGroups||[];
+  var sI=[].concat(ALL_SURAHS,PLUS_SURAHS).find(function(x){return x.n===currentSurah;});
+  var typeL={notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs'),arText:L3('text')};
+  var ih='';
+
+  function block(f,to,cl,exSubs){
+    _mmTypes.forEach(function(type){
+      var data;
+      try{data=_mmGetD(d,f,to,type)||[];}catch(e){data=[];}
+      if(exSubs)data=data.filter(function(n){return !exSubs.some(function(s){return n.a>=s.f&&n.a<=s.to;});});
+      data=data.map(function(n){return {a:n.a,h:roSan(n.h)};}).filter(function(n){return roHas(n.h);});
+      if(!data.length)return;
+      var isAr=type==='arText';
+      ih+='<div style="border-top:1px solid var(--bdr-l);margin-top:4px;padding-top:4px">'+
+          '<div style="font-size:8px;color:var(--txt3);margin-bottom:2px">'+typeL[type]+' :</div>';
+      data.forEach(function(n){
+        ih+='<div class="ro-html'+(isAr?' ro-arhost':'')+'" style="font-size:10px;line-height:1.6;padding:2px 0'+
+            (isAr?';font-family:var(--f-ar);direction:rtl;text-align:right;font-size:15px;line-height:1.95':'')+'">'+
+            '<span style="color:'+cl+';font-weight:700;font-size:8px'+(isAr?';direction:ltr;float:left;margin-right:4px':'')+'">'+n.a+'</span> '+
+            n.h+'</div>';
+      });
+      ih+='</div>';
+    });
+  }
+
+  if(key==='root'){
+    var sT=sI?(sI.makkiMadani||''):'';
+    var ov=(d.overview||'').replace(/<[^>]*>/g,'').trim();
+    ih='<div style="font-size:var(--text-2xs);font-weight:700;color:var(--txt)">'+(sI?sI.name:'')+'</div>'+
+       '<div style="font-size:8px;font-weight:600;color:var(--grp);margin:2px 0">'+(sT?sT+' | ':'')+(sI?sI.ayah:'')+' อายะฮ์</div>'+
+       '<div style="font-size:9px;color:var(--txt2);line-height:1.6">'+(ov||'ยังไม่มีภาพรวม')+'</div>';
+  }else if(key.charAt(0)==='g'){
+    var gi=parseInt(key.substring(1),10);var g=gs[gi];
+    if(!g)ih='ไม่พบ';
+    else{
+      var cl1=g.color||_GC[gi%_GC.length];
+      ih='<div style="font-size:var(--text-2xs);font-weight:700;color:var(--txt)">'+thaiWB(g.title)+'</div>'+
+         '<div style="font-size:8px;font-weight:600;color:'+cl1+';margin:2px 0">อายะฮ์ '+(g.f===g.to?g.f:g.f+' - '+g.to)+'</div>';
+      if(g.desc)ih+='<div style="font-size:9px;color:var(--txt2);line-height:1.6;margin-bottom:3px">'+thaiWB(g.desc)+'</div>';
+      if(g.subs&&g.subs.length){
+        ih+='<div style="margin:3px 0">';
+        g.subs.slice().sort(function(a,b){return a.f-b.f;}).forEach(function(s){
+          ih+='<div style="font-size:8px;padding:1px 0;color:var(--txt2)"><span style="color:'+cl1+';font-weight:700">'+
+              (s.f===s.to?s.f:s.f+'-'+s.to)+'</span> '+thaiWB(s.title)+'</div>';
+        });
+        ih+='</div>';
+      }
+      block(g.f,g.to,cl1,g.subs&&g.subs.length?g.subs:null);
+    }
+  }else if(key.charAt(0)==='s'){
+    var p=key.substring(1).split('_');var gi2=parseInt(p[0],10),si=parseInt(p[1],10);
+    var g2=gs[gi2];var sub=g2&&g2.subs?g2.subs[si]:null;
+    if(!sub)ih='ไม่พบ';
+    else{
+      var cl2=g2.color||_GC[gi2%_GC.length];
+      ih='<div style="font-size:var(--text-2xs);font-weight:700;color:var(--txt)">'+thaiWB(sub.title)+'</div>'+
+         '<div style="font-size:8px;font-weight:600;color:'+cl2+';margin:2px 0">อายะฮ์ '+(sub.f===sub.to?sub.f:sub.f+'-'+sub.to)+'</div>';
+      if(sub.desc)ih+='<div style="font-size:9px;color:var(--txt2);line-height:1.6;margin-bottom:3px">'+thaiWB(sub.desc)+'</div>';
+      block(sub.f,sub.to,cl2,null);
+    }
+  }
+  popup.querySelector('#mm-popup-inner').innerHTML=ih;
+
+  var spacer=wrap.querySelector('.mm-scroll-spacer');
+  if(!spacer){spacer=document.createElement('div');spacer.className='mm-scroll-spacer';
+    spacer.style.cssText='height:0;pointer-events:none';wrap.appendChild(spacer);}
+  var rect=wrap.getBoundingClientRect();
+  var x=ev.clientX-rect.left+10,y=ev.clientY-rect.top-60;
+  if(y<0)y=ev.clientY-rect.top+15;
+  var wrapW=rect.width;if(x+300>wrapW)x=wrapW-310;if(x<5)x=5;
+  popup.style.left=x+'px';popup.style.top=y+'px';popup.style.display='block';
+  requestAnimationFrame(function(){
+    var popBot=y+popup.offsetHeight+100;
+    var svgEl=wrap.querySelector('svg');
+    var svgH2=svgEl?svgEl.getBoundingClientRect().height:0;
+    spacer.style.height=Math.max(0,popBot-svgH2)+'px';
+    try{popup.scrollIntoView({behavior:'smooth',block:'nearest'});}catch(e){}
+  });
+  var close=function(e2){
+    if(!popup.contains(e2.target)){
+      popup.style.display='none';
+      var sp=wrap.querySelector('.mm-scroll-spacer');if(sp)sp.style.height='0';
+      document.removeEventListener('click',close);
+    }
+  };
+  setTimeout(function(){document.addEventListener('click',close);},10);
+};
+
+/* ═══ 7. วัดใหม่เมื่อฟอนต์โหลดเสร็จ / หมุนจอ ═══════════════════════ */
+function reflowIfMM(){
+  if(_gvm!=='mindmap')return;
+  if(!grpVisible())return;
+  if(!document.getElementById('grp-vb'))return;
+  try{_sGVM('mindmap');}catch(e){}
+}
+try{if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){setTimeout(reflowIfMM,60);});}catch(e){}
+var rzT=null,lastW=window.innerWidth;
+window.addEventListener('resize',function(){
+  if(Math.abs(window.innerWidth-lastW)<24)return;
+  lastW=window.innerWidth;
+  clearTimeout(rzT);rzT=setTimeout(reflowIfMM,260);
+},{passive:true});
+
+/* ═══ 8. เข้าแท็บจัดกลุ่มด้วยวิธีอื่น (เช่น ลิงก์จากหน้าอื่น) ก็ยังขึ้น ═══ */
+document.addEventListener('click',function(e){
+  var t=e.target&&e.target.closest?e.target.closest('#page-detail .tabs .tab'):null;
+  if(!t)return;
+  setTimeout(function(){if(grpVisible()){try{window._grpEnsure();}catch(err){}}},0);
+},true);
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v381b · ซ่อมปุ่มเครื่องมือจัดรูปแบบที่ไม่ทำงาน
+   (ส่วน "ล้างขนาด/ฟอนต์" ถูกถอดออกแล้วตามที่สั่ง — v382 ใช้วิธี
+    แปลง px → em แทน ไม่ต้องลบของผู้ใช้อีก)
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+function edOf(node){
+  var n=node;
+  while(n&&n!==document.body){
+    if(n.nodeType===1&&((n.getAttribute&&n.getAttribute('contenteditable')==='true')||n.isContentEditable))return n;
+    n=n.parentNode;
+  }
+  return null;
+}
+function curEditable(){
+  var e=edOf(document.activeElement);
+  if(e)return e;
+  var sel=window.getSelection();
+  if(sel&&sel.anchorNode){e=edOf(sel.anchorNode);if(e)return e;}
+  if(typeof lastFocusedEditable!=='undefined'&&lastFocusedEditable&&document.body.contains(lastFocusedEditable))
+    return lastFocusedEditable;
+  return null;
+}
+function saveEd(el){
+  try{el.dispatchEvent(new Event('input',{bubbles:true}));}catch(e){}
+  try{el.dispatchEvent(new Event('blur',{bubbles:false}));}catch(e){}
+}
+
+/* ── ใส่สี / ไฮไลต์ ให้ติดทั้งก้อนที่เลือก ──
+   เดิม execCommand ห่อ span ไว้ข้างนอก ลูกที่มีสีของตัวเองจึงไม่เปลี่ยน
+   จึงลบสีเดิมของลูกที่อยู่ในช่วงที่เลือก "ทั้งตัว" ออกก่อน                */
+function fullyInside(range,el){
+  try{return range.comparePoint(el,0)===0&&range.comparePoint(el,el.childNodes.length)===0;}
+  catch(e){return false;}
+}
+function stripInSelection(props){
+  try{
+    var sel=window.getSelection();
+    if(!sel||!sel.rangeCount||sel.isCollapsed)return;
+    var r=sel.getRangeAt(0),c=r.commonAncestorContainer;
+    var host=edOf(c.nodeType===3?c.parentNode:c);
+    if(!host)return;
+    Array.prototype.forEach.call(host.querySelectorAll('[style],font[color]'),function(el){
+      if(!fullyInside(r,el))return;
+      props.forEach(function(p){try{el.style.removeProperty(p);}catch(e){}});
+      if(el.tagName==='FONT'&&props.indexOf('color')>=0)el.removeAttribute('color');
+      if(el.getAttribute('style')==='')el.removeAttribute('style');
+    });
+  }catch(e){}
+}
+if(typeof window.applyTextColor==='function'){
+  var oATC=window.applyTextColor;
+  window.applyTextColor=function(color){stripInSelection(['color']);return oATC.apply(this,arguments);};
+}
+if(typeof window.formatText==='function'){
+  var oFT=window.formatText;
+  window.formatText=function(cmd,val){
+    if(cmd==='hiliteColor'||cmd==='backColor')stripInSelection(['background-color','background']);
+    if(cmd==='foreColor')stripInSelection(['color']);
+    return oFT.apply(this,arguments);
+  };
+}
+
+/* ── normalizeLineHeight() เดิมเป็นฟังก์ชันว่าง : วน element แล้วจบ ── */
+window.normalizeLineHeight=function(){
+  var root=curEditable();
+  if(!root){if(typeof toast==='function')toast('กรุณาคลิกในกล่องข้อความก่อน');return;}
+  Array.prototype.forEach.call(root.querySelectorAll('[style]'),function(el){
+    ['line-height','margin','margin-top','margin-bottom','padding','padding-top','padding-bottom']
+      .forEach(function(p){try{el.style.removeProperty(p);}catch(e){}});
+    if(el.getAttribute('style')==='')el.removeAttribute('style');
+  });
+  saveEd(root);
+  if(typeof toast==='function')toast('รีเซ็ตระยะห่างบรรทัดแล้ว');
+};
+
+/* ── "รีเซ็ทขนาด" เดิมต้องเลือกข้อความก่อน ไม่งั้นเงียบไปเฉย ๆ
+      ตอนนี้ถ้าไม่ได้เลือก = ล้างขนาดทั้งกล่อง (ลบเฉพาะขนาด ไม่แตะสี/ฟอนต์) ── */
+if(typeof window.fontSizeReset==='function'){
+  var oFSR=window.fontSizeReset;
+  window.fontSizeReset=function(){
+    var sel=window.getSelection();
+    if(sel&&sel.rangeCount&&!sel.isCollapsed)return oFSR.apply(this,arguments);
+    var root=curEditable();
+    if(!root){if(typeof toast==='function')toast('แตะในกล่องข้อความก่อน');return;}
+    Array.prototype.forEach.call(root.querySelectorAll('[style],[data-mqsize]'),function(el){
+      try{el.style.removeProperty('font-size');}catch(e){}
+      el.removeAttribute('data-mqsize');
+      if(el.getAttribute('style')==='')el.removeAttribute('style');
+    });
+    saveEd(root);
+    if(typeof toast==='function')toast('ล้างขนาดทั้งกล่องแล้ว');
+  };
+}
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v382 · แก้ให้ถูกจุด : "ไม่ลบของผู้ใช้ แต่ทำให้ย่อ-ขยายได้"
+   ───────────────────────────────────────────────────────────────────
+   ทบทวนปัญหาจริง
+   • v381 ไปลบ inline style ทิ้ง = แก้ปลายเหตุ ผู้ใช้เสียรูปแบบที่ตั้งใจไว้
+   • ต้นเหตุจริงคือ px เป็น "หน่วยตายตัว" ไม่ขยับตามกล่องแม่
+     → แปลงเป็น em (หน่วยสัมพัทธ์) แทนการลบ
+       24px บนฐาน 13.4px = 1.79em  → หน้าตาเหมือนเดิมเป๊ะที่ 100%
+       แต่คราวนี้ย่อ-ขยายตามปุ่ม "อักษร" ทั้งก้อน ไม่มีตัวไหนดื้อ
+   • ไทม์ไลน์เด้ง เพราะกดปุ่ม "แสดง :" แล้วสร้างใหม่ทั้งแท็บ
+     (ตัวหมุนรอทำให้กล่องยุบแล้วพองกลับ ตำแหน่งสกรอลล์เลยกระโดด)
+     → แยกแถบควบคุมออกจากเนื้อ สร้างใหม่เฉพาะเนื้อ + ล็อกสกรอลล์
+   • สีบันทึกในไทม์ไลน์ไม่คงเส้นคงวา เพราะโค้ดเดิมเช็กว่า
+     "ถ้าเนื้อหามีสีอยู่แล้วสักจุด ก็ไม่ต้องใส่สีม่วง" → อายะฮ์ที่ระบายสี
+     ไว้คำเดียว ทั้งย่อหน้าเลยหลุดจากสีม่วง
+     → ใส่สีประจำหมวดเป็นสีพื้นเสมอ ส่วนที่ระบายสีเองก็ยังชนะตามปกติ
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+(function(){
+  if(document.getElementById('v382-style'))return;
+  var s=document.createElement('style');s.id='v382-style';
+  s.textContent=[
+    /* เนื้อหาในมุมมองอ่านอย่างเดียว : รักษารูปแบบเดิม คุมแค่ไม่ให้ล้นกรอบ */
+    '.ro-html{overflow-wrap:anywhere}',
+    '.ro-html img{max-width:100%;height:auto;border-radius:6px}',
+    '.ro-html table{border-collapse:collapse;max-width:100%}',
+    '.ro-ar{font-family:var(--f-ar);font-size:1.25em;line-height:1.9;direction:rtl;unicode-bidi:isolate}',
+    '.ro-arhost .ro-ar{font-size:1em;line-height:inherit;font-family:inherit}',
+    '#tl-bar{position:relative;z-index:2}',
+    '#tl-body{min-height:0}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+/* ═══ 1. ฐานขนาดตัวอักษรของกล่องบันทึก (px ที่ 1em อ้างอิง) ════════ */
+function baseTextPx(){
+  var p=document.getElementById('_fzprobe');
+  if(!p){
+    p=document.createElement('div');p.id='_fzprobe';
+    p.style.cssText='position:absolute;left:-9999px;top:-9999px;font-size:var(--text-xs);line-height:1';
+    document.body.appendChild(p);
+  }
+  var v=parseFloat(getComputedStyle(p).fontSize);
+  return (v&&isFinite(v)&&v>=8&&v<=30)?v:13.5;
+}
+
+/* ═══ 2. แปลง px → em (ไม่ลบอะไรเลย หน้าตาที่ 100% เหมือนเดิม) ═════
+   เดินไล่ต้นไม้ พร้อมจำ "ขนาดจริงของพ่อ" เพื่อคำนวณ em ให้ถูก
+   ป้องกันการซ้อนทับ เช่น <div 24px><span 12px> ต้องได้ 12px ไม่ใช่ 18px */
+var ABS_FS=/^\s*([\d.]+)\s*(px|pt|pc|mm|cm|in)\s*$/i;
+var UNIT={px:1,pt:4/3,pc:16,mm:96/25.4,cm:96/2.54,'in':96};
+var KEYWORD_FS={'xx-small':9,'x-small':10,'small':13,'medium':16,'large':18,
+                'x-large':24,'xx-large':32,'smaller':0.83,'larger':1.2};
+var LEN_PROPS=['margin','margin-top','margin-bottom','margin-left','margin-right',
+               'padding','padding-top','padding-bottom','padding-left','padding-right',
+               'text-indent','letter-spacing'];
+
+function relativizeEl(el,parentPx,opt){
+  var ownPx=parentPx;
+  var st=el.getAttribute&&el.getAttribute('style');
+  if(st){
+    /* รอบแรก : แยก declaration แล้วหา font-size ก่อน เพื่อรู้ "ขนาดจริงของตัวเอง"
+       ค่าอื่น (line-height / margin) จะได้อ้างอิงถูกตัว */
+    var raw=[];
+    st.split(';').forEach(function(part){
+      var i=part.indexOf(':');if(i<0)return;
+      var k=part.slice(0,i).trim().toLowerCase(),v=part.slice(i+1).trim();
+      if(k&&v)raw.push([k,v]);
+    });
+    var fsOut=null,changed=false;
+    raw.forEach(function(kv){
+      if(kv[0]!=='font-size')return;
+      var v=kv[1],m=v.match(ABS_FS);
+      if(m&&parentPx>0){
+        var px=parseFloat(m[1])*(UNIT[m[2].toLowerCase()]||1);
+        if(px>0){var em=Math.max(0.35,Math.min(6,Math.round((px/parentPx)*1000)/1000));
+          fsOut=em+'em';ownPx=parentPx*em;changed=true;return;}
+      }
+      var kw=KEYWORD_FS[v.toLowerCase()];
+      if(kw&&parentPx>0){
+        var e2=Math.round(((kw<3)?kw:(kw/parentPx))*1000)/1000;
+        fsOut=e2+'em';ownPx=parentPx*e2;changed=true;return;
+      }
+      var m2=v.match(/^([\d.]+)\s*(%|em|rem)$/);
+      if(m2){
+        var n=parseFloat(m2[1]);
+        if(m2[2]==='%'){ownPx=parentPx*n/100;fsOut=v;}
+        else if(m2[2]==='em'){ownPx=parentPx*n;fsOut=v;}
+        else if(parentPx>0){
+          var rp=n*16,re2=Math.max(0.35,Math.min(6,Math.round((rp/parentPx)*1000)/1000));
+          fsOut=re2+'em';ownPx=parentPx*re2;changed=true;
+        }else fsOut=v;
+        return;
+      }
+      fsOut=v;
+    });
+    /* รอบสอง : ประกอบ style ใหม่ */
+    var decls=[];
+    raw.forEach(function(kv){
+      var k=kv[0],v=kv[1];
+      if(k==='font-size'){if(fsOut)decls.push('font-size:'+fsOut);return;}
+      if(k==='line-height'){
+        var ml=v.match(ABS_FS);
+        if(ml&&ownPx>0){
+          var lpx=parseFloat(ml[1])*(UNIT[ml[2].toLowerCase()]||1);
+          decls.push('line-height:'+(Math.round((lpx/ownPx)*100)/100));changed=true;return;
+        }
+        decls.push(k+':'+v);return;
+      }
+      if(LEN_PROPS.indexOf(k)>=0&&ownPx>0){
+        var out=v.replace(/(-?[\d.]+)(px|pt)/gi,function(_,num,u){
+          var q=parseFloat(num)*(UNIT[u.toLowerCase()]||1);
+          return (Math.round((q/ownPx)*1000)/1000)+'em';
+        });
+        if(out!==v){decls.push(k+':'+out);changed=true;return;}
+        decls.push(k+':'+v);return;
+      }
+      if(opt&&opt.dropLayout&&/^(position|float|width|height|min-width|min-height|max-height|zoom)$/.test(k))return;
+      decls.push(k+':'+v);
+    });
+    if(changed||(opt&&opt.dropLayout)){
+      var ns=decls.join(';');
+      if(ns)el.setAttribute('style',ns);else el.removeAttribute('style');
+    }
+  }
+  var kids=el.children;
+  for(var j=0;j<kids.length;j++)relativizeEl(kids[j],ownPx,opt);
+}
+
+/* ═══ 3. เตรียมเนื้อหาสำหรับ "มุมมองอ่านอย่างเดียว"
+        เก็บทุกอย่างของผู้ใช้ไว้ (สี ฟอนต์ ตัวหนา ขนาดสัมพัทธ์)
+        ตัดออกเฉพาะสิ่งที่ทำให้เลย์เอาต์พัง / ไม่ปลอดภัย ═══════════ */
+var AR='\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF';
+var AR_TEST=new RegExp('['+AR+']');
+var AR_RUN=new RegExp('(['+AR+'][' +AR+ '\\s\\u064B-\\u0652\\u0670\\u06D6-\\u06ED\\u060C\\u061B\\u061F.,:;!?()\\[\\]{}"\'\\u00AB\\u00BB\\-\\u2013\\u2014]*)','g');
+var KILL='script,style,link,meta,title,iframe,object,embed,noscript,form,input,button';
+var roCache=new Map();
+
+function roPrep(html,basePx){
+  if(html==null||html==='')return '';
+  html=String(html);
+  var ck=basePx.toFixed(2)+'|'+html;
+  var hit=roCache.get(ck);if(hit!==undefined)return hit;
+  var box;
+  try{
+    box=document.createElement('div');
+    box.innerHTML=html;
+    box.querySelectorAll(KILL).forEach(function(n){if(n.parentNode)n.parentNode.removeChild(n);});
+    box.querySelectorAll('*').forEach(function(el){
+      var a=Array.prototype.slice.call(el.attributes);
+      for(var i=0;i<a.length;i++){
+        var nm=a[i].name.toLowerCase();
+        if(nm.indexOf('on')===0)el.removeAttribute(a[i].name);
+      }
+      var hv=el.getAttribute&&el.getAttribute('href');
+      if(hv&&/^\s*(javascript|vbscript):/i.test(hv))el.removeAttribute('href');
+    });
+    /* px → em ทั้งต้นไม้ */
+    for(var c=0;c<box.children.length;c++)relativizeEl(box.children[c],basePx,{dropLayout:true});
+
+    /* อาหรับที่ยังไม่มีฟอนต์กำกับ → ใส่ฟอนต์อาหรับให้ */
+    var wk=document.createTreeWalker(box,NodeFilter.SHOW_TEXT,null,false),t,list=[];
+    while((t=wk.nextNode()))if(AR_TEST.test(t.nodeValue))list.push(t);
+    list.forEach(function(node){
+      var p=node.parentNode;if(!p)return;
+      if(p.classList&&p.classList.contains('ro-ar'))return;
+      /* ถ้าผู้ใช้กำหนดฟอนต์ไว้เองแล้ว ไม่ต้องยุ่ง */
+      var q=p,declared=false;
+      while(q&&q!==box){if(q.style&&q.style.fontFamily){declared=true;break;}q=q.parentNode;}
+      if(declared)return;
+      var parts=String(node.nodeValue).split(AR_RUN);
+      if(parts.length<2)return;
+      var frag=document.createDocumentFragment();
+      parts.forEach(function(s){
+        if(!s)return;
+        if(AR_TEST.test(s)){var sp=document.createElement('span');sp.className='ro-ar';sp.textContent=s;frag.appendChild(sp);}
+        else frag.appendChild(document.createTextNode(s));
+      });
+      p.replaceChild(frag,node);
+    });
+    var out=box.innerHTML;
+    if(roCache.size>500)roCache.clear();
+    roCache.set(ck,out);
+    return out;
+  }catch(e){return html;}
+}
+window._roSan=function(h){return roPrep(h,baseTextPx());};
+
+var hasBox=null;
+function roHas(html){
+  if(!html)return false;
+  if(/<img/i.test(html))return true;
+  try{
+    if(!hasBox)hasBox=document.createElement('div');
+    hasBox.innerHTML=String(html);
+    return (hasBox.textContent||'').replace(/[\s\u00A0\u200B\u200C\u200D\uFEFF]/g,'').length>0;
+  }catch(e){return true;}
+}
+
+/* ═══ 4. กล่องแก้ไข : แปลง px → em ในที่ (หน้าตาเหมือนเดิม แต่ย่อ-ขยายได้) ═══ */
+var EDS='.ayah-input,.note-edit,#overview-edit,#reasons-edit,#stories-edit,#similar-edit,.name-add-edit';
+function relativizeEditors(){
+  try{
+    var st=document.getElementById('nb-fs-style');
+    var keep=st?st.textContent:'';
+    if(st)st.textContent='';                 /* ปิดสเกลชั่วคราว เพื่อวัดฐานจริง */
+    document.querySelectorAll(EDS).forEach(function(el){
+      if(el.getAttribute('data-emz')==='1')return;
+      if(document.activeElement===el)return;  /* กำลังพิมพ์อยู่ ไม่แตะ */
+      var bp=parseFloat(getComputedStyle(el).fontSize);
+      if(!(bp>=8&&bp<=32))bp=baseTextPx();
+      /* แปลงเฉพาะในหน้าจอ ไม่บันทึกทับ — ข้อมูลต้นฉบับของผู้ใช้ยังอยู่ครบ */
+      for(var i=0;i<el.children.length;i++)relativizeEl(el.children[i],bp,null);
+      el.setAttribute('data-emz','1');
+    });
+    if(st)st.textContent=keep;
+  }catch(e){}
+}
+window._relEditors=relativizeEditors;
+
+/* ═══ 5. ไทม์ไลน์ : แยกแถบควบคุม ↔ เนื้อหา  (ไม่เด้ง ไม่กระพริบ) ═══ */
+function tlScale(){
+  var v=parseFloat(localStorage.getItem('tlFontScale'));
+  if(!v||isNaN(v))v=1;
+  return Math.max(0.7,Math.min(2.2,v));
+}
+function tlApply(){
+  var b=document.getElementById('grp-vb');
+  if(b)b.style.setProperty('--tl-s',tlScale());
+  var v=document.getElementById('tl-fv');
+  if(v)v.textContent=Math.round(tlScale()*100)+'%';
+}
+window._tlApplyScale=tlApply;
+
+/* ปุ่มขนาดอักษรไทม์ไลน์ : เปลี่ยนแค่ CSS variable ไม่ต้องสร้างเนื้อใหม่เลย */
+window._tlFont=function(delta){
+  var v=tlScale();
+  v=delta===0?1:Math.max(0.7,Math.min(2.2,Math.round((v+delta)*100)/100));
+  try{localStorage.setItem('tlFontScale',v);}catch(e){}
+  tlApply();
+  var rs=document.getElementById('tl-frs');
+  if(rs)rs.style.display=(Math.abs(v-1)>0.01)?'':'none';
+};
+window._tlFontBar=function(){
+  var cur=tlScale();
+  return '<div class="tl-fbar">'+
+    '<span class="lb">อักษร :</span>'+
+    '<button type="button" class="tl-fb" onclick="_tlFont(-0.1)" aria-label="เล็กลง">&#8722;</button>'+
+    '<span class="tl-fv" id="tl-fv">'+Math.round(cur*100)+'%</span>'+
+    '<button type="button" class="tl-fb" onclick="_tlFont(0.1)" aria-label="ใหญ่ขึ้น">+</button>'+
+    '<button type="button" class="tl-frs" id="tl-frs" onclick="_tlFont(0)" style="display:'+
+      (Math.abs(cur-1)>0.01?'':'none')+'">รีเซ็ต</button>'+
+  '</div>';
+};
+
+function tlState(){
+  if(!window._tlShow)window._tlShow={arText:false,notes:false,meanings:false,tafsirs:false};
+  if(!window._tlOrd)window._tlOrd=['arText','notes','meanings','tafsirs'];
+  return {ts:window._tlShow,ord:window._tlOrd};
+}
+
+function tlBarHTML(){
+  var s=tlState(),ts=s.ts,ord=s.ord;
+  var L={arText:L3('text'),notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs')};
+  var h='<div id="tl-bar">'+_tlFontBar();
+  h+='<div style="display:flex;gap:3px;margin-bottom:4px;flex-wrap:wrap;align-items:center">'+
+     '<span style="font-size:var(--text-3xs);color:var(--txt3)">แสดง :</span>';
+  ['arText','notes','meanings','tafsirs'].forEach(function(k){
+    var on=ts[k];
+    h+='<button type="button" data-tlk="'+k+'" onclick="_tlTgl(\''+k+'\')" '+
+       'style="padding:4px 10px;border-radius:var(--r-full);font-size:var(--text-3xs);border:1px solid '+
+       (on?'var(--pri)':'var(--bdr)')+';background:'+(on?'var(--pri)':'var(--card)')+';color:'+
+       (on?'#fff':'var(--txt3)')+';cursor:pointer;font-family:var(--f-th)">'+L[k]+'</button>';
+  });
+  h+='</div><div id="tl-ord">'+tlOrdHTML()+'</div></div>';
+  return h;
+}
+function tlOrdHTML(){
+  var s=tlState(),ts=s.ts,ord=s.ord;
+  var act=ord.filter(function(k){return ts[k];});
+  if(!act.length)return '';
+  var L={arText:L3('text'),notes:L3('notes'),meanings:L3('meanings'),tafsirs:L3('tafsirs')};
+  var h='<div style="display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap;align-items:center">'+
+        '<span style="font-size:var(--text-3xs);color:var(--txt3)">ลำดับ :</span>';
+  act.forEach(function(k,i){
+    h+='<span style="display:inline-flex;align-items:center;gap:1px;font-size:var(--text-3xs);color:var(--txt2);'+
+       'background:var(--card2);padding:3px 8px;border-radius:var(--r-full);border:1px solid var(--bdr-l)">';
+    if(i>0)h+='<button type="button" onclick="_tlMv(\''+k+'\',-1)" style="border:none;background:none;cursor:pointer;font-size:8px;color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25C0</button>';
+    h+=L[k];
+    if(i<act.length-1)h+='<button type="button" onclick="_tlMv(\''+k+'\',1)" style="border:none;background:none;cursor:pointer;font-size:var(--text-3xs);color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25B6</button>';
+    h+='</span>';
+  });
+  return h+'</div>';
+}
+
+/* สร้าง "เฉพาะเนื้อ" ของไทม์ไลน์ */
+function tlBodyHTML(gs,tA){
+  var s=tlState(),ts=s.ts,ord=s.ord;
+  var anyShow=ts.arText||ts.notes||ts.meanings||ts.tafsirs;
+  var sorted=gs.slice().sort(function(a,b){return a.f-b.f;});
+  var cols=sorted.map(function(g){return g.color||_GC[gs.indexOf(g)%_GC.length];}).join(',');
+  var d=getSurah(currentSurah);
+  var bp=baseTextPx();
+  var h='<div class="grp-tl-wrap"><div class="grp-tl-line" style="background:linear-gradient(to bottom,'+cols+')"></div>';
+
+  function row(a,cl){
+    var notes=ts.notes?roPrep((d.notes&&d.notes[a])||'',bp):'';
+    var mean =ts.meanings?roPrep((d.meanings&&d.meanings[a])||'',bp):'';
+    var taf  =ts.tafsirs?roPrep((d.tafsirs&&d.tafsirs[a])||'',bp):'';
+    var arH='';
+    if(ts.arText){try{var r0=_mmGetD(d,a,a,'arText');arH=r0.length?roPrep(r0[0].h,bp):'';}catch(e){}}
+    var sA=roHas(arH),sN=roHas(notes),sM=roHas(mean),sT=roHas(taf);
+    if(!sA&&!sN&&!sM&&!sT)return '';
+    var r='<div style="padding:3px 0;border-top:1px solid '+cl+'08;font-size:calc(var(--tl-s,1) * 9px)">'+
+          '<span style="color:'+cl+';font-weight:700;font-size:calc(var(--tl-s,1) * 9px)">'+a+'</span> ';
+    /* สีประจำหมวดเป็น "สีพื้น" เสมอ — ส่วนที่ผู้ใช้ระบายสีเองยังชนะตามปกติ */
+    var mp={
+      arText:{ok:sA,h:'<span dir="rtl" class="ro-html ro-arhost" style="display:inline-block;font-family:var(--f-ar);font-size:calc(var(--tl-s,1) * 13px);line-height:1.95;color:var(--txt)">'+arH+'</span> '},
+      notes:{ok:sN,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--pri);margin-top:1px;line-height:1.55">'+notes+'</div>'},
+      meanings:{ok:sM,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--sec);margin-top:1px;line-height:1.55">'+mean+'</div>'},
+      tafsirs:{ok:sT,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--tafsir);margin-top:1px;line-height:1.55">'+taf+'</div>'}
+    };
+    ord.forEach(function(k){if(mp[k]&&mp[k].ok)r+=mp[k].h;});
+    return r+'</div>';
+  }
+
+  sorted.forEach(function(g){
+    var oi=gs.indexOf(g),cl=g.color||_GC[oi%_GC.length];
+    var lbl=g.f===g.to?(''+g.f):(g.f+' - '+g.to);
+    var hasSubs=g.subs&&g.subs.length;
+    var subsHtml='',orphan='';
+    if(hasSubs){
+      var ss=g.subs.slice().sort(function(a,b){return a.f-b.f;});
+      subsHtml+='<div style="border-top:1px solid '+cl+'06">';
+      ss.forEach(function(sb){
+        var sl=sb.f===sb.to?(''+sb.f):(sb.f+'-'+sb.to);
+        var isChild=ss.some(function(p){return p!==sb&&sb.f>=p.f&&sb.to<=p.to&&(sb.f!==p.f||sb.to!==p.to);});
+        var hasKids=!isChild&&ss.some(function(c){return c!==sb&&c.f>=sb.f&&c.to<=sb.to&&(c.f!==sb.f||c.to!==sb.to);});
+        var kids=hasKids?ss.filter(function(c){return c!==sb&&c.f>=sb.f&&c.to<=sb.to&&(c.f!==sb.f||c.to!==sb.to);}):[];
+        var sd='';
+        if(anyShow)for(var a=sb.f;a<=sb.to;a++){
+          if(hasKids&&kids.some(function(c){return a>=c.f&&a<=c.to;}))continue;
+          sd+=row(a,cl);
+        }
+        subsHtml+='<div style="border-bottom:1px solid '+cl+'06"><div style="padding:5px 10px '+(isChild?'5px 22px':'5px 10px')+
+          ';background:linear-gradient(135deg,'+cl+(isChild?'08':'14')+','+cl+(isChild?'04':'08')+
+          ');display:flex;align-items:center;gap:5px;font-size:calc(var(--tl-s,1) * 9.5px)">'+
+          '<div style="width:'+(isChild?3:5)+'px;height:'+(isChild?3:5)+'px;border-radius:50%;background:'+cl+';opacity:'+(isChild?0.4:0.6)+'"></div>'+
+          '<span style="color:'+cl+';font-weight:600;font-size:calc(var(--tl-s,1) * 9px)">'+sl+'</span>'+
+          '<span style="color:'+(isChild?cl:'var(--txt)')+';font-weight:500;'+(isChild?'opacity:0.8':'')+'">'+thaiWB(sb.title)+'</span></div>'+
+          (sb.desc?'<div style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3);margin:0 10px 3px '+(isChild?'32px':'20px')+'">'+thaiWB(sb.desc)+'</div>':'')+
+          (sd?'<div style="padding:2px 10px 4px;background:var(--card)">'+sd+'</div>':'')+'</div>';
+      });
+      if(anyShow)for(var a2=g.f;a2<=g.to;a2++){
+        if(!g.subs.some(function(x){return a2>=x.f&&a2<=x.to;}))orphan+=row(a2,cl);
+      }
+      subsHtml+='</div>';
+    }
+    var mainData='';
+    if(!hasSubs&&anyShow)for(var a3=g.f;a3<=g.to;a3++)mainData+=row(a3,cl);
+    h+='<div style="margin-bottom:10px;position:relative"><div class="grp-tl-dot" style="background:'+cl+';box-shadow:0 0 0 1.5px '+cl+'40"></div>'+
+       '<div style="background:var(--card);border-radius:var(--r-md);overflow:hidden;border:1px solid '+cl+'18;box-shadow:0 1px 4px '+cl+'06">'+
+       '<div style="padding:8px 10px"><div style="display:flex;align-items:center;gap:4px;margin-bottom:2px">'+
+       '<span style="font-size:calc(var(--tl-s,1) * 9px);font-weight:700;color:#fff;background:'+cl+';padding:1px 6px;border-radius:4px">'+lbl+'</span>'+
+       (hasSubs?'<span style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3)">'+g.subs.length+' กลุ่มย่อย</span>':'')+'</div>'+
+       '<div style="font-size:calc(var(--tl-s,1) * 11px);font-weight:600;color:var(--txt);line-height:1.4">'+thaiWB(g.title)+'</div>'+
+       (g.desc?'<div style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--txt2);margin-top:2px;line-height:1.5">'+thaiWB(g.desc)+'</div>':'')+'</div>'+
+       '<div style="height:2px;background:'+cl+'08"><div style="height:100%;background:linear-gradient(90deg,'+cl+','+cl+'40);width:'+(((g.to-g.f+1)/(tA||1))*100)+'%"></div></div>'+
+       (orphan?'<div style="padding:4px 10px 4px;border-top:1px solid '+cl+'10">'+orphan+'</div>':'')+
+       subsHtml+
+       (mainData?'<div style="padding:4px 10px 6px;border-top:1px solid '+cl+'10">'+mainData+'</div>':'')+
+       '</div></div>';
+  });
+  return h+'</div>';
+}
+
+window._gTL=function(gs,tA){
+  if(!gs||!gs.length)return '<div class="empty-state">ยังไม่มีกลุ่ม</div>';
+  return tlBarHTML()+'<div id="tl-body" data-ta="'+(tA||0)+'">'+tlBodyHTML(gs,tA)+'</div>';
+};
+
+/* สร้างใหม่เฉพาะเนื้อ + ล็อกตำแหน่งสกรอลล์ → ไม่เด้ง */
+function tlRepaintBody(){
+  var body=document.getElementById('tl-body');
+  if(!body){if(typeof _sGVM==='function')_sGVM('timeline');return;}
+  var y=window.scrollY||window.pageYOffset||0;
+  var h0=body.offsetHeight;
+  body.style.minHeight=h0+'px';          /* กันหน้ายุบระหว่างสลับเนื้อ */
+  var d=getSurah(currentSurah),gs=d.ayahGroups||[];
+  var tA=parseInt(body.getAttribute('data-ta'),10)||0;
+  body.innerHTML=tlBodyHTML(gs,tA);
+  window.scrollTo(0,y);
+  requestAnimationFrame(function(){
+    body.style.minHeight='';
+    window.scrollTo(0,y);
+  });
+}
+
+window._tlTgl=function(k){
+  var s=tlState();
+  s.ts[k]=!s.ts[k];
+  var btn=document.querySelector('#tl-bar [data-tlk="'+k+'"]');
+  if(btn){
+    var on=s.ts[k];
+    btn.style.border='1px solid '+(on?'var(--pri)':'var(--bdr)');
+    btn.style.background=on?'var(--pri)':'var(--card)';
+    btn.style.color=on?'#fff':'var(--txt3)';
+  }
+  var ord=document.getElementById('tl-ord');
+  if(ord)ord.innerHTML=tlOrdHTML();
+  tlRepaintBody();
+};
+window._tlMv=function(k,dir){
+  var o=window._tlOrd;if(!o)return;
+  var i=o.indexOf(k),n=i+dir;
+  if(i<0||n<0||n>=o.length)return;
+  var tmp=o[i];o[i]=o[n];o[n]=tmp;
+  var ord=document.getElementById('tl-ord');
+  if(ord)ord.innerHTML=tlOrdHTML();
+  tlRepaintBody();
+};
+
+/* ═══ 6. สลับมุมมอง : ไทม์ไลน์/กลุ่มสี/แก้ไข วาดทันที (ไม่มีตัวหมุน)
+        เหลือตัวหมุนไว้เฉพาะมายด์แมพที่ต้องวัดตำแหน่งจริง ═══════════ */
+function surahOf(sn){
+  var isP=typeof sn==='string'&&sn.charAt(0)==='p',s;
+  if(isP)s=PLUS_SURAHS.find(function(x){return x.n===sn;});
+  else{s=SURAHS.find(function(x){return x.n===sn;});if(!s)s=ALL_SURAHS.find(function(x){return x.n===sn;});}
+  return {snA:isP?"'"+sn+"'":sn,tA:s?s.ayah:0,sN:s?s.name:''};
+}
+var seq=0;
+window._sGVM=function(mode){
+  _gvm=mode;
+  document.querySelectorAll('.grp-mtab').forEach(function(b){
+    b.classList.toggle('on',b.getAttribute('data-gvm')===mode);
+  });
+  var box=document.getElementById('grp-vb');
+  if(!box)return;
+  var my=++seq;
+  var y=window.scrollY||window.pageYOffset||0;
+  var paint=function(){
+    if(my!==seq)return;
+    var el=document.getElementById('grp-vb');if(!el)return;
+    var m=surahOf(currentSurah),d=getSurah(currentSurah);
+    var out;
+    try{out=_bldGV(d.ayahGroups||[],m.snA,m.tA,m.sN)||'';}
+    catch(e){out='<div class="grp-err">แสดงผลไม่สำเร็จ</div>';}
+    el.innerHTML=out;
+    tlApply();
+    if(Math.abs((window.scrollY||0)-y)>2)window.scrollTo(0,y);
+  };
+  if(mode==='mindmap'){
+    box.style.minHeight=box.offsetHeight+'px';
+    box.innerHTML='<div class="grp-busy"><i></i>กำลังจัดเรียง...</div>';
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      paint();box.style.minHeight='';
+    });});
+  }else paint();
+};
+
+/* ═══ 7. มายด์แมพ popup : ใช้เนื้อหาเดิมของผู้ใช้ (แปลงเป็น em) ═════ */
+var oMMPop=window._mmPop;
+window._mmPop=function(ev,key){return oMMPop.apply(this,arguments);};
+
+/* ═══ 8. ให้กล่องบันทึกแปลงเป็น em หลังหน้ารายละเอียดวาดเสร็จ ══════ */
+if(typeof window._grpInit==='function'){
+  var oGrpInit=window._grpInit;
+  window._grpInit=function(sn){
+    var r=oGrpInit.apply(this,arguments);
+    setTimeout(relativizeEditors,40);
+    return r;
+  };
+}
+/* พิมพ์/วางเสร็จแล้วแปลงรอบใหม่ ให้ของที่เพิ่งวางมาย่อ-ขยายได้ทันที */
+document.addEventListener('focusout',function(e){
+  var el=e.target;
+  if(!el||!el.getAttribute||el.getAttribute('contenteditable')!=='true')return;
+  if(!el.matches||!el.matches(EDS))return;
+  el.removeAttribute('data-emz');
+  setTimeout(function(){if(document.activeElement!==el)relativizeEditors();},90);
+},true);
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v383 · นำเข้า / ส่งออก "เฉพาะบันทึก" ให้ใช้ได้จริง + ตั้งชื่อไฟล์ตามบันทึก
+   ───────────────────────────────────────────────────────────────────
+   ปัญหาเดิมของ mqExportNotes / mqImportNotes ในวงล้อนำทาง
+   1) เก็บแต่คีย์ surah_* → การ์ดที่สร้างเอง (plus_*) หายทั้งใบ
+      รวมถึงชื่อการ์ด คำเรียกชั้นข้อมูล หัวข้อ หมวดหมู่
+   2) ไม่เก็บ ayahHighlights / userAyahTexts → ตัวบทกับไฮไลต์หายหมด
+   3) รูปแบบไฟล์ {kind:'notes-only'} ไม่มีใครอ่านได้นอกจากตัวมันเอง
+      เอาไปเข้า "นำเข้าข้อมูล" ของแอปก็ไม่ได้ (คีย์คนละแบบ: surah_78 vs 78)
+      → นี่คือเหตุผลที่ไฟล์ "ใช้ต่อไม่ได้"
+   แก้เป็น
+   • ส่งออก : เก็บครบทุกอย่างที่เป็นเนื้อหาบันทึก ไม่แตะความคืบหน้า
+              ใส่ลายเซ็น app + ชื่อบันทึกในไฟล์ + ตั้งชื่อไฟล์ตามบันทึก
+   • นำเข้า  : อ่านได้ทั้งไฟล์ใหม่ ไฟล์เก่า ไฟล์สำรองทั้งเครื่อง
+              (ดึงเฉพาะบันทึกออกมา) และไฟล์แชร์ (ส่งต่อให้ศูนย์แชร์)
+              รวมข้อมูลแบบไม่ทับความคืบหน้า พร้อมหน้าสรุปก่อนยืนยัน
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+(function(){
+  if(document.getElementById('v383-style'))return;
+  var s=document.createElement('style');s.id='v383-style';
+  s.textContent=[
+    '.nix-ov{position:fixed;inset:0;z-index:99998;background:rgba(40,32,50,.45);display:flex;',
+      'align-items:center;justify-content:center;padding:18px;-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}',
+    '.nix-bx{width:100%;max-width:340px;max-height:86vh;overflow-y:auto;background:var(--card);border-radius:18px;',
+      'padding:16px 15px 13px;box-shadow:0 18px 50px rgba(40,32,50,.28);font-family:var(--f-th)}',
+    '.nix-h{font-size:var(--text-sm);font-weight:700;color:var(--txt);margin-bottom:2px}',
+    '.nix-sub{font-size:var(--text-3xs);color:var(--txt3);margin-bottom:10px;line-height:1.55}',
+    '.nix-row{display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-top:1px solid var(--bdr-l);',
+      'font-size:var(--text-3xs);color:var(--txt2)}',
+    '.nix-row b{color:var(--txt);font-weight:600}',
+    '.nix-names{font-size:var(--text-3xs);color:var(--txt3);line-height:1.6;margin-top:7px;',
+      'max-height:96px;overflow-y:auto;background:var(--card2);border-radius:9px;padding:7px 9px}',
+    '.nix-act{display:flex;gap:6px;margin-top:13px}',
+    '.nix-act button{flex:1;padding:10px 6px;border-radius:11px;border:none;font-size:var(--text-2xs);',
+      'font-family:var(--f-th);font-weight:600;cursor:pointer}',
+    '.nix-go{background:var(--pri);color:#fff}.nix-no{background:var(--card2);color:var(--txt2)}',
+    '.nix-warn{font-size:var(--text-3xs);color:var(--grp);line-height:1.55;margin-top:8px}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+var TOASTX=function(m){if(typeof toast==='function')toast(m);};
+
+/* ═══ 1. ขอบเขตของคำว่า "บันทึก" ════════════════════════════════════ */
+/* ฟิลด์ในซูเราะฮ์ที่เป็น "ความคืบหน้า" — ห้ามส่งออก ห้ามเขียนทับ */
+var PROGRESS=['text','meaning','tafsir','lastActive','memorized','memorizedDate','habitStatus'];
+/* คีย์ส่วนกลางที่เป็นเนื้อหาบันทึก (ไม่ใช่ความคืบหน้า) */
+var GLOBALS=[
+  'customPlusSurahs',      /* การ์ดที่สร้างเอง + ชื่อ + คำเรียกชั้นข้อมูล */
+  'customPlusCategories','plusTopicMeta','plusTopicOrder','plusCardOrder','deletedPlusSurahs',
+  'ayahHighlights',        /* ไฮไลต์ในตัวบท */
+  'userAyahTexts',         /* ตัวบทที่พิมพ์เอง */
+  'dailyNotes',
+  'resources','resourceCats','resourceGroups'
+];
+/* คีย์ที่ merge แบบ "รวมสมาชิกตาม id" */
+var BY_ID={customPlusSurahs:'n',customPlusCategories:'id',resources:'id',resourceCats:'id',resourceGroups:'id'};
+
+function nameOfKey(k){
+  var n=k.indexOf('plus_')===0?k.slice(5):k.slice(6);
+  try{
+    var pool=[];
+    ['SURAHS','ALL_SURAHS','PLUS_SURAHS'].forEach(function(nm){
+      try{var a=(typeof window[nm]!=='undefined')?window[nm]:eval(nm);
+        if(Array.isArray(a))pool=pool.concat(a);}catch(e){}
+    });
+    var s=pool.find(function(x){return x&&String(x.n)===String(n);});
+    if(s&&s.name)return s.name;
+  }catch(e){}
+  return k.indexOf('plus_')===0?('การ์ด '+n):('ซูเราะฮ์ '+n);
+}
+function hasNoteContent(rec){
+  if(!rec)return false;
+  var f=['notes','meanings','tafsirs','overview','reasons','stories','similar','names','ayahGroups'];
+  for(var i=0;i<f.length;i++){
+    var v=rec[f[i]];
+    if(!v)continue;
+    if(typeof v==='string'&&v.trim())return true;
+    if(Array.isArray(v)&&v.length)return true;
+    if(typeof v==='object'&&Object.keys(v).length)return true;
+  }
+  return false;
+}
+function stripProgress(v){
+  var rec={};
+  Object.keys(v).forEach(function(f){if(PROGRESS.indexOf(f)<0)rec[f]=v[f];});
+  return rec;
+}
+
+function collectNotes(){
+  var out={},names=[];
+  try{
+    for(var i=0;i<localStorage.length;i++){
+      var k=localStorage.key(i);
+      if(!k||(k.indexOf('surah_')!==0&&k.indexOf('plus_')!==0))continue;
+      var v;try{v=JSON.parse(localStorage.getItem(k));}catch(e){continue;}
+      if(!v||typeof v!=='object')continue;
+      var rec=stripProgress(v);
+      if(!hasNoteContent(rec))continue;
+      out[k]=rec;names.push(nameOfKey(k));
+    }
+  }catch(e){}
+  return {surahs:out,names:names};
+}
+function collectGlobals(){
+  var g={};
+  GLOBALS.forEach(function(k){
+    var raw=null;try{raw=localStorage.getItem(k);}catch(e){}
+    if(raw==null)return;
+    try{g[k]=JSON.parse(raw);}catch(e){g[k]=raw;}
+  });
+  return g;
+}
+function stamp(){
+  try{if(typeof getLocalDate==='function')return getLocalDate();}catch(e){}
+  var d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function whoAmI(){
+  try{if(typeof getUsername==='function')return getUsername()||'';}catch(e){}
+  return '';
+}
+function safeName(s){return String(s||'').replace(/[^\w\u0E00-\u0E7F\u0600-\u06FF-]+/g,'_').replace(/^_+|_+$/g,'').slice(0,60);}
+
+/* ═══ 2. ส่งออก ═════════════════════════════════════════════════════ */
+window.mqExportNotes=function(){
+  try{
+    var c=collectNotes();
+    var keys=Object.keys(c.surahs);
+    if(!keys.length)return TOASTX('ยังไม่มีบันทึกให้ส่งออก');
+    var who=whoAmI();
+    /* ชื่อบันทึก : ถ้ามีรายการเดียวใช้ชื่อนั้น หลายรายการก็บอกชื่อแรก ๆ */
+    var title;
+    if(c.names.length===1)title=c.names[0];
+    else if(c.names.length<=3)title=c.names.join(' · ');
+    else title=c.names.slice(0,2).join(' · ')+' และอีก '+(c.names.length-2)+' รายการ';
+
+    var data={
+      app:'juz-amma-tracker',
+      kind:'notes-only',
+      v:2,
+      title:title,
+      from:who,
+      date:new Date().toISOString(),
+      count:{items:keys.length},
+      names:c.names,
+      surahs:c.surahs,
+      globals:collectGlobals()
+    };
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.download=(keys.length===1)
+      ? 'บันทึก_'+safeName(title)+(who?'_'+safeName(who):'')+'_'+stamp()+'.json'
+      : 'บันทึก'+(who?'_'+safeName(who):'')+'_'+keys.length+'รายการ_'+stamp()+'.json';
+    a.click();
+    setTimeout(function(){URL.revokeObjectURL(url);},900);
+    TOASTX('ส่งออกบันทึกแล้ว · '+keys.length+' รายการ');
+  }catch(e){TOASTX('ส่งออกไม่สำเร็จ');}
+};
+
+/* ═══ 3. อ่านไฟล์ได้หลายรูปแบบ ═════════════════════════════════════ */
+function normalizeIncoming(d){
+  if(!d||typeof d!=='object')return null;
+
+  /* ไฟล์แชร์ → ส่งต่อให้ศูนย์แชร์บันทึก */
+  if(d.kind==='share')return {share:true,raw:d};
+
+  var surahs={},globals={},title=d.title||'',from=d.from||d.username||'';
+
+  /* ไฟล์สำรองทั้งเครื่อง : ดึงเฉพาะส่วนบันทึกออกมา */
+  if(d._allKeys&&typeof d._allKeys==='object'){
+    Object.keys(d._allKeys).forEach(function(k){
+      var raw=d._allKeys[k];
+      if(k.indexOf('surah_')===0||k.indexOf('plus_')===0){
+        var v;try{v=JSON.parse(raw);}catch(e){return;}
+        if(!v||typeof v!=='object')return;
+        var rec=stripProgress(v);
+        if(hasNoteContent(rec))surahs[k]=rec;
+      }else if(GLOBALS.indexOf(k)>=0){
+        try{globals[k]=JSON.parse(raw);}catch(e){}
+      }
+    });
+    if(!title)title='ไฟล์สำรองทั้งเครื่อง';
+  }
+
+  /* surahs ในไฟล์ : รองรับทั้ง key 'surah_78' และเลข 78 */
+  var src=d.surahs;
+  if(src&&!Array.isArray(src)&&typeof src==='object'){
+    Object.keys(src).forEach(function(k){
+      var v=src[k];
+      if(!v||typeof v!=='object')return;
+      var key=(k.indexOf('surah_')===0||k.indexOf('plus_')===0)?k
+              :((typeof k==='string'&&k.charAt(0)==='p')?'plus_'+k:'surah_'+k);
+      var rec=stripProgress(v);
+      if(hasNoteContent(rec))surahs[key]=rec;
+    });
+  }
+  if(d.globals&&typeof d.globals==='object')
+    Object.keys(d.globals).forEach(function(k){if(GLOBALS.indexOf(k)>=0)globals[k]=d.globals[k];});
+
+  if(!Object.keys(surahs).length&&!Object.keys(globals).length)return null;
+  return {surahs:surahs,globals:globals,title:title,from:from};
+}
+
+/* ═══ 4. รวมข้อมูล (ไม่ทับความคืบหน้า) ═════════════════════════════ */
+function mergeGlobal(key,incoming){
+  var curRaw=null;try{curRaw=localStorage.getItem(key);}catch(e){}
+  var cur=null;
+  if(curRaw!=null){try{cur=JSON.parse(curRaw);}catch(e){cur=null;}}
+  var idf=BY_ID[key];
+  var merged;
+  if(Array.isArray(incoming)){
+    var base=Array.isArray(cur)?cur.slice():[];
+    if(idf){
+      var seen={};
+      base.forEach(function(x){if(x&&x[idf]!==undefined)seen[String(x[idf])]=1;});
+      incoming.forEach(function(x){
+        if(!x||typeof x!=='object')return;
+        var id=String(x[idf]);
+        if(!seen[id]){base.push(x);seen[id]=1;}      /* มีอยู่แล้ว = เก็บของเดิมไว้ */
+      });
+    }else{
+      incoming.forEach(function(x){if(base.indexOf(x)<0)base.push(x);});
+    }
+    merged=base;
+  }else if(incoming&&typeof incoming==='object'){
+    merged=Object.assign({},(cur&&typeof cur==='object')?cur:{},incoming);
+  }else merged=incoming;
+  try{localStorage.setItem(key,JSON.stringify(merged));}catch(e){}
+}
+
+function applyImport(pack){
+  var n=0;
+  Object.keys(pack.surahs).forEach(function(k){
+    var cur={};
+    try{cur=JSON.parse(localStorage.getItem(k))||{};}catch(e){}
+    var inc=pack.surahs[k];
+    Object.keys(inc).forEach(function(f){
+      if(PROGRESS.indexOf(f)<0)cur[f]=inc[f];          /* ความคืบหน้าเดิมไม่ถูกแตะ */
+    });
+    try{localStorage.setItem(k,JSON.stringify(cur));n++;}catch(e){}
+  });
+  Object.keys(pack.globals).forEach(function(k){mergeGlobal(k,pack.globals[k]);});
+  return n;
+}
+
+/* ═══ 5. หน้าสรุปก่อนยืนยัน ════════════════════════════════════════ */
+var box=null,pending=null;
+function closeBox(){if(box&&box.parentNode)box.parentNode.removeChild(box);box=null;pending=null;}
+window._nixClose=closeBox;
+window._nixGo=function(){
+  if(!pending)return closeBox();
+  var p=pending;closeBox();
+  var n=applyImport(p);
+  TOASTX('นำเข้าบันทึกแล้ว · '+n+' รายการ');
+  setTimeout(function(){
+    try{if(typeof mqRefreshAll==='function')mqRefreshAll();else location.reload();}
+    catch(e){location.reload();}
+  },250);
+};
+
+function showSummary(pack){
+  closeBox();
+  pending=pack;
+  var keys=Object.keys(pack.surahs);
+  var names=keys.map(nameOfKey);
+  var gk=Object.keys(pack.globals);
+  var extras=[];
+  if(gk.indexOf('customPlusSurahs')>=0)extras.push('การ์ดที่สร้างเอง');
+  if(gk.indexOf('ayahHighlights')>=0||gk.indexOf('userAyahTexts')>=0)extras.push('ตัวบท + ไฮไลต์');
+  if(gk.indexOf('resources')>=0)extras.push('คลังข้อมูล');
+  if(gk.indexOf('dailyNotes')>=0)extras.push('บันทึกรายวัน');
+  box=document.createElement('div');
+  box.className='nix-ov';
+  box.innerHTML='<div class="nix-bx" onclick="event.stopPropagation()">'+
+    '<div class="nix-h">นำเข้าบันทึก</div>'+
+    '<div class="nix-sub">'+(pack.title?String(pack.title).replace(/[<>]/g,''):'ไม่ได้ระบุชื่อบันทึก')+
+      (pack.from?' · จาก '+String(pack.from).replace(/[<>]/g,''):'')+'</div>'+
+    '<div class="nix-row"><span>ซูเราะฮ์ / การ์ด</span><b>'+keys.length+' รายการ</b></div>'+
+    (extras.length?'<div class="nix-row"><span>ข้อมูลประกอบ</span><b>'+extras.join(' · ')+'</b></div>':'')+
+    '<div class="nix-row"><span>ความคืบหน้าของคุณ</span><b style="color:var(--sec)">ไม่ถูกแตะ</b></div>'+
+    (names.length?'<div class="nix-names">'+names.map(function(x){return String(x).replace(/[<>]/g,'');}).join(' · ')+'</div>':'')+
+    '<div class="nix-warn">บันทึกที่ชื่อซ้ำกันจะถูกเขียนทับด้วยของในไฟล์</div>'+
+    '<div class="nix-act"><button class="nix-no" onclick="_nixClose()">ยกเลิก</button>'+
+      '<button class="nix-go" onclick="_nixGo()">นำเข้า</button></div></div>';
+  box.addEventListener('click',function(e){if(e.target===box)closeBox();});
+  document.body.appendChild(box);
+}
+
+/* ═══ 6. นำเข้า ═════════════════════════════════════════════════════ */
+function handleText(txt){
+  var d;
+  try{d=JSON.parse(txt);}catch(e){return TOASTX('ไฟล์ไม่ถูกต้อง (ไม่ใช่ JSON)');}
+  var pack=normalizeIncoming(d);
+  if(!pack)return TOASTX('ไม่พบเนื้อหาบันทึกในไฟล์นี้');
+  if(pack.share){
+    TOASTX('นี่คือไฟล์แชร์บันทึก · กำลังเปิดศูนย์แชร์ให้');
+    try{
+      if(typeof SH!=='undefined'&&SH.open){SH.open('import');setTimeout(function(){SH.parseText(txt);},350);}
+      else TOASTX('เปิดเมนู "แชร์บันทึก" แล้วเลือกแท็บนำเข้า');
+    }catch(e){TOASTX('เปิดเมนู "แชร์บันทึก" แล้วเลือกแท็บนำเข้า');}
+    return;
+  }
+  showSummary(pack);
+}
+window._nixHandleText=handleText;
+window._nixNameOf=nameOfKey;
+
+window.mqImportNotes=function(){
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='application/json,.json,text/plain';
+  inp.onchange=function(){
+    var f=inp.files&&inp.files[0];if(!f)return;
+    var r=new FileReader();
+    r.onload=function(ev){handleText(String(ev.target.result||''));};
+    r.onerror=function(){TOASTX('อ่านไฟล์ไม่สำเร็จ');};
+    r.readAsText(f);
+  };
+  inp.click();
+};
+
+/* ไฟล์บันทึกอย่างเดียว ถ้าเผลอเอาไปเข้าเมนู "นำเข้าข้อมูล" ของแอป
+   ก็ให้วิ่งมาทางเดียวกัน แทนที่จะเขียนทับทั้งเครื่อง */
+if(typeof window.importData==='function'){
+  var oImport=window.importData;
+  window.importData=function(e){
+    try{
+      var f=e&&e.target&&e.target.files&&e.target.files[0];
+      if(f){
+        var r=new FileReader();
+        r.onload=function(ev){
+          var txt=String(ev.target.result||''),d=null;
+          try{d=JSON.parse(txt);}catch(err){}
+          if(d&&d.kind==='notes-only'){
+            try{e.target.value='';}catch(_){}
+            return handleText(txt);
+          }
+          try{
+            var dt=new DataTransfer();dt.items.add(f);
+            oImport.call(window,{target:{files:dt.files,value:''}});
+          }catch(_){
+            oImport.call(window,{target:{files:[f],value:''}});
+          }
+        };
+        r.readAsText(f);
+        return;
+      }
+    }catch(err){}
+    return oImport.apply(this,arguments);
+  };
+}
+
+/* ═══ 7. ศูนย์แชร์บันทึก : เขียนชื่อบันทึกลงไฟล์ + ตั้งชื่อไฟล์ตามนั้น ═══ */
+try{
+  if(typeof SH!=='undefined'&&typeof SH.payload==='function'){
+    var oPayload=SH.payload;
+    var titleOf=function(p){
+      var ns=[];
+      (p.cards||[]).forEach(function(c){if(c&&c.meta&&c.meta.name)ns.push(c.meta.name);});
+      (p.surahs||[]).forEach(function(s){if(s&&s.name)ns.push(s.name);});
+      if(!ns.length)return 'บันทึก';
+      if(ns.length===1)return ns[0];
+      if(ns.length<=3)return ns.join(' · ');
+      return ns.slice(0,2).join(' · ')+' และอีก '+(ns.length-2)+' รายการ';
+    };
+    SH.payload=function(){
+      var p=oPayload.apply(this,arguments);
+      try{p.title=titleOf(p);p.names=[].concat(
+        (p.cards||[]).map(function(c){return c&&c.meta&&c.meta.name;}),
+        (p.surahs||[]).map(function(s){return s&&s.name;})).filter(Boolean);}catch(e){}
+      return p;
+    };
+    SH.download=function(){
+      var p=SH.payload();
+      if(!p.cards.length&&!p.surahs.length)
+        return (typeof TOAST==='function'?TOAST:TOASTX)('ยังไม่ได้เลือกรายการ');
+      var blob=new Blob([JSON.stringify(p)],{type:'application/json'});
+      var url=URL.createObjectURL(blob);
+      var who=safeName(p.from||'');
+      var a=document.createElement('a');
+      a.href=url;
+      var cnt=(p.cards.length+p.surahs.length);
+      a.download=(cnt===1)
+        ? 'บันทึก_'+safeName(p.title||'แชร์')+(who?'_'+who:'')+'_'+stamp()+'.json'
+        : 'บันทึก'+(who?'_'+who:'')+'_'+cnt+'รายการ_'+stamp()+'.json';
+      a.click();
+      setTimeout(function(){URL.revokeObjectURL(url);},900);
+      (typeof TOAST==='function'?TOAST:TOASTX)('ส่งออก '+(p.cards.length+p.surahs.length)+' รายการแล้ว ✓');
+    };
+  }
+}catch(e){}
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v384 · ไทม์ไลน์นิ่ง + ขนาดอักษรใช้ได้จริง + ไฟล์บันทึกใช้ต่อได้
+   ───────────────────────────────────────────────────────────────────
+   1) ตัวกรอง "แสดง :" ในไทม์ไลน์หายเป็นบางครั้ง
+      เหตุ : ถ้าโค้ดสร้างเนื้อไทม์ไลน์สะดุด (บางซูเราะฮ์ / บางการ์ด)
+             ตัวห่อจะโยนทิ้งทั้งก้อน แถบควบคุมเลยหายไปด้วย
+      แก้  : แยก "แถบควบคุม" ออกจาก "เนื้อ" คนละชั้น เนื้อพังก็ยัง
+             เห็นแถบ + จำสถานะปุ่มไว้ใน localStorage ไม่รีเซ็ตเองอีก
+             + ยามเฝ้า : ถ้าแถบหายหลังวาดใหม่ ใส่กลับให้ทันที
+   2) ปุ่มขนาดอักษรไทม์ไลน์
+      เหตุ : ตั้งค่า --tl-s ไว้ที่กล่อง #grp-vb ซึ่งถูกเขียนทับทุกครั้ง
+             ที่วาดใหม่ ค่าจึงหลุด ตัวเลขค้างที่ 100%
+      แก้  : ย้ายไปตั้งที่ราก (:root) ค่าอยู่ถาวร ขยายได้ถึง 300%
+             และมีปุ่มขั้นละ 10% พร้อมตัวเลขที่อัปเดตจริง
+   3) ไฟล์ "ส่งออกเฉพาะบันทึก" เอาไปเข้าเมนูนำเข้าของแอปไม่ได้
+      เหตุ : คีย์เป็น surah_78 แต่แอปอ่าน 78
+      แก้  : เขียนคีย์แบบที่แอปอ่านได้ + ใส่ชื่อบันทึกในไฟล์และชื่อไฟล์
+   4) เพิ่ม "ล้างขนาด / ล้างฟอนต์" ทั้งบันทึก ในแผงเครื่องมือ (ไม่มีป๊อปอัป)
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+var T=function(m){try{if(typeof toast==='function')toast(m);}catch(e){}};
+
+/* ═══ 0. คืน CSS ของแถบอักษรไทม์ไลน์
+   ตั้งแต่ v382 เขียนทับ _tlFontBar ตัวฉีด CSS ของ v341 ก็ไม่เคยถูกเรียกอีก
+   .grp-tl-wrap ที่ผูกกับ --tl-s จึงหายไป → ปุ่มขยายกดแล้วไม่ขยับ ═══ */
+(function(){
+  if(document.getElementById('tl-font-style'))return;
+  var s=document.createElement('style');s.id='tl-font-style';
+  s.textContent=[
+    '.tl-fbar{display:inline-flex;align-items:center;gap:4px;padding:2px 0;margin-bottom:6px}',
+    '.tl-fbar>span.lb{font-size:8px;color:var(--txt3)}',
+    '.tl-fb{width:18px;height:18px;border-radius:var(--r-full);border:1px solid var(--bdr);background:var(--card);',
+      'font-size:12px;line-height:1;color:var(--txt2);cursor:pointer;display:flex;align-items:center;',
+      'justify-content:center;font-family:var(--f-th);padding:0;transition:background .18s,transform .14s;',
+      '-webkit-tap-highlight-color:transparent}',
+    '.tl-fb:active{transform:scale(.85);background:var(--card2)}',
+    '.tl-fv{font-size:8px;color:var(--txt2);min-width:24px;text-align:center}',
+    '.tl-frs{border:none;background:none;font-size:7px;color:var(--grp);cursor:pointer;font-family:var(--f-th);padding:0 2px}',
+    '.grp-tl-wrap{font-size:calc(var(--tl-s,1) * 9.5px)}',
+    /* จอกว้างเคยล็อกอาหรับไว้ที่ 13/14px ด้วย !important → ปุ่มขยายไม่มีผล
+       ใส่กฎที่เจาะจงกว่าให้คูณสเกลตามปกติ */
+    '@media(min-width:768px){.grp-tl-wrap span[dir="rtl"].ro-arhost{font-size:calc(var(--tl-s,1) * 13px)!important}}',
+    '@media(min-width:1024px){.grp-tl-wrap span[dir="rtl"].ro-arhost{font-size:calc(var(--tl-s,1) * 14px)!important}}',
+    '#tl-bar{position:relative;z-index:2}',
+    '#tl-body{min-height:0}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+/* ═══ 1. สถานะไทม์ไลน์ : จำไว้ ไม่รีเซ็ตเอง ═════════════════════════ */
+var TLK='tlShowState';
+var TLKEYS=['arText','notes','meanings','tafsirs'];
+
+function tlLoad(){
+  var s=null;try{s=JSON.parse(localStorage.getItem(TLK));}catch(e){}
+  var ts={arText:false,notes:false,meanings:false,tafsirs:false};
+  if(s&&s.ts&&typeof s.ts==='object')TLKEYS.forEach(function(k){if(k in s.ts)ts[k]=!!s.ts[k];});
+  window._tlShow=ts;
+  var ord=(s&&Object.prototype.toString.call(s.ord)==='[object Array]'&&s.ord.length===4)?s.ord.slice():null;
+  if(ord)for(var i=0;i<4;i++)if(TLKEYS.indexOf(ord[i])<0){ord=null;break;}
+  window._tlOrd=ord||TLKEYS.slice();
+}
+function tlSave(){
+  try{localStorage.setItem(TLK,JSON.stringify({ts:window._tlShow,ord:window._tlOrd}));}catch(e){}
+}
+tlLoad();
+
+/* ═══ 2. ขนาดอักษรไทม์ไลน์ : ตั้งที่ราก ค่าไม่หลุดเวลาวาดใหม่ ═══════ */
+var TLMIN=0.7,TLMAX=3;
+function tlScale(){
+  var v=parseFloat(localStorage.getItem('tlFontScale'));
+  if(!v||isNaN(v))v=1;
+  return Math.max(TLMIN,Math.min(TLMAX,Math.round(v*100)/100));
+}
+function tlApply(){
+  var v=tlScale();
+  try{document.documentElement.style.setProperty('--tl-s',v);}catch(e){}
+  var b=document.getElementById('grp-vb');
+  if(b)b.style.setProperty('--tl-s',v);
+  var l=document.getElementById('tl-fv');
+  if(l)l.textContent=Math.round(v*100)+'%';
+  var r=document.getElementById('tl-frs');
+  if(r)r.style.display=(Math.abs(v-1)>0.005)?'':'none';
+}
+window._tlApplyScale=tlApply;
+window._tlFont=function(d){
+  var v=tlScale();
+  v=(d===0)?1:Math.max(TLMIN,Math.min(TLMAX,Math.round((v+d)*100)/100));
+  try{localStorage.setItem('tlFontScale',v);}catch(e){}
+  tlApply();
+};
+window._tlFontBar=function(){
+  var cur=tlScale();
+  return '<div class="tl-fbar">'+
+    '<span class="lb">อักษร :</span>'+
+    '<button type="button" class="tl-fb" onclick="_tlFont(-0.1)" aria-label="เล็กลง">&#8722;</button>'+
+    '<span class="tl-fv" id="tl-fv">'+Math.round(cur*100)+'%</span>'+
+    '<button type="button" class="tl-fb" onclick="_tlFont(0.1)" aria-label="ใหญ่ขึ้น">+</button>'+
+    '<button type="button" class="tl-frs" id="tl-frs" onclick="_tlFont(0)" style="display:'+
+      (Math.abs(cur-1)>0.005?'':'none')+'">รีเซ็ต</button>'+
+  '</div>';
+};
+
+/* ═══ 3. แถบควบคุมไทม์ไลน์ (สร้างแยกจากเนื้อ · พังยาก) ══════════════ */
+var FALLBACK={arText:'ตัวบท',notes:'บันทึก',meanings:'ความหมาย',tafsirs:'ตัฟซีร'};
+var L3MAP={arText:'text',notes:'notes',meanings:'meanings',tafsirs:'tafsirs'};
+function LB(k){
+  try{if(typeof L3==='function'){var s=L3(L3MAP[k]);if(s)return s;}}catch(e){}
+  return FALLBACK[k];
+}
+function ordHTML(){
+  var ts=window._tlShow,ord=window._tlOrd;
+  var act=ord.filter(function(k){return ts[k];});
+  if(!act.length)return '';
+  var h='<div style="display:flex;gap:3px;margin-bottom:6px;flex-wrap:wrap;align-items:center">'+
+        '<span style="font-size:var(--text-3xs);color:var(--txt3)">ลำดับ :</span>';
+  act.forEach(function(k,i){
+    h+='<span style="display:inline-flex;align-items:center;gap:1px;font-size:var(--text-3xs);color:var(--txt2);'+
+       'background:var(--card2);padding:3px 8px;border-radius:var(--r-full);border:1px solid var(--bdr-l)">';
+    if(i>0)h+='<button type="button" onclick="_tlMv(\''+k+'\',-1)" style="border:none;background:none;cursor:pointer;font-size:8px;color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25C0</button>';
+    h+=LB(k);
+    if(i<act.length-1)h+='<button type="button" onclick="_tlMv(\''+k+'\',1)" style="border:none;background:none;cursor:pointer;font-size:var(--text-3xs);color:var(--txt3);padding:0 1px;font-family:var(--f-th)">\u25B6</button>';
+    h+='</span>';
+  });
+  return h+'</div>';
+}
+function barHTML(){
+  var ts=window._tlShow;
+  var h='<div id="tl-bar">'+window._tlFontBar();
+  h+='<div style="display:flex;gap:3px;margin-bottom:4px;flex-wrap:wrap;align-items:center">'+
+     '<span style="font-size:var(--text-3xs);color:var(--txt3)">แสดง :</span>';
+  TLKEYS.forEach(function(k){
+    var on=ts[k];
+    h+='<button type="button" data-tlk="'+k+'" onclick="_tlTgl(\''+k+'\')" '+
+       'style="padding:4px 10px;border-radius:var(--r-full);font-size:var(--text-3xs);border:1px solid '+
+       (on?'var(--pri)':'var(--bdr)')+';background:'+(on?'var(--pri)':'var(--card)')+';color:'+
+       (on?'#fff':'var(--txt3)')+';cursor:pointer;font-family:var(--f-th)">'+LB(k)+'</button>';
+  });
+  h+='</div><div id="tl-ord">'+ordHTML()+'</div></div>';
+  return h;
+}
+window._tlBarHTML=barHTML;
+
+/* ═══ 4. เนื้อไทม์ไลน์ (ทุกกลุ่มห่อ try เดี่ยว · กลุ่มเดียวพังไม่ลามทั้งหน้า) ═══ */
+function san(h){
+  if(h==null||h==='')return '';
+  try{if(typeof window._roSan==='function')return window._roSan(h);}catch(e){}
+  return String(h);
+}
+var _hasBox=null;
+function has(h){
+  if(!h)return false;
+  if(/<img/i.test(h))return true;
+  try{
+    if(!_hasBox)_hasBox=document.createElement('div');
+    _hasBox.innerHTML=String(h);
+    return (_hasBox.textContent||'').replace(/[\s\u00A0\u200B\u200C\u200D\uFEFF]/g,'').length>0;
+  }catch(e){return true;}
+}
+function WB(s){try{return (typeof thaiWB==='function')?thaiWB(s||''):(s||'');}catch(e){return s||'';}}
+
+function bodyHTML(gs,tA){
+  var ts=window._tlShow,ord=window._tlOrd;
+  var anyShow=ts.arText||ts.notes||ts.meanings||ts.tafsirs;
+  var sorted=gs.slice().sort(function(a,b){return a.f-b.f;});
+  var cols=sorted.map(function(g){return g.color||_GC[gs.indexOf(g)%_GC.length];}).join(',');
+  var d=getSurah(currentSurah)||{};
+  var h='<div class="grp-tl-wrap"><div class="grp-tl-line" style="background:linear-gradient(to bottom,'+cols+')"></div>';
+
+  function row(a,cl){
+    var notes=ts.notes?san((d.notes&&d.notes[a])||''):'';
+    var mean =ts.meanings?san((d.meanings&&d.meanings[a])||''):'';
+    var taf  =ts.tafsirs?san((d.tafsirs&&d.tafsirs[a])||''):'';
+    var arH='';
+    if(ts.arText){try{var r0=_mmGetD(d,a,a,'arText');arH=(r0&&r0.length)?san(r0[0].h):'';}catch(e){arH='';}}
+    var sA=has(arH),sN=has(notes),sM=has(mean),sT=has(taf);
+    if(!sA&&!sN&&!sM&&!sT)return '';
+    var r='<div style="padding:3px 0;border-top:1px solid '+cl+'08;font-size:calc(var(--tl-s,1) * 9px)">'+
+          '<span style="color:'+cl+';font-weight:700;font-size:calc(var(--tl-s,1) * 9px)">'+a+'</span> ';
+    var mp={
+      arText:{ok:sA,h:'<span dir="rtl" class="ro-html ro-arhost" style="display:inline-block;font-family:var(--f-ar);font-size:calc(var(--tl-s,1) * 13px);line-height:1.95;color:var(--txt)">'+arH+'</span> '},
+      notes:{ok:sN,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--pri);margin-top:1px;line-height:1.55">'+notes+'</div>'},
+      meanings:{ok:sM,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--sec);margin-top:1px;line-height:1.55">'+mean+'</div>'},
+      tafsirs:{ok:sT,h:'<div class="ro-html" style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--tafsir);margin-top:1px;line-height:1.55">'+taf+'</div>'}
+    };
+    ord.forEach(function(k){if(mp[k]&&mp[k].ok)r+=mp[k].h;});
+    return r+'</div>';
+  }
+
+  sorted.forEach(function(g){
+    try{
+      var oi=gs.indexOf(g),cl=g.color||_GC[oi%_GC.length];
+      var lbl=g.f===g.to?(''+g.f):(g.f+' - '+g.to);
+      var hasSubs=g.subs&&g.subs.length;
+      var subsHtml='',orphan='';
+      if(hasSubs){
+        var ss=g.subs.slice().sort(function(a,b){return a.f-b.f;});
+        subsHtml+='<div style="border-top:1px solid '+cl+'06">';
+        ss.forEach(function(sb){
+          var sl=sb.f===sb.to?(''+sb.f):(sb.f+'-'+sb.to);
+          var isChild=ss.some(function(p){return p!==sb&&sb.f>=p.f&&sb.to<=p.to&&(sb.f!==p.f||sb.to!==p.to);});
+          var hasKids=!isChild&&ss.some(function(c){return c!==sb&&c.f>=sb.f&&c.to<=sb.to&&(c.f!==sb.f||c.to!==sb.to);});
+          var kids=hasKids?ss.filter(function(c){return c!==sb&&c.f>=sb.f&&c.to<=sb.to&&(c.f!==sb.f||c.to!==sb.to);}):[];
+          var sd='';
+          if(anyShow)for(var a=sb.f;a<=sb.to;a++){
+            if(hasKids&&kids.some(function(c){return a>=c.f&&a<=c.to;}))continue;
+            sd+=row(a,cl);
+          }
+          subsHtml+='<div style="border-bottom:1px solid '+cl+'06"><div style="padding:5px 10px '+(isChild?'5px 22px':'5px 10px')+
+            ';background:linear-gradient(135deg,'+cl+(isChild?'08':'14')+','+cl+(isChild?'04':'08')+
+            ');display:flex;align-items:center;gap:5px;font-size:calc(var(--tl-s,1) * 9.5px)">'+
+            '<div style="width:'+(isChild?3:5)+'px;height:'+(isChild?3:5)+'px;border-radius:50%;background:'+cl+';opacity:'+(isChild?0.4:0.6)+'"></div>'+
+            '<span style="color:'+cl+';font-weight:600;font-size:calc(var(--tl-s,1) * 9px)">'+sl+'</span>'+
+            '<span style="color:'+(isChild?cl:'var(--txt)')+';font-weight:500;'+(isChild?'opacity:0.8':'')+'">'+WB(sb.title)+'</span></div>'+
+            (sb.desc?'<div style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3);margin:0 10px 3px '+(isChild?'32px':'20px')+'">'+WB(sb.desc)+'</div>':'')+
+            (sd?'<div style="padding:2px 10px 4px;background:var(--card)">'+sd+'</div>':'')+'</div>';
+        });
+        if(anyShow)for(var a2=g.f;a2<=g.to;a2++){
+          if(!g.subs.some(function(x){return a2>=x.f&&a2<=x.to;}))orphan+=row(a2,cl);
+        }
+        subsHtml+='</div>';
+      }
+      var mainData='';
+      if(!hasSubs&&anyShow)for(var a3=g.f;a3<=g.to;a3++)mainData+=row(a3,cl);
+      h+='<div style="margin-bottom:10px;position:relative"><div class="grp-tl-dot" style="background:'+cl+';box-shadow:0 0 0 1.5px '+cl+'40"></div>'+
+         '<div style="background:var(--card);border-radius:var(--r-md);overflow:hidden;border:1px solid '+cl+'18;box-shadow:0 1px 4px '+cl+'06">'+
+         '<div style="padding:8px 10px"><div style="display:flex;align-items:center;gap:4px;margin-bottom:2px">'+
+         '<span style="font-size:calc(var(--tl-s,1) * 9px);font-weight:700;color:#fff;background:'+cl+';padding:1px 6px;border-radius:4px">'+lbl+'</span>'+
+         (hasSubs?'<span style="font-size:calc(var(--tl-s,1) * 9px);color:var(--txt3)">'+g.subs.length+' กลุ่มย่อย</span>':'')+'</div>'+
+         '<div style="font-size:calc(var(--tl-s,1) * 11px);font-weight:600;color:var(--txt);line-height:1.4">'+WB(g.title)+'</div>'+
+         (g.desc?'<div style="font-size:calc(var(--tl-s,1) * 9.5px);color:var(--txt2);margin-top:2px;line-height:1.5">'+WB(g.desc)+'</div>':'')+'</div>'+
+         '<div style="height:2px;background:'+cl+'08"><div style="height:100%;background:linear-gradient(90deg,'+cl+','+cl+'40);width:'+(((g.to-g.f+1)/(tA||1))*100)+'%"></div></div>'+
+         (orphan?'<div style="padding:4px 10px 4px;border-top:1px solid '+cl+'10">'+orphan+'</div>':'')+
+         subsHtml+
+         (mainData?'<div style="padding:4px 10px 6px;border-top:1px solid '+cl+'10">'+mainData+'</div>':'')+
+         '</div></div>';
+    }catch(e){
+      h+='<div style="padding:6px 10px;font-size:var(--text-3xs);color:var(--txt3)">แสดงกลุ่มนี้ไม่สำเร็จ</div>';
+    }
+  });
+  return h+'</div>';
+}
+
+window._gTL=function(gs,tA){
+  if(!gs||!gs.length)return '<div class="empty-state">ยังไม่มีกลุ่ม</div>';
+  var body;
+  try{body=bodyHTML(gs,tA);}
+  catch(e){body='<div class="grp-err">แสดงเนื้อหาไม่สำเร็จ · ลองปิดตัวกรองบางอันแล้วเปิดใหม่</div>';}
+  setTimeout(tlApply,0);
+  return barHTML()+'<div id="tl-body" data-ta="'+(tA||0)+'">'+body+'</div>';
+};
+
+function repaintBody(){
+  var body=document.getElementById('tl-body');
+  if(!body){if(typeof _sGVM==='function')_sGVM('timeline');return;}
+  var y=window.scrollY||window.pageYOffset||0;
+  body.style.minHeight=body.offsetHeight+'px';
+  var d=getSurah(currentSurah)||{},gs=d.ayahGroups||[];
+  var tA=parseInt(body.getAttribute('data-ta'),10)||0;
+  var out;
+  try{out=bodyHTML(gs,tA);}catch(e){out='<div class="grp-err">แสดงเนื้อหาไม่สำเร็จ</div>';}
+  body.innerHTML=out;
+  window.scrollTo(0,y);
+  requestAnimationFrame(function(){body.style.minHeight='';window.scrollTo(0,y);});
+}
+
+window._tlTgl=function(k){
+  if(TLKEYS.indexOf(k)<0)return;
+  window._tlShow[k]=!window._tlShow[k];
+  tlSave();
+  var btn=document.querySelector('#tl-bar [data-tlk="'+k+'"]');
+  if(btn){
+    var on=window._tlShow[k];
+    btn.style.border='1px solid '+(on?'var(--pri)':'var(--bdr)');
+    btn.style.background=on?'var(--pri)':'var(--card)';
+    btn.style.color=on?'#fff':'var(--txt3)';
+  }
+  var o=document.getElementById('tl-ord');
+  if(o)o.innerHTML=ordHTML();
+  repaintBody();
+};
+window._tlMv=function(k,dir){
+  var o=window._tlOrd;if(!o)return;
+  var i=o.indexOf(k),n=i+dir;
+  if(i<0||n<0||n>=o.length)return;
+  var t=o[i];o[i]=o[n];o[n]=t;
+  tlSave();
+  var el=document.getElementById('tl-ord');
+  if(el)el.innerHTML=ordHTML();
+  repaintBody();
+};
+
+/* ═══ 5. ยามเฝ้าแถบควบคุม : หายเมื่อไหร่ ใส่กลับทันที ═══════════════ */
+function ensureBar(){
+  try{
+    if(typeof _gvm==='undefined'||_gvm!=='timeline')return;
+    var box=document.getElementById('grp-vb');
+    if(!box||!box.firstChild)return;
+    if(document.getElementById('tl-bar'))return;
+    if(box.querySelector('.empty-state'))return;      /* ยังไม่มีกลุ่ม = ไม่ต้องมีแถบ */
+    var w=document.createElement('div');
+    w.innerHTML=barHTML();
+    box.insertBefore(w.firstChild,box.firstChild);
+    tlApply();
+  }catch(e){}
+}
+window._tlEnsureBar=ensureBar;
+
+if(typeof window._sGVM==='function'){
+  var o_sGVM=window._sGVM;
+  window._sGVM=function(mode){
+    var r;
+    try{r=o_sGVM.apply(this,arguments);}catch(e){}
+    setTimeout(function(){tlApply();ensureBar();},0);
+    setTimeout(function(){tlApply();ensureBar();},260);
+    return r;
+  };
+}
+if(typeof window._grpEnsure==='function'){
+  var o_grpEnsure=window._grpEnsure;
+  window._grpEnsure=function(){
+    var r;try{r=o_grpEnsure.apply(this,arguments);}catch(e){}
+    setTimeout(function(){tlApply();ensureBar();},60);
+    return r;
+  };
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',tlApply);
+else tlApply();
+
+/* ═══ 6. ส่งออก / นำเข้า "เฉพาะบันทึก" — ไฟล์ที่ใช้ต่อได้จริง ═══════
+   รูปแบบ v3 : surahs ใช้คีย์แบบเดียวกับไฟล์สำรองของแอป (78, 'p3')
+               แอปเดิมจึงอ่านต่อได้ · records เก็บคีย์เต็มไว้ครบ
+               globals เก็บการ์ดที่สร้างเอง ตัวบท ไฮไลต์ คลังข้อมูล
+   ไม่ส่งออก : ความคืบหน้า (จำนวนรอบท่อง วันที่จำได้ ฯลฯ) */
+var PROGRESS=['text','meaning','tafsir','lastActive','memorized','memorizedDate','habitStatus'];
+var GLOBALS=['customPlusSurahs','customPlusCategories','plusTopicMeta','plusTopicOrder',
+             'plusCardOrder','deletedPlusSurahs','ayahHighlights','userAyahTexts',
+             'dailyNotes','resources','resourceCats','resourceGroups'];
+var NOTE_FIELDS=['notes','meanings','tafsirs','overview','reasons','stories','similar','names','ayahGroups'];
+
+function idOfKey(k){return k.indexOf('plus_')===0?k.slice(5):k.slice(6);}
+function nameOfKey(k){
+  var n=idOfKey(k);
+  try{
+    var pool=[];
+    /* SURAHS / ALL_SURAHS / PLUS_SURAHS ประกาศด้วย const จึงไม่ได้อยู่บน window
+       ต้องอ้างตรง ๆ พร้อม typeof กันพัง */
+    try{if(typeof SURAHS!=='undefined'&&SURAHS.length)pool=pool.concat(SURAHS);}catch(e){}
+    try{if(typeof ALL_SURAHS!=='undefined'&&ALL_SURAHS.length)pool=pool.concat(ALL_SURAHS);}catch(e){}
+    try{if(typeof PLUS_SURAHS!=='undefined'&&PLUS_SURAHS.length)pool=pool.concat(PLUS_SURAHS);}catch(e){}
+    for(var i=0;i<pool.length;i++)if(pool[i]&&String(pool[i].n)===String(n)&&pool[i].name)return pool[i].name;
+  }catch(e){}
+  return k.indexOf('plus_')===0?('การ์ด '+n):('ซูเราะฮ์ '+n);
+}
+window._nixNameOf=nameOfKey;
+function hasNote(rec){
+  if(!rec)return false;
+  for(var i=0;i<NOTE_FIELDS.length;i++){
+    var v=rec[NOTE_FIELDS[i]];
+    if(!v)continue;
+    if(typeof v==='string'&&v.trim())return true;
+    if(Object.prototype.toString.call(v)==='[object Array]'&&v.length)return true;
+    if(typeof v==='object'&&Object.keys(v).length)return true;
+  }
+  return false;
+}
+function strip(v){var r={};Object.keys(v).forEach(function(f){if(PROGRESS.indexOf(f)<0)r[f]=v[f];});return r;}
+function stamp(){
+  try{if(typeof getLocalDate==='function')return getLocalDate();}catch(e){}
+  var d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function who(){try{if(typeof getUsername==='function')return getUsername()||'';}catch(e){}return '';}
+function safeName(s){
+  return String(s||'').replace(/[^\w\u0E00-\u0E7F\u0600-\u06FF-]+/g,'_').replace(/^_+|_+$/g,'').slice(0,60);
+}
+function titleOf(names){
+  if(!names.length)return 'บันทึก';
+  if(names.length===1)return names[0];
+  if(names.length<=3)return names.join(' · ');
+  return names.slice(0,2).join(' · ')+' และอีก '+(names.length-2)+' รายการ';
+}
+
+window.mqExportNotes=function(){
+  try{
+    var records={},byId={},names=[];
+    for(var i=0;i<localStorage.length;i++){
+      var k=localStorage.key(i);
+      if(!k||(k.indexOf('surah_')!==0&&k.indexOf('plus_')!==0))continue;
+      var v;try{v=JSON.parse(localStorage.getItem(k));}catch(e){continue;}
+      if(!v||typeof v!=='object')continue;
+      var rec=strip(v);
+      if(!hasNote(rec))continue;
+      records[k]=rec;
+      var id=idOfKey(k);
+      byId[(k.indexOf('plus_')===0)?id:(parseInt(id,10)||id)]=rec;
+      names.push(nameOfKey(k));
+    }
+    var keys=Object.keys(records);
+    if(!keys.length)return T('ยังไม่มีบันทึกให้ส่งออก');
+    var globals={};
+    GLOBALS.forEach(function(g){
+      var raw=null;try{raw=localStorage.getItem(g);}catch(e){}
+      if(raw==null)return;
+      try{globals[g]=JSON.parse(raw);}catch(e){globals[g]=raw;}
+    });
+    var title=titleOf(names),me=who();
+    var data={
+      app:'juz-amma-tracker',
+      kind:'notes-only',
+      v:3,
+      version:1,
+      title:title,
+      names:names,
+      from:me,
+      username:me,
+      date:new Date().toISOString(),
+      exportDate:new Date().toISOString(),
+      count:{items:keys.length},
+      surahs:byId,        /* คีย์แบบเดียวกับไฟล์สำรองของแอป → เอาไปเข้า "นำเข้าข้อมูล" ได้ */
+      records:records,    /* คีย์เต็ม เก็บไว้ให้ครบทั้งการ์ดที่สร้างเอง */
+      globals:globals
+    };
+    var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;
+    a.download=(typeof window._noteFileName==='function')
+      ? window._noteFileName(names,me)
+      : ('บันทึก_'+safeName(title)+'_'+stamp()+'.json').replace(/_{2,}/g,'_');
+    a.click();
+    setTimeout(function(){URL.revokeObjectURL(url);},900);
+    T('ส่งออกบันทึกแล้ว · '+keys.length+' รายการ · '+title);
+  }catch(e){T('ส่งออกไม่สำเร็จ');}
+};
+
+/* อ่านไฟล์ได้ทุกแบบ : v3 · v2 · ของเดิม · ไฟล์สำรองทั้งเครื่อง · ไฟล์แชร์ */
+function normalize(d){
+  if(!d||typeof d!=='object')return null;
+  if(d.kind==='share')return {share:true};
+  var surahs={},globals={},title=d.title||'',from=d.from||d.username||'';
+
+  if(d.records&&typeof d.records==='object'){
+    Object.keys(d.records).forEach(function(k){
+      var v=d.records[k];
+      if(!v||typeof v!=='object')return;
+      var rec=strip(v);
+      if(hasNote(rec))surahs[k]=rec;
+    });
+  }
+  if(d._allKeys&&typeof d._allKeys==='object'){
+    Object.keys(d._allKeys).forEach(function(k){
+      if(k.indexOf('surah_')===0||k.indexOf('plus_')===0){
+        var v;try{v=JSON.parse(d._allKeys[k]);}catch(e){return;}
+        if(!v||typeof v!=='object')return;
+        var rec=strip(v);
+        if(hasNote(rec)&&!surahs[k])surahs[k]=rec;
+      }else if(GLOBALS.indexOf(k)>=0&&globals[k]===undefined){
+        try{globals[k]=JSON.parse(d._allKeys[k]);}catch(e){}
+      }
+    });
+    if(!title)title='ไฟล์สำรองทั้งเครื่อง';
+  }
+  var src=d.surahs;
+  if(src&&typeof src==='object'&&Object.prototype.toString.call(src)!=='[object Array]'){
+    Object.keys(src).forEach(function(k){
+      var v=src[k];
+      if(!v||typeof v!=='object')return;
+      var key=(k.indexOf('surah_')===0||k.indexOf('plus_')===0)?k
+              :((String(k).charAt(0)==='p')?'plus_'+k:'surah_'+k);
+      if(surahs[key])return;
+      var rec=strip(v);
+      if(hasNote(rec))surahs[key]=rec;
+    });
+  }
+  if(d.globals&&typeof d.globals==='object')
+    Object.keys(d.globals).forEach(function(k){if(GLOBALS.indexOf(k)>=0)globals[k]=d.globals[k];});
+
+  if(!Object.keys(surahs).length&&!Object.keys(globals).length)return null;
+  return {surahs:surahs,globals:globals,title:title,from:from};
+}
+
+var BY_ID={customPlusSurahs:'n',customPlusCategories:'id',resources:'id',resourceCats:'id',resourceGroups:'id'};
+function mergeGlobal(key,inc){
+  var raw=null;try{raw=localStorage.getItem(key);}catch(e){}
+  var cur=null;if(raw!=null){try{cur=JSON.parse(raw);}catch(e){cur=null;}}
+  var idf=BY_ID[key],merged;
+  if(Object.prototype.toString.call(inc)==='[object Array]'){
+    var base=(Object.prototype.toString.call(cur)==='[object Array]')?cur.slice():[];
+    if(idf){
+      var seen={};
+      base.forEach(function(x){if(x&&x[idf]!==undefined)seen[String(x[idf])]=1;});
+      inc.forEach(function(x){
+        if(!x||typeof x!=='object')return;
+        var id=String(x[idf]);
+        if(!seen[id]){base.push(x);seen[id]=1;}
+      });
+    }else inc.forEach(function(x){if(base.indexOf(x)<0)base.push(x);});
+    merged=base;
+  }else if(inc&&typeof inc==='object'){
+    merged=Object.assign({},(cur&&typeof cur==='object')?cur:{},inc);
+  }else merged=inc;
+  try{localStorage.setItem(key,JSON.stringify(merged));}catch(e){}
+}
+var MAPF=['notes','meanings','tafsirs'];
+function applyPack(p){
+  var n=0;
+  Object.keys(p.surahs).forEach(function(k){
+    var cur={};try{cur=JSON.parse(localStorage.getItem(k))||{};}catch(e){}
+    var inc=p.surahs[k];
+    Object.keys(inc).forEach(function(f){
+      if(PROGRESS.indexOf(f)>=0)return;
+      var v=inc[f];
+      /* บันทึกรายอายะฮ์ : รวมทีละข้อ อายะฮ์ที่ไฟล์ไม่มี ของเดิมยังอยู่ */
+      if(MAPF.indexOf(f)>=0&&v&&typeof v==='object'&&Object.prototype.toString.call(v)!=='[object Array]'){
+        var base=(cur[f]&&typeof cur[f]==='object')?cur[f]:{};
+        Object.keys(v).forEach(function(a){
+          if(v[a]===null||v[a]===undefined)return;
+          if(typeof v[a]==='string'&&!v[a].trim())return;
+          base[a]=v[a];
+        });
+        cur[f]=base;return;
+      }
+      /* ค่าว่างในไฟล์ ไม่ลบของเดิมทิ้ง */
+      if(typeof v==='string'&&!v.trim())return;
+      if(Object.prototype.toString.call(v)==='[object Array]'&&!v.length)return;
+      if(v===null||v===undefined)return;
+      cur[f]=v;
+    });
+    try{localStorage.setItem(k,JSON.stringify(cur));n++;}catch(e){}
+  });
+  Object.keys(p.globals).forEach(function(k){mergeGlobal(k,p.globals[k]);});
+  return n;
+}
+
+var box=null,pending=null;
+function closeBox(){if(box&&box.parentNode)box.parentNode.removeChild(box);box=null;pending=null;}
+window._nixClose=closeBox;
+window._nixGo=function(){
+  if(!pending)return closeBox();
+  var p=pending;closeBox();
+  var n=applyPack(p);
+  T('นำเข้าบันทึกแล้ว · '+n+' รายการ');
+  setTimeout(function(){
+    try{if(typeof mqRefreshAll==='function')mqRefreshAll();else location.reload();}
+    catch(e){location.reload();}
+  },250);
+};
+function esc(s){return String(s==null?'':s).replace(/[<>&]/g,'');}
+function summary(p){
+  closeBox();pending=p;
+  var keys=Object.keys(p.surahs),names=keys.map(nameOfKey),gk=Object.keys(p.globals);
+  var extras=[];
+  if(gk.indexOf('customPlusSurahs')>=0)extras.push('การ์ดที่สร้างเอง');
+  if(gk.indexOf('ayahHighlights')>=0||gk.indexOf('userAyahTexts')>=0)extras.push('ตัวบท + ไฮไลต์');
+  if(gk.indexOf('resources')>=0)extras.push('คลังข้อมูล');
+  if(gk.indexOf('dailyNotes')>=0)extras.push('บันทึกรายวัน');
+  box=document.createElement('div');
+  box.className='nix-ov';
+  box.innerHTML='<div class="nix-bx" onclick="event.stopPropagation()">'+
+    '<div class="nix-h">นำเข้าบันทึก</div>'+
+    '<div class="nix-sub">'+(p.title?esc(p.title):'ไม่ได้ระบุชื่อบันทึก')+
+      (p.from?' · จาก '+esc(p.from):'')+'</div>'+
+    '<div class="nix-row"><span>ซูเราะฮ์ / การ์ด</span><b>'+keys.length+' รายการ</b></div>'+
+    (extras.length?'<div class="nix-row"><span>ข้อมูลประกอบ</span><b>'+extras.join(' · ')+'</b></div>':'')+
+    '<div class="nix-row"><span>ความคืบหน้าของคุณ</span><b style="color:var(--sec)">ไม่ถูกแตะ</b></div>'+
+    (names.length?'<div class="nix-names">'+names.map(esc).join(' · ')+'</div>':'')+
+    '<div class="nix-warn">อายะฮ์ที่มีทั้งสองฝั่งจะใช้ของในไฟล์ · ส่วนที่ไฟล์ไม่มี ของเดิมยังอยู่ครบ</div>'+
+    '<div class="nix-act"><button class="nix-no" onclick="_nixClose()">ยกเลิก</button>'+
+      '<button class="nix-go" onclick="_nixGo()">นำเข้า</button></div></div>';
+  box.addEventListener('click',function(e){if(e.target===box)closeBox();});
+  document.body.appendChild(box);
+}
+function handleText(txt){
+  var d;
+  try{d=JSON.parse(txt);}catch(e){return T('ไฟล์ไม่ถูกต้อง (ไม่ใช่ JSON)');}
+  var p=normalize(d);
+  if(!p)return T('ไม่พบเนื้อหาบันทึกในไฟล์นี้');
+  if(p.share){
+    T('นี่คือไฟล์แชร์บันทึก · กำลังเปิดศูนย์แชร์ให้');
+    try{
+      if(typeof SH!=='undefined'&&SH.open){SH.open('import');setTimeout(function(){try{SH.parseText(txt);}catch(e){}},350);}
+      else T('เปิดเมนู "แชร์บันทึก" แล้วเลือกแท็บนำเข้า');
+    }catch(e){T('เปิดเมนู "แชร์บันทึก" แล้วเลือกแท็บนำเข้า');}
+    return;
+  }
+  summary(p);
+}
+window._nixHandleText=handleText;
+window.mqImportNotes=function(){
+  var inp=document.createElement('input');
+  inp.type='file';inp.accept='application/json,.json,text/plain';
+  inp.onchange=function(){
+    var f=inp.files&&inp.files[0];if(!f)return;
+    var r=new FileReader();
+    r.onload=function(ev){handleText(String(ev.target.result||''));};
+    r.onerror=function(){T('อ่านไฟล์ไม่สำเร็จ');};
+    r.readAsText(f);
+  };
+  inp.click();
+};
+
+/* ═══ 7. ล้างขนาด / ล้างฟอนต์ — ทั้งบันทึกนี้ (ไม่มีป๊อปอัป) ═════════ */
+function cleanHTML(html,mode){
+  if(typeof html!=='string'||!html||html.indexOf('<')<0)return html;
+  var b;
+  try{b=document.createElement('div');b.innerHTML=html;}catch(e){return html;}
+  var kill=(mode==='size')?['font-size','line-height']:['font-family'];
+  try{
+    Array.prototype.forEach.call(b.querySelectorAll('[style]'),function(el){
+      var out=[];
+      (el.getAttribute('style')||'').split(';').forEach(function(part){
+        var i=part.indexOf(':');if(i<0)return;
+        var k=part.slice(0,i).trim().toLowerCase();
+        if(kill.indexOf(k)>=0)return;
+        if(part.trim())out.push(part.trim());
+      });
+      if(out.length)el.setAttribute('style',out.join(';'));else el.removeAttribute('style');
+    });
+    var attr=(mode==='size')?'size':'face';
+    Array.prototype.forEach.call(b.querySelectorAll('font['+attr+']'),function(el){el.removeAttribute(attr);});
+    if(mode==='size')Array.prototype.forEach.call(b.querySelectorAll('h1,h2,h3,h4,h5,h6,big,small'),function(el){
+      var s=document.createElement((el.tagName==='BIG'||el.tagName==='SMALL')?'span':'b');
+      s.innerHTML=el.innerHTML;
+      if(el.getAttribute('style'))s.setAttribute('style',el.getAttribute('style'));
+      el.parentNode.replaceChild(s,el);
+    });
+  }catch(e){return html;}
+  return b.innerHTML;
+}
+window.nbScrub=function(mode){
+  if(mode!=='size'&&mode!=='font')return;
+  var sn=(typeof currentSurah!=='undefined')?currentSurah:null;
+  if(sn===null||sn===undefined||sn==='')return T('เปิดบันทึกที่ต้องการก่อน แล้วค่อยกดปุ่มนี้');
+  var d;try{d=getSurah(sn);}catch(e){d=null;}
+  if(!d)return T('ไม่พบบันทึกนี้');
+  var n=0;
+  function fix(o,f){
+    if(typeof o[f]!=='string'||!o[f])return;
+    var v=cleanHTML(o[f],mode);
+    if(v!==o[f]){o[f]=v;n++;}
+  }
+  ['overview','reasons','stories','similar'].forEach(function(f){fix(d,f);});
+  ['notes','meanings','tafsirs'].forEach(function(f){
+    var m=d[f];
+    if(!m||typeof m!=='object')return;
+    Object.keys(m).forEach(function(a){fix(m,a);});
+  });
+  if(Object.prototype.toString.call(d.names)==='[object Array]')
+    d.names.forEach(function(it){if(it&&typeof it==='object')['lesson','dua','meaning'].forEach(function(f){fix(it,f);});});
+  if(!n)return T(mode==='size'?'ไม่มีขนาดตัวอักษรที่ตั้งเองในบันทึกนี้':'ไม่มีฟอนต์ที่ตั้งเองในบันทึกนี้');
+  try{setSurah(sn,d,true);}catch(e){return T('บันทึกไม่สำเร็จ');}
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll('.note-edit,.ayah-input,.name-add-edit'),
+      function(el){el.removeAttribute('data-emz');});
+  }catch(e){}
+  T((mode==='size'?'ล้างขนาดตัวอักษรแล้ว · ':'ล้างฟอนต์แล้ว · ')+n+' จุด');
+  if(document.getElementById('ayah-list')){
+    setTimeout(function(){try{if(typeof openDetail==='function')openDetail(sn);}catch(e){}},160);
+  }
+};
+
+/* ปุ่มในแผงเครื่องมือ (หมวด "บันทึกและรูปแบบ") */
+if(typeof window.renderNvxTools==='function'){
+  var oTools=window.renderNvxTools;
+  window.renderNvxTools=function(){
+    try{oTools.apply(this,arguments);}catch(e){}
+    try{
+      var el=document.getElementById('nvx-tools');if(!el)return;
+      var grid=el.querySelector('.nvt-grid');
+      if(!grid||grid.querySelector('[data-v384]'))return;
+      var w=document.createElement('div');
+      w.innerHTML=nvxTile('back','ล้างขนาด','ทั้งบันทึกนี้',"nvxDo(function(){nbScrub('size')})")+
+                  nvxTile('palette','ล้างฟอนต์','ทั้งบันทึกนี้',"nvxDo(function(){nbScrub('font')})");
+      Array.prototype.slice.call(w.children).forEach(function(c){
+        c.setAttribute('data-v384','1');grid.appendChild(c);
+      });
+    }catch(e){}
+  };
+}
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v385 · การ์ดที่สร้างเอง : ตัวกรองกลุ่มในหน้าบันทึกกลับมา + ชื่อไฟล์
+   ───────────────────────────────────────────────────────────────────
+   เจอต้นเหตุแล้ว — renderDetailBody บรรทัดเดียว :
+       const sn = isPlus ? `'${s.n}'` : s.n;
+   ค่านี้ตั้งใจไว้ใส่ใน onclick="...(${sn})" จึงมี ' ติดมาด้วย
+   แต่โค้ดกลับส่งค่าเดียวกันนี้เข้า _grpInit(sn) / _applySectionState(sn)
+   ตรง ๆ ด้วย  →  getSurah("'p3'") ไปหาคีย์ surah_'p3' ซึ่งไม่มีจริง
+   คืนค่าเริ่มต้นเปล่า ๆ กลับมา  →  ayahGroups ว่าง
+   →  _bldFilter คืนสตริงว่าง  →  แถบ "กลุ่ม :" ในหน้าบันทึกหายทั้งแถบ
+   ส่วนแท็บจัดกลุ่มไม่พังเพราะใช้ currentSurah ที่สะอาด กลุ่มเลยยังเห็น
+   (ซูเราะฮ์ปกติไม่โดน เพราะ sn เป็นตัวเลข ไม่มี ' ครอบ)
+
+   แก้  · ปอกเครื่องหมาย ' " ออกก่อนใช้ทุกจุดที่รับหมายเลขบันทึก
+        · ย้ายค่าที่เคยถูกเก็บผิดคีย์ (nbSecVis / nbFS_ / grpFilterState)
+          กลับมาคีย์ที่ถูก จะได้ไม่เสียของที่ตั้งไว้
+        · ชื่อไฟล์ส่งออก : ไม่มี __ ซ้อน และมีชื่อบันทึกจริงนำหน้าเสมอ
+          ใช้สูตรเดียวกันทั้งปุ่มในวงล้อนำทางและปุ่มในศูนย์แชร์
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+var T=function(m){try{if(typeof toast==='function')toast(m);}catch(e){}};
+
+/* ═══ 1. ปอกเครื่องหมายคำพูดออกจากหมายเลขบันทึก ═════════════════════ */
+function nsn(sn){
+  if(typeof sn!=='string')return sn;
+  var t=sn.trim();
+  while(t.length>1&&(t.charAt(0)==="'"||t.charAt(0)==='"')&&t.charAt(t.length-1)===t.charAt(0))
+    t=t.slice(1,-1).trim();
+  if(/^-?\d+$/.test(t))return parseInt(t,10);
+  return t;
+}
+window._snClean=nsn;
+
+/* ห่อทุกฟังก์ชันที่รับหมายเลขบันทึกให้ปอกก่อนเสมอ
+   (ค่าที่สะอาดอยู่แล้วผ่านไปเฉย ๆ ไม่มีผลข้างเคียง) */
+['_grpInit','_applySectionState','_bldFilter','_bldSectionToggle','_bldBanner',
+ '_bldGroupsTab','_bldFontCtl','_applyFZ','_seedDefaultGroups','_getST','_getFS']
+.forEach(function(nm){
+  var f=window[nm];
+  if(typeof f!=='function'||f.__v385)return;
+  var w=function(sn){
+    var a=Array.prototype.slice.call(arguments);
+    a[0]=nsn(a[0]);
+    return f.apply(this,a);
+  };
+  w.__v385=1;
+  window[nm]=w;
+});
+
+/* ═══ 2. ย้ายค่าที่เคยถูกเก็บผิดคีย์กลับมาที่ถูก (ทำครั้งเดียว) ═══════ */
+(function migrate(){
+  try{
+    if(localStorage.getItem('_v385fix')==='1')return;
+    /* nbSecVis : { "'p3'": {...} } → { "p3": {...} } */
+    try{
+      var sv=JSON.parse(localStorage.getItem('nbSecVis'))||{},ch=false;
+      Object.keys(sv).forEach(function(k){
+        var c=String(nsn(k));
+        if(c!==k){if(sv[c]===undefined)sv[c]=sv[k];delete sv[k];ch=true;}
+      });
+      if(ch)localStorage.setItem('nbSecVis',JSON.stringify(sv));
+    }catch(e){}
+    /* grpFilterState : เหมือนกัน */
+    try{
+      var gf=JSON.parse(localStorage.getItem('grpFilterState'))||{},ch2=false;
+      Object.keys(gf).forEach(function(k){
+        var c=String(nsn(k));
+        if(c!==k){if(gf[c]===undefined)gf[c]=gf[k];delete gf[k];ch2=true;}
+      });
+      if(ch2)localStorage.setItem('grpFilterState',JSON.stringify(gf));
+    }catch(e){}
+    /* nbFS_'p3' → nbFS_p3 */
+    try{
+      var move=[];
+      for(var i=0;i<localStorage.length;i++){
+        var k=localStorage.key(i);
+        if(k&&k.indexOf('nbFS_')===0){
+          var id=String(nsn(k.slice(5)));
+          if('nbFS_'+id!==k)move.push([k,'nbFS_'+id]);
+        }
+      }
+      move.forEach(function(p){
+        try{
+          if(localStorage.getItem(p[1])==null)localStorage.setItem(p[1],localStorage.getItem(p[0]));
+          localStorage.removeItem(p[0]);
+        }catch(e){}
+      });
+    }catch(e){}
+    localStorage.setItem('_v385fix','1');
+  }catch(e){}
+})();
+
+/* ═══ 3. ชื่อไฟล์ส่งออก (v386) ══════════════════════════════════════
+   ของเดิมมั่ว เพราะ 1) แทนที่ทุกอย่างที่ไม่ใช่ตัวอักษรด้วย _ ชื่อไทย
+   ที่มีวรรคเลยกลายเป็นขีดล่างเต็มไปหมด  2) ส่งออก 10 รายการแต่เอาชื่อ
+   รายการแรกมาตั้ง อ่านแล้วไม่ตรงกับของข้างใน
+   ตอนนี้ : ตัดเฉพาะอักขระที่ตั้งชื่อไฟล์ไม่ได้จริง ๆ เว้นวรรคคงไว้
+            หลายรายการก็บอกจำนวนตรง ๆ ไม่หยิบชื่อใครมาเป็นตัวแทน
+     1 รายการ   → บันทึก อันนะบะอ์ 2026-09-05.json
+     2-3 รายการ → บันทึก อันนะบะอ์ + อัลฟาติหะฮ์ 2026-09-05.json
+     4+ รายการ  → บันทึกทั้งหมด 10 รายการ 2026-09-05.json          */
+function fnSafe(s){
+  return String(s||'')
+    .replace(/[\/\\:*?"<>|]/g,' ')          /* อักขระที่ระบบไฟล์ไม่รับ */
+    .replace(/[\u0000-\u001F\u007F]/g,'')
+    .replace(/\s+/g,' ')
+    .trim()
+    .slice(0,40)
+    .trim();
+}
+function safeName(s){return fnSafe(s);}
+function stamp(){
+  try{if(typeof getLocalDate==='function')return getLocalDate();}catch(e){}
+  var d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function noteFileName(names,me){
+  var list=(names||[]).map(fnSafe).filter(Boolean);
+  var head;
+  if(!list.length)head='บันทึก';
+  else if(list.length===1)head='บันทึก '+list[0];
+  else if(list.length<=3)head='บันทึก '+list.join(' + ');
+  else head='บันทึกทั้งหมด '+list.length+' รายการ';
+  var who=fnSafe(me);
+  return head+(who?' ('+who+')':'')+' '+stamp()+'.json';
+}
+window._noteFileName=noteFileName;
+
+/* ปุ่มดาวน์โหลดในศูนย์แชร์บันทึก : ชื่อไฟล์สูตรเดียวกัน */
+try{
+  if(typeof SH!=='undefined'&&typeof SH.payload==='function'){
+    SH.download=function(){
+      var p=SH.payload();
+      if(!p.cards.length&&!p.surahs.length)return T('ยังไม่ได้เลือกรายการ');
+      var names=[].concat(
+        (p.cards||[]).map(function(c){return c&&c.meta&&c.meta.name;}),
+        (p.surahs||[]).map(function(s){return s&&s.name;})).filter(Boolean);
+      var blob=new Blob([JSON.stringify(p)],{type:'application/json'});
+      var url=URL.createObjectURL(blob);
+      var a=document.createElement('a');
+      a.href=url;
+      a.download=noteFileName(names,p.from||'');
+      a.click();
+      setTimeout(function(){URL.revokeObjectURL(url);},900);
+      T('ส่งออก '+(p.cards.length+p.surahs.length)+' รายการแล้ว ✓');
+    };
+  }
+}catch(e){}
+
+/* ═══ 4. วาดแถบ "กลุ่ม :" ซ้ำหลังเปิดหน้ารายละเอียด (กันจังหวะพลาด) ═══ */
+function refill(){
+  try{
+    var sn=(typeof currentSurah!=='undefined')?currentSurah:null;
+    if(sn===null||sn===undefined||sn==='')return;
+    var fc=document.getElementById('grp-fc');
+    if(fc&&!fc.firstChild&&typeof _bldFilter==='function')fc.innerHTML=_bldFilter(sn);
+    var st=document.getElementById('nb-section-toggle');
+    if(st&&!st.firstChild&&typeof _bldSectionToggle==='function')st.innerHTML=_bldSectionToggle(sn);
+    if(typeof _bldFontCtl==='function')_bldFontCtl(sn);
+    if(typeof _applyFZ==='function')_applyFZ(sn);
+  }catch(e){}
+}
+if(typeof window.openDetail==='function'){
+  var oOpen=window.openDetail;
+  window.openDetail=function(){
+    var r;try{r=oOpen.apply(this,arguments);}catch(e){throw e;}
+    setTimeout(refill,120);
+    setTimeout(refill,420);
+    return r;
+  };
+}
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v387 · แถบกลุ่มย่อยรับหัวข้อยาวได้ + ส่งออก/นำเข้า ใช้ศูนย์แชร์ทางเดียว
+   ───────────────────────────────────────────────────────────────────
+   1) แถบกลุ่มย่อย (.grp-note-sub / .know-grp-sub-block) เป็น flex row
+      ที่ตั้ง flex-wrap:wrap ไว้ ตัวหัวข้อจึงถูกดันไปอยู่บรรทัดของตัวเอง
+      ด้วยความกว้างเท่าเนื้อหาเต็ม (flex-basis:auto = max-content)
+      พอหัวข้อยาว มันเลยไม่ตัดบรรทัด แต่ล้นออกนอกกรอบไปเลย
+      → ให้หัวข้อยืดหดได้จริง (flex:1 1 60px + min-width:0) จะได้ตัดบรรทัด
+        และวางจุดนำหน้าไว้บรรทัดแรกแทนที่จะลอยกลางก้อน
+   2) ส่งออก/นำเข้าในวงล้อนำทาง เคยเป็นกลไกของตัวเอง คนละทางกับศูนย์แชร์
+      → ล้างทิ้ง ให้ทั้งสองปุ่มวิ่งเข้าศูนย์แชร์บันทึกทางเดียวกันหมด
+        ส่งออก : เปิดแท็บส่งออก และถ้ากำลังเปิดบันทึกอยู่ก็ติ๊กให้เลย
+        นำเข้า : เปิดแท็บนำเข้า พร้อมเปิดหน้าต่างเลือกไฟล์ให้ทันที
+      ไฟล์ที่ได้จึงเป็นไฟล์เดียวกับที่ศูนย์แชร์ออกให้ ใช้ต่อได้แน่นอน
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+var T=function(m){try{if(typeof toast==='function')toast(m);}catch(e){}};
+
+/* ═══ 1. แถบกลุ่มย่อย : หัวข้อยาวให้ตัดบรรทัด ═══════════════════════ */
+(function(){
+  if(document.getElementById('v387-style'))return;
+  var s=document.createElement('style');s.id='v387-style';
+  s.textContent=[
+    '.grp-note-sub,.know-grp-sub-block{align-items:flex-start;row-gap:2px}',
+    '.grp-note-sub>.gns-dot,.know-grp-sub-block>.kgsb-dot{margin-top:.5em;align-self:flex-start}',
+    /* span ตัวที่สอง = ชื่อกลุ่มย่อย : ให้ยืดหดและตัดบรรทัดได้ */
+    '.grp-note-sub>span+span,.know-grp-sub-block>span+span{',
+      'flex:1 1 60px;min-width:0;white-space:normal;overflow-wrap:break-word;',
+      'word-break:normal;line-height:1.5}',
+    /* span ตัวแรก = เลขข้อ : อยู่ติดจุดเสมอ ไม่ถูกบีบ */
+    '.grp-note-sub>.gns-dot+span,.know-grp-sub-block>.kgsb-dot+span{',
+      'flex:0 0 auto;white-space:nowrap;padding-top:.1em}',
+    /* คำอธิบายลงบรรทัดใหม่เต็มความกว้าง ไม่ถูกดันไปชิดขวาแล้วโดนตัด */
+    '.grp-note-sub>.gns-desc,.know-grp-sub-block>.kgsb-desc{',
+      'flex:1 1 100%;margin-left:0!important;max-width:100%!important;',
+      'white-space:normal!important;overflow:visible;text-overflow:clip}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+/* ═══ 2. ส่งออก / นำเข้า → ศูนย์แชร์บันทึกทางเดียว ══════════════════ */
+function hub(){return (typeof SH!=='undefined'&&SH&&typeof SH.open==='function')?SH:null;}
+
+window.mqExportNotes=function(){
+  var S=hub();
+  if(!S)return T('เปิดศูนย์แชร์บันทึกไม่ได้');
+  var sn=(typeof currentSurah!=='undefined')?currentSurah:null;
+  if(typeof window._snClean==='function')sn=window._snClean(sn);
+  /* ติ๊กให้อัตโนมัติเฉพาะตอนที่เปิดบันทึกนั้นค้างอยู่จริง ๆ
+     ไม่งั้น currentSurah ที่ค้างจากครั้งก่อนจะไปเลือกผิดเล่ม */
+  var onDetail=!!document.getElementById('ayah-list');
+  if(onDetail&&sn!==null&&sn!==undefined&&sn!==''&&typeof S.openForSurah==='function'){
+    try{
+      /* openForSurah เปิดแท็บส่งออกให้เองอยู่แล้ว
+         ถ้าบันทึกนั้นยังว่าง มันจะเตือนแล้วปล่อยให้เลือกเองในหน้าที่เปิดค้างไว้ */
+      S.openForSurah(sn);
+      return;
+    }catch(e){}
+  }
+  try{S.open('export');}catch(e){T('เปิดศูนย์แชร์บันทึกไม่ได้');}
+};
+
+window.mqImportNotes=function(){
+  var S=hub();
+  if(!S)return T('เปิดศูนย์แชร์บันทึกไม่ได้');
+  try{
+    S.open('import');
+    if(typeof S.chooseFile==='function')setTimeout(function(){try{S.chooseFile();}catch(e){}},260);
+  }catch(e){T('เปิดศูนย์แชร์บันทึกไม่ได้');}
+};
+
+/* กลไกเก่าของ v383/v384 ไม่ใช้แล้ว ปิดหน้าสรุปที่อาจค้างอยู่ทิ้งให้เรียบร้อย */
+try{if(typeof window._nixClose==='function')window._nixClose();}catch(e){}
+
+/* ═══ 3. ป้ายกำกับบนปุ่มให้ตรงกับสิ่งที่เกิดขึ้นจริง ════════════════ */
+if(typeof window.renderNvxTools==='function'){
+  var oTools=window.renderNvxTools;
+  window.renderNvxTools=function(){
+    try{oTools.apply(this,arguments);}catch(e){}
+    try{
+      var el=document.getElementById('nvx-tools');if(!el)return;
+      Array.prototype.forEach.call(el.querySelectorAll('.nvt'),function(b){
+        var oc=b.getAttribute('onclick')||'';
+        var sub=b.querySelector('.nvt-sub');
+        if(!sub)return;
+        if(oc.indexOf('mqExportNotes')>=0)sub.textContent='ศูนย์แชร์บันทึก';
+        else if(oc.indexOf('mqImportNotes')>=0)sub.textContent='ศูนย์แชร์บันทึก';
+      });
+    }catch(e){}
+  };
+}
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v388 · แถบคั่นกลุ่มย่อย (.grp-sep) : คำไม่ห่างกัน + หัวข้อยาวไม่ล้น
+   ───────────────────────────────────────────────────────────────────
+   ต้นเหตุที่แถบนี้พังทั้งที่ v387 แก้กลุ่มย่อยไปแล้ว คือมันคนละตัวกัน
+   v387 แก้ .grp-note-sub / .know-grp-sub-block ไป แต่แถบที่เห็นในหน้า
+   "เลือกดูกลุ่มเดียว" คือ .grp-sep ซึ่งยังไม่ได้แก้ และมีปัญหาอยู่ 3 จุด
+
+   1) คำห่างกันเป็นช่วง ๆ
+      .grp-sep-txt ตั้ง display:flex + gap:3px ไว้
+      แต่ thaiWB() คืนค่าเป็น <span style="display:inline-block"> ทีละคำ
+      ทุกคำจึงกลายเป็น "ลูก flex" แล้วโดน gap ดันห่างกันคำละ 3px
+      → เลิกเป็น flex ให้เป็นข้อความปกติ คำจะเรียงชิดกันตามธรรมชาติ
+        (ตัวคั่นระหว่างคำของ thaiWB เป็น ZWSP อยู่แล้ว จึงไม่มีช่องว่างจริง)
+
+   2) หัวข้อยาวแล้วล้นออกนอกกรอบ
+      .grp-sep-txt ตั้ง white-space:nowrap ไว้ หัวข้อยาวจึงไม่ยอมตัดบรรทัด
+      ไปเบียดเส้นคั่นสองข้าง (flex:1) จนเหลือ 0 แล้วดันตัวเองล้นออกไป
+      → ให้ตัดบรรทัดได้จริง และกันเส้นคั่นไว้ข้างละ 8px เสมอ (flex-shrink:0)
+
+   3) เลขช่วงข้อท้ายหัวข้อ เช่น (9) หลุดไปคนละบรรทัดกับวงเล็บ
+      → ห่อเป็นก้อนเดียว white-space:nowrap ไม่ให้ตัดกลาง
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+/* ═══ 1. CSS : แถบคั่นกลุ่มย่อยรับหัวข้อยาว ═════════════════════════ */
+(function(){
+  if(document.getElementById('v388-style'))return;
+  var s=document.createElement('style');s.id='v388-style';
+  s.textContent=[
+    /* กรอบแถบ : เว้นขอบซ้ายขวาให้ตัวอักษรไม่ชนขอบการ์ด */
+    '.grp-sep{align-items:center;gap:6px;padding:4px 12px}',
+    /* เส้นคั่นสองข้าง : ยืดได้แต่ห้ามหดจนหาย */
+    '.grp-sep-line{flex:1 0 8px;min-width:8px}',
+    /* หัวใจของการแก้ : เลิก flex → ข้อความปกติ + ตัดบรรทัดได้ */
+    '.grp-sep-txt{display:block!important;flex:0 1 auto;min-width:0;',
+      'max-width:calc(100% - 40px);white-space:normal!important;',
+      'overflow-wrap:break-word;word-break:normal;line-height:1.5;',
+      'text-align:center;padding:1px 0}',
+    /* จุดนำหน้า : เดิมเป็นลูก flex พอเลิก flex ต้องบังคับให้อยู่ในบรรทัด */
+    '.grp-sep-txt>div{display:inline-block;vertical-align:middle;margin-right:4px}',
+    /* ลูกศรกางคำอธิบาย : อยู่ท้ายบรรทัดเดียวกับข้อความ */
+    '.grp-sep-txt .grp-sep-toggle{display:inline-block;vertical-align:middle;',
+      'margin-left:3px;flex:none}',
+    /* เลขช่วงข้อ : ไม่ให้ตัดกลาง และเบาลงหน่อยเพื่อให้หัวข้อเด่นกว่า */
+    '.grp-sep-txt .gsx-range{white-space:nowrap;font-weight:400;opacity:.7}',
+    /* คำอธิบายใต้แถบ : ให้ขอบตรงกับแถบด้านบน */
+    '.grp-sep-desc{padding-left:12px;padding-right:12px}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+/* ═══ 2. ห่อเลขช่วงข้อท้ายหัวข้อไม่ให้ตัดกลาง ═══════════════════════ */
+var RANGE=/^([\s\S]*?)(\((?:\s|\d|[-–—])+\))\s*$/;
+
+function tidy(root){
+  var box=root||document;
+  var list;
+  try{list=box.querySelectorAll('.grp-sep-txt:not([data-v388])');}catch(e){return;}
+  if(!list||!list.length)return;
+  Array.prototype.forEach.call(list,function(el){
+    el.setAttribute('data-v388','1');
+    var kids=el.childNodes;
+    for(var i=kids.length-1;i>=0;i--){
+      var n=kids[i];
+      if(n.nodeType!==3)continue;                 /* สนใจเฉพาะ text node */
+      var m=n.nodeValue.match(RANGE);
+      if(!m)break;                                /* text node ท้ายสุดไม่ใช่เลขช่วง */
+      var sp=document.createElement('span');
+      sp.className='gsx-range';
+      sp.textContent=m[2];
+      n.nodeValue=m[1];
+      el.insertBefore(sp,n.nextSibling);
+      break;
+    }
+  });
+}
+
+/* เกาะกับตัววาดแถบโดยตรง ถ้าเกาะได้ */
+try{
+  if(typeof window._filterAyahs==='function'){
+    var oFA=window._filterAyahs;
+    window._filterAyahs=function(){
+      var r;
+      try{r=oFA.apply(this,arguments);}catch(e){}
+      try{tidy(document.getElementById('ayah-list'));}catch(e){}
+      return r;
+    };
+  }
+}catch(e){}
+
+/* กันเหนียว : ถ้าแถบถูกวาดจากทางอื่น ก็ยังตามเก็บได้ */
+(function(){
+  var pending=null;
+  function later(){
+    if(pending)return;
+    pending=setTimeout(function(){pending=null;try{tidy(document);}catch(e){}},90);
+  }
+  try{
+    new MutationObserver(function(muts){
+      for(var i=0;i<muts.length;i++){
+        if(muts[i].addedNodes&&muts[i].addedNodes.length){later();return;}
+      }
+    }).observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+  if(document.readyState==='loading')
+    document.addEventListener('DOMContentLoaded',later);
+  else later();
+})();
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v390+v394 · หน้าบันทึก : แถวคุมการโชว์ "ตัวบท" + กดสวนรายข้อได้
+   ───────────────────────────────────────────────────────────────────
+   ของเดิม v389 เป็นปุ่มกลมสีทองปุ่มเดียวกดวนสามสถานะ ซึ่งไม่เข้ากับหน้านี้
+     · ตัวมันใหญ่และเข้มกว่าปุ่ม "อักษร − 0 +" ที่อยู่ข้าง ๆ เลยเด่นเกินหน้าที่
+     · เขียนแค่ "ทั้งหมด" อ่านแล้วไม่รู้ว่ากดต่อจะไปสถานะไหน มีกี่สถานะ
+   → เปลี่ยนเป็นแถวชิปสามอัน หน้าตาชุดเดียวกับแถว "ใส่ข้อมูล :" ด้านบน
+     เห็นครบทั้งสามทางเลือกในตาเดียว รู้ว่าตอนนี้อยู่สถานะไหน กดตรงไปได้เลย
+
+   สามสถานะ (จำแยกรายบันทึกที่คีย์ 'nbArMode')
+     · ปกติ       → ใช้สถานะรายข้อที่กดไว้เอง (พฤติกรรมเดิม)
+     · กางทั้งหมด  → กางตัวบททุกข้อ เหลือ "เฉพาะตัวบท" จริง ๆ
+                    ซ่อนหัวข้อพับ · ปุ่มแก้ไข · แถบเครื่องมือ
+                    ข้อที่ยังไม่มีตัวบทซ่อนทิ้ง จะได้ไล่อ่านรวดเดียว
+     · ซ่อนทั้งหมด → พับตัวบททุกข้อ แต่ยังเห็นหัวข้อไว้กดเปิดทีละอันได้
+
+   ทำด้วยการสวมคลาสที่ #ayah-list ชั้นเดียว ไม่เขียนทับ 'ayahArOpen'
+   พอกลับมา "ปกติ" ทุกข้อจึงคืนสถานะที่เคยกดไว้ครบเหมือนเดิม
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+var MODES=['auto','all','none'];
+var LABEL={auto:'ปกติ',all:'กางทั้งหมด',none:'ซ่อนทั้งหมด'};
+
+/* ═══ 1. CSS ════════════════════════════════════════════════════════ */
+(function(){
+  var old=document.getElementById('v389-style');
+  if(old&&old.parentNode)old.parentNode.removeChild(old);
+  if(document.getElementById('v390-style'))return;
+  var s=document.createElement('style');s.id='v390-style';
+  s.textContent=[
+    /* แถวของตัวเอง ใต้แถว "อักษร" ไม่ไปเบียดปุ่มเล็ก ๆ ของเขา */
+    '#nb-ar-ctl{display:block;margin:0}',
+    '.nbar-row{display:flex;flex-wrap:wrap;gap:3px;padding:2px 0 5px;align-items:center}',
+    '.nbar-lb{font-size:var(--text-3xs);color:var(--txt3);display:inline-flex;',
+      'align-items:center;gap:3px;margin-right:1px}',
+    '.nbar-lb svg{width:10px;height:10px;flex:none}',
+    /* ชิป : ยกทรงมาจากแถว "ใส่ข้อมูล :" ให้เป็นภาษาเดียวกันทั้งหน้า */
+    '.nbar-chip{padding:4px 10px;border-radius:var(--r-full);font-size:var(--text-3xs);',
+      'border:none;background:var(--card2);color:var(--txt3);cursor:pointer;',
+      'font-family:var(--f-th);line-height:1.2;transition:all .15s}',
+    '.nbar-chip:hover{background:rgba(184,149,107,0.10)}',
+    '.nbar-chip.on{background:#EFE6D8;color:#8A6E45;font-weight:600}',
+
+    /* v394 : .ar-x = "ข้อนี้เอาสวนทางโหมด" ทำให้ยังกดพับ/กางรายข้อได้อยู่
+       ทั้งตอนกางทั้งหมดและตอนซ่อนทั้งหมด และไม่แตะสถานะที่บันทึกไว้เลย */
+
+    /* ── กางทั้งหมด : กางทุกข้อที่มีตัวบท แต่กดพับรายข้อได้ ── */
+    '#ayah-list.ar-all .ayah-ar-wrap:has(.ayah-ar-text):not(.ar-x) .ayah-ar-body{display:block;margin-top:0}',
+    '#ayah-list.ar-all .ayah-ar-wrap:has(.ayah-ar-text).ar-x .ayah-ar-body{display:none}',
+    '#ayah-list.ar-all .ayah-ar-wrap:has(.ayah-ar-text):not(.ar-x) .ayah-ar-header svg{transform:rotate(180deg)}',
+    '#ayah-list.ar-all .ayah-ar-wrap:has(.ayah-ar-text).ar-x .ayah-ar-header svg{transform:none}',
+    /* เหลือ "เฉพาะตัวบท" ด้วยการซ่อนแถวเครื่องมือ ส่วนหัวข้อพับยังอยู่ไว้ให้กด */
+    '#ayah-list.ar-all .ayah-ar-edit{display:none}',
+    '#ayah-list.ar-all .ayah-ar-toolbar{display:none}',
+    /* ข้อที่ยังไม่มีตัวบท ปล่อยให้เป็นไปตามสถานะเดิมของมัน ไม่ต้องกางโชว์คำว่า "ยังไม่มี" */
+
+    /* ── ซ่อนทั้งหมด : พับหมด แต่กดกางรายข้อได้ ── */
+    '#ayah-list.ar-none .ayah-ar-wrap:not(.ar-x) .ayah-ar-body{display:none}',
+    '#ayah-list.ar-none .ayah-ar-wrap.ar-x .ayah-ar-body{display:block}',
+    '#ayah-list.ar-none .ayah-ar-wrap:not(.ar-x) .ayah-ar-header svg{transform:none}',
+    '#ayah-list.ar-none .ayah-ar-wrap.ar-x .ayah-ar-header svg{transform:rotate(180deg)}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+/* ═══ 2. สถานะ ══════════════════════════════════════════════════════ */
+function cur(){
+  var sn=(typeof currentSurah!=='undefined')?currentSurah:null;
+  try{if(typeof window._snClean==='function')sn=window._snClean(sn);}catch(e){}
+  return sn;
+}
+function getMode(sn){
+  try{var a=JSON.parse(localStorage.getItem('nbArMode'))||{};
+      var v=a[sn];return MODES.indexOf(v)>=0?v:'auto';}catch(e){return 'auto';}
+}
+function setMode(sn,v){
+  try{var a=JSON.parse(localStorage.getItem('nbArMode'))||{};a[sn]=v;
+      localStorage.setItem('nbArMode',JSON.stringify(a));}catch(e){}
+}
+
+/* ═══ 3. ทาคลาสลงที่รายการข้อ ══════════════════════════════════════ */
+function apply(){
+  var list=document.getElementById('ayah-list');if(!list)return;
+  var m=getMode(cur());
+  list.classList.toggle('ar-all', m==='all');
+  list.classList.toggle('ar-none', m==='none');
+}
+
+/* ═══ 4. แถวชิป ═════════════════════════════════════════════════════ */
+function host(){
+  var fc=document.getElementById('nb-fontsize-ctl');
+  if(!fc||!fc.parentNode)return null;
+  var el=document.getElementById('nb-ar-ctl');
+  if(!el||el.parentNode!==fc.parentNode){
+    if(el&&el.parentNode)el.parentNode.removeChild(el);
+    el=document.createElement('div');el.id='nb-ar-ctl';
+    fc.parentNode.insertBefore(el,fc.nextSibling);
+  }
+  return el;
+}
+
+function build(){
+  var el=host();if(!el)return;
+  var sn=cur(),m=getMode(sn);
+  var tl='ตัวบท';
+  try{if(typeof L3==='function')tl=L3('text',sn)||'ตัวบท';}catch(e){}
+  var h='<div class="nbar-row"><span class="nbar-lb">'+
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">'+
+    '<path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>'+
+    '<path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>'+tl+' :</span>';
+  MODES.forEach(function(k){
+    h+='<button class="nbar-chip'+(m===k?' on':'')+'" onclick="nbArSet(\''+k+'\')">'+
+       LABEL[k]+'</button>';
+  });
+  el.innerHTML=h+'</div>';
+}
+
+window.nbArSet=function(mode){
+  if(MODES.indexOf(mode)<0)return;
+  setMode(cur(),mode);
+  clearX();
+  apply();build();
+};
+
+/* ล้างข้อที่เคยกดสวนทางโหมดไว้ ทุกครั้งที่เลือกโหมดใหม่ */
+function clearX(){
+  try{
+    var l=document.getElementById('ayah-list');if(!l)return;
+    Array.prototype.forEach.call(l.querySelectorAll('.ar-x'),function(w){w.classList.remove('ar-x');});
+  }catch(e){}
+}
+
+/* กดหัวข้อพับรายข้อระหว่างอยู่ในโหมดกาง/ซ่อนทั้งหมด : สลับเฉพาะข้อนั้น
+   ไม่เขียนทับ 'ayahArOpen' พอกลับมา "ปกติ" ทุกข้อจึงคืนค่าที่กดไว้ครบ */
+if(typeof window.toggleAyahArDisplay==='function'&&!window.toggleAyahArDisplay.__v394){
+  var oTg=window.toggleAyahArDisplay;
+  var wTg=function(k,n){
+    try{
+      var l=document.getElementById('ayah-list');
+      var m=l?(l.classList.contains('ar-all')?'all':(l.classList.contains('ar-none')?'none':'')):'';
+      var wrap=document.getElementById('ar-wrap-'+k+'-'+n);
+      if(m&&wrap&&(m==='none'||wrap.querySelector('.ayah-ar-text'))){
+        wrap.classList.toggle('ar-x');
+        return;
+      }
+    }catch(e){}
+    return oTg.apply(this,arguments);
+  };
+  wTg.__v394=1;window.toggleAyahArDisplay=wTg;
+}
+
+/* ═══ 5. จุดเกาะ : สร้างแถวใหม่ทุกครั้งที่แถบเครื่องมือถูกวาดใหม่ ═══ */
+function refresh(){try{build();apply();}catch(e){}}
+
+['_bldFontCtl','_grpInit'].forEach(function(nm){
+  var f=window[nm];
+  if(typeof f!=='function'||f.__v390)return;
+  var w=function(){
+    var r;
+    try{r=f.apply(this,arguments);}catch(e){}
+    refresh();
+    return r;
+  };
+  w.__v390=1;window[nm]=w;
+});
+
+if(typeof window.openDetail==='function'&&!window.openDetail.__v390){
+  var oOD=window.openDetail;
+  var wOD=function(){
+    var r=oOD.apply(this,arguments);
+    setTimeout(refresh,60);setTimeout(refresh,260);
+    return r;
+  };
+  wOD.__v390=1;window.openDetail=wOD;
+}
+
+/* กันเหนียว : ถ้าแถบถูกวาดจากทางอื่น ก็ยังตามติดตั้งแถวให้ */
+(function(){
+  var pending=null;
+  function later(){
+    if(pending)return;
+    pending=setTimeout(function(){
+      pending=null;
+      if(document.getElementById('nb-fontsize-ctl')&&!document.getElementById('nb-ar-ctl'))refresh();
+      else{try{apply();}catch(e){}}
+    },120);
+  }
+  try{
+    new MutationObserver(function(muts){
+      for(var i=0;i<muts.length;i++)
+        if(muts[i].addedNodes&&muts[i].addedNodes.length){later();return;}
+    }).observe(document.body,{childList:true,subtree:true});
+  }catch(e){}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',later);
+  else later();
+})();
+
+})();
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   v393 · ตัวบทภาษาไทย : ตรวจให้นิ่ง + ที่ตั้งค่าพับเก็บไว้ในลูกกลมจานสี
+   ───────────────────────────────────────────────────────────────────
+   ที่แก้จาก v391
+
+   1) เลิกเพิ่มแถวตั้งค่าในหน้าบันทึก (#nb-th-ctl) หน้ามันแน่นเกินไปแล้ว
+      ย้ายไปอยู่ในลูกกลมจานสีลอย แท็บ "อื่น ๆ"
+      แต่กางไว้เต็ม ๆ ก็ไม่ได้อีก เพราะแท็บนั้นมีบล็อก "จัดข้อความ" อยู่แล้ว
+      พอวางปุ่มจัดวางซ้อนลงไปอีกชุด มันเลยยาวและชวนงงว่าอันไหนคุมอะไร
+      → พับเป็นแถวเดียวแบบ .ftk-row เหมือนสวิตช์ "วางเป็นข้อความล้วน"
+        ปิดไว้เป็นค่าเริ่มต้น บนแถวสรุปค่าที่ใช้อยู่ให้เห็นเลย
+        เช่น "ชิดซ้าย · ตามระบบ" ส่วนใหญ่จึงไม่ต้องกางด้วยซ้ำ
+        อยากเปลี่ยนค่อยกดกางออกมา ข้างในค่อยเป็น .ftk-aligns / .ftk-flist
+
+   2) เลิกใช้ลิสต์ฟอนต์ของตัวเอง หันมาใช้ TH_FONTS ที่แอปมีอยู่แล้วทั้งสิบตัว
+      ค่าเริ่มต้นคือ "ตามระบบ" = var(--f-th) ตามฟอนต์ไทยที่ตั้งไว้ในแอป
+
+   3) การตรวจว่าเป็นไทยหรืออาหรับ เดิมใช้ "เจออักษรอาหรับตัวเดียวก็เป็นอาหรับ"
+      ซึ่งไม่นิ่งเลย ตัวบทไทยที่แทรกคำอาหรับสักคำ (ซึ่งมีเป็นปกติมาก)
+      จะถูกเหวี่ยงไปเป็น rtl ทั้งก้อนแล้วเละทันที
+      → เปลี่ยนมานับตัวอักษรแทน ฝั่งไหนมากกว่าฝั่งนั้นเป็นตัวตัดสิน
+        ไม่มีอาหรับเลย = ไทยแน่นอน · มีปนกัน = ดูว่าไทยมากกว่าไหม
+        แล้วตั้ง unicode-bidi:plaintext ไว้ ท่อนอาหรับที่แทรกอยู่ข้างใน
+        ก็ยังไหลขวาไปซ้ายถูกต้องของมันเอง ไม่ต้องเลือกข้างทั้งก้อน
+
+   4) เดิมตรวจหลังวาดเสร็จแบบหน่วง 130ms เลยเห็นตัวไทยแวบเป็นทรงอาหรับก่อน
+      → เปลี่ยนมารวบจังหวะด้วย requestAnimationFrame ทำให้เสร็จก่อนวาดจริง
+        ไม่มีแวบ และไม่ยิงซ้ำถี่ ๆ ตอน DOM ขยับรัว ๆ
+
+   ค่าที่ตั้งเก็บรวมทั้งแอปที่คีย์ 'thTextCfg'
+   ═══════════════════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+var TH_RE=/[\u0E00-\u0E7F]/g;
+var AR_RE=/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/g;
+var SEL='.ayah-ar-text,.notebook-ayah-ar,.random-ar-text,.ayah-text-ar';
+var KEEP='onpointerdown="event.preventDefault()" onmousedown="event.preventDefault()"';
+var ALIGN=[{v:'left',l:'ชิดซ้าย'},{v:'center',l:'กึ่งกลาง'},{v:'right',l:'ชิดขวา'}];
+
+/* เก็บกวาดของ v391 ที่อาจค้างอยู่ */
+(function(){
+  ['v391-style','v392-style'].forEach(function(id){
+    var o=document.getElementById(id);if(o&&o.parentNode)o.parentNode.removeChild(o);});
+  var r=document.getElementById('nb-th-ctl');if(r&&r.parentNode)r.parentNode.removeChild(r);
+  try{delete window.thTxtSet;delete window.thTxtToggle;}catch(e){}
+})();
+
+/* ═══ 1. CSS ════════════════════════════════════════════════════════ */
+(function(){
+  if(document.getElementById('v393-style'))return;
+  var s=document.createElement('style');s.id='v393-style';
+  s.textContent=[
+    ':root{--th-txt-align:left;--th-txt-font:var(--f-th)}',
+    /* ต้อง !important เพราะช่องแก้ไขตั้งฟอนต์อาหรับไว้ที่ inline style */
+    '.ayah-ar-text.is-th,.notebook-ayah-ar.is-th,.random-ar-text.is-th,',
+    '.ayah-text-ar.is-th,#ayah-ar-input.is-th{',
+      'font-family:var(--th-txt-font)!important;',
+      'direction:ltr!important;',
+      'text-align:var(--th-txt-align)!important;',
+      'unicode-bidi:plaintext!important;',
+      'word-spacing:normal!important;',
+      'line-height:1.75!important;',
+      'font-size:var(--text-base)!important;',
+      'word-break:auto-phrase;overflow-wrap:break-word}',
+    '#ayah-ar-input.is-th{font-size:1rem!important;line-height:1.9!important}',
+    /* แถวพับของบล็อกตั้งค่าตัวบทไทย */
+    '#thtxt-blk .thtxt-hd{cursor:pointer}',
+    '#thtxt-blk .thtxt-cv{width:11px;height:11px;flex:none;color:var(--txt3);',
+      'transition:transform .18s}',
+    '#thtxt-blk.open .thtxt-cv{transform:rotate(180deg)}',
+    '#thtxt-blk .thtxt-bd{display:none;padding:2px 1px 0}',
+    '#thtxt-blk.open .thtxt-bd{display:block}'
+  ].join('');
+  document.head.appendChild(s);
+})();
+
+/* ═══ 2. ค่าตั้ง ════════════════════════════════════════════════════ */
+function thList(){return (typeof TH_FONTS!=='undefined'&&TH_FONTS)?TH_FONTS:[];}
+
+function cfg(){
+  var d={align:'left',font:''};
+  try{
+    var c=JSON.parse(localStorage.getItem('thTextCfg'))||{};
+    if(['left','center','right'].indexOf(c.align)>=0)d.align=c.align;
+    if(typeof c.font==='string'&&(c.font===''||thList().some(function(f){return f.g===c.font;})))
+      d.font=c.font;
+  }catch(e){}
+  return d;
+}
+function saveCfg(c){try{localStorage.setItem('thTextCfg',JSON.stringify(c));}catch(e){}}
+
+function stackOf(g){
+  if(!g)return 'var(--f-th)';
+  var f=thList().filter(function(x){return x.g===g;})[0];
+  return "'"+g+"',"+((f&&f.s)||'sans-serif');
+}
+function applyCfg(){
+  var c=cfg(),r=document.documentElement;
+  r.style.setProperty('--th-txt-align',c.align);
+  r.style.setProperty('--th-txt-font',stackOf(c.font));
+  if(c.font){try{_loadFontLink(TH_FONTS,c.font);}catch(e){}}
+}
+applyCfg();
+
+/* ═══ 3. ตรวจไทย/อาหรับ แบบนับตัวอักษร ═════════════════════════════ */
+function isThai(t){
+  if(!t||!/\S/.test(t))return false;
+  var ar=(t.match(AR_RE)||[]).length;
+  if(!ar)return true;                       /* ไม่มีอาหรับเลย ก็ไม่ใช่อาหรับ */
+  var th=(t.match(TH_RE)||[]).length;
+  return th>ar;                             /* ปนกัน : ฝั่งที่มากกว่าเป็นตัวตัดสิน */
+}
+function tag(el){
+  if(!el)return;
+  var want=isThai(el.textContent||'');
+  if(el.classList.contains('is-th')!==want)el.classList.toggle('is-th',want);
+}
+function scan(){
+  try{
+    Array.prototype.forEach.call(document.querySelectorAll(SEL),tag);
+    tag(document.getElementById('ayah-ar-input'));
+  }catch(e){}
+}
+
+/* รวบจังหวะด้วย rAF : เสร็จก่อนวาด ไม่เห็นแวบ และไม่ยิงซ้ำถี่ */
+var queued=false;
+function schedule(){
+  if(queued)return;queued=true;
+  var run=function(){queued=false;scan();try{inject();}catch(e){}};
+  if(window.requestAnimationFrame)requestAnimationFrame(run);else setTimeout(run,16);
+}
+
+/* ช่องแก้ไข : สลับทันทีระหว่างพิมพ์ */
+document.addEventListener('input',function(e){
+  if(e.target&&e.target.id==='ayah-ar-input')tag(e.target);
+},true);
+
+try{
+  new MutationObserver(function(muts){
+    for(var i=0;i<muts.length;i++)
+      if(muts[i].addedNodes&&muts[i].addedNodes.length){schedule();return;}
+  }).observe(document.body,{childList:true,subtree:true});
+}catch(e){}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule);
+else schedule();
+
+/* ═══ 4. ที่ตั้งค่า : ต่อท้ายแท็บ "อื่น ๆ" ของลูกกลมจานสี ═══════════ */
+var _thOpen=false;
+
+function summary(){
+  var c=cfg();
+  var a=ALIGN.filter(function(x){return x.v===c.align;})[0];
+  var f=c.font?((thList().filter(function(x){return x.g===c.font;})[0]||{}).n||c.font):'ตามระบบ';
+  return ((a&&a.l)||'ชิดซ้าย')+' · '+String(f).split(' · ')[0];
+}
+
+function blockHTML(){
+  var c=cfg();
+  var h='<div id="thtxt-blk"'+(_thOpen?' class="open"':'')+'>'+
+    '<div class="ftk-row thtxt-hd" '+KEEP+' onclick="thTxtToggle()">'+
+      '<div class="ftk-row-t"><b>ตัวบทภาษาไทย</b><span>'+summary()+'</span></div>'+
+      '<svg class="thtxt-cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" '+
+      'stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'+
+    '</div><div class="thtxt-bd">'+
+    '<div class="ftk-fhead"><span class="ftk-sec">จัดวาง</span></div>'+
+    '<div class="ftk-aligns">';
+  ALIGN.forEach(function(a){
+    h+='<button class="ftk-al'+(c.align===a.v?' on':'')+'" '+KEEP+
+       ' onclick="thTxtSet(\'align\',\''+a.v+'\')">'+a.l+'</button>';
+  });
+  h+='</div><div class="ftk-fhead"><span class="ftk-sec">ฟอนต์</span></div>'+
+     '<div class="ftk-flist">';
+  var one=function(g,label){
+    return '<button class="ftk-fi'+(c.font===g?' on':'')+'" '+KEEP+
+      ' onclick="thTxtSet(\'font\',\''+g.replace(/'/g,"\\'")+'\')">'+
+      '<span class="ftk-fn">'+label+'</span>'+
+      '<span class="ftk-fp" style="font-family:'+stackOf(g)+'">ก ข ค</span></button>';
+  };
+  h+=one('','ตามระบบ');
+  thList().forEach(function(f){h+=one(f.g,(f.n||f.g));});
+  return h+'</div></div></div>';
+}
+
+window.thTxtToggle=function(){
+  _thOpen=!_thOpen;
+  var b=document.getElementById('thtxt-blk');
+  if(b)b.classList.toggle('open',_thOpen);
+  if(_thOpen){try{if(typeof ftkPreloadFonts==='function')ftkPreloadFonts('th');}catch(e){}}
+};
+
+window.thTxtSet=function(key,val){
+  var c=cfg();c[key]=val;saveCfg(c);applyCfg();
+  try{if(typeof ftkRenderBody==='function')ftkRenderBody();}catch(e){}
+};
+
+/* v394 : เดิมดูจากคลาส .on ของปุ่มแท็บ ซึ่งบางจังหวะยังไม่ทันอัปเดตตอนวาด
+   เลยต้องกด "อื่น ๆ" สองรอบถึงจะโผล่ → เปลี่ยนมาดูจากเนื้อที่วาดออกมาแทน
+   บล็อก .ftk-aligns (จัดข้อความ) มีอยู่แท็บเดียวคือ "อื่น ๆ" จึงใช้ชี้ได้ตรง ๆ */
+function inject(){
+  var b=document.getElementById('ftk-body');
+  if(!b||!b.querySelector('.ftk-aligns')||b.querySelector('#thtxt-blk'))return;
+  if(_thOpen){try{if(typeof ftkPreloadFonts==='function')ftkPreloadFonts('th');}catch(e){}}
+  b.insertAdjacentHTML('beforeend',blockHTML());
+}
+
+try{
+  if(typeof ftkRenderBody==='function'&&!ftkRenderBody.__v393){
+    var oRB=ftkRenderBody;
+    var wRB=function(){
+      var r;
+      try{r=oRB.apply(this,arguments);}catch(e){}
+      try{inject();}catch(e){}
+      return r;
+    };
+    wRB.__v393=1;
+    ftkRenderBody=wRB;
+    try{window.ftkRenderBody=wRB;}catch(e){}
+  }
+}catch(e){}
+
+})();
 
 </script>
 </body>
